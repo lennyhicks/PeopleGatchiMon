@@ -1,22 +1,21 @@
 package PeopleGatchi.PeopleGatchi.Status;
 
+import com.orm.SugarRecord;
+import com.orm.dsl.Table;
+
 /**
  * Created by andrewlewis on 11/16/16.
  */
 
-public class Hygiene {
-    //bladder level down, happiness goes up.
+@Table
+public class Hygiene extends SugarRecord {
+    private Long id;
+    public Integer hygieneLevel;
 
-    public void hygieneLevelUp () {
-
-        hygieneLevel += 2;
-        happinessLevel -= 2;
-    }
-    //bladder level up, happiness goes down.
-    public void bladderLevelDown () {
-        hygieneLevel -= 2;
-        happinessLevel += 2;
+    public Hygiene(){
     }
 
+    public Hygiene(Integer hygieneLevel){
+        this.hygieneLevel = hygieneLevel;
+    }
 }
-

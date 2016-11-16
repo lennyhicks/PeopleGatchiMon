@@ -1,21 +1,22 @@
 package PeopleGatchi.PeopleGatchi.Status;
 
+import com.orm.SugarRecord;
+import com.orm.dsl.Table;
+
 /**
  * Created by andrewlewis on 11/16/16.
  */
-
-public class Thirst {
+@Table
+public class Thirst extends SugarRecord {
     //bladder level down, happiness goes up.
+    private Long id;
+    public int thirstLevel;
 
-    public void ThirstLevelUp () {
-
-        thirstLevel += 2;
-        happinessLevel -= 2;
+    public Thirst(){
     }
-    //bladder level up, happiness goes down.
-    public void ThirstLevelDown () {
-        thirstLevel -= 2;
-        happinessLevel += 2;
+
+    public Thirst(Integer thirstLevel){
+        this.thirstLevel = thirstLevel;
     }
 
 }
