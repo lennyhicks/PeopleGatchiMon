@@ -14,13 +14,12 @@ public class PeopleGatchiApplication extends Application {
     public final Flow mainFlow = new Flow(History.single(new BudgetListStage()));
     public static final String API_BASE_URL = "http://android301api.azurewebsites.net:80/";
 
-
     @Override
     public void onCreate() {
         super.onCreate();
         application = this;
     }
-    ////
+
 
 
     public static PeopleGatchiApplication getInstance() {
