@@ -13,5 +13,9 @@ public class Bladder {
         happinessLevel -= 2;
     }
     //bladder level up, happiness goes down.
+    public void bladderLevelDown () {
+        bladderLevel -= 2;
+        happinessLevel += 2;
+    }
 
 }
