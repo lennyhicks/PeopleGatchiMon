@@ -7,16 +7,14 @@ import com.orm.dsl.Table;
  * Created by andrewlewis on 11/16/16.
  */
 @Table
-public class Hunger extends SugarRecord {
+public class Pee extends SugarRecord {
     //bladder level down, happiness goes up.
-    private Long id;
-    public Integer hungerLevel;
+    public Integer peeLevel;
 
-    public Hunger(){
+    public Pee(){
     }
 
-    public Hunger(Integer hungerLevel){
-        this.hungerLevel = hungerLevel;
+    public Pee(Integer peeLevel){
+        this.peeLevel = peeLevel;
     }
-
 }
