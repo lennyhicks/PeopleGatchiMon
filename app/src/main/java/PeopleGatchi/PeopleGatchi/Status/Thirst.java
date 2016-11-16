@@ -9,12 +9,12 @@ public class Thirst {
 
     public void ThirstLevelUp () {
 
-        bladderLevel += 2;
+        thirstLevel += 2;
         happinessLevel -= 2;
     }
     //bladder level up, happiness goes down.
     public void ThirstLevelDown () {
-        bladderLevel -= 2;
+        thirstLevel -= 2;
         happinessLevel += 2;
     }
 

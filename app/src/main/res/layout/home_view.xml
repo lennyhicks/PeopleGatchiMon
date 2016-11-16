@@ -4,12 +4,40 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:text="Bank Amount"
+        android:layout_width="144dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/bank_amount"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@+id/clock"
+        android:layout_marginEnd="41dp" />
+
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/arrow_up_float"
+        android:id="@+id/image_button2"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="00:00"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/clock"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@+id/image_button2" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:id="@+id/progress_bars"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true">
 
         <ProgressBar
             style="?android:attr/progressBarStyleHorizontal"
@@ -46,7 +74,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             app:srcCompat="@android:drawable/picture_frame"
-            android:id="@+id/imageView"
+            android:id="@+id/image_view"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true" />
 
@@ -57,7 +85,7 @@
             android:id="@+id/hygiene_bar"
             android:indeterminate="false"
             android:layout_alignTop="@+id/food_bar"
-            android:layout_toEndOf="@+id/imageView"
+            android:layout_toEndOf="@+id/image_view"
             android:layout_marginStart="16dp" />
 
         <ProgressBar
@@ -79,33 +107,5 @@
             android:layout_alignStart="@+id/pee_bar" />
 
     </RelativeLayout>
-
-    <TextView
-        android:text="Bank Amount"
-        android:layout_width="144dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/bank_amount"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        android:layout_alignParentTop="true"
-        android:layout_toStartOf="@+id/clock"
-        android:layout_marginEnd="41dp" />
-
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/arrow_up_float"
-        android:id="@+id/imageButton2"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:text="00:00"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/clock"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        android:layout_alignParentTop="true"
-        android:layout_toStartOf="@+id/imageButton2" />
 
 </RelativeLayout>
