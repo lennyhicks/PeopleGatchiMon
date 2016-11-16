@@ -9,6 +9,7 @@ import com.davidstemmer.flow.plugin.screenplay.ScreenplayDispatcher;
 
 import PeopleGatchi.PeopleGatchi.Models.TestPost;
 import PeopleGatchi.PeopleGatchi.Network.RestClient;
+import PeopleGatchi.PeopleGatchi.Stages.HomeStage;
 import PeopleGatchi.PeopleGatchi.Stages.LoginStage;
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
+
         flow = PeopleGatchiApplication.getMainFlow();
         dispatcher = new ScreenplayDispatcher(this, container);
         dispatcher.setUp(flow);
@@ -42,6 +44,9 @@ public class MainActivity extends AppCompatActivity {
 
         if(UserStore.getInstance().getToken() == null || UserStore.getInstance().getTokenExpiration() == null){
             History newHistory = History.single(new LoginStage());
+            flow.setHistory(newHistory, Flow.Direction.REPLACE);
+        } else {
+            History newHistory = History.single(new HomeStage());
             flow.setHistory(newHistory, Flow.Direction.REPLACE);
         }
     }
