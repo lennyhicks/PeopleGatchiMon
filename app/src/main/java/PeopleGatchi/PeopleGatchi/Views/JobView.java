@@ -55,11 +55,11 @@ public class JobView extends LinearLayout {
     @OnClick(R.id.engineer_butt)
     public void workMath() {
         //time passes while working
-        //Utils.addTime();
+//        Utils.addTime();
         // So based on your level of education your ceiling and floor go up.
         int payment = ((int) Math.random() * EducationView.mathEdScore) + EducationView.mathEdScore/2;
         // we throw this into the Bank
-        //BankManager.deposit(payment);
+//        BankManager.deposit(payment);
         // we let the person know how much they were paid.
         Toast.makeText(context, "You were paid " + payment + " for 2 hours of work.", Toast.LENGTH_LONG).show();
     }
@@ -67,11 +67,11 @@ public class JobView extends LinearLayout {
     @OnClick(R.id.science_butt)
     public void workScience() {
         //time passes while working
-        //Utils.addTime();
+//        Utils.addTime();
         // Based on your level of education your ceiling and floor go up.
         int payment = ((int) Math.random() * EducationView.sciEdScore) + EducationView.sciEdScore/2;
         // we throw this into the Bank
-        //BankManager.deposit(payment);
+//        BankManager.deposit(payment);
         // we let the person know how much they were paid.
         Toast.makeText(context, "You were paid "+ payment + " for 2 hours of work.", Toast.LENGTH_LONG).show();
 
