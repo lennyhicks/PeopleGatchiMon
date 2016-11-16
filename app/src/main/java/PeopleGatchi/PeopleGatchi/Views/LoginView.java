@@ -15,6 +15,7 @@ import PeopleGatchi.PeopleGatchi.R;
 /**
  * Created by lennyhicks on 10/31/16.
  */
+//HELLO LENNY!!!!!
 public class LoginView extends LinearLayout {
     private Context context;
 
