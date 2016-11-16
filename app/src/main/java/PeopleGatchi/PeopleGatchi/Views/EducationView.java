@@ -16,6 +16,8 @@ import butterknife.OnClick;
  * Created by eaglebrosi on 11/16/16.
  */
 
+// hello lenny test.
+
 public class EducationView extends LinearLayout {
     private Context context;
     public static int sciEdScore;
