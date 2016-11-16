@@ -20,7 +20,7 @@ public class PeopleGatchiApplication extends Application {
         super.onCreate();
         application = this;
     }
-    //
+    ////
 
 
     public static PeopleGatchiApplication getInstance() {
