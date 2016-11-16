@@ -21,7 +21,7 @@ public class FadeRigger extends TweenRigger {
 
     }
 
-    public FadeRigger(Application conext){
-        super(conext, params);
+    public FadeRigger(Application context){
+        super(context, params);
     }
 }
