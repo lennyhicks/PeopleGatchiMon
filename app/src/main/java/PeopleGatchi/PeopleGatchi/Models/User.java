@@ -1,19 +1,22 @@
 package PeopleGatchi.PeopleGatchi.Models;
 
-import java.util.Calendar;
+import com.orm.SugarApp;
+import com.orm.dsl.Table;
 
 /**
  * Created by lennyhicks on 11/16/16.
  */
+@Table
+public class User extends SugarApp{
+    private Long id;
+    private String name;
+    private Integer age;
 
-public class User {
-    static Calendar cal = Calendar.getInstance();
-
-    public static Calendar getCal() {
-        return cal;
+    public User(){
     }
 
-    public static void setCal(Calendar cal) {
-        cal = cal;
+    public User(String name, Integer age ){
+        this.name = name;
+        this.age = age;
     }
 }
