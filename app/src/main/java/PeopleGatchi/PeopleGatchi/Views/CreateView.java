@@ -2,9 +2,7 @@ package PeopleGatchi.PeopleGatchi.Views;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -55,7 +53,7 @@ public class CreateView extends LinearLayout {
         gender = (Spinner) findViewById(spinner);
 
         //spinner click listener
-        gender.setOnItemSelectedListener(this);
+       // gender.setOnItemSelectedListener(this);
 
         //configures what are options are.
         List<String> categories = new ArrayList<>();
@@ -63,17 +61,17 @@ public class CreateView extends LinearLayout {
         categories.add("cis male");
         categories.add("non-confirming");
 
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
+        //ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
 
-        dataAdapter.setAdapter(dataAdapter);
+        //dataAdapter.setAdapter(dataAdapter);
 
-        gender.setAdapter(dataAdapter);
+        //gender.setAdapter(dataAdapter);
 
     }
 
-    public void onItemSelected(AdapterView<> parent, View view, int position){
-        String item
-    }
+//    public void onItemSelected(AdapterView<> parent, View view, int position){
+//        String item;
+//    }
 
     @OnClick(R.id.submit_button)
     public void submitGender() {
@@ -82,7 +80,7 @@ public class CreateView extends LinearLayout {
         imm.hideSoftInputFromWindow(pickName.getWindowToken(), 0);
 
         // gets the value from the text field and sets it.
-        setPetName = pickName.getText().toString();
+        //setPetName = pickName.getText().toString();
 
 
     }
@@ -92,11 +90,3 @@ public class CreateView extends LinearLayout {
 
 
 
-
-
-
-
-    }
-
-
-}

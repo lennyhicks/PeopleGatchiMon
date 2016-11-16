@@ -9,7 +9,6 @@ import android.widget.Toast;
 import org.greenrobot.eventbus.EventBus;
 
 import PeopleGatchi.PeopleGatchi.R;
-import PeopleGatchi.PeopleGatchi.Utils.Utils;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -45,7 +44,7 @@ public class EducationView extends LinearLayout {
     @OnClick(R.id.increase_science)
     public void changeScience(){
         //time passes when being taught.
-        Utils.addTime();
+        //Utils.addTime();
         // sometimes you learns betters then others.
         int increase= ((int)(Math.random()*5)+1);
         sciEdScore += increase;
@@ -55,7 +54,7 @@ public class EducationView extends LinearLayout {
     @OnClick(R.id.increase_math)
     public void changeMath(){
         //time passes when being taught.
-        Utils.addTime();
+        //Utils.addTime();
         // sometimes you learns betters then others.
         int increase= ((int)(Math.random()*5)+1);
         sciEdScore += increase;
