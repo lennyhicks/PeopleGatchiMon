@@ -8,8 +8,6 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import org.greenrobot.eventbus.EventBus;
-
 import PeopleGatchi.PeopleGatchi.R;
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -64,7 +62,7 @@ public class HomeView extends LinearLayout {
         super.onFinishInflate();
         ButterKnife.bind(this);
 
-        EventBus.getDefault().register(this);
+       // EventBus.getDefault().register(this);
     }
 
     @OnClick(R.id.food_bar)

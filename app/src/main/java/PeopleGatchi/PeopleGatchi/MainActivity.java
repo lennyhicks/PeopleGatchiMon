@@ -10,7 +10,7 @@ import com.davidstemmer.flow.plugin.screenplay.ScreenplayDispatcher;
 import PeopleGatchi.PeopleGatchi.Models.TestPost;
 import PeopleGatchi.PeopleGatchi.Network.RestClient;
 import PeopleGatchi.PeopleGatchi.Network.UserStore;
-import PeopleGatchi.PeopleGatchi.Stages.LoginStage;
+import PeopleGatchi.PeopleGatchi.Stages.HomeStage;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import flow.Flow;
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         //testCalls();
 
         if(UserStore.getInstance().getToken() == null || UserStore.getInstance().getTokenExpiration() == null){
-            History newHistory = History.single(new LoginStage());
+            History newHistory = History.single(new HomeStage());
             flow.setHistory(newHistory, Flow.Direction.REPLACE);
         }
     }
