@@ -4,10 +4,12 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import org.greenrobot.eventbus.EventBus;
 
 import PeopleGatchi.PeopleGatchi.R;
+import PeopleGatchi.PeopleGatchi.Utils.Utils;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -15,14 +17,10 @@ import butterknife.OnClick;
 /**
  * Created by eaglebrosi on 11/16/16.
  */
-
-// hello lenny test.
-
 public class EducationView extends LinearLayout {
     private Context context;
     public static int sciEdScore;
     public static int mathEdScore;
-    int hour;
 
     @Bind(R.id.increase_science)
     Button increaseScience;
@@ -47,20 +45,20 @@ public class EducationView extends LinearLayout {
     @OnClick(R.id.increase_science)
     public void changeScience(){
         //time passes when being taught.
-        hour += 2;
+        Utils.addTime();
         // sometimes you learns betters then others.
         int increase= ((int)(Math.random()*5)+1);
-
         sciEdScore += increase;
+        Toast.makeText(context, "You got smarterer by " + increase, Toast.LENGTH_SHORT).show();
     }
 
     @OnClick(R.id.increase_math)
     public void changeMath(){
         //time passes when being taught.
-        hour += 2;
+        Utils.addTime();
         // sometimes you learns betters then others.
         int increase= ((int)(Math.random()*5)+1);
-
         sciEdScore += increase;
+        Toast.makeText(context, "You got smarterer by " + increase, Toast.LENGTH_SHORT).show();
     }
 }
