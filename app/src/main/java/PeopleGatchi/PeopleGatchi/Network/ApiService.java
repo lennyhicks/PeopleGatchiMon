@@ -23,7 +23,6 @@ public interface ApiService {
 
 
     //Store
-    @GET("")
 
 
     //User info (Statuses, inventory)

@@ -9,6 +9,7 @@ import android.widget.Toast;
 import org.greenrobot.eventbus.EventBus;
 
 import PeopleGatchi.PeopleGatchi.R;
+import PeopleGatchi.PeopleGatchi.Utils.Utils;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -20,8 +21,6 @@ import butterknife.OnClick;
 public class JobView extends LinearLayout {
     private Context context;
     public double bankBalance;
-// Now this won't continue working. This isn't how we are doing it.
-    int hour;
 
     @Bind(R.id.labor_butt)
     Button labor;
@@ -48,7 +47,8 @@ public class JobView extends LinearLayout {
     @OnClick(R.id.labor_butt)
     public void workLabor() {
         //time passes while working
-        hour += 2;
+        //hour += 8;
+        //Utils.Time.increaseHour();  Notes on how time is to be kept.
         // manual labor gets a set pay between 15 and 5 dollars an hour.
         int payment = ((int) Math.random() * 20) + 10;
     }
@@ -56,17 +56,26 @@ public class JobView extends LinearLayout {
     @OnClick(R.id.engineer_butt)
     public void workMath() {
         //time passes while working
-        hour += 2;
-        // manual labor gets a set pay between 15 and 5 dollars an hour.
+        Utils.addTime();
+        // So based on your level of education your ceiling and floor go up.
         int payment = ((int) Math.random() * EducationView.mathEdScore) + EducationView.mathEdScore/2;
+        // we throw this into the Bank
+        BankManager.deposit(payment);
+        // we let the person know how much they were paid.
+        Toast.makeText(context, "You were paid " + payment + " for 2 hours of work.", Toast.LENGTH_LONG).show();
     }
 
     @OnClick(R.id.science_butt)
     public void workScience() {
         //time passes while working
-        hour += 2;
-        // manual labor gets a set pay between 15 and 5 dollars an hour.
+        Utils.addTime();
+        // Based on your level of education your ceiling and floor go up.
         int payment = ((int) Math.random() * EducationView.sciEdScore) + EducationView.sciEdScore/2;
-        Toast.makeText(context, "You were paid "+ payment + " for 2 hours of work.", Toast.LENGTH_SHORT).show();
+        // we throw this into the Bank
+        BankManager.deposit(payment);
+        // we let the person know how much they were paid.
+        Toast.makeText(context, "You were paid "+ payment + " for 2 hours of work.", Toast.LENGTH_LONG).show();
+
+
     }
 }

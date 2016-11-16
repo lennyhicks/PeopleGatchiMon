@@ -6,5 +6,6 @@ package PeopleGatchi.PeopleGatchi.Components;
 public final class Constants {
     public static final String token = "token";
     public static final String tokenExpiration = "tokenExpiration";
+    public static final int WORK_TIME = 8;
 
 }
