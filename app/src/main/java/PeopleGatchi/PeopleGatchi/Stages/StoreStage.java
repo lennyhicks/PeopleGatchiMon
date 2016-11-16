@@ -10,21 +10,21 @@ import PeopleGatchi.PeopleGatchi.Riggers.SlideRigger;
  * Created by sheamaynard on 11/16/16.
  */
 
-public class CreateStage extends IndexedStage {
+public class StoreStage extends IndexedStage {
     public final SlideRigger rigger;
 
-    public CreateStage(Application context){
-        super(CreateStage.class.getName());
+    public StoreStage(Application context){
+        super(StoreStage.class.getName());
         this.rigger = new SlideRigger(context);
     }
 
-    public CreateStage(){
+    public StoreStage(){
         this(PeopleGatchiApplication.getInstance());
     }
 
     @Override
     public int getLayoutId() {
-        return R.layout.create_view;
+        return R.layout.store_view;
     }
 
     @Override
@@ -32,4 +32,3 @@ public class CreateStage extends IndexedStage {
         return rigger;
     }
 }
-
