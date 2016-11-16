@@ -5,17 +5,7 @@ package PeopleGatchi.PeopleGatchi.Status;
  */
 
 public class Bladder {
-    //bladder level down, happiness goes up.
 
-    public void bladderLevelUp () {
 
-        bladderLevel += 2;
-        happinessLevel -= 2;
-    }
-    //bladder level up, happiness goes down.
-    public void bladderLevelDown () {
-        bladderLevel -= 2;
-        happinessLevel += 2;
-    }
 
 }
