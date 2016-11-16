@@ -7,20 +7,20 @@
         android:text="Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/button2"
+        android:id="@+id/labor_butt"
         style="@style/Widget.AppCompat.Button.Borderless" />
 
     <Button
         android:text="Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/button3"
+        android:id="@+id/engineer_butt"
         style="@style/Widget.AppCompat.Button.Borderless" />
 
     <Button
         android:text="Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/button4"
+        android:id="@+id/science_butt"
         style="@style/Widget.AppCompat.Button.Borderless" />
 </LinearLayout>
