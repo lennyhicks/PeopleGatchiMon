@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<inburst.budget.Views.BudgetListView xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+<PeopleGatchi.PeopleGatchi.Views.PeopleGatchiView xmlns:android="http://schemas.android.com/apk/res/android"
+                                                  android:layout_width="match_parent"
+                                                  android:layout_height="match_parent">
 
-</inburst.budget.Views.BudgetListView>
+</PeopleGatchi.PeopleGatchi.Views.PeopleGatchiView>
