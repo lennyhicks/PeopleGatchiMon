@@ -19,4 +19,16 @@ public interface ApiService {
 
     @POST("/posts")
     Call<TestPost> postPost(@Body TestPost post);
+
+
+
+    //Store
+    @GET("")
+
+
+    //User info (Statuses, inventory)
+
+    //Bank
+
+
 }
