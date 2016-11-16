@@ -9,12 +9,12 @@ import com.davidstemmer.flow.plugin.screenplay.ScreenplayDispatcher;
 
 import PeopleGatchi.PeopleGatchi.Models.TestPost;
 import PeopleGatchi.PeopleGatchi.Network.RestClient;
+import PeopleGatchi.PeopleGatchi.Network.UserStore;
 import PeopleGatchi.PeopleGatchi.Stages.LoginStage;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import flow.Flow;
 import flow.History;
-import PeopleGatchi.PeopleGatchi.Network.UserStore;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Bind(R.id.container)
     RelativeLayout container;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
