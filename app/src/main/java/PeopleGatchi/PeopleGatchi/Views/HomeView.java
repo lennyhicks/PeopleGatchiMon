@@ -2,8 +2,6 @@ package PeopleGatchi.PeopleGatchi.Views;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -31,8 +29,8 @@ public class HomeView extends LinearLayout {
     @Bind(R.id.sleep_bar)
     ProgressBar sleepBar;
 
-    @Bind(R.id.image_view)
-    ImageView imageView;
+//    @Bind(R.id.image_view)
+//    ImageView imageView;
 
     @Bind(R.id.hygiene_bar)
     ProgressBar hygieneBar;
@@ -45,9 +43,9 @@ public class HomeView extends LinearLayout {
 
     @Bind(R.id.bank_amount)
     TextView bankAmount;
-
-    @Bind(R.id.image_button2)
-    ImageButton imageButton2;
+//
+//    @Bind(R.id.image_button2)
+//    ImageButton imageButton2;
 
     @Bind(R.id.clock)
     TextView clock;
@@ -79,11 +77,11 @@ public class HomeView extends LinearLayout {
     public void restPet(){
 
     }
-
-    @OnClick(R.id.image_view)
-    public void happinessView(){
-
-    }
+//
+//    @OnClick(R.id.image_view)
+//    public void happinessView(){
+//
+//    }
 
     @OnClick(R.id.hygiene_bar)
     public void cleanPet(){
@@ -104,11 +102,11 @@ public class HomeView extends LinearLayout {
     public void bankTotal(){
 
     }
-
-    @OnClick(R.id.image_button2)
-    public void increaseTime(){
-
-    }
+//
+//    @OnClick(R.id.image_button2)
+//    public void increaseTime(){
+//
+//    }
 
     @OnClick(R.id.clock)
     public void clock(){
