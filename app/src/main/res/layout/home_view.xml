@@ -79,7 +79,7 @@
         android:layout_alignParentBottom="true">
 
         <ProgressBar
-            style="?android:attr/progressBarStyleHorizontal"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:id="@+id/food_bar"
@@ -94,7 +94,7 @@
             android:visibility="visible"/>
 
         <ProgressBar
-            style="?android:attr/progressBarStyleHorizontal"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:id="@+id/drink_bar"
@@ -107,7 +107,7 @@
             android:visibility="visible"/>
 
         <ProgressBar
-            style="?android:attr/progressBarStyleHorizontal"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:id="@+id/sleep_bar"
@@ -128,7 +128,7 @@
             android:layout_centerHorizontal="true" />
 
         <ProgressBar
-            style="?android:attr/progressBarStyleHorizontal"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:id="@+id/hygiene_bar"
@@ -141,7 +141,7 @@
             android:visibility="visible"/>
 
         <ProgressBar
-            style="?android:attr/progressBarStyleHorizontal"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:id="@+id/pee_bar"
@@ -153,7 +153,7 @@
             android:visibility="visible"/>
 
         <ProgressBar
-            style="?android:attr/progressBarStyleHorizontal"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:id="@+id/poop_bar"
