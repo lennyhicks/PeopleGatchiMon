@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import PeopleGatchi.PeopleGatchi.PeopleGatchiApplication;
 import PeopleGatchi.PeopleGatchi.R;
@@ -112,11 +113,15 @@ public class HomeView extends RelativeLayout {
 
     @OnClick(R.id.pee_bar)
     public void drainPet(){
-
+int peeAmount = ((int)(Math.random() *15 ) +5);
+        Toast.makeText(context, "Yay, we made a pee-pee, Yay!!!", Toast.LENGTH_SHORT).show();
     }
 
     @OnClick(R.id.poop_bar)
     public void pottyPet(){
+       int dumpSize = ((Math.round(Math.random() * 15 )+5));
+        Toast.makeText(context, "That was a sweet sweet #2!", Toast.LENGTH_SHORT).show();
+ //       Stages.poo(dumpSize);
 
     }
 
