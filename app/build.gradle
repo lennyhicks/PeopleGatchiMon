@@ -3,13 +3,17 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 25
     buildToolsVersion "24.0.2"
-
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
     defaultConfig {
-        applicationId "mon.peoplegatchi"
-        minSdkVersion 17
-        targetSdkVersion 25
+        applicationId "monster.peoplegatchi"
+        minSdkVersion 14
+        targetSdkVersion 19
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
+
     }
     buildTypes {
         release {

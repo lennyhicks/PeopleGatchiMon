@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PeopleGatchi.PeopleGatchi.Views.JobView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<com.PeopleGatchi.Views.JobView xmlns:android="http://schemas.android.com/apk/res/android"
+                                android:orientation="vertical" android:layout_width="match_parent"
+                                android:layout_height="match_parent">
 
     <Button
         android:text="Button"
@@ -26,4 +26,4 @@
         android:id="@+id/science_butt"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:background="@android:color/holo_green_light" />
-</PeopleGatchi.PeopleGatchi.Views.JobView>
+</com.PeopleGatchi.Views.JobView>
