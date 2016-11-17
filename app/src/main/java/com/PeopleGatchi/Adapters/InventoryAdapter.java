@@ -17,26 +17,27 @@ import com.PeopleGatchi.R;
 
 public class InventoryAdapter extends BaseAdapter {
 
-        private Context context;
-        private final int[] images;
+    private Context context;
+    LayoutInflater layoutInflater;
+    public int[] images;
+
 
         public InventoryAdapter(Context context, int[] images) {
+            this.layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             this.context = context;
             this.images = images;
         }
 
         public View getView(int position, View convertView, ViewGroup parent) {
 
-            LayoutInflater inflater = (LayoutInflater) context
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
             View gridView;
+
 
             if (convertView == null) {
 
                 gridView = new View(context);
 
-                gridView = inflater.inflate(R.layout.inventory_view, null);
+                gridView = layoutInflater.inflate(R.layout.inventory_view, null);
 
                 ImageView imageView = (ImageView) gridView.findViewById(R.id.inventory_img);
 

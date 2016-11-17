@@ -4,9 +4,12 @@ import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.Window;
+import android.widget.GridView;
 
+import com.PeopleGatchi.Adapters.InventoryAdapter;
 import com.PeopleGatchi.R;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -16,11 +19,16 @@ import butterknife.OnClick;
 
 public class InventoryDialog extends Dialog{
 
+    @Bind(R.id.inventory_grid)
+    GridView gridView;
 
+    public int [] images = {R.drawable.cat, R.drawable.cheburashka, R.drawable.hachiko};
+    private Context context;
 
 
     public InventoryDialog(Context context) {
         super(context);
+        this.context = context;
     }
 
     @Override
@@ -33,16 +41,17 @@ public class InventoryDialog extends Dialog{
         ButterKnife.bind(this);
 
 
+
+        InventoryAdapter adapter = new InventoryAdapter(context, images);
+
+         gridView.setAdapter(adapter);
+
+
         }
 
     @OnClick(R.id.inventory_img)
     public void itemSelected () {
 
     }
-
-
-//    ImageAdapter adapter = new ImageAdapter(this, home_res);
-//
-//    gameGrid.setAdapter(adapter);
 
 }
