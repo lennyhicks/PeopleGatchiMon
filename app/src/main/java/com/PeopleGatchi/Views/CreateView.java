@@ -12,7 +12,9 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.PeopleGatchi.PeopleGatchiApplication;
 import com.PeopleGatchi.R;
+import com.PeopleGatchi.Stages.HomeStage;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -22,6 +24,8 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import flow.Flow;
+import flow.History;
 
 import static com.PeopleGatchi.R.id.spinner;
 
@@ -94,6 +98,11 @@ public class CreateView extends LinearLayout {
 
        // Toast.makeText(context, "You named you baby "+ getPetName, Toast.LENGTH_SHORT).show();
 
-
+        // The submit button also takes you to the home screen.
+        Flow flow = PeopleGatchiApplication.getMainFlow();
+        History newHistory = flow.getHistory().buildUpon()
+                .push(new HomeStage())
+                .build();
+        flow.setHistory(newHistory, Flow.Direction.FORWARD);
     }
 }
