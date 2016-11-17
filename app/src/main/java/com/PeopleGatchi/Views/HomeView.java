@@ -95,17 +95,20 @@ public class HomeView extends RelativeLayout {
 
     @OnClick(R.id.food_bar)
     public void feedPet(){
-
+        int foodAmount = ((int)(Math.round(Math.random() *15 ) +5));
+        Toast.makeText(context, "BELCH!! Whew, i'm stuffed!!!", Toast.LENGTH_SHORT).show();
     }
 
     @OnClick(R.id.drink_bar)
     public void waterPet(){
-
+        int drinkAmount = ((int)(Math.round(Math.random() *15 ) +5));
+        Toast.makeText(context, "Slurp slurp, mmmm!", Toast.LENGTH_SHORT).show();
     }
 
     @OnClick(R.id.sleep_bar)
     public void restPet(){
-
+        int sleepyTime = ((int)(Math.round(Math.random() *15 ) +5));
+        Toast.makeText(context, "Whew, I feel rested and ready!", Toast.LENGTH_SHORT).show();
     }
 
     @OnClick(R.id.image_view)
@@ -115,20 +118,22 @@ public class HomeView extends RelativeLayout {
 
     @OnClick(R.id.hygiene_bar)
     public void cleanPet(){
+        int cleanBaby = ((int)(Math.round(Math.random() *15 ) +5));
+        Toast.makeText(context, "Yay, so fresh and so clean clean!!", Toast.LENGTH_SHORT).show();
 
     }
 
     @OnClick(R.id.pee_bar)
     public void drainPet(){
-int peeAmount = ((int)(Math.random() *15 ) +5);
+    int peeAmount = ((int)(Math.round(Math.random() *15 ) +5));
         Toast.makeText(context, "Yay, we made a pee-pee, Yay!!!", Toast.LENGTH_SHORT).show();
     }
 
     @OnClick(R.id.poop_bar)
     public void pottyPet(){
-       int dumpSize = ((Math.round(Math.random() * 15 )+5));
+       int dumpSize = (int)(Math.round(Math.random() * 15 )+5);
         Toast.makeText(context, "That was a sweet sweet #2!", Toast.LENGTH_SHORT).show();
- //       Stages.poo(dumpSize);
+ //       Status.poo(dumpSize);
 
     }
 
