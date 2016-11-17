@@ -57,7 +57,7 @@ public class CreateView extends LinearLayout {
         gender = (Spinner) findViewById(spinner);
 
         //spinner click listener
-        gender.setOnItemSelectedListener(this);
+      //  gender.setOnItemSelectedListener(this);
 
         //configures what are options are.
         List<String> categories = new ArrayList<>();
@@ -65,10 +65,9 @@ public class CreateView extends LinearLayout {
         categories.add("cis male");
         categories.add("non-confirming");
 
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(context,
                 android.R.layout.simple_spinner_item, categories);
 
-        dataAdapter.setAdapter(dataAdapter);
 
         gender.setAdapter(dataAdapter);
 
@@ -90,9 +89,9 @@ public class CreateView extends LinearLayout {
         imm.hideSoftInputFromWindow(pickName.getWindowToken(), 0);
 
         // gets the value from the text field and sets it.
-        setPetName = pickName.getText().toString();
+       // setPetName = pickName.getText().toString();
 
-        Toast.makeText(context, "You named you baby "+ getPetName, Toast.LENGTH_SHORT).show();
+       // Toast.makeText(context, "You named you baby "+ getPetName, Toast.LENGTH_SHORT).show();
 
 
     }
