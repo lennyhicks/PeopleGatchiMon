@@ -132,9 +132,13 @@ public class HomeView extends RelativeLayout {
     @OnClick(R.id.poop_bar)
     public void pottyPet(){
        int dumpSize = (int)(Math.round(Math.random() * 15 )+5);
-        Toast.makeText(context, "That was a sweet sweet #2!", Toast.LENGTH_SHORT).show();
- //       Status.poo(dumpSize);
-
+        if(dumpSize == 20){
+            Toast.makeText(context, "Holy COW WHAT A DUMP! the king lives!!!!", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "That was a sweet sweet #2!", Toast.LENGTH_SHORT).show();
+            //       Status.poo(dumpSize);
+        }
+        StatusControls.updatePooBladder(dumpSize);
     }
 
     @OnClick(R.id.bank_amount)
