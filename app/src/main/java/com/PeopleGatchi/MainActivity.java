@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         //testCalls();
 
         if(UserStore.getInstance().getToken() == null || UserStore.getInstance().getTokenExpiration() == null){
+
             History newHistory = History.single(new HomeStage());
             flow.setHistory(newHistory, Flow.Direction.REPLACE);
         } else {
