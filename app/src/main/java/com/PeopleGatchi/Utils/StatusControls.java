@@ -1,7 +1,5 @@
 package com.PeopleGatchi.Utils;
 
-import android.util.Log;
-
 import com.PeopleGatchi.Status.Happiness;
 import com.PeopleGatchi.Status.Hunger;
 import com.PeopleGatchi.Status.Hygiene;
@@ -15,103 +13,128 @@ import com.PeopleGatchi.Status.Thirst;
  */
 
 public class StatusControls {
-    static Poo pooBladder = Poo.findById(Poo.class, 1);
-    static Pee peeBladder = Pee.findById(Pee.class, 1);
-    static Happiness happiness = Happiness.findById(Happiness.class, 1);
-    static Hunger hunger = Hunger.findById(Hunger.class, 1);
-    static Thirst thirst = Thirst.findById(Thirst.class, 1);
-    static Hygiene hygiene = Hygiene.findById(Hygiene.class, 1);
-    static Rest rest = Rest.findById(Rest.class, 1);
+    static Poo pooBladder = new Poo(20);
+    static Pee peeBladder = new Pee(20);
+    static Happiness happiness= new Happiness();
+    static Hunger hunger = new Hunger(20);
+    static Thirst thirst = new Thirst(20);
+    static Hygiene hygiene = new Hygiene(20);
+    static Rest rest = new Rest(20);
 
 
-    public static void updatePooBladder(Integer bladderControl) {
+    public static void setPooBladder(Integer bladderControl) {
+        if(pooBladder == null) {
+            pooBladder = new Poo(20);
+        }
         pooBladder.pooLevel += bladderControl;
         pooBladder.save();
 
     }
 
-    public static void updatePeeBladder(Integer bladderControl) {
+    public static void setPeeBladder(Integer bladderControl) {
+        if(peeBladder == null) {
+            peeBladder = new Pee(20);
+        }
         peeBladder.peeLevel += bladderControl;
         peeBladder.save();
 
     }
 
-    public static void updateHappiness(Integer happinessControl){
-        happiness.happinessLevel += happinessControl;
+    public static void setHappiness(Integer happinessControl){
+        if(happiness == null) {
+            happiness = new Happiness(120);
+        }
+        happiness.happinessLevel += 120;
         happiness.save();
     }
 
-    public static void updateHunger(Integer hungerControl){
+    public static void setHunger(Integer hungerControl){
+        if(hunger == null) {
+            hunger = new Hunger(20);
+        }
         hunger.hungerLevel += hungerControl;
         hunger.save();
     }
 
-    public static void updateThirst(Integer thirstConrol){
+    public static void setThirst(Integer thirstConrol){
+        if(thirst == null) {
+            thirst = new Thirst(20);
+        }
         thirst.thirstLevel += thirstConrol;
         thirst.save();
     }
 
-    public static void updateHygiene(Integer hygieneControl){
+    public static void setHygiene(Integer hygieneControl){
+        if(hygiene == null) {
+            hygiene = new Hygiene(20);
+        }
         hygiene.hygieneLevel += hygieneControl;
         hygiene.save();
     }
 
-    public static void updateRest(Integer restControl){
+    public static void setRest(Integer restControl){
+        if(rest == null) {
+            rest = new Rest(20);
+        }
         rest.restLevel += restControl;
         rest.save();
     }
 
-    public static void update(){
+    public static void getLevels(){
+        happiness = Happiness.findById(Happiness.class, 1);
+
         pooBladder = Poo.findById(Poo.class, 1);
         peeBladder = Pee.findById(Pee.class, 1);
         hunger = Hunger.findById(Hunger.class, 1);
-        Log.i("HUNGER ", hunger.hungerLevel +"");
-
-        happiness.happinessLevel =  peeLevel() +
-                                    pooLevel() +
-                                    hungerLevel() +
-                                    thirstLevel() +
-                                    hygieneLevel() +
-                                    restLevel();
+        thirst = Thirst.findById(Thirst.class, 1);
+        hygiene = Hygiene.findById(Hygiene.class, 1);
+        rest = Rest.findById(Rest.class, 1);
+        happiness.happinessLevel =  getPeeLevel() +
+                                    getPooLevel() +
+                                    getHungerLevel() +
+                                    getThirstLevel() +
+                                    getHygieneLevel() +
+                                    getRestLevel();
 
     }
 
-    public static Integer pooLevel(){
+    public static Integer getPooLevel(){
         if (pooBladder.pooLevel > 20){
             pooBladder.pooLevel = 20;
         }
         return pooBladder.pooLevel;
     }
 
-    public static Integer peeLevel(){
+    public static Integer getPeeLevel(){
         if (peeBladder.peeLevel > 20){
             peeBladder.peeLevel = 20;
         }
         return peeBladder.peeLevel;
     }
 
-    public static Integer hungerLevel(){
+    public static Integer getHungerLevel(){
+
         if (hunger.hungerLevel > 20){
             hunger.hungerLevel = 20;
         }
         return hunger.hungerLevel;
     }
 
-    public static Integer thirstLevel(){
+    public static Integer getThirstLevel(){
         if (thirst.thirstLevel > 20){
             thirst.thirstLevel = 20;
         }
         return thirst.thirstLevel;
     }
 
-    public static Integer hygieneLevel(){
+    public static Integer getHygieneLevel(){
         if (hygiene.hygieneLevel > 20){
             hygiene.hygieneLevel = 20;
         }
         return hygiene.hygieneLevel;
     }
 
-    public static Integer restLevel(){
+    public static Integer getRestLevel(){
         if (rest.restLevel > 20){
             rest.restLevel = 20;
         }
@@ -119,17 +142,24 @@ public class StatusControls {
     }
 
     public static void firstRun(){
+
         pooBladder = new Poo(20);
-        pooBladder.save();
-        peeBladder = new Pee(14);
-        peeBladder.save();
+        peeBladder = new Pee(20);
+        happiness= new Happiness(120);
         hunger = new Hunger(20);
-        hunger.save();
         thirst = new Thirst(20);
-        thirst.save();
         hygiene = new Hygiene(20);
-        hygiene.save();
         rest = new Rest(20);
+
+
+        pooBladder.save();
+        peeBladder.save();
+        happiness.save();
+        hunger.save();
+        thirst.save();
+        hygiene.save();
         rest.save();
+
+        getLevels();
     }
 }
