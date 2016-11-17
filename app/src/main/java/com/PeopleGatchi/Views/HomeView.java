@@ -162,7 +162,7 @@ public class HomeView extends RelativeLayout {
             Toast.makeText(context, "That was a sweet sweet #2!", Toast.LENGTH_SHORT).show();
             //       Status.poo(dumpSize);
         }
-        StatusControls.updatePooBladder(dumpSize);
+       // StatusControls.updatePooBladder(dumpSize);
     }
 
     @OnClick(R.id.bank_amount)
