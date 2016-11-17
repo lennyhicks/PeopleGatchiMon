@@ -23,6 +23,7 @@ public class Money {
         this.deposit = deposit;
     }
 
+
     public Integer getDeposit() {
         return deposit;
     }
