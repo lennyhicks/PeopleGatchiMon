@@ -19,7 +19,7 @@
         <meta-data android:name="VERSION" android:value="3" />
         <meta-data android:name="QUERY_LOG" android:value="true" />
         <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="com.PeopleGatchi.Status" />
-        <activity android:name="com.PeopleGatchi.MainActivity"
+        <activity android:name=".MainActivity"
                   android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
