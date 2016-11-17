@@ -1,6 +1,5 @@
 package com.PeopleGatchi.Status;
 
-import com.orm.SugarRecord;
 import com.orm.dsl.Table;
 
 /**
@@ -8,7 +7,7 @@ import com.orm.dsl.Table;
  */
 
 @Table
-public class Hygiene extends SugarRecord {
+public class Hygiene  {
     private Long id;
     public Integer hygieneLevel;
 
