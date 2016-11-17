@@ -10,13 +10,13 @@ import com.orm.dsl.Table;
 public class User extends SugarApp{
     private Long id;
     private String name;
-    private Integer age;
+    private String gender;
 
     public User(){
     }
 
-    public User(String name, Integer age ){
+    public User(String name, String gender ){
         this.name = name;
-        this.age = age;
+        this.gender = gender;
     }
 }

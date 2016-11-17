@@ -12,7 +12,9 @@ import android.widget.Toast;
 import com.PeopleGatchi.PeopleGatchiApplication;
 import com.PeopleGatchi.R;
 import com.PeopleGatchi.Stages.EducationStage;
+import com.PeopleGatchi.Stages.InventoryStage;
 import com.PeopleGatchi.Stages.JobStage;
+import com.PeopleGatchi.Stages.StoreStage;
 import com.PeopleGatchi.Utils.StatusControls;
 import com.PeopleGatchi.Utils.Utils;
 
@@ -86,25 +88,6 @@ public class HomeView extends RelativeLayout {
 
         flow = PeopleGatchiApplication.getMainFlow();
 
-//
-//        Happiness happy = Happiness.findById(Happiness.class, (long) 1);
-//        happy = new Happiness(120);
-//        Hunger hunger = new Hunger(20);
-//        Hygiene hygiene = new Hygiene(20);
-//        Pee pee = new Pee(20);
-//        Poo poo = new Poo(20);
-//        Rest rest = new Rest(20);
-//        Thirst thirst = new Thirst(20);
-//
-//        happy.save();
-//        hunger.save();
-//        hygiene.save();
-//        pee.save();
-//        poo.save();
-//        rest.save();
-//        thirst.save();
-
-
         StatusControls.firstRun();
         foodBar.setProgress(StatusControls.getHungerLevel());
         drinkBar.setProgress(StatusControls.getHygieneLevel());
@@ -113,7 +96,7 @@ public class HomeView extends RelativeLayout {
         poopBar.setProgress(StatusControls.getPooLevel());
         sleepBar.setProgress(StatusControls.getRestLevel());
 
-
+        Toast.makeText(context, StatusControls.getPooLevel()+ "", Toast.LENGTH_LONG).show();
 
        // EventBus.getDefault().register(this);
     }
@@ -202,24 +185,30 @@ public class HomeView extends RelativeLayout {
     @OnClick(R.id.store_button)
     public void goToStore(){
 
+        History newHistory = flow.getHistory().buildUpon().push(new StoreStage()).build();
+        flow.setHistory(newHistory, Flow.Direction.FORWARD);
     }
 
     @OnClick(R.id.inventory_button)
     public void goToInventory(){
 
+        History newHistory = flow.getHistory().buildUpon().push(new InventoryStage()).build();
+        flow.setHistory(newHistory, Flow.Direction.FORWARD);
     }
 
     @OnClick(R.id.education_button)
     public void goToSchool(){
-        History newHistory = History.single(new EducationStage());
-        flow.setHistory(newHistory, Flow.Direction.REPLACE);
+        //History newHistory = History.single(new EducationStage());
+        History newHistory = flow.getHistory().buildUpon().push(new EducationStage()).build();
+        flow.setHistory(newHistory, Flow.Direction.FORWARD);
 
     }
 
     @OnClick(R.id.work_button)
     public void goToWork(){
-        History newHistory = History.single(new JobStage());
-        flow.setHistory(newHistory, Flow.Direction.REPLACE);
+        //History newHistory = History.single(new JobStage());
+        History newHistory = flow.getHistory().buildUpon().push(new JobStage()).build();
+        flow.setHistory(newHistory, Flow.Direction.FORWARD);
 
     }
 
