@@ -4,23 +4,26 @@
                                 android:layout_height="match_parent">
 
     <Button
-        android:text="Button"
+        android:text="Manual Labor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/labor_butt"
         style="@style/Widget.AppCompat.Button.Borderless"
-        android:background="@android:color/holo_purple" />
+        android:background="@android:color/holo_purple"
+        android:layout_marginTop="150dp"
+        android:layout_marginBottom="5dp"/>
 
     <Button
-        android:text="Button"
+        android:text="Engineer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/engineer_butt"
         style="@style/Widget.AppCompat.Button.Borderless"
-        android:background="@android:color/holo_blue_bright" />
+        android:background="@android:color/holo_blue_bright"
+        android:layout_marginBottom="5dp"/>
 
     <Button
-        android:text="Button"
+        android:text="Scientist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/science_butt"

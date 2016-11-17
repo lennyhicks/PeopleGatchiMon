@@ -4,10 +4,15 @@
                                  xmlns:app="http://schemas.android.com/apk/res-auto"
                                  android:orientation="vertical" android:layout_width="match_parent"
                                  android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/wallet_holo_blue_light">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/purple">
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -71,12 +76,14 @@
         android:layout_toEndOf="@+id/store_button" />
     </RelativeLayout>
 
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:id="@+id/progress_bars"
         android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorAccent">
 
         <ProgressBar
             style="?android:attr/progressBarStyleHorizontal"
@@ -163,6 +170,8 @@
             android:progressDrawable="@drawable/progressbar_style"
             android:clickable="true"
             android:visibility="visible"/>
+
+    </RelativeLayout>
 
     </RelativeLayout>
 
