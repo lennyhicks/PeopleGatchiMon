@@ -1,6 +1,7 @@
 package com.PeopleGatchi.Views;
 
 import android.content.Context;
+import android.support.design.widget.FloatingActionButton;
 import android.util.AttributeSet;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -26,6 +27,8 @@ public class EducationView extends LinearLayout {
     @Bind(R.id.increase_math)
     Button increaseMath;
 
+    @Bind(R.id.home_button)
+    FloatingActionButton homeButton;
 
     public EducationView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -62,5 +65,10 @@ public class EducationView extends LinearLayout {
         Toast.makeText(context, "You got smarterer by " + increase, Toast.LENGTH_SHORT).show();
         // this is just to see if it's increasing. TODO get rid of this if it's working.
         Toast.makeText(context, "Your maths score is now :"+ mathEdScore, Toast.LENGTH_SHORT).show();
+    }
+
+    @OnClick(R.id.home_button)
+    public void homeButton(){
+
     }
 }
