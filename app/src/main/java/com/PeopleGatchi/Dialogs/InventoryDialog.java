@@ -5,4 +5,5 @@ package com.PeopleGatchi.Dialogs;
  */
 
 public class InventoryDialog {
+
 }

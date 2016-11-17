@@ -1,7 +1,5 @@
 package com.PeopleGatchi.Utils;
 
-import android.util.Log;
-
 import com.PeopleGatchi.Status.Happiness;
 import com.PeopleGatchi.Status.Hunger;
 import com.PeopleGatchi.Status.Hygiene;
@@ -15,13 +13,13 @@ import com.PeopleGatchi.Status.Thirst;
  */
 
 public class StatusControls {
-    static Poo pooBladder = Poo.findById(Poo.class, 1);
-    static Pee peeBladder = Pee.findById(Pee.class, 1);
-    static Happiness happiness = Happiness.findById(Happiness.class, 1);
-    static Hunger hunger = Hunger.findById(Hunger.class, 1);
-    static Thirst thirst = Thirst.findById(Thirst.class, 1);
-    static Hygiene hygiene = Hygiene.findById(Hygiene.class, 1);
-    static Rest rest = Rest.findById(Rest.class, 1);
+    static Poo pooBladder;
+    static Pee peeBladder;
+    static Happiness happiness;
+    static Hunger hunger;
+    static Thirst thirst;
+    static Hygiene hygiene;
+    static Rest rest;
 
 
     public static void updatePooBladder(Integer bladderControl) {
@@ -62,17 +60,20 @@ public class StatusControls {
     }
 
     public static void update(){
+
         pooBladder = Poo.findById(Poo.class, 1);
         peeBladder = Pee.findById(Pee.class, 1);
+        happiness = Happiness.findById(Happiness.class, 1);
         hunger = Hunger.findById(Hunger.class, 1);
-        Log.i("HUNGER ", hunger.hungerLevel +"");
-
+        thirst = Thirst.findById(Thirst.class, 1);
+        hygiene = Hygiene.findById(Hygiene.class, 1);
+        rest = Rest.findById(Rest.class, 1);
         happiness.happinessLevel =  peeLevel() +
-                                    pooLevel() +
-                                    hungerLevel() +
-                                    thirstLevel() +
-                                    hygieneLevel() +
-                                    restLevel();
+                pooLevel() +
+                hungerLevel() +
+                thirstLevel() +
+                hygieneLevel() +
+                restLevel();
 
     }
 
@@ -120,10 +121,19 @@ public class StatusControls {
 
     public static void firstRun(){
         pooBladder = new Poo(20);
+        pooBladder.save();
         peeBladder = new Pee(14);
+        peeBladder.save();
         hunger = new Hunger(20);
+        hunger.save();
         thirst = new Thirst(20);
+        thirst.save();
         hygiene = new Hygiene(20);
+        hygiene.save();
         rest = new Rest(20);
+        rest.save();
+        happiness = new Happiness(120);
+        happiness.save();
+        update();
     }
 }
