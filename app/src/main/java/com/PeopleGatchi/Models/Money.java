@@ -1,44 +1,25 @@
 package com.PeopleGatchi.Models;
 
-import com.google.gson.annotations.SerializedName;
+import com.orm.SugarRecord;
+import com.orm.dsl.Table;
 
 /**
  * Created by sheamaynard on 11/16/16.
  */
 
-public class Money {
+@Table
+public class Money extends SugarRecord {
 
-    @SerializedName("deposit")
-    Integer deposit;
-
-    @SerializedName("withdrawal")
-    Integer withdrawal;
-
+    Integer money;
 
     public Money() {
     }
 
 
-    public Money(Integer deposit) {
-        this.deposit = deposit;
+    public Money(Integer money) {
+        this.money = money;
     }
 
-
-    public Integer getDeposit() {
-        return deposit;
-    }
-
-    public void setDeposit(Integer deposit) {
-        this.deposit = deposit;
-    }
-
-    public Integer getWithdrawal() {
-        return withdrawal;
-    }
-
-    public void setWithdrawal(Integer withdrawal) {
-        this.withdrawal = withdrawal;
-    }
 }
 
 
