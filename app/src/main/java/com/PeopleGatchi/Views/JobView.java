@@ -47,7 +47,7 @@ public class JobView extends LinearLayout {
         //hour += 8;
         //Utils.Time.increaseHour();  Notes on how time is to be kept.
         // manual labor gets a set pay between 15 and 5 dollars an hour.
-        int payment = ((int) Math.random() * 20) + 10;
+        int payment = ((int) (Math.random() * 20) + 10);
     }
 
     @OnClick(R.id.engineer_butt)
@@ -55,7 +55,7 @@ public class JobView extends LinearLayout {
         //time passes while working
 //        Utils.addTime();
         // So based on your level of education your ceiling and floor go up.
-        int payment = ((int) Math.random() * EducationView.mathEdScore) + EducationView.mathEdScore/2;
+        int payment = ((int) (Math.random() * EducationView.mathEdScore) + EducationView.mathEdScore/2);
         // we throw this into the Bank
 //        BankManager.deposit(payment);
         // we let the person know how much they were paid.
@@ -67,12 +67,10 @@ public class JobView extends LinearLayout {
         //time passes while working
 //        Utils.addTime();
         // Based on your level of education your ceiling and floor go up.
-        int payment = ((int) Math.random() * EducationView.sciEdScore) + EducationView.sciEdScore/2;
+        int payment = ((int) (Math.random() * EducationView.sciEdScore) + EducationView.sciEdScore/2);
         // we throw this into the Bank
 //        BankManager.deposit(payment);
         // we let the person know how much they were paid.
         Toast.makeText(context, "You were paid "+ payment + " for 2 hours of work.", Toast.LENGTH_LONG).show();
-
-
     }
 }

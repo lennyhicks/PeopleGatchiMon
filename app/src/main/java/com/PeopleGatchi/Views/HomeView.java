@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.PeopleGatchi.PeopleGatchiApplication;
 import com.PeopleGatchi.R;
@@ -111,7 +112,7 @@ public class HomeView extends RelativeLayout {
         poopBar.setProgress(StatusControls.getPooLevel());
         sleepBar.setProgress(StatusControls.getRestLevel());
 
-
+        Toast.makeText(context, StatusControls.getPooLevel(), Toast.LENGTH_LONG).show();
 
        // EventBus.getDefault().register(this);
     }
