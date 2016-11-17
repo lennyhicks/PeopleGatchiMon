@@ -9,6 +9,7 @@ import com.orm.dsl.Table;
 
 @Table
 public class Happiness extends SugarRecord {
+
     private Long id;
     public Integer happinessLevel;
 
@@ -17,6 +18,7 @@ public class Happiness extends SugarRecord {
     }
 
     public Happiness(Integer happinessLevel){
+
         this.happinessLevel = happinessLevel;
     }
 
