@@ -1,4 +1,4 @@
-package PeopleGatchi.PeopleGatchi.Dialogs;
+package com.PeopleGatchi.Dialogs;
 
 /**
  * Created by crystaladkins on 11/16/16.
