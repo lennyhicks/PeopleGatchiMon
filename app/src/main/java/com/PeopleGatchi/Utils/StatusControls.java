@@ -120,10 +120,16 @@ public class StatusControls {
 
     public static void firstRun(){
         pooBladder = new Poo(20);
+        pooBladder.save();
         peeBladder = new Pee(14);
+        peeBladder.save();
         hunger = new Hunger(20);
+        hunger.save();
         thirst = new Thirst(20);
+        thirst.save();
         hygiene = new Hygiene(20);
+        hygiene.save();
         rest = new Rest(20);
+        rest.save();
     }
 }
