@@ -5,18 +5,19 @@ import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
 import com.PeopleGatchi.PeopleGatchiApplication;
+import com.PeopleGatchi.R;
 import com.PeopleGatchi.Stages.RegisterStage;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import flow.Flow;
 import flow.History;
-import com.PeopleGatchi.R;
 
 /**
  * Created by lennyhicks on 10/31/16.
  */
 //HELLO LENNY!!!!!
+    // TODO the utils.addTime is non-static.
 public class LoginView extends LinearLayout {
     private Context context;
 
@@ -39,5 +40,4 @@ public class LoginView extends LinearLayout {
                 .build();
         flow.setHistory(newHistory, Flow.Direction.FORWARD);
     }
-
 }
