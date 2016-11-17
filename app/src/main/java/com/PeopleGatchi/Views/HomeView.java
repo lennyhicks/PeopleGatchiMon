@@ -117,7 +117,7 @@ public class HomeView extends RelativeLayout {
 
        // EventBus.getDefault().register(this);
     }
-
+//not working
     @OnClick(R.id.food_bar)
     public void feedPet(){
         //int foodAmount = ((int)(Math.round(Math.random() *15 ) +5));
@@ -126,6 +126,7 @@ public class HomeView extends RelativeLayout {
         Toast.makeText(context, "BELCH!! Whew, i'm stuffed!!!" + foodAmount, Toast.LENGTH_SHORT).show();
     }
 
+    //not working
     @OnClick(R.id.drink_bar)
     public void waterPet(){
         //int drinkAmount = ((int)(Math.round(Math.random() *15 ) +5));
