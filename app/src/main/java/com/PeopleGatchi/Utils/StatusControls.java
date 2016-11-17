@@ -1,12 +1,12 @@
 package com.PeopleGatchi.Utils;
 
-import com.PeopleGatchi.Status.Happiness;
-import com.PeopleGatchi.Status.Hunger;
-import com.PeopleGatchi.Status.Hygiene;
-import com.PeopleGatchi.Status.Pee;
-import com.PeopleGatchi.Status.Poo;
-import com.PeopleGatchi.Status.Rest;
-import com.PeopleGatchi.Status.Thirst;
+import com.PeopleGatchi.Models.Happiness;
+import com.PeopleGatchi.Models.Hunger;
+import com.PeopleGatchi.Models.Hygiene;
+import com.PeopleGatchi.Models.Pee;
+import com.PeopleGatchi.Models.Poo;
+import com.PeopleGatchi.Models.Rest;
+import com.PeopleGatchi.Models.Thirst;
 
 /**
  * Created by lennyhicks on 11/16/16.
