@@ -2,17 +2,25 @@ package PeopleGatchi.PeopleGatchi;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
 import android.widget.RelativeLayout;
 
 import com.davidstemmer.flow.plugin.screenplay.ScreenplayDispatcher;
 
+import PeopleGatchi.PeopleGatchi.Models.TestPost;
+import PeopleGatchi.PeopleGatchi.Network.RestClient;
 import PeopleGatchi.PeopleGatchi.Network.UserStore;
-import PeopleGatchi.PeopleGatchi.Stages.CreateStage;
 import PeopleGatchi.PeopleGatchi.Stages.HomeStage;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import flow.Flow;
 import flow.History;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+import static PeopleGatchi.PeopleGatchi.R.layout.activity_main;
 
 public class MainActivity extends AppCompatActivity {
     private String TAG = "MainActivity";
@@ -25,7 +33,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
+        getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_IMMERSIVE);
+
+        setContentView(activity_main);
 
         ButterKnife.bind(this);
 
@@ -36,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         //testCalls();
 
         if(UserStore.getInstance().getToken() == null || UserStore.getInstance().getTokenExpiration() == null){
-            History newHistory = History.single(new CreateStage());
+            History newHistory = History.single(new HomeStage());
             flow.setHistory(newHistory, Flow.Direction.REPLACE);
         } else {
             History newHistory = History.single(new HomeStage());
