@@ -13,6 +13,7 @@ import com.PeopleGatchi.R;
 import com.PeopleGatchi.Stages.EducationStage;
 import com.PeopleGatchi.Stages.JobStage;
 import com.PeopleGatchi.Utils.StatusControls;
+import com.PeopleGatchi.Utils.Utils;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -83,6 +84,8 @@ public class HomeView extends RelativeLayout {
         ButterKnife.bind(this);
 
         flow = PeopleGatchiApplication.getMainFlow();
+
+        imageView.setImageResource(Utils.setHappinessImage());
 
 //
 //        Happiness happy = Happiness.findById(Happiness.class, (long) 1);
@@ -189,5 +192,7 @@ public class HomeView extends RelativeLayout {
         flow.setHistory(newHistory, Flow.Direction.REPLACE);
 
     }
+
+
 
 }
