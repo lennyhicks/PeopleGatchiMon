@@ -1,8 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<PeopleGatchi.PeopleGatchi.Views.HomeView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/fastforward"
+        android:id="@+id/fastforward_button"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="00:00"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/clock"
+        android:paddingTop="10dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@+id/fastforward_button"
+        android:layout_alignBottom="@+id/fastforward_button" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/store"
+        android:id="@+id/store_button"
+        android:layout_alignTop="@+id/inventory_button"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Bank Amount"
+        android:layout_width="144dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/bank_amount"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:paddingTop="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"/>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/work"
+        android:id="@+id/work_button"
+        android:layout_below="@+id/bank_amount"
+        android:layout_alignParentEnd="true" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/education"
+        android:id="@+id/education_button"
+        android:layout_alignTop="@+id/work_button"
+        android:layout_alignStart="@+id/clock" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/backpack"
+        android:id="@+id/inventory_button"
+        android:layout_below="@+id/bank_amount"
+        android:layout_toEndOf="@+id/store_button" />
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -23,7 +90,8 @@
             android:layout_marginStart="33dp"
             android:progressDrawable="@drawable/progressbar_style"
             android:clickable="true"
-            android:max="20" />
+            android:max="20"
+            android:visibility="visible"/>
 
         <ProgressBar
             style="?android:attr/progressBarStyleHorizontal"
@@ -35,7 +103,8 @@
             android:layout_alignStart="@+id/food_bar"
             android:layout_marginTop="25dp"
             android:progressDrawable="@drawable/progressbar_style"
-            android:clickable="true"/>
+            android:clickable="true"
+            android:visibility="visible"/>
 
         <ProgressBar
             style="?android:attr/progressBarStyleHorizontal"
@@ -47,13 +116,14 @@
             android:layout_alignStart="@+id/drink_bar"
             android:layout_marginTop="12dp"
             android:progressDrawable="@drawable/progressbar_style"
-            android:clickable="true"/>
+            android:clickable="true"
+            android:visibility="visible"/>
 
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
             app:srcCompat="@android:drawable/picture_frame"
-            android:id="@+id/imageView"
+            android:id="@+id/image_view"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true" />
 
@@ -64,10 +134,11 @@
             android:id="@+id/hygiene_bar"
             android:indeterminate="false"
             android:layout_alignTop="@+id/food_bar"
-            android:layout_toEndOf="@+id/imageView"
+            android:layout_toEndOf="@+id/image_view"
             android:layout_marginStart="16dp"
             android:progressDrawable="@drawable/progressbar_style"
-            android:clickable="true"/>
+            android:clickable="true"
+            android:visibility="visible"/>
 
         <ProgressBar
             style="?android:attr/progressBarStyleHorizontal"
@@ -78,7 +149,8 @@
             android:layout_alignTop="@+id/drink_bar"
             android:layout_alignStart="@+id/hygiene_bar"
             android:progressDrawable="@drawable/progressbar_style"
-            android:clickable="true"/>
+            android:clickable="true"
+            android:visibility="visible"/>
 
         <ProgressBar
             style="?android:attr/progressBarStyleHorizontal"
@@ -89,70 +161,10 @@
             android:layout_alignTop="@+id/sleep_bar"
             android:layout_alignStart="@+id/pee_bar"
             android:progressDrawable="@drawable/progressbar_style"
-            android:clickable="true"/>
+            android:clickable="true"
+            android:visibility="visible"/>
 
     </RelativeLayout>
 
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/fastforward"
-        android:id="@+id/imageButton2"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:text="00:00"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/clock"
-        android:paddingTop="10dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        android:layout_alignParentTop="true"
-        android:layout_toStartOf="@+id/imageButton2"
-        android:layout_alignBottom="@+id/imageButton2" />
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/store"
-        android:id="@+id/imageButton4"
-        android:layout_alignTop="@+id/imageButton5"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:text="Bank Amount"
-        android:layout_width="144dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/bank_amount"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        android:paddingTop="10dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/work"
-        android:id="@+id/imageButton3"
-        android:layout_below="@+id/bank_amount"
-        android:layout_alignParentEnd="true" />
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/education"
-        android:id="@+id/imageButton"
-        android:layout_alignTop="@+id/imageButton3"
-        android:layout_alignStart="@+id/clock" />
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/backpack"
-        android:id="@+id/imageButton5"
-        android:layout_below="@+id/bank_amount"
-        android:layout_toEndOf="@+id/imageButton4" />
-
-</RelativeLayout>
+</PeopleGatchi.PeopleGatchi.Views.HomeView>

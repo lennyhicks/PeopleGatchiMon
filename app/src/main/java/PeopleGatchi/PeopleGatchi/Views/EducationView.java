@@ -6,8 +6,6 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import org.greenrobot.eventbus.EventBus;
-
 import PeopleGatchi.PeopleGatchi.R;
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -37,8 +35,8 @@ public class EducationView extends LinearLayout {
     protected void onFinishInflate(){
         super.onFinishInflate();
         ButterKnife.bind(this);
-
-        EventBus.getDefault().register(this);
+//
+//        EventBus.getDefault().register(this);
     }
 
     @OnClick(R.id.increase_science)
