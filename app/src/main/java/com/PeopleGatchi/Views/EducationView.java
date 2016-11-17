@@ -7,6 +7,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.PeopleGatchi.R;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
