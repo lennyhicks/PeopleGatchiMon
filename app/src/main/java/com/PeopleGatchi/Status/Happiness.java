@@ -6,6 +6,7 @@ import com.orm.dsl.Table;
 /**
  * Created by andrewlewis on 11/16/16.
  */
+
 @Table
 public class Happiness extends SugarRecord {
     private Long id;
