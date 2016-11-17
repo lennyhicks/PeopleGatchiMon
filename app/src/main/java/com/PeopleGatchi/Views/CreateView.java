@@ -61,14 +61,14 @@ public class CreateView extends LinearLayout {
         //spinner element
         gender = (Spinner) findViewById(spinner);
 
-        //spinner click listener
-      //  gender.setOnItemSelectedListener(this);
+//        spinner click listener
+//        gender.setOnItemSelectedListener(this);
 
-        //configures what are options are.
+//        configures what are options are.
         List<String> categories = new ArrayList<>();
         categories.add("cis female");
         categories.add("cis male");
-        categories.add("non-confirming");
+        categories.add("non-conforming");
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(context,
                 android.R.layout.simple_spinner_item, categories);
