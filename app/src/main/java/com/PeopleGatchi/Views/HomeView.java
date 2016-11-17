@@ -9,10 +9,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.PeopleGatchi.PeopleGatchiApplication;
+import com.PeopleGatchi.R;
 import com.PeopleGatchi.Stages.EducationStage;
 import com.PeopleGatchi.Stages.JobStage;
-
-import com.PeopleGatchi.R;
 import com.PeopleGatchi.Utils.StatusControls;
 
 import butterknife.Bind;
@@ -84,9 +83,14 @@ public class HomeView extends RelativeLayout {
         ButterKnife.bind(this);
 
         flow = PeopleGatchiApplication.getMainFlow();
-        StatusControls.updatePooBladder(10);
-        StatusControls.updateHunger(10);
-        StatusControls.update();
+        StatusControls.firstRun();
+        foodBar.setProgress(StatusControls.hungerLevel());
+        drinkBar.setProgress(StatusControls.thirstLevel());
+        hygieneBar.setProgress(StatusControls.hygieneLevel());
+        peeBar.setProgress(StatusControls.peeLevel());
+        poopBar.setProgress(StatusControls.pooLevel());
+        sleepBar.setProgress(StatusControls.restLevel());
+
 
 
        // EventBus.getDefault().register(this);
