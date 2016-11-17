@@ -48,6 +48,8 @@ public class EducationView extends LinearLayout {
         int increase= ((int)(Math.random()*5)+1);
         sciEdScore += increase;
         Toast.makeText(context, "You got smarterer by " + increase, Toast.LENGTH_SHORT).show();
+        // this is just to see if it's increasing. TODO get rid of this if it's working.
+        Toast.makeText(context, "Your science score is now :"+ sciEdScore, Toast.LENGTH_SHORT).show();
     }
 
     @OnClick(R.id.increase_math)
@@ -56,7 +58,9 @@ public class EducationView extends LinearLayout {
 //        Utils.addTime();
         // sometimes you learns betters then others.
         int increase= ((int)(Math.random()*5)+1);
-        sciEdScore += increase;
+        mathEdScore += increase;
         Toast.makeText(context, "You got smarterer by " + increase, Toast.LENGTH_SHORT).show();
+        // this is just to see if it's increasing. TODO get rid of this if it's working.
+        Toast.makeText(context, "Your maths score is now :"+ mathEdScore, Toast.LENGTH_SHORT).show();
     }
 }

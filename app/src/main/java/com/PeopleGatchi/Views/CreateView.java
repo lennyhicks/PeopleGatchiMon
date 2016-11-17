@@ -16,8 +16,6 @@ import com.PeopleGatchi.PeopleGatchiApplication;
 import com.PeopleGatchi.R;
 import com.PeopleGatchi.Stages.HomeStage;
 
-import org.greenrobot.eventbus.EventBus;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,26 +54,22 @@ public class CreateView extends LinearLayout {
         super.onFinishInflate();
         ButterKnife.bind(this);
 
-        EventBus.getDefault().register(this);
-
         //spinner element
         gender = (Spinner) findViewById(spinner);
 
-//        spinner click listener
-//        gender.setOnItemSelectedListener(this);
+        //spinner click listener
+//        gender.setOnItemSelectedListener(context);
 
-//        configures what are options are.
+        //configures what are options are.
         List<String> categories = new ArrayList<>();
         categories.add("cis female");
         categories.add("cis male");
-        categories.add("non-conforming");
+        categories.add("non-confirming");
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(context,
                 android.R.layout.simple_spinner_item, categories);
 
-
         gender.setAdapter(dataAdapter);
-
     }
 
     public void onItemSelected(AdapterView<?> parent, View view, int position){
