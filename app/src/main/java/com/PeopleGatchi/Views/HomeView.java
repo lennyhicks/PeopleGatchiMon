@@ -112,7 +112,7 @@ public class HomeView extends RelativeLayout {
         poopBar.setProgress(StatusControls.getPooLevel());
         sleepBar.setProgress(StatusControls.getRestLevel());
 
-        Toast.makeText(context, StatusControls.getPooLevel(), Toast.LENGTH_LONG).show();
+        Toast.makeText(context, StatusControls.getPooLevel()+ "", Toast.LENGTH_LONG).show();
 
        // EventBus.getDefault().register(this);
     }
