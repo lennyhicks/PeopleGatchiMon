@@ -10,12 +10,12 @@ import com.orm.dsl.Table;
 @Table
 public class Rest extends SugarRecord {
     private Long id;
-    public Integer rest;
+    public Integer restLevel;
 
     public Rest(){
     }
 
     public Rest(Integer rest){
-        this.rest = rest;
+        this.restLevel = rest;
     }
 }
