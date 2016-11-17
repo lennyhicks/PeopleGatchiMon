@@ -80,7 +80,7 @@ public class StatusControls {
         rest.save();
     }
 
-    public static void getLevels(){
+    public static Integer getLevels(){
         happiness = Happiness.findById(Happiness.class, 1);
 
         pooBladder = Poo.findById(Poo.class, 1);
@@ -95,6 +95,8 @@ public class StatusControls {
                                     getThirstLevel() +
                                     getHygieneLevel() +
                                     getRestLevel();
+        return happiness.happinessLevel;
+
 
     }
 
