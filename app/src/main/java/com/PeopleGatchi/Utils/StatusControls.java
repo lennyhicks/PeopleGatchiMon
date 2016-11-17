@@ -23,7 +23,6 @@ public class StatusControls {
 
 
     public static void updatePooBladder(Integer bladderControl) {
-       // Poo poo = new Poo(1);
         pooBladder.pooLevel += bladderControl;
         pooBladder.save();
 
