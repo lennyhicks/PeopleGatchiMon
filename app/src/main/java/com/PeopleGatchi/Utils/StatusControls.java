@@ -12,15 +12,14 @@ import com.PeopleGatchi.Status.Thirst;
  * Created by lennyhicks on 11/16/16.
  */
 
-
 public class StatusControls {
-    static Poo pooBladder;
-    static Pee peeBladder;
-    static Happiness happiness;
-    static Hunger hunger;
-    static Thirst thirst;
-    static Hygiene hygiene;
-    static Rest rest;
+    static Poo pooBladder = new Poo(20);
+    static Pee peeBladder = new Pee(20);
+    static Happiness happiness= new Happiness();
+    static Hunger hunger = new Hunger(20);
+    static Thirst thirst = new Thirst(20);
+    static Hygiene hygiene = new Hygiene(20);
+    static Rest rest = new Rest(20);
 
 
     public static void setPooBladder(Integer bladderControl) {
@@ -43,9 +42,9 @@ public class StatusControls {
 
     public static void setHappiness(Integer happinessControl){
         if(happiness == null) {
-            happiness = new Happiness(20);
+            happiness = new Happiness(120);
         }
-        happiness.happinessLevel += happinessControl;
+        happiness.happinessLevel += 120;
         happiness.save();
     }
 
@@ -82,20 +81,20 @@ public class StatusControls {
     }
 
     public static void getLevels(){
+        happiness = Happiness.findById(Happiness.class, 1);
 
         pooBladder = Poo.findById(Poo.class, 1);
         peeBladder = Pee.findById(Pee.class, 1);
-        happiness = Happiness.findById(Happiness.class, 1);
         hunger = Hunger.findById(Hunger.class, 1);
         thirst = Thirst.findById(Thirst.class, 1);
         hygiene = Hygiene.findById(Hygiene.class, 1);
         rest = Rest.findById(Rest.class, 1);
         happiness.happinessLevel =  getPeeLevel() +
-                getPooLevel() +
-                getHungerLevel() +
-                getThirstLevel() +
-                getHygieneLevel() +
-                getRestLevel();
+                                    getPooLevel() +
+                                    getHungerLevel() +
+                                    getThirstLevel() +
+                                    getHygieneLevel() +
+                                    getRestLevel();
 
     }
 
@@ -143,27 +142,24 @@ public class StatusControls {
     }
 
     public static void firstRun(){
-//        Poo pooBladderNew = new Poo(20);;
-//        pooBladderNew.save();
-//        Pee peeBladderNew = new Pee(14);
-//        peeBladderNew.save();
-//        Hunger hungerNew = new Hunger(20);
-//        hungerNew.save();
-//        Thirst thirstNew = new Thirst(20);
-//        thirstNew.save();
-//        Hygiene hygieneNew = new Hygiene(20);
-//        hygieneNew.save();
-//        Rest restNew = new Rest(20);
-//        restNew.save();
-//        Happiness happinessNew = new Happiness(120);
-//        happinessNew.save();
 
-//        setHappiness(120);
-//        setHunger(20);
-//        setHygiene(20);
-//        setPeeBladder(20);
-//        setPooBladder(20);
-//        setRest(20);
-//        getLevels();
+        pooBladder = new Poo(20);
+        peeBladder = new Pee(20);
+        happiness= new Happiness(120);
+        hunger = new Hunger(20);
+        thirst = new Thirst(20);
+        hygiene = new Hygiene(20);
+        rest = new Rest(20);
+
+
+        pooBladder.save();
+        peeBladder.save();
+        happiness.save();
+        hunger.save();
+        thirst.save();
+        hygiene.save();
+        rest.save();
+
+        getLevels();
     }
 }

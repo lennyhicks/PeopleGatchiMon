@@ -83,7 +83,10 @@ public class HomeView extends RelativeLayout {
         ButterKnife.bind(this);
 
         flow = PeopleGatchiApplication.getMainFlow();
-//        Happiness happy = new Happiness(120);
+
+//
+//        Happiness happy = Happiness.findById(Happiness.class, (long) 1);
+//        happy = new Happiness(120);
 //        Hunger hunger = new Hunger(20);
 //        Hygiene hygiene = new Hygiene(20);
 //        Pee pee = new Pee(20);
@@ -101,13 +104,12 @@ public class HomeView extends RelativeLayout {
 
 
         StatusControls.firstRun();
-//        StatusControls.update();
-//        foodBar.setProgress(StatusControls.hungerLevel());
-//        drinkBar.setProgress(StatusControls.thirstLevel());
-//        hygieneBar.setProgress(StatusControls.hygieneLevel());
-//        peeBar.setProgress(StatusControls.peeLevel());
-//        poopBar.setProgress(StatusControls.pooLevel());
-//        sleepBar.setProgress(StatusControls.restLevel());
+        foodBar.setProgress(StatusControls.getHungerLevel());
+        drinkBar.setProgress(StatusControls.getHygieneLevel());
+        hygieneBar.setProgress(StatusControls.getThirstLevel());
+        peeBar.setProgress(StatusControls.getPeeLevel());
+        poopBar.setProgress(StatusControls.getPooLevel());
+        sleepBar.setProgress(StatusControls.getRestLevel());
 
 
 
