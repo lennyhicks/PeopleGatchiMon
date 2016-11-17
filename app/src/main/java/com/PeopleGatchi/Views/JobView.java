@@ -14,7 +14,7 @@ import butterknife.OnClick;
 /**
  * Created by eaglebrosi on 11/16/16.
  */
-
+// todo move the payment into bank.
 public class JobView extends LinearLayout {
     private Context context;
     public double bankBalance;
