@@ -162,7 +162,7 @@ public class StatusControls {
         hygiene.save();
         rest.save();
 
-        updateLevels();
+//        updateLevels();
         getLevels();
     }
 

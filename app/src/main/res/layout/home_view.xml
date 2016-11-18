@@ -7,7 +7,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/wallet_holo_blue_light">
+        android:background="@drawable/livingroombg">
 
     <RelativeLayout
         android:layout_width="match_parent"

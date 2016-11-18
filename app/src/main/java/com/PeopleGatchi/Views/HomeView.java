@@ -17,6 +17,7 @@ import com.PeopleGatchi.Stages.EducationStage;
 import com.PeopleGatchi.Stages.JobStage;
 import com.PeopleGatchi.Stages.StoreStage;
 import com.PeopleGatchi.Utils.StatusControls;
+import com.PeopleGatchi.Utils.Utils;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -98,6 +99,7 @@ public class HomeView extends RelativeLayout {
 
         Toast.makeText(context, StatusControls.getPooLevel()+ "", Toast.LENGTH_LONG).show();
 
+        imageView.setImageResource(Utils.setHappinessImage());
        // EventBus.getDefault().register(this);
     }
 
