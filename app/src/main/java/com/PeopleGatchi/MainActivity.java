@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.RelativeLayout;
 
 import com.PeopleGatchi.Network.UserStore;
+import com.PeopleGatchi.Stages.CreateStage;
 import com.PeopleGatchi.Stages.HomeStage;
 import com.davidstemmer.flow.plugin.screenplay.ScreenplayDispatcher;
 import com.orm.SugarContext;
@@ -27,15 +28,14 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.container)
     RelativeLayout container;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         getWindow().getDecorView().setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                         | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                         | View.SYSTEM_UI_FLAG_FULLSCREEN
                         | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
 
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(UserStore.getInstance().getToken() == null || UserStore.getInstance().getTokenExpiration() == null){
 
-            History newHistory = History.single(new HomeStage());
+            History newHistory = History.single(new CreateStage());
             flow.setHistory(newHistory, Flow.Direction.REPLACE);
         } else {
             History newHistory = History.single(new HomeStage());
