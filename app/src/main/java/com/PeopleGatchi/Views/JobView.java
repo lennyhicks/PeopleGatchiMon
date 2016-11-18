@@ -61,7 +61,7 @@ public class JobView extends LinearLayout {
         Toast.makeText(context, "You were paid $" + payment + ".", Toast.LENGTH_LONG).show();
 
         int newMoney= StatusControls.getMoney() + payment;
-        StatusControls.setMoney(newMoney);
+        //StatusControls.setMoney(newMoney);
     }
 
     @OnClick(R.id.engineer_butt)
