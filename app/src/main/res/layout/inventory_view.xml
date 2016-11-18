@@ -10,7 +10,9 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/inventory" />
+        android:text="@string/inventory"
+        android:textAlignment="center"
+        android:textSize="24sp"/>
 
     <GridView
         android:layout_width="match_parent"

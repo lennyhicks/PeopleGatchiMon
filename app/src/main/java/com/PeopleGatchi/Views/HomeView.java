@@ -11,12 +11,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.PeopleGatchi.Dialogs.InventoryDialog;
+import com.PeopleGatchi.Dialogs.StoreDialog;
 import com.PeopleGatchi.PeopleGatchiApplication;
 import com.PeopleGatchi.R;
 import com.PeopleGatchi.Stages.EducationStage;
 import com.PeopleGatchi.Stages.JobStage;
-import com.PeopleGatchi.Stages.StoreStage;
 import com.PeopleGatchi.Utils.StatusControls;
+import com.PeopleGatchi.Utils.Utils;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -85,31 +86,6 @@ public class HomeView extends RelativeLayout {
     protected void onFinishInflate() {
         super.onFinishInflate();
         ButterKnife.bind(this);
-//
-//        Poo pooBladder = new Poo(20);
-//        Pee peeBladder = new Pee(20);
-//        Happiness happiness= new Happiness();
-//        Hunger hunger = new Hunger(20);
-//        Thirst thirst = new Thirst(20);
-//        Hygiene hygiene = new Hygiene(20);
-//        Rest rest = new Rest(20);
-//
-//        peeBladder.peeLevel = 20;
-//        pooBladder.pooLevel = 20;
-//        hunger.hungerLevel = 20;
-//        thirst.thirstLevel = 20;
-//        hygiene.hygieneLevel = 20;
-//        rest.restLevel = 20;
-//
-//
-//
-//        pooBladder.save();
-//        peeBladder.save();
-//        happiness.save();
-//        hunger.save();
-//        thirst.save();
-//        hygiene.save();
-//        rest.save();
 
         flow = PeopleGatchiApplication.getMainFlow();
 
@@ -123,7 +99,8 @@ public class HomeView extends RelativeLayout {
 
         Toast.makeText(context, StatusControls.getPooLevel()+ "", Toast.LENGTH_LONG).show();
 
-       // EventBus.getDefault().register(this);
+        imageView.setImageResource(Utils.setHappinessImage());
+
     }
 
     @OnClick(R.id.food_bar)
@@ -179,8 +156,14 @@ public class HomeView extends RelativeLayout {
     @OnClick(R.id.store_button)
     public void goToStore(){
 
-        History newHistory = flow.getHistory().buildUpon().push(new StoreStage()).build();
-        flow.setHistory(newHistory, Flow.Direction.FORWARD);
+        final StoreDialog storeDialog = new StoreDialog(context);
+        storeDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+
+            }
+        });
+        storeDialog.show();
     }
 
     @OnClick(R.id.inventory_button)
