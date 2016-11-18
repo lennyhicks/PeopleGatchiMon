@@ -86,7 +86,7 @@
         android:background="@color/colorAccent">
 
         <ProgressBar
-            style="?android:attr/progressBarStyleHorizontal"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:id="@+id/food_bar"
@@ -101,7 +101,7 @@
             android:visibility="visible"/>
 
         <ProgressBar
-            style="?android:attr/progressBarStyleHorizontal"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:id="@+id/drink_bar"
@@ -111,10 +111,11 @@
             android:layout_marginTop="25dp"
             android:progressDrawable="@drawable/progressbar_style"
             android:clickable="true"
+            android:max="20"
             android:visibility="visible"/>
 
         <ProgressBar
-            style="?android:attr/progressBarStyleHorizontal"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:id="@+id/sleep_bar"
@@ -124,6 +125,7 @@
             android:layout_marginTop="12dp"
             android:progressDrawable="@drawable/progressbar_style"
             android:clickable="true"
+            android:max="20"
             android:visibility="visible"/>
 
         <ImageView
@@ -136,7 +138,7 @@
             android:layout_marginTop="10dp"/>
 
         <ProgressBar
-            style="?android:attr/progressBarStyleHorizontal"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:id="@+id/hygiene_bar"
@@ -146,10 +148,11 @@
             android:layout_marginStart="16dp"
             android:progressDrawable="@drawable/progressbar_style"
             android:clickable="true"
+            android:max="20"
             android:visibility="visible"/>
 
         <ProgressBar
-            style="?android:attr/progressBarStyleHorizontal"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:id="@+id/pee_bar"
@@ -158,10 +161,11 @@
             android:layout_alignStart="@+id/hygiene_bar"
             android:progressDrawable="@drawable/progressbar_style"
             android:clickable="true"
+            android:max="20"
             android:visibility="visible"/>
 
         <ProgressBar
-            style="?android:attr/progressBarStyleHorizontal"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:id="@+id/poop_bar"
@@ -170,6 +174,7 @@
             android:layout_alignStart="@+id/pee_bar"
             android:progressDrawable="@drawable/progressbar_style"
             android:clickable="true"
+            android:max="20"
             android:visibility="visible"/>
 
     </RelativeLayout>
