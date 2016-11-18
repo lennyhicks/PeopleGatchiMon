@@ -86,6 +86,31 @@ public class HomeView extends RelativeLayout {
     protected void onFinishInflate() {
         super.onFinishInflate();
         ButterKnife.bind(this);
+//
+//        Poo pooBladder = new Poo(20);
+//        Pee peeBladder = new Pee(20);
+//        Happiness happiness= new Happiness();
+//        Hunger hunger = new Hunger(20);
+//        Thirst thirst = new Thirst(20);
+//        Hygiene hygiene = new Hygiene(20);
+//        Rest rest = new Rest(20);
+//
+//        peeBladder.peeLevel = 20;
+//        pooBladder.pooLevel = 20;
+//        hunger.hungerLevel = 20;
+//        thirst.thirstLevel = 20;
+//        hygiene.hygieneLevel = 20;
+//        rest.restLevel = 20;
+//
+//
+//
+//        pooBladder.save();
+//        peeBladder.save();
+//        happiness.save();
+//        hunger.save();
+//        thirst.save();
+//        hygiene.save();
+//        rest.save();
 
         flow = PeopleGatchiApplication.getMainFlow();
 
