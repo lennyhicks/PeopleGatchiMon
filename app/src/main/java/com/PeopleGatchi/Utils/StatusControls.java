@@ -94,14 +94,6 @@ public class StatusControls {
     }
 
     public static Integer getLevels(){
-        happiness = Happiness.findById(Happiness.class, 1);
-
-        pooBladder = Poo.findById(Poo.class, 1);
-        peeBladder = Pee.findById(Pee.class, 1);
-        hunger = Hunger.findById(Hunger.class, 1);
-        thirst = Thirst.findById(Thirst.class, 1);
-        hygiene = Hygiene.findById(Hygiene.class, 1);
-        rest = Rest.findById(Rest.class, 1);
         happiness.happinessLevel =  getPeeLevel() +
                                     getPooLevel() +
                                     getHungerLevel() +

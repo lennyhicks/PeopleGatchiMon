@@ -1,10 +1,11 @@
 package com.PeopleGatchi;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.RelativeLayout;
 
-import com.PeopleGatchi.Network.UserStore;
 import com.PeopleGatchi.Stages.CreateStage;
 import com.PeopleGatchi.Stages.HomeStage;
 import com.PeopleGatchi.Utils.StatusControls;
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private String TAG = "MainActivity";
     private Flow flow;
     private ScreenplayDispatcher dispatcher;
+    private SharedPreferences peoplegatchiPrefs;
 
     @Bind(R.id.container)
     RelativeLayout container;
@@ -30,18 +32,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//
-//        getWindow().getDecorView().setSystemUiVisibility(
-//                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-//                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-//                        | View.SYSTEM_UI_FLAG_FULLSCREEN
-//                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+
+        peoplegatchiPrefs = getPreferences(Context.MODE_PRIVATE);
 
         setContentView(activity_main);
 
         ButterKnife.bind(this);
 
         SugarContext.init(getApplicationContext());
+        StatusControls.firstRun();
 
         try {
             flow = PeopleGatchiApplication.getMainFlow();
@@ -51,9 +50,11 @@ public class MainActivity extends AppCompatActivity {
         dispatcher = new ScreenplayDispatcher(this, container);
         dispatcher.setUp(flow);
 
-        //testCalls();
+        if (peoplegatchiPrefs.getBoolean("firstRun", true)) {
 
-        if(UserStore.getInstance().getToken() == null || UserStore.getInstance().getTokenExpiration() == null){
+            SharedPreferences.Editor editor = peoplegatchiPrefs.edit();
+            editor.putBoolean("firstRun", false);
+            editor.apply();
 
             History newHistory = History.single(new CreateStage());
             flow.setHistory(newHistory, Flow.Direction.REPLACE);
@@ -72,21 +73,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void idleDescrease(){
-        Integer decrease = 3;
-
-        //This idly increases the amount you have to go poo poo.
-        StatusControls.setPooBladder(-decrease);
-
-        StatusControls.setPeeBladder(-decrease);
-
-        StatusControls.setHunger(-decrease);
-
-        StatusControls.setHygiene(-decrease);
-
-        StatusControls.setHygiene(-decrease);
-
-        StatusControls.setThirst(-decrease);
+    @Override
+    protected void onDestroy() {
+        SugarContext.terminate();
+        super.onDestroy();
     }
 }
 
