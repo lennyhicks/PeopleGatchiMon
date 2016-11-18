@@ -8,9 +8,9 @@
                 <gradient
                     android:startColor="#71d613"
                     android:centerColor="#fffb00"
-                    android:centerY="0.75"
+                    android:centerY="0.50"
                     android:endColor="#ff0004"
-                    android:angle="270"
+                    android:angle="180"
                     />
             </shape>
         </clip>
