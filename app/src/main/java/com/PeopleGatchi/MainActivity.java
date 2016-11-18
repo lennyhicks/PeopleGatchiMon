@@ -73,16 +73,4 @@ public class MainActivity extends AppCompatActivity {
             super.onBackPressed();
         }
     }
-
-    //It's your boy the menu button! I made it a little star!
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
-        this.menu = menu;
-        return true;
-    }
-
-
 }
-
-
