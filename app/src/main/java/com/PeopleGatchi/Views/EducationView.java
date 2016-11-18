@@ -7,11 +7,13 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.PeopleGatchi.PeopleGatchiApplication;
 import com.PeopleGatchi.R;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import flow.Flow;
 
 /**
  * Created by eaglebrosi on 11/16/16.
@@ -20,6 +22,7 @@ public class EducationView extends LinearLayout {
     private Context context;
     public static int sciEdScore;
     public static int mathEdScore;
+    private Flow flow;
 
     @Bind(R.id.increase_science)
     Button increaseScience;
@@ -69,6 +72,9 @@ public class EducationView extends LinearLayout {
 
     @OnClick(R.id.home_button)
     public void homeButton(){
+        flow = PeopleGatchiApplication.getMainFlow();
+        //History newHistory = History.single(new HomeStage());
+        flow.goBack();
 
     }
 }

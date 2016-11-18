@@ -7,14 +7,14 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.PeopleGatchi.PeopleGatchiApplication;
 import com.PeopleGatchi.R;
-import com.PeopleGatchi.Stages.HomeStage;
+import com.PeopleGatchi.Utils.StatusControls;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import flow.Flow;
-import flow.History;
 
 /**
  * Created by eaglebrosi on 11/16/16.
@@ -58,7 +58,12 @@ public class JobView extends LinearLayout {
         // manual labor gets a set pay between 15 and 5 dollars an hour.
         int payment = ((int) (Math.random() * 20) + 10);
         // let them know they're getting paid for X amount of work.
-        Toast.makeText(context, "You were paid $" + payment + ".", Toast.LENGTH_LONG).show();
+        Toast.makeText(context, "You were paid $" + payment + ".", Toast.LENGTH_SHORT).show();
+        // Shows the user their Updated bank balance after payment added.
+        Toast.makeText(context, "Your bank balance is now $$$" + StatusControls.getMoney() + ".", Toast.LENGTH_LONG).show();
+        //Actually retrieving the updated value.
+        int newMoney= StatusControls.getMoney() + payment;
+        //StatusControls.setMoney(newMoney);
     }
 
     @OnClick(R.id.engineer_butt)
@@ -71,6 +76,11 @@ public class JobView extends LinearLayout {
 //        BankManager.deposit(payment);
         // we let the person know how much they were paid.
         Toast.makeText(context, "You were paid $" + payment + ".", Toast.LENGTH_LONG).show();
+        // Shows the user their Updated bank balance after payment added.
+        Toast.makeText(context, "Your bank balance is now $$$" + StatusControls.getMoney() + ".", Toast.LENGTH_LONG).show();
+        //Actually retrieving the updated value.
+        int newMoney= StatusControls.getMoney() + payment;
+        //StatusControls.setMoney(newMoney);
     }
 
     @OnClick(R.id.science_butt)
@@ -83,11 +93,17 @@ public class JobView extends LinearLayout {
 //        BankManager.deposit(payment);
         // we let the person know how much they were paid.
         Toast.makeText(context, "You were paid $" + payment + ".", Toast.LENGTH_LONG).show();
+        // Shows the user their Updated bank balance after payment added.
+        Toast.makeText(context, "Your bank balance is now $$$" + StatusControls.getMoney() + ".", Toast.LENGTH_LONG).show();
+        //Actually retrieving the updated value.
+        int newMoney= StatusControls.getMoney() + payment;
+        //StatusControls.setMoney(newMoney);
     }
 
     @OnClick(R.id.go_home)
     public void goHome() {
-        History newHistory = History.single(new HomeStage());
-        flow.setHistory(newHistory, Flow.Direction.FORWARD);
+        flow = PeopleGatchiApplication.getMainFlow();
+        //History newHistory = History.single(new HomeStage());
+        flow.goBack();
     }
 }
