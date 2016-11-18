@@ -1,5 +1,6 @@
 package com.PeopleGatchi.Utils;
 
+import com.PeopleGatchi.Models.Persisting.Money;
 import com.PeopleGatchi.Models.Persisting.Happiness;
 import com.PeopleGatchi.Models.Persisting.Hunger;
 import com.PeopleGatchi.Models.Persisting.Hygiene;
@@ -20,6 +21,7 @@ public class StatusControls {
     static Thirst thirst = new Thirst(20);
     static Hygiene hygiene = new Hygiene(20);
     static Rest rest = new Rest(20);
+    static Money money = new Money(5);
 
 
     public static void setPooBladder(Integer bladderControl) {
@@ -78,6 +80,15 @@ public class StatusControls {
         }
         rest.restLevel += restControl;
         rest.save();
+    }
+
+    public static Integer getMoney() {
+        return money.money;
+    }
+
+    public static Integer setMoney() {
+        //TODO Calculations need to happen here
+        return money.money;
     }
 
     public static Integer getLevels(){
@@ -152,6 +163,7 @@ public class StatusControls {
         thirst = new Thirst(20);
         hygiene = new Hygiene(20);
         rest = new Rest(20);
+        money = new Money(5);
 
 
         pooBladder.save();
@@ -161,9 +173,10 @@ public class StatusControls {
         thirst.save();
         hygiene.save();
         rest.save();
+        money.save();
 
-//        updateLevels();
-        getLevels();
+        updateLevels();
+//        getLevels();
     }
 
     public static void updateLevels(){

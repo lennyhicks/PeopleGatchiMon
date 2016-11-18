@@ -18,7 +18,8 @@ public class UserStore {
         return ourInstance;
     }
 
-    private SharedPreferences sharedPrefs = PeopleGatchiApplication.getInstance().getSharedPreferences("BudgetPrefs", Context.MODE_PRIVATE);
+    private SharedPreferences sharedPrefs = PeopleGatchiApplication.getInstance()
+            .getSharedPreferences("PeopleGatchiPrefs", Context.MODE_PRIVATE);
 
     public String getToken(){
         String theToken = sharedPrefs.getString(Constants.token, null);
