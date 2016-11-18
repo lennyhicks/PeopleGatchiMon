@@ -88,7 +88,6 @@ public class HomeView extends RelativeLayout {
 
         flow = PeopleGatchiApplication.getMainFlow();
 
-        StatusControls.firstRun();
         foodBar.setProgress(StatusControls.getHungerLevel());
         drinkBar.setProgress(StatusControls.getHygieneLevel());
         hygieneBar.setProgress(StatusControls.getThirstLevel());
