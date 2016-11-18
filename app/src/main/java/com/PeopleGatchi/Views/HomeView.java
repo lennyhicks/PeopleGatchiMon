@@ -74,7 +74,7 @@ public class HomeView extends RelativeLayout {
 
     @Bind(R.id.work_button)
     ImageButton workButton;
-    
+
     public HomeView(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
