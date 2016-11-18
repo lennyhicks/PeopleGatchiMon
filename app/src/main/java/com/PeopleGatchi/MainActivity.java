@@ -8,6 +8,7 @@ import android.widget.RelativeLayout;
 
 import com.PeopleGatchi.Stages.CreateStage;
 import com.PeopleGatchi.Stages.HomeStage;
+import com.PeopleGatchi.Utils.StatusControls;
 import com.davidstemmer.flow.plugin.screenplay.ScreenplayDispatcher;
 import com.orm.SugarContext;
 
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         SugarContext.init(getApplicationContext());
+        StatusControls.firstRun();
 
         try {
             flow = PeopleGatchiApplication.getMainFlow();
@@ -69,6 +71,12 @@ public class MainActivity extends AppCompatActivity {
             flow.setHistory(History.single(new PeopleGatchiApplication()), Flow.Direction.BACKWARD);
             super.onBackPressed();
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        SugarContext.terminate();
+        super.onDestroy();
     }
 }
 
