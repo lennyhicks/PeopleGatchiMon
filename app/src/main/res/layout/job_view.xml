@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.PeopleGatchi.Views.JobView xmlns:android="http://schemas.android.com/apk/res/android"
-                                android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
                                 android:layout_height="match_parent">
+
+    <TextView
+        android:text="Clear eyes \n full heart \n go to work."
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView4"
+        android:gravity="center"
+        android:textSize="20sp"/>
 
     <Button
         android:text="Manual Labor"
@@ -10,7 +19,7 @@
         android:id="@+id/labor_butt"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:background="@android:color/holo_purple"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="100dp"
         android:layout_marginBottom="5dp"/>
 
     <Button
@@ -29,4 +38,13 @@
         android:id="@+id/science_butt"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:background="@android:color/holo_green_light" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:fabSize="mini"
+        app:srcCompat="@drawable/store"
+        android:id="@+id/go_home" />
+
 </com.PeopleGatchi.Views.JobView>
