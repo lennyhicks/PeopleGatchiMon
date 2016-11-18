@@ -79,11 +79,10 @@ public class JobView extends LinearLayout {
 //        BankManager.deposit(payment);
         // we let the person know how much they were paid.
         Toast.makeText(context, "You were paid $" + payment + ".", Toast.LENGTH_LONG).show();
+        // puts the payment into the bank.
+        StatusControls.setMoney(payment);
         // Shows the user their Updated bank balance after payment added.
         Toast.makeText(context, "Your bank balance is now $$$" + StatusControls.getMoney() + ".", Toast.LENGTH_LONG).show();
-        //Actually retrieving the updated value.
-        int newMoney= StatusControls.getMoney() + payment;
-        //StatusControls.setMoney(newMoney);
     }
 
     @OnClick(R.id.science_butt)
@@ -96,6 +95,8 @@ public class JobView extends LinearLayout {
 //        BankManager.deposit(payment);
         // we let the person know how much they were paid.
         Toast.makeText(context, "You were paid $" + payment + ".", Toast.LENGTH_LONG).show();
+        // puts the payment into the bank.
+        StatusControls.setMoney(payment);
         // Shows the user their Updated bank balance after payment added.
         Toast.makeText(context, "Your bank balance is now $$$" + StatusControls.getMoney() + ".", Toast.LENGTH_LONG).show();
         //Actually retrieving the updated value.
@@ -114,6 +115,8 @@ public class JobView extends LinearLayout {
 //        BankManager.deposit(payment);
         // we let the person know how much they were paid.
         Toast.makeText(context, "You were paid $" + payment + ".", Toast.LENGTH_LONG).show();
+        // puts the payment into the bank.
+        StatusControls.setMoney(payment);
         // Shows the user their Updated bank balance after payment added.
         Toast.makeText(context, "Your bank balance is now $$$" + StatusControls.getMoney() + ".", Toast.LENGTH_LONG).show();
         //Actually retrieving the updated value.

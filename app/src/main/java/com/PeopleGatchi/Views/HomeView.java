@@ -31,37 +31,51 @@ import flow.History;
 
 public class HomeView extends RelativeLayout {
     private Flow flow;
+
     private Context context;
+
 
     @Bind(R.id.food_bar)
     ProgressBar foodBar;
+
     @Bind(R.id.drink_bar)
     ProgressBar drinkBar;
+
     @Bind(R.id.sleep_bar)
     ProgressBar sleepBar;
+
     @Bind(R.id.image_view)
     ImageView imageView;
+
     @Bind(R.id.hygiene_bar)
     ProgressBar hygieneBar;
+
     @Bind(R.id.pee_bar)
     ProgressBar peeBar;
+
     @Bind(R.id.poop_bar)
     ProgressBar poopBar;
+
     @Bind(R.id.bank_amount)
     TextView bankAmount;
+
     @Bind(R.id.fastforward_button)
     ImageButton fastForward;
+
     @Bind(R.id.clock)
     TextView clock;
+
     @Bind(R.id.store_button)
     ImageButton storeButton;
+
     @Bind(R.id.inventory_button)
     ImageButton inventoryButton;
+
     @Bind(R.id.education_button)
     ImageButton educationButton;
+
     @Bind(R.id.work_button)
     ImageButton workButton;
-
 
     public HomeView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -72,7 +86,9 @@ public class HomeView extends RelativeLayout {
     protected void onFinishInflate() {
         super.onFinishInflate();
         ButterKnife.bind(this);
+
         flow = PeopleGatchiApplication.getMainFlow();
+
         StatusControls.firstRun();
         foodBar.setProgress(StatusControls.getHungerLevel());
         drinkBar.setProgress(StatusControls.getHygieneLevel());
@@ -80,8 +96,11 @@ public class HomeView extends RelativeLayout {
         peeBar.setProgress(StatusControls.getPeeLevel());
         poopBar.setProgress(StatusControls.getPooLevel());
         sleepBar.setProgress(StatusControls.getRestLevel());
+
         Toast.makeText(context, StatusControls.getPooLevel()+ "", Toast.LENGTH_LONG).show();
+
         imageView.setImageResource(Utils.setHappinessImage());
+
     }
 
     @OnClick(R.id.food_bar)
@@ -112,6 +131,7 @@ public class HomeView extends RelativeLayout {
 
     @OnClick(R.id.image_view)
     public void happinessView(){
+
     }
 
     @OnClick(R.id.hygiene_bar)
@@ -121,11 +141,12 @@ public class HomeView extends RelativeLayout {
         int cleanBaby = Utils.getRand(StatusControls.getHygieneLevel());
         StatusControls.setHygiene(-cleanBaby);
         Toast.makeText(context, "Yay, so fresh and so clean clean!! \n your Hygiene level has increased by: " + cleanBaby, Toast.LENGTH_SHORT).show();
+
     }
 
     @OnClick(R.id.pee_bar)
     public void drainPet(){
-        //int peeAmount = ((int)(Math.round(Math.random() *15 ) +5));
+    //int peeAmount = ((int)(Math.round(Math.random() *15 ) +5));
         //int drainPet = Utils.getRand(15) + 5;
         int drainPet = Utils.getRand(StatusControls.getPeeLevel());
         StatusControls.setPeeBladder(-drainPet);
@@ -134,7 +155,7 @@ public class HomeView extends RelativeLayout {
 
     @OnClick(R.id.poop_bar)
     public void pottyPet(){
-        //int dumpSize = (int)(Math.round(Math.random() * 15 )+5);
+       //int dumpSize = (int)(Math.round(Math.random() * 15 )+5);
         //int dumpSize = Utils.getRand(15) + 5;
         int dumpSize = Utils.getRand(StatusControls.getPooLevel());
         StatusControls.setPooBladder(-dumpSize);
@@ -144,28 +165,32 @@ public class HomeView extends RelativeLayout {
             Toast.makeText(context, "That was a sweet sweet #2!" + dumpSize, Toast.LENGTH_SHORT).show();
             //       Status.poo(dumpSize);
         }
-        // StatusControls.updatePooBladder(dumpSize);
+       // StatusControls.updatePooBladder(dumpSize);
     }
 
     @OnClick(R.id.bank_amount)
     public void bankTotal(){
-        int total = StatusControls.getMoney();
+
     }
 
     @OnClick(R.id.fastforward_button)
     public void increaseTime(){
+
     }
 
     @OnClick(R.id.clock)
     public void clock(){
+
     }
 
     @OnClick(R.id.store_button)
     public void goToStore(){
+
         final StoreDialog storeDialog = new StoreDialog(context);
         storeDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override
             public void onDismiss(DialogInterface dialog) {
+
             }
         });
         storeDialog.show();
@@ -173,13 +198,17 @@ public class HomeView extends RelativeLayout {
 
     @OnClick(R.id.inventory_button)
     public void goToInventory(){
+
         final InventoryDialog inventoryDialog = new InventoryDialog(context);
         inventoryDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override
             public void onDismiss(DialogInterface dialog) {
+
             }
         });
         inventoryDialog.show();
+
+
 //        History newHistory = flow.getHistory().buildUpon().push(new InventoryStage()).build();
 //        flow.setHistory(newHistory, Flow.Direction.FORWARD);
     }
@@ -189,6 +218,7 @@ public class HomeView extends RelativeLayout {
         //History newHistory = History.single(new EducationStage());
         History newHistory = flow.getHistory().buildUpon().push(new EducationStage()).build();
         flow.setHistory(newHistory, Flow.Direction.FORWARD);
+
     }
 
     @OnClick(R.id.work_button)
@@ -196,6 +226,7 @@ public class HomeView extends RelativeLayout {
         //History newHistory = History.single(new JobStage());
         History newHistory = flow.getHistory().buildUpon().push(new JobStage()).build();
         flow.setHistory(newHistory, Flow.Direction.FORWARD);
-    }
-}
 
+    }
+
+}
