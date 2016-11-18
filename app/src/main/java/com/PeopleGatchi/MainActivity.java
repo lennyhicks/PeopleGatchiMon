@@ -2,7 +2,6 @@ package com.PeopleGatchi;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
 import android.widget.RelativeLayout;
 
 import com.PeopleGatchi.Network.UserStore;
@@ -22,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
     private String TAG = "MainActivity";
     private Flow flow;
     private ScreenplayDispatcher dispatcher;
-    private Menu menu;
 
     @Bind(R.id.container)
     RelativeLayout container;
@@ -76,16 +74,6 @@ public class MainActivity extends AppCompatActivity {
             super.onBackPressed();
         }
     }
-
-    //It's your boy the menu button! I made it a little star!
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.menu, menu);
-//        this.menu = menu;
-//        return true;
-//    }
-
-
 }
 
 
