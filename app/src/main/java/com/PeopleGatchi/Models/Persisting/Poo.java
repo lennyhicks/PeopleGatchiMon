@@ -10,7 +10,7 @@ import com.orm.dsl.Table;
 @Table
 public class Poo extends SugarRecord {
 
-    private long id;
+    private Long id;
     public Integer pooLevel;
 
     public Poo(){
