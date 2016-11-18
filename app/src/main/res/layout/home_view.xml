@@ -7,7 +7,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/wallet_holo_blue_light">
+        android:background="@drawable/livingroom">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -75,6 +75,25 @@
         android:layout_below="@+id/bank_amount"
         android:layout_toEndOf="@+id/store_button" />
     </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/character_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/hp_cat"
+                android:layout_marginLeft="200dp"
+                android:layout_marginTop="200dp"
+                android:layout_marginRight="200dp"
+                android:layout_marginBottom="110dp"
+                android:layout_centerInParent="true"
+                android:layout_alignParentBottom="true"
+                 />
+
+        </RelativeLayout>
 
 
     <RelativeLayout
