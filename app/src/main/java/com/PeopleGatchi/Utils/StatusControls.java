@@ -3,6 +3,7 @@ package com.PeopleGatchi.Utils;
 import com.PeopleGatchi.Models.Happiness;
 import com.PeopleGatchi.Models.Hunger;
 import com.PeopleGatchi.Models.Hygiene;
+import com.PeopleGatchi.Models.Money;
 import com.PeopleGatchi.Models.Pee;
 import com.PeopleGatchi.Models.Poo;
 import com.PeopleGatchi.Models.Rest;
@@ -20,6 +21,7 @@ public class StatusControls {
     static Thirst thirst = new Thirst(20);
     static Hygiene hygiene = new Hygiene(20);
     static Rest rest = new Rest(20);
+    static Money money = new Money(5);
 
 
     public static void setPooBladder(Integer bladderControl) {
@@ -143,6 +145,15 @@ public class StatusControls {
         return rest.restLevel;
     }
 
+    public static Integer getMoney() {
+        return money.money;
+    }
+
+    public static Integer setMoney() {
+        //TODO Calculations need to happen here
+        return money.money;
+    }
+
     public static void firstRun(){
 
         pooBladder = new Poo(20);
@@ -152,6 +163,7 @@ public class StatusControls {
         thirst = new Thirst(20);
         hygiene = new Hygiene(20);
         rest = new Rest(20);
+        money = new Money(5);
 
 
         pooBladder.save();
@@ -161,6 +173,7 @@ public class StatusControls {
         thirst.save();
         hygiene.save();
         rest.save();
+        money.save();
 
         getLevels();
     }

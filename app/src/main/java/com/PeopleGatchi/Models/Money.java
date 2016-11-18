@@ -10,7 +10,7 @@ import com.orm.dsl.Table;
 @Table
 public class Money extends SugarRecord {
 
-    Integer money;
+    public Integer money;
 
     public Money() {
     }
@@ -19,6 +19,7 @@ public class Money extends SugarRecord {
     public Money(Integer money) {
         this.money = money;
     }
+
 
 }
 

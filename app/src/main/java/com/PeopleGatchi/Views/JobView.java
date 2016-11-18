@@ -7,14 +7,14 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.PeopleGatchi.PeopleGatchiApplication;
 import com.PeopleGatchi.R;
-import com.PeopleGatchi.Stages.HomeStage;
+import com.PeopleGatchi.Utils.StatusControls;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import flow.Flow;
-import flow.History;
 
 /**
  * Created by eaglebrosi on 11/16/16.
@@ -59,6 +59,9 @@ public class JobView extends LinearLayout {
         int payment = ((int) (Math.random() * 20) + 10);
         // let them know they're getting paid for X amount of work.
         Toast.makeText(context, "You were paid $" + payment + ".", Toast.LENGTH_LONG).show();
+
+        int newMoney= StatusControls.getMoney() + payment;
+        StatusControls.setMoney(newMoney);
     }
 
     @OnClick(R.id.engineer_butt)
@@ -87,7 +90,8 @@ public class JobView extends LinearLayout {
 
     @OnClick(R.id.go_home)
     public void goHome() {
-        History newHistory = History.single(new HomeStage());
-        flow.setHistory(newHistory, Flow.Direction.FORWARD);
+        flow = PeopleGatchiApplication.getMainFlow();
+        //History newHistory = History.single(new HomeStage());
+        flow.goBack();
     }
 }
