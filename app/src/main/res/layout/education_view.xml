@@ -10,19 +10,34 @@
         android:layout_height="wrap_content"
         android:id="@+id/textView2"
         android:gravity="center"
-        android:textSize="20sp"/>
-
-    <Button
-        android:text="Math"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/increase_science" />
+        android:textSize="20sp"
+        android:layout_marginTop="20dp" />
 
     <Button
         android:text="Science"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/increase_math" />
+        android:id="@+id/increase_science"
+        android:background="@android:color/holo_purple"
+        android:layout_marginTop="70dp"
+        android:layout_marginBottom="5dp"/>
+
+    <Button
+        android:text="Math"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/increase_math"
+        android:background="@android:color/holo_blue_bright"
+        android:layout_marginBottom="5dp"/>
+
+
+    <Button
+        android:text="Philosophy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/increase_philo"
+        android:background="@android:color/holo_orange_dark"
+        android:layout_marginBottom="5dp"/>
 
     <android.support.design.widget.FloatingActionButton
         android:layout_width="match_parent"
