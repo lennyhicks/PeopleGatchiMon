@@ -124,6 +124,7 @@ public class HomeView extends RelativeLayout {
 
         Toast.makeText(context, StatusControls.getPooLevel()+ "", Toast.LENGTH_LONG).show();
 
+        imageView.setImageResource(Utils.setHappinessImage());
        // EventBus.getDefault().register(this);
     }
 //not working

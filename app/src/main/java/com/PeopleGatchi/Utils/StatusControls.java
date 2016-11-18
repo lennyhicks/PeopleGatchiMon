@@ -176,7 +176,7 @@ public class StatusControls {
         money.save();
 
         updateLevels();
-        getLevels();
+//        getLevels();
     }
 
     public static void updateLevels(){
