@@ -1,12 +1,12 @@
 package com.PeopleGatchi.Utils;
 
-import com.PeopleGatchi.Models.Happiness;
-import com.PeopleGatchi.Models.Hunger;
-import com.PeopleGatchi.Models.Hygiene;
-import com.PeopleGatchi.Models.Pee;
-import com.PeopleGatchi.Models.Poo;
-import com.PeopleGatchi.Models.Rest;
-import com.PeopleGatchi.Models.Thirst;
+import com.PeopleGatchi.Models.Persisting.Happiness;
+import com.PeopleGatchi.Models.Persisting.Hunger;
+import com.PeopleGatchi.Models.Persisting.Hygiene;
+import com.PeopleGatchi.Models.Persisting.Pee;
+import com.PeopleGatchi.Models.Persisting.Poo;
+import com.PeopleGatchi.Models.Persisting.Rest;
+import com.PeopleGatchi.Models.Persisting.Thirst;
 
 /**
  * Created by lennyhicks on 11/16/16.
@@ -147,7 +147,7 @@ public class StatusControls {
 
         pooBladder = new Poo(20);
         peeBladder = new Pee(20);
-        happiness= new Happiness(120);
+        happiness = new Happiness(120);
         hunger = new Hunger(20);
         thirst = new Thirst(20);
         hygiene = new Hygiene(20);
