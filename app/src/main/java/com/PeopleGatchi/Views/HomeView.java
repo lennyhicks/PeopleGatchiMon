@@ -11,11 +11,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.PeopleGatchi.Dialogs.InventoryDialog;
+import com.PeopleGatchi.Dialogs.StoreDialog;
 import com.PeopleGatchi.PeopleGatchiApplication;
 import com.PeopleGatchi.R;
 import com.PeopleGatchi.Stages.EducationStage;
 import com.PeopleGatchi.Stages.JobStage;
-import com.PeopleGatchi.Stages.StoreStage;
 import com.PeopleGatchi.Utils.StatusControls;
 import com.PeopleGatchi.Utils.Utils;
 
@@ -86,31 +86,6 @@ public class HomeView extends RelativeLayout {
     protected void onFinishInflate() {
         super.onFinishInflate();
         ButterKnife.bind(this);
-//
-//        Poo pooBladder = new Poo(20);
-//        Pee peeBladder = new Pee(20);
-//        Happiness happiness= new Happiness();
-//        Hunger hunger = new Hunger(20);
-//        Thirst thirst = new Thirst(20);
-//        Hygiene hygiene = new Hygiene(20);
-//        Rest rest = new Rest(20);
-//
-//        peeBladder.peeLevel = 20;
-//        pooBladder.pooLevel = 20;
-//        hunger.hungerLevel = 20;
-//        thirst.thirstLevel = 20;
-//        hygiene.hygieneLevel = 20;
-//        rest.restLevel = 20;
-//
-//
-//
-//        pooBladder.save();
-//        peeBladder.save();
-//        happiness.save();
-//        hunger.save();
-//        thirst.save();
-//        hygiene.save();
-//        rest.save();
 
         flow = PeopleGatchiApplication.getMainFlow();
 
@@ -125,34 +100,22 @@ public class HomeView extends RelativeLayout {
         Toast.makeText(context, StatusControls.getPooLevel()+ "", Toast.LENGTH_LONG).show();
 
         imageView.setImageResource(Utils.setHappinessImage());
-       // EventBus.getDefault().register(this);
-    }
-//not working
-    @OnClick(R.id.food_bar)
-    public void feedPet(){
-        //int foodAmount = ((int)(Math.round(Math.random() *15 ) +5));
-        int foodAmount = Utils.getRand(StatusControls.getPooLevel());
-        StatusControls.setPooBladder(-foodAmount);
-        Toast.makeText(context, "BELCH!! Whew, i'm stuffed!!!" + foodAmount, Toast.LENGTH_SHORT).show();
+
     }
 
-    //not working
+    @OnClick(R.id.food_bar)
+    public void feedPet(){
+
+    }
+
     @OnClick(R.id.drink_bar)
     public void waterPet(){
-        //int drinkAmount = ((int)(Math.round(Math.random() *15 ) +5));
-        //int drinkAmount = Utils.getRand(15) + 5;
-        int drinkAmount = Utils.getRand(StatusControls.getThirstLevel());
-        StatusControls.setThirst(-drinkAmount);
-        Toast.makeText(context, "Slurp slurp, mmmm!" + drinkAmount, Toast.LENGTH_SHORT).show();
+
     }
 
     @OnClick(R.id.sleep_bar)
     public void restPet(){
-        //int sleepyTime = ((int)(Math.round(Math.random() *15 ) +5));
-        //int sleepyTime = Utils.getRand(15) + 5;
-        int sleepyTime = Utils.getRand(StatusControls.getRestLevel());
-        StatusControls.setRest(-sleepyTime);
-        Toast.makeText(context, "Whew, I feel rested and ready!" + sleepyTime, Toast.LENGTH_SHORT).show();
+
     }
 
     @OnClick(R.id.image_view)
@@ -162,36 +125,17 @@ public class HomeView extends RelativeLayout {
 
     @OnClick(R.id.hygiene_bar)
     public void cleanPet(){
-        //int cleanBaby = ((int)(Math.round(Math.random() *15 ) +5));
-        //int cleanBaby = Utils.getRand(15) + 5;
-        int cleanBaby = Utils.getRand(StatusControls.getHygieneLevel());
-        StatusControls.setHygiene(-cleanBaby);
-        Toast.makeText(context, "Yay, so fresh and so clean clean!!" + cleanBaby, Toast.LENGTH_SHORT).show();
 
     }
 
     @OnClick(R.id.pee_bar)
     public void drainPet(){
-    //int peeAmount = ((int)(Math.round(Math.random() *15 ) +5));
-        //int drainPet = Utils.getRand(15) + 5;
-        int drainPet = Utils.getRand(StatusControls.getPeeLevel());
-        StatusControls.setPeeBladder(-drainPet);
-        Toast.makeText(context, "Yay, we made a pee-pee, Yay!!!" + drainPet, Toast.LENGTH_SHORT).show();
+
     }
 
     @OnClick(R.id.poop_bar)
     public void pottyPet(){
-       //int dumpSize = (int)(Math.round(Math.random() * 15 )+5);
-        //int dumpSize = Utils.getRand(15) + 5;
-        int dumpSize = Utils.getRand(StatusControls.getPooLevel());
-        StatusControls.setPooBladder(-dumpSize);
-        if(dumpSize == 20){
-            Toast.makeText(context, "HOLY COW, You just dropped a bigfoot!!! And now you're dead." + dumpSize, Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(context, "That was a sweet sweet #2!" + dumpSize, Toast.LENGTH_SHORT).show();
-            //       Status.poo(dumpSize);
-        }
-       // StatusControls.updatePooBladder(dumpSize);
+
     }
 
     @OnClick(R.id.bank_amount)
@@ -212,8 +156,14 @@ public class HomeView extends RelativeLayout {
     @OnClick(R.id.store_button)
     public void goToStore(){
 
-        History newHistory = flow.getHistory().buildUpon().push(new StoreStage()).build();
-        flow.setHistory(newHistory, Flow.Direction.FORWARD);
+        final StoreDialog storeDialog = new StoreDialog(context);
+        storeDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+
+            }
+        });
+        storeDialog.show();
     }
 
     @OnClick(R.id.inventory_button)
