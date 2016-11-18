@@ -160,7 +160,7 @@ public class HomeView extends RelativeLayout {
         int dumpSize = Utils.getRand(StatusControls.getPooLevel());
         StatusControls.setPooBladder(-dumpSize);
         if(dumpSize == 20){
-            Toast.makeText(context, "Holy COW WHAT A DUMP! the king lives!!!!" + dumpSize, Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "HOLY COW, You just dropped a bigfoot!!! And now you're dead." + dumpSize, Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(context, "That was a sweet sweet #2!" + dumpSize, Toast.LENGTH_SHORT).show();
             //       Status.poo(dumpSize);
