@@ -5,11 +5,16 @@
 
     <TabHost
         android:layout_width="match_parent"
+        android:text="Store"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:textColor="@color/wallet_holo_blue_light"
         android:layout_height="300dp"
         android:layout_below="@+id/storeTitle"
         android:layout_alignParentStart="true"
         android:layout_marginTop="30dp"
-        android:id="@+id/storeTabHost">
+        android:id="@+id/storeTabHost"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -72,7 +77,7 @@
                 </LinearLayout>
             </FrameLayout>
         </LinearLayout>
-    </TabHost>
+
 
     <TextView
         android:layout_width="wrap_content"
