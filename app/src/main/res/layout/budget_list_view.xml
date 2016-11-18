@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PeopleGatchi.PeopleGatchi.Views.PeopleGatchiView xmlns:android="http://schemas.android.com/apk/res/android"
-                                                  android:layout_width="match_parent"
-                                                  android:layout_height="match_parent">
+<com.PeopleGatchi.Views.PeopleGatchiView xmlns:android="http://schemas.android.com/apk/res/android"
+                                         android:layout_width="match_parent"
+                                         android:layout_height="match_parent">
 
-</PeopleGatchi.PeopleGatchi.Views.PeopleGatchiView>
+</com.PeopleGatchi.Views.PeopleGatchiView>
