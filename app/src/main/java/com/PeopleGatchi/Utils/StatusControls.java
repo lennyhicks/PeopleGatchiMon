@@ -1,9 +1,9 @@
 package com.PeopleGatchi.Utils;
 
-import com.PeopleGatchi.Models.Persisting.Money;
 import com.PeopleGatchi.Models.Persisting.Happiness;
 import com.PeopleGatchi.Models.Persisting.Hunger;
 import com.PeopleGatchi.Models.Persisting.Hygiene;
+import com.PeopleGatchi.Models.Persisting.Money;
 import com.PeopleGatchi.Models.Persisting.Pee;
 import com.PeopleGatchi.Models.Persisting.Poo;
 import com.PeopleGatchi.Models.Persisting.Rest;
@@ -21,7 +21,7 @@ public class StatusControls {
     static Thirst thirst = new Thirst(20);
     static Hygiene hygiene = new Hygiene(20);
     static Rest rest = new Rest(20);
-    static Money money = new Money(5);
+    static Money money = new Money(0);
 
 
     public static void setPooBladder(Integer bladderControl) {
@@ -58,11 +58,11 @@ public class StatusControls {
         hunger.save();
     }
 
-    public static void setThirst(Integer thirstConrol){
+    public static void setThirst(Integer thirstControl){
         if(thirst == null) {
             thirst = new Thirst(20);
         }
-        thirst.thirstLevel += thirstConrol;
+        thirst.thirstLevel += thirstControl;
         thirst.save();
     }
 
@@ -83,12 +83,14 @@ public class StatusControls {
     }
 
     public static Integer getMoney() {
-        return money.money;
+        return money.moneyLevel;
     }
 
-    public static Integer setMoney() {
+    public static void setMoney(Integer payment) {
         //TODO Calculations need to happen here
-        return money.money;
+
+        money.moneyLevel += payment;
+        money.save();
     }
 
     public static Integer getLevels(){
@@ -163,7 +165,7 @@ public class StatusControls {
         thirst = new Thirst(20);
         hygiene = new Hygiene(20);
         rest = new Rest(20);
-        money = new Money(5);
+        money = new Money(0);
 
 
         pooBladder.save();
