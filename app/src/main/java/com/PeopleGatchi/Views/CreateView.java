@@ -17,7 +17,6 @@ import com.PeopleGatchi.R;
 import com.PeopleGatchi.Stages.HomeStage;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -61,15 +60,15 @@ public class CreateView extends LinearLayout {
 //        gender.setOnItemSelectedListener(context);
 
         //configures what are options are.
-        List<String> categories = new ArrayList<>();
+        ArrayList<String> categories = new ArrayList<>();
         categories.add("cis female");
         categories.add("cis male");
         categories.add("non-confirming");
 
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(context,
-                android.R.layout.simple_spinner_item, categories);
+        ArrayAdapter adapter = new ArrayAdapter(context, android.R.layout.simple_spinner_item, categories);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        gender.setAdapter(dataAdapter);
+        chooseGender.setAdapter(adapter);
     }
 
     public void onItemSelected(AdapterView<?> parent, View view, int position){
@@ -82,7 +81,7 @@ public class CreateView extends LinearLayout {
 
 
     @OnClick(R.id.submit_button)
-    public void submitGender() {
+    public void createCharacter() {
         //dropa the keyboard off the screen when the user hits the button.
         InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(pickName.getWindowToken(), 0);

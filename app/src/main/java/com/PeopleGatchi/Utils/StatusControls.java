@@ -163,7 +163,7 @@ public class StatusControls {
         rest.save();
 
         updateLevels();
-        getLevels();
+//        getLevels();
     }
 
     public static void updateLevels(){
