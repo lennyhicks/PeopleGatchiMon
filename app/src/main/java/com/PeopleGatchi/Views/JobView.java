@@ -34,6 +34,9 @@ public class JobView extends LinearLayout {
     @Bind(R.id.science_butt)
     Button science;
 
+    @Bind(R.id.philo_butt)
+    Button philosophy;
+
     @Bind(R.id.go_home)
     FloatingActionButton goHome;
 
@@ -89,6 +92,24 @@ public class JobView extends LinearLayout {
 //        Utils.addTime();
         // Based on your level of education your ceiling and floor go up.
         int payment = ((int) (Math.random() * EducationView.sciEdScore) + EducationView.sciEdScore / 2);
+        // we throw this into the Bank
+//        BankManager.deposit(payment);
+        // we let the person know how much they were paid.
+        Toast.makeText(context, "You were paid $" + payment + ".", Toast.LENGTH_LONG).show();
+        // Shows the user their Updated bank balance after payment added.
+        Toast.makeText(context, "Your bank balance is now $$$" + StatusControls.getMoney() + ".", Toast.LENGTH_LONG).show();
+        //Actually retrieving the updated value.
+        int newMoney= StatusControls.getMoney() + payment;
+        //StatusControls.setMoney(newMoney);
+    }
+
+    @OnClick(R.id.philo_butt)
+    public void workPhilosophy() {
+        //time passes while working
+//        Utils.addTime();
+        // Based on your level of education your ceiling and floor go up.
+        // The Floor to philosophy pay is low and never increases.
+        int payment = ((int) (Math.random() * EducationView.sciEdScore) + 5);
         // we throw this into the Bank
 //        BankManager.deposit(payment);
         // we let the person know how much they were paid.
