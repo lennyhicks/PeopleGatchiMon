@@ -53,9 +53,7 @@ public class MainActivity extends AppCompatActivity {
         dispatcher = new ScreenplayDispatcher(this, container);
         dispatcher.setUp(flow);
 
-        //testCalls();
-
-        if(UserStore.getInstance().getToken() == null || UserStore.getInstance().getTokenExpiration() == null){
+        if(UserStore.getInstance().getToken() == null){
 
             History newHistory = History.single(new CreateStage());
             flow.setHistory(newHistory, Flow.Direction.REPLACE);
