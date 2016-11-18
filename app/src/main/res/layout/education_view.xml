@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PeopleGatchi.PeopleGatchi.Views.EducationView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.PeopleGatchi.Views.EducationView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+                                      android:layout_height="match_parent">
 
     <TextView
         android:text="Education is the key \n to unlocking your poke-tential."
@@ -22,4 +23,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/increase_math" />
-</PeopleGatchi.PeopleGatchi.Views.EducationView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:fabSize="mini"
+        app:srcCompat="@drawable/store"
+        android:id="@+id/home_button" />
+</com.PeopleGatchi.Views.EducationView>

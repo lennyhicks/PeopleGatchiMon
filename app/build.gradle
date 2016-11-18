@@ -3,6 +3,13 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 25
     buildToolsVersion "24.0.2"
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+
+        dataBinding {
+            enabled true
+        }
 
     defaultConfig {
         applicationId "monster.peoplegatchi"
@@ -10,6 +17,8 @@ android {
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
+
     }
     buildTypes {
         release {
@@ -43,6 +52,8 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-gson:2.0.2'
     compile 'com.squareup.okhttp3:logging-interceptor:3.2.0'
     compile 'org.greenrobot:eventbus:3.0.0'
-    compile 'com.github.satyan:sugar:1.4'
+    compile 'com.github.satyan:sugar:1.5'
+    compile 'vn.tiki.noadapter:noadapter:1.0.0'
+
 
 }
