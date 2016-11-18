@@ -1,4 +1,4 @@
-package com.PeopleGatchi.Status;
+package com.PeopleGatchi.Models;
 
 import com.orm.SugarRecord;
 import com.orm.dsl.Table;
