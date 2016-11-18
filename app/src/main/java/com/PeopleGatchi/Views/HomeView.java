@@ -127,20 +127,32 @@ public class HomeView extends RelativeLayout {
         imageView.setImageResource(Utils.setHappinessImage());
        // EventBus.getDefault().register(this);
     }
-
+//not working
     @OnClick(R.id.food_bar)
     public void feedPet(){
-
+        //int foodAmount = ((int)(Math.round(Math.random() *15 ) +5));
+        int foodAmount = Utils.getRand(StatusControls.getPooLevel());
+        StatusControls.setPooBladder(-foodAmount);
+        Toast.makeText(context, "BELCH!! Whew, i'm stuffed!!!" + foodAmount, Toast.LENGTH_SHORT).show();
     }
 
+    //not working
     @OnClick(R.id.drink_bar)
     public void waterPet(){
-
+        //int drinkAmount = ((int)(Math.round(Math.random() *15 ) +5));
+        //int drinkAmount = Utils.getRand(15) + 5;
+        int drinkAmount = Utils.getRand(StatusControls.getThirstLevel());
+        StatusControls.setThirst(-drinkAmount);
+        Toast.makeText(context, "Slurp slurp, mmmm!" + drinkAmount, Toast.LENGTH_SHORT).show();
     }
 
     @OnClick(R.id.sleep_bar)
     public void restPet(){
-
+        //int sleepyTime = ((int)(Math.round(Math.random() *15 ) +5));
+        //int sleepyTime = Utils.getRand(15) + 5;
+        int sleepyTime = Utils.getRand(StatusControls.getRestLevel());
+        StatusControls.setRest(-sleepyTime);
+        Toast.makeText(context, "Whew, I feel rested and ready!" + sleepyTime, Toast.LENGTH_SHORT).show();
     }
 
     @OnClick(R.id.image_view)
@@ -150,17 +162,36 @@ public class HomeView extends RelativeLayout {
 
     @OnClick(R.id.hygiene_bar)
     public void cleanPet(){
+        //int cleanBaby = ((int)(Math.round(Math.random() *15 ) +5));
+        //int cleanBaby = Utils.getRand(15) + 5;
+        int cleanBaby = Utils.getRand(StatusControls.getHygieneLevel());
+        StatusControls.setHygiene(-cleanBaby);
+        Toast.makeText(context, "Yay, so fresh and so clean clean!!" + cleanBaby, Toast.LENGTH_SHORT).show();
 
     }
 
     @OnClick(R.id.pee_bar)
     public void drainPet(){
-
+    //int peeAmount = ((int)(Math.round(Math.random() *15 ) +5));
+        //int drainPet = Utils.getRand(15) + 5;
+        int drainPet = Utils.getRand(StatusControls.getPeeLevel());
+        StatusControls.setPeeBladder(-drainPet);
+        Toast.makeText(context, "Yay, we made a pee-pee, Yay!!!" + drainPet, Toast.LENGTH_SHORT).show();
     }
 
     @OnClick(R.id.poop_bar)
     public void pottyPet(){
-
+       //int dumpSize = (int)(Math.round(Math.random() * 15 )+5);
+        //int dumpSize = Utils.getRand(15) + 5;
+        int dumpSize = Utils.getRand(StatusControls.getPooLevel());
+        StatusControls.setPooBladder(-dumpSize);
+        if(dumpSize == 20){
+            Toast.makeText(context, "HOLY COW, You just dropped a bigfoot!!! And now you're dead." + dumpSize, Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "That was a sweet sweet #2!" + dumpSize, Toast.LENGTH_SHORT).show();
+            //       Status.poo(dumpSize);
+        }
+       // StatusControls.updatePooBladder(dumpSize);
     }
 
     @OnClick(R.id.bank_amount)
