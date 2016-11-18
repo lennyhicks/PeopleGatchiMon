@@ -1,6 +1,6 @@
 package com.PeopleGatchi.Utils;
 
-import com.PeopleGatchi.Models.Money;
+import com.PeopleGatchi.Models.Persisting.Money;
 import com.PeopleGatchi.Models.Persisting.Happiness;
 import com.PeopleGatchi.Models.Persisting.Hunger;
 import com.PeopleGatchi.Models.Persisting.Hygiene;
