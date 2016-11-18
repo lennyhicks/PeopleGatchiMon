@@ -3,9 +3,12 @@ package com.PeopleGatchi.Dialogs;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import com.PeopleGatchi.R;
 
@@ -85,6 +88,13 @@ public class InventoryDialog extends Dialog{
         int[] to = { R.id.inventory_img,R.id.inventory_name};
         SimpleAdapter adapter = new SimpleAdapter(context, aList, R.layout.inventory_item, from, to);
         gridView.setAdapter(adapter);
+
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(context, "You tapped " + countries[i], Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
 //        InventoryAdapter adapter = new InventoryAdapter(new ArrayList<Item>(),context);

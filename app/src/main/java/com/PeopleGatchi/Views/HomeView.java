@@ -97,7 +97,6 @@ public class HomeView extends RelativeLayout {
         sleepBar.setProgress(StatusControls.getRestLevel());
 
         imageView.setImageResource(Utils.setHappinessImage());
-
     }
 
     @OnClick(R.id.food_bar)
