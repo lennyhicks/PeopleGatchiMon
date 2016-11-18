@@ -2,15 +2,12 @@ package com.PeopleGatchi.Views;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.PeopleGatchi.PeopleGatchiApplication;
 import com.PeopleGatchi.R;
@@ -48,13 +45,15 @@ public class CreateView extends LinearLayout {
         this.context = context;
     }
 
+
+
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
         ButterKnife.bind(this);
 
         //spinner element
-        gender = (Spinner) findViewById(spinner);
+//        gender = (Spinner) findViewById(spinner);
 
         //spinner click listener
 //        gender.setOnItemSelectedListener(context);
@@ -65,19 +64,19 @@ public class CreateView extends LinearLayout {
         categories.add("cis male");
         categories.add("non-confirming");
 
-        ArrayAdapter adapter = new ArrayAdapter(context, android.R.layout.simple_spinner_item, categories);
+        ArrayAdapter<String> adapter = new ArrayAdapter(context, android.R.layout.simple_spinner_item, categories);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         chooseGender.setAdapter(adapter);
     }
 
-    public void onItemSelected(AdapterView<?> parent, View view, int position){
-        String item = parent.getItemAtPosition(position).toString();
-
-        Toast.makeText(context, "Selected: " + item, Toast.LENGTH_SHORT).show();
-    }
-
-    public void onNothingSelected(AdapterView<?> arg0){}
+//    public void onItemSelected(AdapterView<?> parent, View view, int position){
+//        String item = parent.getItemAtPosition(position).toString();
+//
+//        Toast.makeText(context, "Selected: " + item, Toast.LENGTH_SHORT).show();
+//    }
+//
+//    public void onNothingSelected(AdapterView<?> arg0){}
 
 
     @OnClick(R.id.submit_button)
@@ -93,9 +92,7 @@ public class CreateView extends LinearLayout {
 
         // The submit button also takes you to the home screen.
         Flow flow = PeopleGatchiApplication.getMainFlow();
-        History newHistory = flow.getHistory().buildUpon()
-                .push(new HomeStage())
-                .build();
-        flow.setHistory(newHistory, Flow.Direction.FORWARD);
+        History newHistory = History.single(new HomeStage());
+        flow.setHistory(newHistory, Flow.Direction.REPLACE);
     }
 }
