@@ -3,12 +3,8 @@ package com.PeopleGatchi.Dialogs;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.view.View;
 import android.view.Window;
-import android.widget.AdapterView;
-import android.widget.GridView;
-import android.widget.SimpleAdapter;
-import android.widget.Toast;
+import android.widget.TabHost;
 
 import com.PeopleGatchi.R;
 
@@ -19,17 +15,19 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-import static com.PeopleGatchi.R.id.inventory_grid;
-
 /**
  * Created by crystaladkins on 11/16/16.
  */
 
-public class InventoryDialog extends Dialog{
+public class StoreDialog extends Dialog{
 
-    @Bind(inventory_grid)
-    GridView gridView;
+    //@Bind(R.id.drinkRecyclerView)
+    //RecyclerView drinkRecycler;
     String[] from = { "flag","txt"};
+
+    @Bind(R.id.storeTabHost)
+    TabHost tabs;
+
 
     String[] countries = new String[] {
             "Item 1",
@@ -61,7 +59,7 @@ public class InventoryDialog extends Dialog{
     public int [] images = {R.drawable.cat, R.drawable.cheburashka, R.drawable.hachiko};
     private Context context;
 
-    public InventoryDialog(Context context) {
+    public StoreDialog(Context context) {
         super(context);
         this.context = context;
     }
@@ -71,7 +69,7 @@ public class InventoryDialog extends Dialog{
         super.onCreate(savedInstanceState);
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.inventory_view);
+        setContentView(R.layout.store_view);
 
         ButterKnife.bind(this);
 
@@ -84,17 +82,29 @@ public class InventoryDialog extends Dialog{
             aList.add(hm);
         }
 
+tabs.setup();
+
+        TabHost.TabSpec calculatorTab = tabs.newTabSpec("food");
+        calculatorTab.setContent(R.id.food);
+        calculatorTab.setIndicator("Food");
+        tabs.addTab(calculatorTab);
+
+//        // Home
+        TabHost.TabSpec homeTab = tabs.newTabSpec("drinks");
+        homeTab.setContent(R.id.drinks);
+        homeTab.setIndicator("Drinks");
+        tabs.addTab(homeTab);
+
+        // Home
+        TabHost.TabSpec faqTab = tabs.newTabSpec("items");
+        faqTab.setContent(R.id.items);
+        faqTab.setIndicator("Items");
+        tabs.addTab(faqTab);
+
 
         int[] to = { R.id.inventory_img,R.id.inventory_name};
-        SimpleAdapter adapter = new SimpleAdapter(context, aList, R.layout.inventory_item, from, to);
-        gridView.setAdapter(adapter);
-
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(context, "You tapped " + countries[i], Toast.LENGTH_SHORT).show();
-            }
-        });
+        //SimpleAdapter adapter = new SimpleAdapter(context, aList, R.layout.inventory_item, from, to);
+        //gridView.setAdapter(adapter);
 
 
 //        InventoryAdapter adapter = new InventoryAdapter(new ArrayList<Item>(),context);
