@@ -111,6 +111,7 @@
             android:layout_marginTop="25dp"
             android:progressDrawable="@drawable/progressbar_style"
             android:clickable="true"
+            android:max="20"
             android:visibility="visible"/>
 
         <ProgressBar
@@ -124,6 +125,7 @@
             android:layout_marginTop="12dp"
             android:progressDrawable="@drawable/progressbar_style"
             android:clickable="true"
+            android:max="20"
             android:visibility="visible"/>
 
         <ImageView
@@ -146,6 +148,7 @@
             android:layout_marginStart="16dp"
             android:progressDrawable="@drawable/progressbar_style"
             android:clickable="true"
+            android:max="20"
             android:visibility="visible"/>
 
         <ProgressBar
@@ -158,6 +161,7 @@
             android:layout_alignStart="@+id/hygiene_bar"
             android:progressDrawable="@drawable/progressbar_style"
             android:clickable="true"
+            android:max="20"
             android:visibility="visible"/>
 
         <ProgressBar
@@ -170,6 +174,7 @@
             android:layout_alignStart="@+id/pee_bar"
             android:progressDrawable="@drawable/progressbar_style"
             android:clickable="true"
+            android:max="20"
             android:visibility="visible"/>
 
     </RelativeLayout>
