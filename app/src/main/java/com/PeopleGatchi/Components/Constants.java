@@ -11,11 +11,6 @@ public final class Constants {
     public static final String tokenExpiration = "tokenExpiration";
     public static final int WORK_TIME = 8;
     public static final int MAX_LEVEL = 20;
-    public static final int MAX_PEE_LEVEL = 20;
-    public static final int MAX_POOP_LEVEL = 20;
-    public static final int MAX_HUNGER_LEVEL = 20;
-    public static final int MAX_THIRST_LEVEL = 20;
-    public static final int MAX_REST_LEVEL = 20;
 
 
 
@@ -47,15 +42,15 @@ public final class Constants {
 
     public static Item[] OTHERITEMS = new Item[] {
             new Item("DogHouse", 1, R.drawable.doghouse),
-            new Item("SmallHouse", 2, R.drawable.gingerbreadhouse),
-            new Item("Mobile Home", 3, R.drawable.mobilehome),
+            new Item("Sm House", 2, R.drawable.gingerbreadhouse),
+            new Item("Mob Home", 3, R.drawable.mobilehome),
             new Item("Home", 4, R.drawable.home),
             new Item("Garage", 5, R.drawable.garage),
             new Item("Farm", 16, R.drawable.farm),
             new Item("Cottage", 17, R.drawable.cottage),
-            new Item("Big House", 18, R.drawable.germanhouse),
-            new Item("Bigger House", 19, R.drawable.church),
-            new Item("DIAMONDZZZ", 20, R.drawable.minecraftdiamond),
+            new Item("Med House", 18, R.drawable.germanhouse),
+            new Item("Lg House", 19, R.drawable.church),
+            new Item("DIAMONDZ", 20, R.drawable.minecraftdiamond),
     };
 
 
