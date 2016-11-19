@@ -9,12 +9,14 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.PeopleGatchi.Components.Constants;
 import com.PeopleGatchi.Dialogs.InventoryDialog;
 import com.PeopleGatchi.Dialogs.StoreDialog;
 import com.PeopleGatchi.PeopleGatchiApplication;
 import com.PeopleGatchi.R;
 import com.PeopleGatchi.Stages.EducationStage;
 import com.PeopleGatchi.Stages.JobStage;
+import com.PeopleGatchi.Utils.InventoryControls;
 import com.PeopleGatchi.Utils.StatusControls;
 import com.PeopleGatchi.Utils.Utils;
 
@@ -194,6 +196,7 @@ public class HomeView extends RelativeLayout {
 
     @OnClick(R.id.inventory_button)
     public void goToInventory(){
+        InventoryControls.addItem(Constants.FOODITEMS[1]);
 
         final InventoryDialog inventoryDialog = new InventoryDialog(context);
         inventoryDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
@@ -205,13 +208,10 @@ public class HomeView extends RelativeLayout {
         inventoryDialog.show();
 
 
-//        History newHistory = flow.getHistory().buildUpon().push(new InventoryStage()).build();
-//        flow.setHistory(newHistory, Flow.Direction.FORWARD);
     }
 
     @OnClick(R.id.education_button)
     public void goToSchool(){
-        //History newHistory = History.single(new EducationStage());
         History newHistory = flow.getHistory().buildUpon().push(new EducationStage()).build();
         flow.setHistory(newHistory, Flow.Direction.FORWARD);
 
@@ -219,7 +219,6 @@ public class HomeView extends RelativeLayout {
 
     @OnClick(R.id.work_button)
     public void goToWork(){
-        //History newHistory = History.single(new JobStage());
         History newHistory = flow.getHistory().buildUpon().push(new JobStage()).build();
         flow.setHistory(newHistory, Flow.Direction.FORWARD);
 

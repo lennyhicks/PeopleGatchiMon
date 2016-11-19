@@ -33,21 +33,26 @@ public class Utils {
         }
     }
 
-    public static List<HashMap<String,String>> hashMap(Item[] items) {
+    public static List<HashMap<String,String>> storeHashMap(Item[] items) {
         List<HashMap<String,String>> hash = new ArrayList<>();
         for(int i=0;i<10;i++){
             HashMap<String, String> hm = new HashMap<>();
-            hm.put("txt", items[i].getName());
-            hm.put("flag", Integer.toString(items[i].getResourceId()));
+            hm.put("name", items[i].getName());
+            hm.put("resource", Integer.toString(items[i].getResourceId()));
             hm.put("price", "Price: $"+ Integer.toString(items[i].getPrice()));
             hash.add(hm);
         }
         return hash;
     }
 
-
-//public static SimpleAdapter simpleAdapter(Context context, GridView grid, Item[] items) {
-//
-//}
-
+    public static List<HashMap<String,String>> inventoryHashMap(Item[] items) {
+        List<HashMap<String,String>> hash = new ArrayList<>();
+            for (int i = 0; i < InventoryControls.getSize(); i++) {
+                HashMap<String, String> hm = new HashMap<>();
+                hm.put("name", items[i].getName());
+                hm.put("resource", Integer.toString(items[i].getResourceId()));
+                hash.add(hm);
+            }
+            return hash;
+    }
 }

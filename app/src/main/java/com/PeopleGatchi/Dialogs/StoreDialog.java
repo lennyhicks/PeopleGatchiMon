@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.PeopleGatchi.Models.Item;
 import com.PeopleGatchi.R;
+import com.PeopleGatchi.Utils.InventoryControls;
 import com.PeopleGatchi.Utils.Utils;
 
 import butterknife.Bind;
@@ -29,7 +30,7 @@ import static com.PeopleGatchi.R.id.food;
 
 public class StoreDialog extends Dialog{
 
-    String[] from = { "flag","price","txt"};
+    String[] from = { "resource","price","name"};
 
     @Bind(R.id.storeTabHost)
     TabHost tabs;
@@ -71,13 +72,15 @@ public class StoreDialog extends Dialog{
         foodTab.setIndicator("Food");
         tabs.addTab(foodTab);
 
-        SimpleAdapter foodAdapter = new SimpleAdapter(context, Utils.hashMap(FOODITEMS), R.layout.store_item, from, to);
+        SimpleAdapter foodAdapter = new SimpleAdapter(context, Utils.storeHashMap(FOODITEMS), R.layout.store_item, from, to);
         foodView.setAdapter(foodAdapter);
         foodView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Item item = FOODITEMS[i];
                 Toast.makeText(context, item.getName() + " Cost: " +item.getPrice(), Toast.LENGTH_SHORT).show();
+                InventoryControls.addItem(item);
+
             }
         });
 
@@ -94,13 +97,14 @@ public class StoreDialog extends Dialog{
         drinkTab.setIndicator("Drinks");
         tabs.addTab(drinkTab);
 
-        SimpleAdapter drinkAdapter = new SimpleAdapter(context, Utils.hashMap(DRINKITEMS), R.layout.store_item, from, to);
+        SimpleAdapter drinkAdapter = new SimpleAdapter(context, Utils.storeHashMap(DRINKITEMS), R.layout.store_item, from, to);
         drinkView.setAdapter(drinkAdapter);
         drinkView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Item item = DRINKITEMS[i];
                 Toast.makeText(context, item.getName() + " Cost: " +item.getPrice(), Toast.LENGTH_SHORT).show();
+                InventoryControls.addItem(item);
             }
         });
 
@@ -109,13 +113,15 @@ public class StoreDialog extends Dialog{
         itemTab.setIndicator("Items");
         tabs.addTab(itemTab);
 
-        SimpleAdapter itemAdapter = new SimpleAdapter(context, Utils.hashMap(OTHERITEMS), R.layout.store_item, from, to);
+        SimpleAdapter itemAdapter = new SimpleAdapter(context, Utils.storeHashMap(OTHERITEMS), R.layout.store_item, from, to);
         itemView.setAdapter(itemAdapter);
         itemView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Item item = OTHERITEMS[i];
                 Toast.makeText(context, item.getName() + " Cost: " + item.getPrice(), Toast.LENGTH_SHORT).show();
+                InventoryControls.addItem(item);
+
             }
         });
 

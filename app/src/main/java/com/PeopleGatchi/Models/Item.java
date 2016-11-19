@@ -15,6 +15,11 @@ public class Item {
         this.resourceId = resourceId;
     }
 
+    public Item(String name, Integer resourceId) {
+        this.name = name;
+        this.resourceId = resourceId;
+    }
+
     public String getName() {
         return name;
     }
