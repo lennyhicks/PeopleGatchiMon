@@ -11,8 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/inventory"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textAlignment="center"
-        android:textSize="24sp"/>
+        android:textSize="30dp"
+        android:textColor="@color/wallet_holo_blue_light"/>
 
     <GridView
         android:layout_width="match_parent"

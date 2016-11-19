@@ -9,20 +9,11 @@ import com.orm.dsl.Table;
 
 @Table
 public class Money extends SugarRecord {
-
-    public Integer money;
+    private Long id;
+    public Integer moneyLevel;
 
     public Money() {
     }
 
-
-    public Money(Integer money) {
-        this.money = money;
-    }
-
-
+    public Money(Integer moneyLevel) {this.moneyLevel = moneyLevel;}
 }
-
-
-
-

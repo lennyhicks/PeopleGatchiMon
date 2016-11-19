@@ -10,6 +10,7 @@ public final class Constants {
     public static final String token = "token";
     public static final String tokenExpiration = "tokenExpiration";
     public static final int WORK_TIME = 8;
+    public static final int MAX_LEVEL = 20;
     public static final int MAX_PEE_LEVEL = 20;
     public static final int MAX_POOP_LEVEL = 20;
     public static final int MAX_HUNGER_LEVEL = 20;
