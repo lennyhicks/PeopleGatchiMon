@@ -26,7 +26,6 @@ public class InventoryAdapter extends RecyclerView.Adapter<InventoryAdapter.Item
 
     public ArrayList<Item> messages;
     private Context context;
-    public static Item messageView;
 
     public InventoryAdapter(ArrayList<Item> messages, Context context) {
         this.messages = messages;
@@ -59,9 +58,6 @@ public class InventoryAdapter extends RecyclerView.Adapter<InventoryAdapter.Item
         @Bind(R.id.inventory_name)
         TextView nameField;
 
-        @Bind(R.id.price_textview)
-        TextView messageCount;
-
         public Items(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
@@ -73,7 +69,6 @@ public class InventoryAdapter extends RecyclerView.Adapter<InventoryAdapter.Item
 
             imageView.setImageResource(R.drawable.cheburashka);
             nameField.setText("NAMEFIELD");
-            messageCount.setText("PRICE");
 
         }
 
