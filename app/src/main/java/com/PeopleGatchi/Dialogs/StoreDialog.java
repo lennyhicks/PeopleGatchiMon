@@ -3,17 +3,25 @@ package com.PeopleGatchi.Dialogs;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
+import android.widget.AdapterView;
+import android.widget.GridView;
+import android.widget.SimpleAdapter;
 import android.widget.TabHost;
+import android.widget.Toast;
 
+import com.PeopleGatchi.Models.Item;
 import com.PeopleGatchi.R;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import com.PeopleGatchi.Utils.Utils;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+
+import static com.PeopleGatchi.Components.Constants.DRINKITEMS;
+import static com.PeopleGatchi.Components.Constants.FOODITEMS;
+import static com.PeopleGatchi.Components.Constants.OTHERITEMS;
+import static com.PeopleGatchi.R.id.food;
 
 /**
  * Created by crystaladkins on 11/16/16.
@@ -21,42 +29,25 @@ import butterknife.ButterKnife;
 
 public class StoreDialog extends Dialog{
 
-    //@Bind(R.id.drinkRecyclerView)
-    //RecyclerView drinkRecycler;
-    String[] from = { "flag","txt"};
+    String[] from = { "flag","price","txt"};
 
     @Bind(R.id.storeTabHost)
     TabHost tabs;
 
+    @Bind(R.id.food_grid)
+    GridView foodView;
 
-    String[] countries = new String[] {
-            "Item 1",
-            "Item 2",
-            "Item 3",
-            "Item 4",
-            "Item 5",
-            "Item 6",
-            "Item 7",
-            "Item 8",
-            "Item 9",
-            "Item 10"
 
-    };
+    @Bind(R.id.drink_grid)
+    GridView drinkView;
 
-    // Array of integers points to images stored in /res/drawable-ldpi/
-    int[] flags = new int[]{
-            R.drawable.cat,
-            R.drawable.cheburashka,
-            R.drawable.stomach,
-            R.drawable.cheburashka,
-            R.drawable.cat,
-            R.drawable.cheburashka,
-            R.drawable.stomach,
-            R.drawable.cheburashka,
-            R.drawable.cat,
-            R.drawable.cheburashka
-    };
-    public int [] images = {R.drawable.cat, R.drawable.cheburashka, R.drawable.hachiko};
+
+    @Bind(R.id.item_grid)
+    GridView itemView;
+
+
+    int[] to = { R.id.store_img,R.id.store_price,R.id.store_name};
+
     private Context context;
 
     public StoreDialog(Context context) {
@@ -73,46 +64,83 @@ public class StoreDialog extends Dialog{
 
         ButterKnife.bind(this);
 
-        List<HashMap<String,String>> aList = new ArrayList<>();
+        tabs.setup();
 
-        for(int i=0;i<10;i++){
-            HashMap<String, String> hm = new HashMap<>();
-            hm.put("txt", countries[i]);
-            hm.put("flag", Integer.toString(flags[i]) );
-            aList.add(hm);
-        }
+        TabHost.TabSpec foodTab = tabs.newTabSpec("food");
+        foodTab.setContent(food);
+        foodTab.setIndicator("Food");
+        tabs.addTab(foodTab);
 
-tabs.setup();
+        SimpleAdapter foodAdapter = new SimpleAdapter(context, Utils.hashMap(FOODITEMS), R.layout.store_item, from, to);
+        foodView.setAdapter(foodAdapter);
+        foodView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Item item = FOODITEMS[i];
+                Toast.makeText(context, item.getName() + " Cost: " +item.getPrice(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
-        TabHost.TabSpec calculatorTab = tabs.newTabSpec("food");
-        calculatorTab.setContent(R.id.food);
-        calculatorTab.setIndicator("Food");
-        tabs.addTab(calculatorTab);
+        tabs.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
+            @Override
+            public void onTabChanged(String s) {
+                Toast.makeText(context, s, Toast.LENGTH_SHORT).show();
+                tabs.getTabWidget().setCurrentTab(2);
+                tabs.bringToFront();
+            }
+        });
+        final TabHost.TabSpec drinkTab = tabs.newTabSpec("drinks");
+        drinkTab.setContent(R.id.drinks);
+        drinkTab.setIndicator("Drinks");
+        tabs.addTab(drinkTab);
 
-//        // Home
-        TabHost.TabSpec homeTab = tabs.newTabSpec("drinks");
-        homeTab.setContent(R.id.drinks);
-        homeTab.setIndicator("Drinks");
-        tabs.addTab(homeTab);
+        SimpleAdapter drinkAdapter = new SimpleAdapter(context, Utils.hashMap(DRINKITEMS), R.layout.store_item, from, to);
+        drinkView.setAdapter(drinkAdapter);
+        drinkView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Item item = DRINKITEMS[i];
+                Toast.makeText(context, item.getName() + " Cost: " +item.getPrice(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
-        // Home
-        TabHost.TabSpec faqTab = tabs.newTabSpec("items");
-        faqTab.setContent(R.id.items);
-        faqTab.setIndicator("Items");
-        tabs.addTab(faqTab);
+        TabHost.TabSpec itemTab = tabs.newTabSpec("items");
+        itemTab.setContent(R.id.items);
+        itemTab.setIndicator("Items");
+        tabs.addTab(itemTab);
 
+        SimpleAdapter itemAdapter = new SimpleAdapter(context, Utils.hashMap(OTHERITEMS), R.layout.store_item, from, to);
+        itemView.setAdapter(itemAdapter);
+        itemView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Item item = OTHERITEMS[i];
+                Toast.makeText(context, item.getName() + " Cost: " + item.getPrice(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
-        int[] to = { R.id.inventory_img,R.id.inventory_name};
-        //SimpleAdapter adapter = new SimpleAdapter(context, aList, R.layout.inventory_item, from, to);
-        //gridView.setAdapter(adapter);
-
-
-//        InventoryAdapter adapter = new InventoryAdapter(new ArrayList<Item>(),context);
-//        gridView.setAdapter(adapter);
-
-
-
-        }
+        tabs.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
+            @Override
+            public void onTabChanged(String s) {
+                switch (s){
+                    case "items" :
+                        drinkView.setVisibility(View.GONE);
+                        foodView.setVisibility(View.GONE);
+                        itemView.setVisibility(View.VISIBLE);
+                        break;
+                    case "drinks" :
+                        drinkView.setVisibility(View.VISIBLE);
+                        foodView.setVisibility(View.GONE);
+                        itemView.setVisibility(View.GONE);
+                        break;
+                    case "food" :
+                        drinkView.setVisibility(View.GONE);
+                        foodView.setVisibility(View.VISIBLE);
+                        itemView.setVisibility(View.GONE);
+                }
+            }
+        });
+    }
 
 
 }

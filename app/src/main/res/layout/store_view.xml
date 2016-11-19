@@ -33,12 +33,14 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <android.support.v7.widget.RecyclerView
+                    <GridView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/drinkRecyclerView">
+                        android:layout_height="match_parent"
+                        android:id="@+id/drink_grid"
+                        android:numColumns="2"
+                        >
 
-                    </android.support.v7.widget.RecyclerView>
+                    </GridView>
 
                 </LinearLayout>
 
@@ -48,12 +50,15 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <android.support.v7.widget.RecyclerView
+                    <GridView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/foodRecyclerView">
+                        android:layout_height="match_parent"
+                        android:id="@+id/food_grid"
+                        android:numColumns="2"
 
-                    </android.support.v7.widget.RecyclerView>
+                        >
+
+                    </GridView>
 
                 </LinearLayout>
 
@@ -63,12 +68,14 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <android.support.v7.widget.RecyclerView
+                    <GridView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/itemRecyclerView">
+                        android:layout_height="match_parent"
+                        android:id="@+id/item_grid"
+                        android:numColumns="2"
+                        >
 
-                    </android.support.v7.widget.RecyclerView>
+                    </GridView>
                 </LinearLayout>
             </FrameLayout>
         </LinearLayout>

@@ -1,7 +1,11 @@
 package com.PeopleGatchi.Utils;
 
+import com.PeopleGatchi.Models.Item;
 import com.PeopleGatchi.R;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -28,4 +32,22 @@ public class Utils {
             return R.drawable.dead;
         }
     }
+
+    public static List<HashMap<String,String>> hashMap(Item[] items) {
+        List<HashMap<String,String>> hash = new ArrayList<>();
+        for(int i=0;i<10;i++){
+            HashMap<String, String> hm = new HashMap<>();
+            hm.put("txt", items[i].getName());
+            hm.put("flag", Integer.toString(items[i].getResourceId()));
+            hm.put("price", "Price: $"+ Integer.toString(items[i].getPrice()));
+            hash.add(hm);
+        }
+        return hash;
+    }
+
+
+//public static SimpleAdapter simpleAdapter(Context context, GridView grid, Item[] items) {
+//
+//}
+
 }
