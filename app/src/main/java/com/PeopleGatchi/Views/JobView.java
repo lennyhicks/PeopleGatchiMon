@@ -57,7 +57,6 @@ public class JobView extends LinearLayout {
         super.onFinishInflate();
         ButterKnife.bind(this);
 
-        updateMoney();
 //        EventBus.getDefault().register(this);
     }
 
@@ -77,9 +76,7 @@ public class JobView extends LinearLayout {
         //time passes while working
 //        Utils.addTime();
         // So based on your level of education your ceiling and floor go up.
-        payment = ((int) (Math.random() * EducationView.mathEdScore) + EducationView.mathEdScore / 2);
-        // we throw this into the Bank
-//        BankManager.deposit(payment);
+        payment = ((int) (Math.random() * StatusControls.getMathEd()) + StatusControls.getMathEd() / 2);
         // we let the person know how much they were paid.
         updateMoney();
     }
@@ -89,7 +86,7 @@ public class JobView extends LinearLayout {
         //time passes while working
 //        Utils.addTime();
         // Based on your level of education your ceiling and floor go up.
-        payment = ((int) (Math.random() * EducationView.sciEdScore) + EducationView.sciEdScore / 2);
+        payment = ((int) (Math.random() * StatusControls.getScienceEd()) + StatusControls.getScienceEd() / 2);
         // we let the person know how much they were paid.
         updateMoney();
     }
@@ -99,8 +96,8 @@ public class JobView extends LinearLayout {
         //time passes while working
 //        Utils.addTime();
         // Based on your level of education your ceiling and floor go up.
-        // The Floor to philosophy pay is low and never increases.
-        payment = ((int) (Math.random() * EducationView.sciEdScore) + 5);
+        // The Floor to philosophy pay is low and never increases. AKA sometimes they don't get paid.
+        payment = ((int) (Math.random() * StatusControls.getPhiloEd()));
         // we let the person know how much they were paid.
         updateMoney();
     }
@@ -114,11 +111,10 @@ public class JobView extends LinearLayout {
     public void updateMoney(){
         StatusControls.setMoney(payment);
         wheresTheMoney.setText("You were paid: $"+ payment+".");
-        // todo add an update bank balance as well.
+        updateBank.setText("Bank Balance: $"+StatusControls.getMoney()+".");
         // TODO so here's what I think we are gonna have to do- we need to actually write some
         // todo--- code like HomeView.updateBank() that will look just like this function that puts
-        // todo -- an updated Bank Balance onto the home screen!
-        updateBank.setText("Bank Balance: $"+StatusControls.getMoney()+".");
+        // todo -- an updated Bank Balance onto the home screen! Now there's a static conflict- of course.
  //       HomeView.printBank();
     }
 }

@@ -17,7 +17,5 @@ public class Thirst extends SugarRecord {
     }
 
     public Thirst(Integer thirstLevel){
-        this.thirstLevel = thirstLevel;
-    }
-
+        this.thirstLevel = thirstLevel;}
 }
