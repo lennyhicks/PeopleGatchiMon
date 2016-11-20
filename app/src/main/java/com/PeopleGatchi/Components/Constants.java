@@ -24,7 +24,7 @@ public final class Constants {
             new Item("PinApple", 17, R.drawable.pineapple),
             new Item("Pretzel", 18, R.drawable.pretzel),
             new Item("Taco", 19, R.drawable.taco),
-            new Item("Watermelon", 20, R.drawable.watermelon),
+            new Item("Watermelon", 20, R.drawable.watermelon)
     };
 
     public static Item[] DRINKITEMS = new Item[] {
@@ -37,7 +37,7 @@ public final class Constants {
             new Item("Wine", 17, R.drawable.winebottle),
             new Item("Coffee Sm", 18, R.drawable.coffeetogo),
             new Item("Coffee Lg", 19, R.drawable.coffeepot),
-            new Item("Vodka", 20, R.drawable.vodka),
+            new Item("Vodka", 20, R.drawable.vodka)
     };
 
     public static Item[] OTHERITEMS = new Item[] {
@@ -50,7 +50,7 @@ public final class Constants {
             new Item("Cottage", 17, R.drawable.cottage),
             new Item("Med House", 18, R.drawable.germanhouse),
             new Item("Lg House", 19, R.drawable.church),
-            new Item("DIAMONDZ", 20, R.drawable.minecraftdiamond),
+            new Item("DIAMONDZ", 20, R.drawable.minecraftdiamond)
     };
 
 
