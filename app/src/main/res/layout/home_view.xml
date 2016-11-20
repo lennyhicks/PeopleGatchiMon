@@ -48,6 +48,7 @@
         android:id="@+id/bank_amount"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         android:paddingTop="10dp"
+        android:gravity="center"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"/>
 

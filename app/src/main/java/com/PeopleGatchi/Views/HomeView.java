@@ -99,6 +99,8 @@ public class HomeView extends RelativeLayout {
         poopBar.setProgress(StatusControls.getPooLevel());
         sleepBar.setProgress(StatusControls.getRestLevel());
 
+        bankAmount.setText("$"+StatusControls.getMoney());
+
         imageView.setImageResource(Utils.setHappinessImage());
     }
 
