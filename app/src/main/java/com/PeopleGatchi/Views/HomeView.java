@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.PeopleGatchi.Components.Constants;
 import com.PeopleGatchi.Dialogs.InventoryDialog;
@@ -97,6 +98,8 @@ public class HomeView extends RelativeLayout {
         peeBar.setProgress(StatusControls.getPeeLevel());
         poopBar.setProgress(StatusControls.getPooLevel());
         sleepBar.setProgress(StatusControls.getRestLevel());
+
+        bankAmount.setText("$"+StatusControls.getMoney());
 
         imageView.setImageResource(Utils.setHappinessImage());
     }
