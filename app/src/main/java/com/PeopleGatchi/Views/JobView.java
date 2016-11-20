@@ -19,7 +19,7 @@ import flow.Flow;
 /**
  * Created by eaglebrosi on 11/16/16.
  */
-// todo Eagle clean up your code!
+// todo gotta add time punishment to prevent spamming buttons!
 public class JobView extends LinearLayout {
     private Context context;
     public double bankBalance;
@@ -112,9 +112,5 @@ public class JobView extends LinearLayout {
         StatusControls.setMoney(payment);
         wheresTheMoney.setText("You were paid: $"+ payment+".");
         updateBank.setText("Bank Balance: $"+StatusControls.getMoney()+".");
-        // TODO so here's what I think we are gonna have to do- we need to actually write some
-        // todo--- code like HomeView.updateBank() that will look just like this function that puts
-        // todo -- an updated Bank Balance onto the home screen! Now there's a static conflict- of course.
- //       HomeView.printBank();
     }
 }
