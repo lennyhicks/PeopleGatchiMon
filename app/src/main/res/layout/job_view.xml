@@ -1,26 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.PeopleGatchi.Views.JobView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+                                android:layout_height="match_parent">
 
-    <Button
-        android:text="Button"
+    <TextView
+        android:text="Clear eyes \n full heart \n go to work."
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/button2"
-        style="@style/Widget.AppCompat.Button.Borderless" />
+        android:id="@+id/textView4"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp" />
 
     <Button
-        android:text="Button"
+        android:text="Manual Labor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/button3"
-        style="@style/Widget.AppCompat.Button.Borderless" />
+        android:id="@+id/labor_butt"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:background="@android:color/holo_purple"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="5dp"/>
 
     <Button
-        android:text="Button"
+        android:text="Engineer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/button4"
-        style="@style/Widget.AppCompat.Button.Borderless" />
-</LinearLayout>
+        android:id="@+id/engineer_butt"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:background="@android:color/holo_blue_bright"
+        android:layout_marginBottom="5dp"/>
+
+    <Button
+        android:text="Scientist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/science_butt"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:background="@android:color/holo_green_light"
+        android:layout_marginBottom="5dp"/>
+
+    <Button
+        android:text="Philospher"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/philo_butt"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:background="@android:color/holo_orange_dark" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:fabSize="mini"
+        app:srcCompat="@drawable/store"
+        android:id="@+id/go_home" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/money_laundering"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="5dp"
+        android:textSize="20sp"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bank_update"
+        android:textSize="20sp"
+        android:gravity="center"/>
+
+</com.PeopleGatchi.Views.JobView>
