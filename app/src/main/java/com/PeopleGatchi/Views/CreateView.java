@@ -46,8 +46,6 @@ public class CreateView extends LinearLayout {
         this.context = context;
     }
 
-
-
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
