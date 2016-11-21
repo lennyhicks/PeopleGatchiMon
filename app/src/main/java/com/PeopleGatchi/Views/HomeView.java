@@ -120,7 +120,7 @@ updateScreen();
             }
         },100,200);
 
-        bankAmount.setText("$" + StatusControls.getMoney());
+        bankAmount.setText("$" + BankControls.getMoney());
 
         imageView.setImageResource(Utils.setHappinessImage());
 
