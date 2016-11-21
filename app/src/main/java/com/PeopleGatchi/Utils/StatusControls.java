@@ -1,13 +1,19 @@
 package com.PeopleGatchi.Utils;
 
-import com.PeopleGatchi.Models.Persisting.Money;
 import com.PeopleGatchi.Models.Persisting.Happiness;
 import com.PeopleGatchi.Models.Persisting.Hunger;
 import com.PeopleGatchi.Models.Persisting.Hygiene;
+import com.PeopleGatchi.Models.Persisting.MathEd;
+import com.PeopleGatchi.Models.Persisting.Money;
 import com.PeopleGatchi.Models.Persisting.Pee;
+import com.PeopleGatchi.Models.Persisting.PhiloEd;
 import com.PeopleGatchi.Models.Persisting.Poo;
 import com.PeopleGatchi.Models.Persisting.Rest;
+import com.PeopleGatchi.Models.Persisting.ScienceEd;
 import com.PeopleGatchi.Models.Persisting.Thirst;
+
+import static com.PeopleGatchi.Utils.BankControls.money;
+import static com.orm.SugarRecord.findById;
 
 /**
  * Created by lennyhicks on 11/16/16.
@@ -21,8 +27,9 @@ public class StatusControls {
     static Thirst thirst = new Thirst(20);
     static Hygiene hygiene = new Hygiene(20);
     static Rest rest = new Rest(20);
-    static Money money = new Money(5);
-
+    static ScienceEd scienceEd = new ScienceEd();
+    static MathEd mathEd = new MathEd();
+    static PhiloEd philoEd = new PhiloEd();
 
     public static void setPooBladder(Integer bladderControl) {
         if(pooBladder == null) {
@@ -58,11 +65,11 @@ public class StatusControls {
         hunger.save();
     }
 
-    public static void setThirst(Integer thirstConrol){
+    public static void setThirst(Integer thirstControl){
         if(thirst == null) {
             thirst = new Thirst(20);
         }
-        thirst.thirstLevel += thirstConrol;
+        thirst.thirstLevel += thirstControl;
         thirst.save();
     }
 
@@ -82,24 +89,36 @@ public class StatusControls {
         rest.save();
     }
 
-    public static Integer getMoney() {
-        return money.money;
+
+
+    public static Integer getScienceEd(){
+        return scienceEd.sciEdLevel;
     }
 
-    public static Integer setMoney() {
-        //TODO Calculations need to happen here
-        return money.money;
+    public static void setScienceEd(Integer learning){
+        scienceEd.sciEdLevel += learning;
+        scienceEd.save();
+    }
+
+    public static Integer getMathEd(){
+        return mathEd.mathEdLevel;
+    }
+
+    public static void setMathEd(Integer learning){
+        mathEd.mathEdLevel += learning;
+        mathEd.save();
+    }
+
+    public static Integer getPhiloEd(){
+        return philoEd.philoEdLevel;
+    }
+
+    public static void setPhiloEd(Integer learning){
+        philoEd.philoEdLevel += learning;
+        philoEd.save();
     }
 
     public static Integer getLevels(){
-        happiness = Happiness.findById(Happiness.class, 1);
-
-        pooBladder = Poo.findById(Poo.class, 1);
-        peeBladder = Pee.findById(Pee.class, 1);
-        hunger = Hunger.findById(Hunger.class, 1);
-        thirst = Thirst.findById(Thirst.class, 1);
-        hygiene = Hygiene.findById(Hygiene.class, 1);
-        rest = Rest.findById(Rest.class, 1);
         happiness.happinessLevel =  getPeeLevel() +
                                     getPooLevel() +
                                     getHungerLevel() +
@@ -107,8 +126,6 @@ public class StatusControls {
                                     getHygieneLevel() +
                                     getRestLevel();
         return happiness.happinessLevel;
-
-
     }
 
     public static Integer getPooLevel(){
@@ -163,8 +180,10 @@ public class StatusControls {
         thirst = new Thirst(20);
         hygiene = new Hygiene(20);
         rest = new Rest(20);
-        money = new Money(5);
-
+        money = new Money(0);
+        scienceEd = new ScienceEd(0);
+        mathEd = new MathEd(0);
+        philoEd = new PhiloEd(0);
 
         pooBladder.save();
         peeBladder.save();
@@ -174,19 +193,24 @@ public class StatusControls {
         hygiene.save();
         rest.save();
         money.save();
+        scienceEd.save();
+        mathEd.save();
+        philoEd.save();
 
         updateLevels();
-//        getLevels();
     }
 
     public static void updateLevels(){
 
-
-        pooBladder = Poo.findById(Poo.class, 1);
-        peeBladder = Pee.findById(Pee.class, 1);
-        hunger = Hunger.findById(Hunger.class, 1);
-        thirst = Thirst.findById(Thirst.class, 1);
-        hygiene = Hygiene.findById(Hygiene.class, 1);
-        rest = Rest.findById(Rest.class, 1);
+        pooBladder = findById(Poo.class, 1);
+        peeBladder = findById(Pee.class, 1);
+        hunger = findById(Hunger.class, 1);
+        thirst = findById(Thirst.class, 1);
+        hygiene = findById(Hygiene.class, 1);
+        rest = findById(Rest.class, 1);
+        money = findById(Money.class, 1);
+        mathEd = MathEd.findById(MathEd.class, 1);
+        scienceEd = findById(ScienceEd.class, 1);
+        philoEd = findById(PhiloEd.class, 1);
     }
 }

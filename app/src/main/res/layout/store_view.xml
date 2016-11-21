@@ -1,17 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="wrap_content"
     android:layout_height="match_parent" android:background="@android:color/white">
 
+    <TabHost
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_below="@+id/storeTitle"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="30dp"
+        android:id="@+id/storeTabHost">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center">
+
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/drinks"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <GridView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/drink_grid"
+                        android:numColumns="2"
+                        >
+
+                    </GridView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/food"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <GridView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/food_grid"
+                        android:numColumns="2"
+
+                        >
+
+                    </GridView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/items"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <GridView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/item_grid"
+                        android:numColumns="2"
+                        >
+
+                    </GridView>
+                </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+    </TabHost>
+
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Store"/>
+        android:text="Store"
+        android:textSize="26sp"
+        android:id="@+id/storeTitle"
+        android:textAlignment="center"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="13dp"/>
 
-    <android.support.v7.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/recycler_view"
-        android:scrollbars="vertical"/>
-
-</LinearLayout>
+</RelativeLayout>

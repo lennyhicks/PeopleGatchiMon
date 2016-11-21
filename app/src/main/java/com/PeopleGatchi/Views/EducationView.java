@@ -5,10 +5,11 @@ import android.support.design.widget.FloatingActionButton;
 import android.util.AttributeSet;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.PeopleGatchi.PeopleGatchiApplication;
 import com.PeopleGatchi.R;
+import com.PeopleGatchi.Utils.StatusControls;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -20,8 +21,6 @@ import flow.Flow;
  */
 public class EducationView extends LinearLayout {
     private Context context;
-    public static int sciEdScore;
-    public static int mathEdScore;
     private Flow flow;
 
     @Bind(R.id.increase_science)
@@ -30,8 +29,20 @@ public class EducationView extends LinearLayout {
     @Bind(R.id.increase_math)
     Button increaseMath;
 
+    @Bind(R.id.increase_philo)
+    Button increasePhilo;
+
     @Bind(R.id.home_button)
     FloatingActionButton homeButton;
+
+    @Bind(R.id.science_score)
+    TextView scienceLevel;
+
+    @Bind(R.id.math_score)
+    TextView mathLevel;
+
+    @Bind(R.id.philo_score)
+    TextView philoLevel;
 
     public EducationView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -42,6 +53,8 @@ public class EducationView extends LinearLayout {
     protected void onFinishInflate(){
         super.onFinishInflate();
         ButterKnife.bind(this);
+
+        pokeStats();
 //
 //        EventBus.getDefault().register(this);
     }
@@ -52,10 +65,8 @@ public class EducationView extends LinearLayout {
 //        Utils.addTime();
         // sometimes you learns betters then others.
         int increase= ((int)(Math.random()*5)+1);
-        sciEdScore += increase;
-        Toast.makeText(context, "You got smarterer by " + increase, Toast.LENGTH_SHORT).show();
-        // this is just to see if it's increasing. TODO get rid of this if it's working.
-        Toast.makeText(context, "Your science score is now :"+ sciEdScore, Toast.LENGTH_SHORT).show();
+        StatusControls.setScienceEd(increase);
+        pokeStats();
     }
 
     @OnClick(R.id.increase_math)
@@ -64,10 +75,18 @@ public class EducationView extends LinearLayout {
 //        Utils.addTime();
         // sometimes you learns betters then others.
         int increase= ((int)(Math.random()*5)+1);
-        mathEdScore += increase;
-        Toast.makeText(context, "You got smarterer by " + increase, Toast.LENGTH_SHORT).show();
-        // this is just to see if it's increasing. TODO get rid of this if it's working.
-        Toast.makeText(context, "Your maths score is now :"+ mathEdScore, Toast.LENGTH_SHORT).show();
+        StatusControls.setMathEd(increase);
+        pokeStats();
+    }
+
+    @OnClick(R.id.increase_philo)
+    public void changePhilo(){
+        //time passes when being taught.
+//        Utils.addTime();
+        // sometimes you learns betters then others.
+        int increase= ((int)(Math.random()*5)+1);
+        StatusControls.setPhiloEd(increase);
+        pokeStats();
     }
 
     @OnClick(R.id.home_button)
@@ -75,6 +94,11 @@ public class EducationView extends LinearLayout {
         flow = PeopleGatchiApplication.getMainFlow();
         //History newHistory = History.single(new HomeStage());
         flow.goBack();
+    }
 
+    public void pokeStats(){
+        philoLevel.setText("Your Philosophy Score is: "+ StatusControls.getPhiloEd());
+        mathLevel.setText("Your Maths score is: "+ StatusControls.getMathEd());
+        scienceLevel.setText("Your Science score is: "+ StatusControls.getScienceEd());
     }
 }

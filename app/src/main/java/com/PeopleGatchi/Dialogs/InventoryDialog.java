@@ -2,16 +2,19 @@ package com.PeopleGatchi.Dialogs;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
+import com.PeopleGatchi.Models.Item;
 import com.PeopleGatchi.R;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import com.PeopleGatchi.Utils.InventoryControls;
+import com.PeopleGatchi.Utils.Utils;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -26,36 +29,11 @@ public class InventoryDialog extends Dialog{
 
     @Bind(inventory_grid)
     GridView gridView;
-    String[] from = { "flag","txt"};
+    String[] from = { "resource","name"};
+    Item[] items;
+    int[] to = { R.id.inventory_img,R.id.inventory_name};
+    SimpleAdapter adapter;
 
-    String[] countries = new String[] {
-            "Item 1",
-            "Item 2",
-            "Item 3",
-            "Item 4",
-            "Item 5",
-            "Item 6",
-            "Item 7",
-            "Item 8",
-            "Item 9",
-            "Item 10"
-
-    };
-
-    // Array of integers points to images stored in /res/drawable-ldpi/
-    int[] flags = new int[]{
-            R.drawable.cat,
-            R.drawable.cheburashka,
-            R.drawable.stomach,
-            R.drawable.cheburashka,
-            R.drawable.cat,
-            R.drawable.cheburashka,
-            R.drawable.stomach,
-            R.drawable.cheburashka,
-            R.drawable.cat,
-            R.drawable.cheburashka
-    };
-    public int [] images = {R.drawable.cat, R.drawable.cheburashka, R.drawable.hachiko};
     private Context context;
 
     public InventoryDialog(Context context) {
@@ -72,27 +50,30 @@ public class InventoryDialog extends Dialog{
 
         ButterKnife.bind(this);
 
-        List<HashMap<String,String>> aList = new ArrayList<>();
 
-        for(int i=0;i<10;i++){
-            HashMap<String, String> hm = new HashMap<>();
-            hm.put("txt", countries[i]);
-            hm.put("flag", Integer.toString(flags[i]) );
-            aList.add(hm);
-        }
+        refreshItems();
 
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(context, "You tapped " + items[i].getName(), Toast.LENGTH_SHORT).show();
+                InventoryControls.useItem(items[i]);
+                refreshItems();
+                final StoreDialog inventoryDialog = new StoreDialog(context);
+                inventoryDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                    @Override
+                    public void onDismiss(DialogInterface dialog) {
 
-        int[] to = { R.id.inventory_img,R.id.inventory_name};
-        SimpleAdapter adapter = new SimpleAdapter(context, aList, R.layout.inventory_item, from, to);
+                    }
+                });
+                inventoryDialog.show();
+            }
+        });
+    }
+
+    private void refreshItems(){
+        items = InventoryControls.getInventory().toArray(new Item[InventoryControls.getInventory().size()]);
+        adapter = new SimpleAdapter(context, Utils.inventoryHashMap(items), R.layout.inventory_item, from, to);
         gridView.setAdapter(adapter);
-
-
-//        InventoryAdapter adapter = new InventoryAdapter(new ArrayList<Item>(),context);
-//        gridView.setAdapter(adapter);
-
-
-
-        }
-
-
+    }
 }

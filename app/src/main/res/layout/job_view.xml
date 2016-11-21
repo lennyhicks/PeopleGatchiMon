@@ -10,7 +10,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/textView4"
         android:gravity="center"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        android:layout_marginTop="20dp" />
 
     <Button
         android:text="Manual Labor"
@@ -19,7 +20,7 @@
         android:id="@+id/labor_butt"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:background="@android:color/holo_purple"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="50dp"
         android:layout_marginBottom="5dp"/>
 
     <Button
@@ -37,7 +38,16 @@
         android:layout_height="wrap_content"
         android:id="@+id/science_butt"
         style="@style/Widget.AppCompat.Button.Borderless"
-        android:background="@android:color/holo_green_light" />
+        android:background="@android:color/holo_green_light"
+        android:layout_marginBottom="5dp"/>
+
+    <Button
+        android:text="Philospher"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/philo_butt"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:background="@android:color/holo_orange_dark" />
 
     <android.support.design.widget.FloatingActionButton
         android:layout_width="match_parent"
@@ -46,5 +56,21 @@
         app:fabSize="mini"
         app:srcCompat="@drawable/store"
         android:id="@+id/go_home" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/money_laundering"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="5dp"
+        android:textSize="20sp"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bank_update"
+        android:textSize="20sp"
+        android:gravity="center"/>
 
 </com.PeopleGatchi.Views.JobView>
