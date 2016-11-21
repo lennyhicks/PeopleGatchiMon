@@ -25,6 +25,7 @@ public class JobView extends LinearLayout {
     public double bankBalance;
     private Flow flow;
 
+
     @Bind(R.id.labor_butt)
     Button labor;
 
@@ -62,8 +63,10 @@ public class JobView extends LinearLayout {
         int payment = ((int) (Math.random() * 20) + 10);
         // let them know they're getting paid for X amount of work.
         Toast.makeText(context, "You were paid $" + payment + ".", Toast.LENGTH_SHORT).show();
+        StatusControls.setMoney(payment);
         // Shows the user their Updated bank balance after payment added.
-        Toast.makeText(context, "Your bank balance is now $$$" + StatusControls.getMoney() + ".", Toast.LENGTH_LONG).show();
+        bankBalance = StatusControls.getMoney();
+        Toast.makeText(context, "Your bank balance is now $$$" + bankBalance + ".", Toast.LENGTH_LONG).show();
         //Actually retrieving the updated value.
         int newMoney= StatusControls.getMoney() + payment;
         //StatusControls.setMoney(newMoney);
@@ -82,7 +85,7 @@ public class JobView extends LinearLayout {
         // puts the payment into the bank.
         StatusControls.setMoney(payment);
         // Shows the user their Updated bank balance after payment added.
-        Toast.makeText(context, "Your bank balance is now $$$" + StatusControls.getMoney() + ".", Toast.LENGTH_LONG).show();
+        Toast.makeText(context, "Your bank balance is now $$$" + bankBalance + ".", Toast.LENGTH_LONG).show();
     }
 
     @OnClick(R.id.science_butt)
