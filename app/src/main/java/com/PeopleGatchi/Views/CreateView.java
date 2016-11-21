@@ -10,8 +10,9 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 
 import com.PeopleGatchi.PeopleGatchiApplication;
-import com.PeopleGatchi.R;
+import com.PeopleGatchi.R;Dudd
 import com.PeopleGatchi.Stages.HomeStage;
+import com.PeopleGatchi.Utils.StatusControls;
 
 import java.util.ArrayList;
 
@@ -62,12 +63,17 @@ public class CreateView extends LinearLayout {
         ArrayList<String> categories = new ArrayList<>();
         categories.add("cis female");
         categories.add("cis male");
-        categories.add("non-confirming");
+        categories.add("non-conforming");
 
-        ArrayAdapter<String> adapter = new ArrayAdapter(context, android.R.layout.simple_spinner_item, categories);
+        ArrayAdapter<String> adapter = new ArrayAdapter(context, android.R.layout.simple_spinner_item,
+                categories);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         chooseGender.setAdapter(adapter);
+
+        String gender = chooseGender.getSelectedItem().toString();
+
+        StatusControls.setGender(gender);
     }
 
 //    public void onItemSelected(AdapterView<?> parent, View view, int position){
@@ -86,7 +92,9 @@ public class CreateView extends LinearLayout {
         imm.hideSoftInputFromWindow(pickName.getWindowToken(), 0);
 
         // gets the value from the text field and sets it.
-       // setPetName = pickName.getText().toString();
+       String pokeName = pickName.getText().toString();
+
+        StatusControls.setName(pokeName);
 
        // Toast.makeText(context, "You named you baby "+ getPetName, Toast.LENGTH_SHORT).show();
 
