@@ -97,19 +97,18 @@ public class HomeView extends RelativeLayout {
         StatusControls.firstRun();
 
         imageView.setImageResource(Utils.setHappinessImage());
-
+updateScreen();
         new Timer().scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-
                 foodBar.setProgress(StatusControls.getHungerLevel());
                 drinkBar.setProgress(StatusControls.getHygieneLevel());
                 hygieneBar.setProgress(StatusControls.getThirstLevel());
                 peeBar.setProgress(StatusControls.getPeeLevel());
                 poopBar.setProgress(StatusControls.getPooLevel());
                 sleepBar.setProgress(StatusControls.getRestLevel());
-                bankAmount.setText("$"+StatusControls.getMoney());
-                imageView.setImageResource(Utils.setHappinessImage());
+//                bankAmount.setText("$"+StatusControls.getMoney());
+//                imageView.setImageResource(Utils.setHappinessImage());
             }
         },100,200);
 
@@ -241,5 +240,9 @@ public class HomeView extends RelativeLayout {
 
     public void printBank(){
         bankAmount.setText("Bank Balance: $"+StatusControls.getMoney()+".");
+    }
+
+    public void updateScreen(){
+
     }
 }
