@@ -154,14 +154,15 @@ public class HomeView extends RelativeLayout {
     }
 
     @OnClick(R.id.hygiene_bar)
-    public void cleanPet(){
+    public void cleanPet() {
         int cleanBaby = Utils.getRand(StatusControls.getHygieneLevel());
         StatusControls.setHygiene(cleanBaby);
-        if(cleanBaby == 20) {
+        if (cleanBaby == 20) {
             Toast.makeText(context, "You cant get any cleaner..!", Toast.LENGTH_SHORT).show();
-        }else{
+        } else {
             Toast.makeText(context, "Yay, so fresh and so clean clean!! \n your Hygiene level has increased by: " + cleanBaby, Toast.LENGTH_SHORT).show();
 
+        }
     }
 
     @OnClick(R.id.pee_bar)
@@ -169,7 +170,6 @@ public class HomeView extends RelativeLayout {
         int drainPet = Utils.getRand(StatusControls.getPeeLevel());
         StatusControls.setPeeBladder(drainPet);
         Toast.makeText(context, "Yay, we made a pee-pee, Yay!!! \n your pee-pee level has been relieved by: " + drainPet, Toast.LENGTH_SHORT).show();
-        update();
     }
 
     @OnClick(R.id.poop_bar)

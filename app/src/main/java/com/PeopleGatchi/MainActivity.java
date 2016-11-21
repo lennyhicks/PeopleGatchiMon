@@ -3,6 +3,7 @@ package com.PeopleGatchi;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.RelativeLayout;
 
@@ -24,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     private Flow flow;
     private ScreenplayDispatcher dispatcher;
     private SharedPreferences peoplegatchiPrefs;
+    private Handler handler;
+    private Runnable handlerTask;
 
     @Bind(R.id.container)
     RelativeLayout container;
@@ -41,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
 
         SugarContext.init(getApplicationContext());
         StatusControls.firstRun();
+
+        decreaseStats();
 
         try {
             flow = PeopleGatchiApplication.getMainFlow();
@@ -77,6 +82,31 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         SugarContext.terminate();
         super.onDestroy();
+    }
+
+    public void decreaseStats(){
+       // newMethod();
+        handler = new Handler();
+            handlerTask = new Runnable()
+            {
+                @Override
+                public void run() {
+
+                    StatusControls.setHunger(-20);
+                    StatusControls.setThirst(-20);
+                    StatusControls.setHygiene(-20);
+                    StatusControls.setRest(-20);
+                    StatusControls.setPeeBladder(-20);
+                    StatusControls.setPooBladder(-20);
+                    handler.postDelayed(handlerTask, 2000);
+                }
+            };
+            handlerTask.run();
+    }
+    public void newMethod(){
+        if(StatusControls.getHungerLevel() < 0){
+            //placeholderMethod();
+        }
     }
 }
 
