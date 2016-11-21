@@ -21,6 +21,4 @@ public class Happiness extends SugarRecord {
 
         this.happinessLevel = happinessLevel;
     }
-
-
 }

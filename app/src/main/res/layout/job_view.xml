@@ -57,4 +57,20 @@
         app:srcCompat="@drawable/store"
         android:id="@+id/go_home" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/money_laundering"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="5dp"
+        android:textSize="20sp"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bank_update"
+        android:textSize="20sp"
+        android:gravity="center"/>
+
 </com.PeopleGatchi.Views.JobView>

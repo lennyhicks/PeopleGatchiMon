@@ -108,6 +108,8 @@ public class HomeView extends RelativeLayout {
                 peeBar.setProgress(StatusControls.getPeeLevel());
                 poopBar.setProgress(StatusControls.getPooLevel());
                 sleepBar.setProgress(StatusControls.getRestLevel());
+                bankAmount.setText("$"+StatusControls.getMoney());
+                imageView.setImageResource(Utils.setHappinessImage());
             }
         },100,200);
 
@@ -178,6 +180,7 @@ public class HomeView extends RelativeLayout {
        // StatusControls.updatePooBladder(dumpSize);
     }
 
+    // TODO does this need to be in here. It's probably my fault that it exist.
     @OnClick(R.id.bank_amount)
     public void bankTotal(){
 
@@ -236,19 +239,7 @@ public class HomeView extends RelativeLayout {
 
     }
 
-
-    Runnable runnable = new Runnable()
-    {
-        @Override
-        public void run()
-        {
-            foodBar.setProgress(StatusControls.getHungerLevel());
-            drinkBar.setProgress(StatusControls.getHygieneLevel());
-            hygieneBar.setProgress(StatusControls.getThirstLevel());
-            peeBar.setProgress(StatusControls.getPeeLevel());
-            poopBar.setProgress(StatusControls.getPooLevel());
-            sleepBar.setProgress(StatusControls.getRestLevel());
-        }
-    };
-
+    public void printBank(){
+        bankAmount.setText("Bank Balance: $"+StatusControls.getMoney()+".");
+    }
 }
