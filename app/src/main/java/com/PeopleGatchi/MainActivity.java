@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private String TAG = "MainActivity";
     private Flow flow;
     private ScreenplayDispatcher dispatcher;
-    private SharedPreferences peoplegatchiPrefs;
+    public static SharedPreferences peoplegatchiPrefs;
 
     @Bind(R.id.container)
     RelativeLayout container;

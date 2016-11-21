@@ -243,7 +243,7 @@ public class HomeView extends RelativeLayout {
     }
 
     public void updateScreen(){
-        bankAmount.setText("$"+BankControls.getMoney());
+        bankAmount.setText("$"+ BankControls.getMoney());
         imageView.setImageResource(Utils.setHappinessImage());
     }
 }
