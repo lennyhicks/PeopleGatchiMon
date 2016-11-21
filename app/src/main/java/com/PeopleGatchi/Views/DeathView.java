@@ -6,6 +6,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.PeopleGatchi.PeopleGatchiApplication;
 import com.PeopleGatchi.R;
 import com.PeopleGatchi.Stages.CreateStage;
 import com.PeopleGatchi.Utils.StatusControls;
@@ -22,7 +23,7 @@ import flow.History;
 
 public class DeathView extends LinearLayout {
     private Context context;
-    private Flow flow;
+
 
     @Bind(R.id.death_text)
     TextView condolences;
@@ -45,6 +46,7 @@ public class DeathView extends LinearLayout {
 
     @OnClick(R.id.play_again)
     public void playAgain(){
+        Flow flow = PeopleGatchiApplication.getMainFlow();
         History newHistory = History.single(new CreateStage());
         flow.setHistory(newHistory, Flow.Direction.REPLACE);
     }

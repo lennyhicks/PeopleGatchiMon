@@ -1,13 +1,11 @@
 package com.PeopleGatchi.Models;
 
-import android.content.SharedPreferences;
-
+import com.PeopleGatchi.PeopleGatchiApplication;
 import com.PeopleGatchi.Stages.DeathStage;
 
 import flow.Flow;
 import flow.History;
 
-import static com.PeopleGatchi.MainActivity.peoplegatchiPrefs;
 import static com.PeopleGatchi.Utils.StatusControls.happiness;
 
 /**
@@ -16,18 +14,18 @@ import static com.PeopleGatchi.Utils.StatusControls.happiness;
 
 public class Death {
 
-    private Flow flow;
 
     public void isDead () {
 
         if (happiness.happinessLevel <= 5) {
-            SharedPreferences.Editor editor = peoplegatchiPrefs.edit();
-            editor.putBoolean("firstRun", true);
-            editor.apply();
-
-            //TODO UPDATE THIS TO THE DEATH STAGE!!!
-            History newHistory = History.single(new DeathStage());
+           Flow flow = PeopleGatchiApplication.getMainFlow();
+            History newHistory = flow.getHistory()
+                    .buildUpon()
+                    .push(new DeathStage())
+                    .build();
             flow.setHistory(newHistory, Flow.Direction.FORWARD);
+        } else {
+            return;
         }
     }
 }

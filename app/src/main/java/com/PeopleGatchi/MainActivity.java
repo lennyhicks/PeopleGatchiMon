@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private String TAG = "MainActivity";
     private Flow flow;
     private ScreenplayDispatcher dispatcher;
-    private SharedPreferences peoplegatchiPrefs;
+    public static SharedPreferences peoplegatchiPrefs;
     private Handler handler;
     private Runnable handlerTask;
 
@@ -92,12 +92,12 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void run() {
 
-                    StatusControls.setHunger(-20);
-                    StatusControls.setThirst(-20);
-                    StatusControls.setHygiene(-20);
-                    StatusControls.setRest(-20);
-                    StatusControls.setPeeBladder(-20);
-                    StatusControls.setPooBladder(-20);
+                    StatusControls.setHunger(-2);
+                    StatusControls.setThirst(-2);
+                    StatusControls.setHygiene(-2);
+                    StatusControls.setRest(-2);
+                    StatusControls.setPeeBladder(-2);
+                    StatusControls.setPooBladder(-2);
                     handler.postDelayed(handlerTask, 2000);
                 }
             };
