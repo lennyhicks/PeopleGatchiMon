@@ -24,9 +24,6 @@ import com.PeopleGatchi.Utils.Utils;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -256,9 +253,10 @@ public class HomeView extends RelativeLayout {
 
     public void updateScreen(){
         bankAmount.setText("$"+BankControls.getMoney());
-        imageView.setImageResource(
+        imageView.setImageResource(Utils.setHappinessImage());
 
     }
+
 
 
     public void setClock(TextView clock) {
@@ -271,9 +269,5 @@ public class HomeView extends RelativeLayout {
         date = dateFormat.format(calendar.getTime());
         clock.setText(date);
 
-
-
-        bankAmount.setText("$"+BankControls.getMoney());
-        imageView.setImageResource(Utils.setHappinessImage());
     }
 }
