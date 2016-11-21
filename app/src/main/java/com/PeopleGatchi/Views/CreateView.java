@@ -62,7 +62,7 @@ public class CreateView extends LinearLayout {
         ArrayList<String> categories = new ArrayList<>();
         categories.add("cis female");
         categories.add("cis male");
-        categories.add("non-confirming");
+        categories.add("non-conforming");
 
         ArrayAdapter<String> adapter = new ArrayAdapter(context, android.R.layout.simple_spinner_item, categories);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

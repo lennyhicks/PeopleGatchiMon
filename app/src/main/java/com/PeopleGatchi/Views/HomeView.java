@@ -21,6 +21,9 @@ import com.PeopleGatchi.Utils.InventoryControls;
 import com.PeopleGatchi.Utils.StatusControls;
 import com.PeopleGatchi.Utils.Utils;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -33,6 +36,7 @@ import flow.History;
 
 public class HomeView extends RelativeLayout {
     private Flow flow;
+    private String date;
 
     private Context context;
 
@@ -99,13 +103,15 @@ public class HomeView extends RelativeLayout {
         poopBar.setProgress(StatusControls.getPooLevel());
         sleepBar.setProgress(StatusControls.getRestLevel());
 
-        bankAmount.setText("$"+StatusControls.getMoney());
+        bankAmount.setText("$" + StatusControls.getMoney());
 
         imageView.setImageResource(Utils.setHappinessImage());
+
+        setClock(clock);
     }
 
     @OnClick(R.id.food_bar)
-    public void feedPet(){
+    public void feedPet() {
         //int foodAmount = ((int)(Math.round(Math.random() *15 ) +5));
         int foodAmount = Utils.getRand(StatusControls.getPooLevel());
         StatusControls.setPooBladder(-foodAmount);
@@ -113,7 +119,7 @@ public class HomeView extends RelativeLayout {
     }
 
     @OnClick(R.id.drink_bar)
-    public void waterPet(){
+    public void waterPet() {
         //int drinkAmount = ((int)(Math.round(Math.random() *15 ) +5));
         //int drinkAmount = Utils.getRand(15) + 5;
         int drinkAmount = Utils.getRand(StatusControls.getThirstLevel());
@@ -122,7 +128,7 @@ public class HomeView extends RelativeLayout {
     }
 
     @OnClick(R.id.sleep_bar)
-    public void restPet(){
+    public void restPet() {
         //int sleepyTime = ((int)(Math.round(Math.random() *15 ) +5));
         //int sleepyTime = Utils.getRand(15) + 5;
         int sleepyTime = Utils.getRand(StatusControls.getRestLevel());
@@ -131,12 +137,12 @@ public class HomeView extends RelativeLayout {
     }
 
     @OnClick(R.id.image_view)
-    public void happinessView(){
+    public void happinessView() {
 
     }
 
     @OnClick(R.id.hygiene_bar)
-    public void cleanPet(){
+    public void cleanPet() {
         //int cleanBaby = ((int)(Math.round(Math.random() *15 ) +5));
         //int cleanBaby = Utils.getRand(15) + 5;
         int cleanBaby = Utils.getRand(StatusControls.getHygieneLevel());
@@ -146,8 +152,8 @@ public class HomeView extends RelativeLayout {
     }
 
     @OnClick(R.id.pee_bar)
-    public void drainPet(){
-    //int peeAmount = ((int)(Math.round(Math.random() *15 ) +5));
+    public void drainPet() {
+        //int peeAmount = ((int)(Math.round(Math.random() *15 ) +5));
         //int drainPet = Utils.getRand(15) + 5;
         int drainPet = Utils.getRand(StatusControls.getPeeLevel());
         StatusControls.setPeeBladder(-drainPet);
@@ -155,38 +161,38 @@ public class HomeView extends RelativeLayout {
     }
 
     @OnClick(R.id.poop_bar)
-    public void pottyPet(){
-       //int dumpSize = (int)(Math.round(Math.random() * 15 )+5);
+    public void pottyPet() {
+        //int dumpSize = (int)(Math.round(Math.random() * 15 )+5);
         //int dumpSize = Utils.getRand(15) + 5;
         int dumpSize = Utils.getRand(StatusControls.getPooLevel());
         StatusControls.setPooBladder(-dumpSize);
-        if(dumpSize == 20){
+        if (dumpSize == 20) {
             Toast.makeText(context, "HOLY COW, You just dropped a bigfoot!!! And now you're dead. \n your poo level has been relieved by: " + dumpSize, Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(context, "That was a sweet sweet #2!" + dumpSize, Toast.LENGTH_SHORT).show();
             //       Status.poo(dumpSize);
         }
-       // StatusControls.updatePooBladder(dumpSize);
+        // StatusControls.updatePooBladder(dumpSize);
     }
 
     // TODO does this need to be in here. It's probably my fault that it exist.
     @OnClick(R.id.bank_amount)
-    public void bankTotal(){
+    public void bankTotal() {
 
     }
 
     @OnClick(R.id.fastforward_button)
-    public void increaseTime(){
+    public void increaseTime() {
 
     }
 
     @OnClick(R.id.clock)
-    public void clock(){
+    public void clock() {
 
     }
 
     @OnClick(R.id.store_button)
-    public void goToStore(){
+    public void goToStore() {
 
         final StoreDialog storeDialog = new StoreDialog(context);
         storeDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
@@ -199,7 +205,7 @@ public class HomeView extends RelativeLayout {
     }
 
     @OnClick(R.id.inventory_button)
-    public void goToInventory(){
+    public void goToInventory() {
         InventoryControls.addItem(Constants.FOODITEMS[1]);
 
         final InventoryDialog inventoryDialog = new InventoryDialog(context);
@@ -215,19 +221,34 @@ public class HomeView extends RelativeLayout {
     }
 
     @OnClick(R.id.education_button)
-    public void goToSchool(){
+    public void goToSchool() {
         History newHistory = flow.getHistory().buildUpon().push(new EducationStage()).build();
         flow.setHistory(newHistory, Flow.Direction.FORWARD);
 
     }
 
     @OnClick(R.id.work_button)
-    public void goToWork(){
+    public void goToWork() {
         History newHistory = flow.getHistory().buildUpon().push(new JobStage()).build();
         flow.setHistory(newHistory, Flow.Direction.FORWARD);
     }
 
-    public void printBank(){
-        bankAmount.setText("Bank Balance: $"+StatusControls.getMoney()+".");
+    public void printBank() {
+        bankAmount.setText("Bank Balance: $" + StatusControls.getMoney() + ".");
+    }
+
+
+    public void setClock(TextView clock) {
+        this.clock = clock;
+
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("h:mm a");
+        calendar.add(Calendar.HOUR, 1);
+        calendar.add(Calendar.MINUTE, 30);
+        date = dateFormat.format(calendar.getTime());
+        clock.setText(date);
+
+
+
     }
 }
