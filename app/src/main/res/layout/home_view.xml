@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<com.PeopleGatchi.Views.HomeView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                                  xmlns:app="http://schemas.android.com/apk/res-auto"
                                  android:orientation="vertical" android:layout_width="match_parent"
                                  android:layout_height="match_parent">
@@ -82,8 +82,8 @@
 
             <ImageView
                 android:id="@+id/character_iv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
                 android:background="@drawable/hp_cat"
                 android:layout_marginLeft="200dp"
                 android:layout_marginTop="200dp"
@@ -259,4 +259,4 @@
     </RelativeLayout>
 
 
-</com.PeopleGatchi.Views.HomeView>
+</RelativeLayout>

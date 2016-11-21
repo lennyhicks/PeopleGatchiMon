@@ -21,6 +21,9 @@ import com.PeopleGatchi.Utils.InventoryControls;
 import com.PeopleGatchi.Utils.StatusControls;
 import com.PeopleGatchi.Utils.Utils;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -92,16 +95,21 @@ public class HomeView extends RelativeLayout {
         flow = PeopleGatchiApplication.getMainFlow();
 
         StatusControls.firstRun();
-        foodBar.setProgress(StatusControls.getHungerLevel());
-        drinkBar.setProgress(StatusControls.getHygieneLevel());
-        hygieneBar.setProgress(StatusControls.getThirstLevel());
-        peeBar.setProgress(StatusControls.getPeeLevel());
-        poopBar.setProgress(StatusControls.getPooLevel());
-        sleepBar.setProgress(StatusControls.getRestLevel());
-
-        Toast.makeText(context, StatusControls.getPooLevel()+ "", Toast.LENGTH_LONG).show();
 
         imageView.setImageResource(Utils.setHappinessImage());
+
+        new Timer().scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+
+                foodBar.setProgress(StatusControls.getHungerLevel());
+                drinkBar.setProgress(StatusControls.getHygieneLevel());
+                hygieneBar.setProgress(StatusControls.getThirstLevel());
+                peeBar.setProgress(StatusControls.getPeeLevel());
+                poopBar.setProgress(StatusControls.getPooLevel());
+                sleepBar.setProgress(StatusControls.getRestLevel());
+            }
+        },100,200);
 
     }
 
@@ -164,7 +172,7 @@ public class HomeView extends RelativeLayout {
         if(dumpSize == 20){
             Toast.makeText(context, "HOLY COW, You just dropped a bigfoot!!! And now you're dead. \n your poo level has been relieved by: " + dumpSize, Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(context, "That was a sweet sweet #2!" + dumpSize, Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "That was a sweet sweet #2! " + dumpSize, Toast.LENGTH_SHORT).show();
             //       Status.poo(dumpSize);
         }
        // StatusControls.updatePooBladder(dumpSize);
@@ -227,5 +235,20 @@ public class HomeView extends RelativeLayout {
         flow.setHistory(newHistory, Flow.Direction.FORWARD);
 
     }
+
+
+    Runnable runnable = new Runnable()
+    {
+        @Override
+        public void run()
+        {
+            foodBar.setProgress(StatusControls.getHungerLevel());
+            drinkBar.setProgress(StatusControls.getHygieneLevel());
+            hygieneBar.setProgress(StatusControls.getThirstLevel());
+            peeBar.setProgress(StatusControls.getPeeLevel());
+            poopBar.setProgress(StatusControls.getPooLevel());
+            sleepBar.setProgress(StatusControls.getRestLevel());
+        }
+    };
 
 }
