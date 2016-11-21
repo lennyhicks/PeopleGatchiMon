@@ -16,7 +16,9 @@ import java.util.Random;
 public class Utils {
 
     public static Integer getRand(Integer max){
-        max = Constants.MAX_LEVEL - max;
+        if (max > 0) {
+            max = Constants.MAX_LEVEL - max;
+        }
       Random r = new Random();
         return r.nextInt(max + 1);
 

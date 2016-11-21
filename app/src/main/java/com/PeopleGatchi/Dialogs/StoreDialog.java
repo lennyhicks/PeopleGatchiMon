@@ -148,6 +148,7 @@ public class StoreDialog extends Dialog{
 
         if (BankControls.getMoney() > item.getPrice()) {
             if (InventoryControls.getSize() < 40) {
+                BankControls.setMoney(-item.getPrice());
                 Toast.makeText(context, "You Bought: " + item.getName() + " Cost: " + item.getPrice(), Toast.LENGTH_SHORT).show();
             InventoryControls.addItem(item);
         } else {
