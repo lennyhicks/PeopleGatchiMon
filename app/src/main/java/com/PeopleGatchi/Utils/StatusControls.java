@@ -11,7 +11,9 @@ import com.PeopleGatchi.Models.Persisting.Poo;
 import com.PeopleGatchi.Models.Persisting.Rest;
 import com.PeopleGatchi.Models.Persisting.ScienceEd;
 import com.PeopleGatchi.Models.Persisting.Thirst;
+import com.PeopleGatchi.Models.Persisting.User;
 
+import static com.PeopleGatchi.Utils.BankControls.money;
 import static com.orm.SugarRecord.findById;
 
 /**
@@ -26,10 +28,11 @@ public class StatusControls {
     static Thirst thirst = new Thirst(20);
     static Hygiene hygiene = new Hygiene(20);
     static Rest rest = new Rest(20);
-    static Money money = new Money();
     static ScienceEd scienceEd = new ScienceEd();
     static MathEd mathEd = new MathEd();
     static PhiloEd philoEd = new PhiloEd();
+    static User name = new User();
+    static User gender = new User();
 
     public static void setPooBladder(Integer bladderControl) {
         if(pooBladder == null) {
@@ -89,15 +92,24 @@ public class StatusControls {
         rest.save();
     }
 
-    public static Integer getMoney() {
-        return money.moneyLevel;
+
+
+    public static String getName(){
+        return name.pokeName;
     }
 
-    public static void setMoney(Integer payment) {
-        //TODO Calculations need to happen here
+    public static void setName(String inputName){
+        name.pokeName = inputName;
+        name.save();
+    }
 
-        money.moneyLevel += payment;
-        money.save();
+    public static String getGender(){
+        return gender.pokeGender;
+    }
+
+    public static void setGender(String genderChoice){
+        gender.pokeGender = genderChoice;
+        gender.save();
     }
 
     public static Integer getScienceEd(){
@@ -193,6 +205,9 @@ public class StatusControls {
         scienceEd = new ScienceEd(0);
         mathEd = new MathEd(0);
         philoEd = new PhiloEd(0);
+        name = new User();
+        gender = new User();
+
 
         pooBladder.save();
         peeBladder.save();
@@ -205,9 +220,10 @@ public class StatusControls {
         scienceEd.save();
         mathEd.save();
         philoEd.save();
+        name.save();
+        gender.save();
 
         updateLevels();
-//        getLevels();
     }
 
     public static void updateLevels(){
@@ -222,5 +238,7 @@ public class StatusControls {
         mathEd = MathEd.findById(MathEd.class, 1);
         scienceEd = findById(ScienceEd.class, 1);
         philoEd = findById(PhiloEd.class, 1);
+        name = findById(User.class, 1);
+        gender = findById(User.class, 1);
     }
 }
