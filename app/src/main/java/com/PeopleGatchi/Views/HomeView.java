@@ -10,14 +10,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.PeopleGatchi.Components.Constants;
 import com.PeopleGatchi.Dialogs.InventoryDialog;
 import com.PeopleGatchi.Dialogs.StoreDialog;
 import com.PeopleGatchi.PeopleGatchiApplication;
 import com.PeopleGatchi.R;
 import com.PeopleGatchi.Stages.EducationStage;
 import com.PeopleGatchi.Stages.JobStage;
-import com.PeopleGatchi.Utils.InventoryControls;
+import com.PeopleGatchi.Utils.BankControls;
 import com.PeopleGatchi.Utils.StatusControls;
 import com.PeopleGatchi.Utils.Utils;
 
@@ -210,8 +209,6 @@ updateScreen();
 
     @OnClick(R.id.inventory_button)
     public void goToInventory(){
-        InventoryControls.addItem(Constants.FOODITEMS[1]);
-
         final InventoryDialog inventoryDialog = new InventoryDialog(context);
         inventoryDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override
@@ -239,7 +236,7 @@ updateScreen();
     }
 
     public void printBank(){
-        bankAmount.setText("Bank Balance: $"+StatusControls.getMoney()+".");
+        bankAmount.setText("Bank Balance: $"+ BankControls.getMoney()+".");
     }
 
     public void updateScreen(){
