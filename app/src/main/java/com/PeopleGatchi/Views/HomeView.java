@@ -10,19 +10,21 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.PeopleGatchi.Components.Constants;
 import com.PeopleGatchi.Dialogs.InventoryDialog;
 import com.PeopleGatchi.Dialogs.StoreDialog;
 import com.PeopleGatchi.PeopleGatchiApplication;
 import com.PeopleGatchi.R;
 import com.PeopleGatchi.Stages.EducationStage;
 import com.PeopleGatchi.Stages.JobStage;
-import com.PeopleGatchi.Utils.InventoryControls;
+import com.PeopleGatchi.Utils.BankControls;
 import com.PeopleGatchi.Utils.StatusControls;
 import com.PeopleGatchi.Utils.Utils;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -83,6 +85,9 @@ public class HomeView extends RelativeLayout {
     @Bind(R.id.work_button)
     ImageButton workButton;
 
+    @Bind(R.id.display_name)
+    TextView name;
+
     public HomeView(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
@@ -95,13 +100,25 @@ public class HomeView extends RelativeLayout {
 
         flow = PeopleGatchiApplication.getMainFlow();
 
+        name.setText(StatusControls.getName());
+
         StatusControls.firstRun();
-        foodBar.setProgress(StatusControls.getHungerLevel());
-        drinkBar.setProgress(StatusControls.getHygieneLevel());
-        hygieneBar.setProgress(StatusControls.getThirstLevel());
-        peeBar.setProgress(StatusControls.getPeeLevel());
-        poopBar.setProgress(StatusControls.getPooLevel());
-        sleepBar.setProgress(StatusControls.getRestLevel());
+
+        imageView.setImageResource(Utils.setHappinessImage());
+updateScreen();
+        new Timer().scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                foodBar.setProgress(StatusControls.getHungerLevel());
+                drinkBar.setProgress(StatusControls.getHygieneLevel());
+                hygieneBar.setProgress(StatusControls.getThirstLevel());
+                peeBar.setProgress(StatusControls.getPeeLevel());
+                poopBar.setProgress(StatusControls.getPooLevel());
+                sleepBar.setProgress(StatusControls.getRestLevel());
+//                bankAmount.setText("$"+StatusControls.getMoney());
+//                imageView.setImageResource(Utils.setHappinessImage());
+            }
+        },100,200);
 
         bankAmount.setText("$" + StatusControls.getMoney());
 
@@ -205,9 +222,7 @@ public class HomeView extends RelativeLayout {
     }
 
     @OnClick(R.id.inventory_button)
-    public void goToInventory() {
-        InventoryControls.addItem(Constants.FOODITEMS[1]);
-
+    public void goToInventory(){
         final InventoryDialog inventoryDialog = new InventoryDialog(context);
         inventoryDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override
@@ -231,10 +246,15 @@ public class HomeView extends RelativeLayout {
     public void goToWork() {
         History newHistory = flow.getHistory().buildUpon().push(new JobStage()).build();
         flow.setHistory(newHistory, Flow.Direction.FORWARD);
+
     }
 
-    public void printBank() {
-        bankAmount.setText("Bank Balance: $" + StatusControls.getMoney() + ".");
+    public void printBank(){
+        bankAmount.setText("Bank Balance: $"+ BankControls.getMoney()+".");
+    }
+
+    public void updateScreen(){
+
     }
 
 
