@@ -11,6 +11,8 @@ import com.PeopleGatchi.Models.Persisting.Poo;
 import com.PeopleGatchi.Models.Persisting.Rest;
 import com.PeopleGatchi.Models.Persisting.ScienceEd;
 import com.PeopleGatchi.Models.Persisting.Thirst;
+import com.PeopleGatchi.Models.Persisting.Name;
+import com.PeopleGatchi.Models.Persisting.Gender;
 
 import static com.orm.SugarRecord.findById;
 
@@ -30,6 +32,8 @@ public class StatusControls {
     static ScienceEd scienceEd = new ScienceEd();
     static MathEd mathEd = new MathEd();
     static PhiloEd philoEd = new PhiloEd();
+    static Name name = new Name();
+    static Gender gender = new Gender();
 
     public static void setPooBladder(Integer bladderControl) {
         if(pooBladder == null) {
@@ -98,6 +102,24 @@ public class StatusControls {
 
         money.moneyLevel += payment;
         money.save();
+    }
+
+    public static String getName(){
+        return name.pokeName;
+    }
+
+    public static void setName(String inputName){
+        name.pokeName = inputName;
+        name.save();
+    }
+
+    public static String getGender(){
+        return gender.pokeGender;
+    }
+
+    public static void setGender(String genderChoice){
+        gender.pokeGender = genderChoice;
+        gender.save();
     }
 
     public static Integer getScienceEd(){
@@ -193,6 +215,9 @@ public class StatusControls {
         scienceEd = new ScienceEd(0);
         mathEd = new MathEd(0);
         philoEd = new PhiloEd(0);
+        name = new Name();
+        gender = new Gender();
+
 
         pooBladder.save();
         peeBladder.save();
@@ -205,6 +230,8 @@ public class StatusControls {
         scienceEd.save();
         mathEd.save();
         philoEd.save();
+        name.save();
+        gender.save();
 
         updateLevels();
 //        getLevels();
@@ -222,5 +249,7 @@ public class StatusControls {
         mathEd = MathEd.findById(MathEd.class, 1);
         scienceEd = findById(ScienceEd.class, 1);
         philoEd = findById(PhiloEd.class, 1);
+        name = findById(Name.class, 1);
+        gender = findById(Gender.class, 1);
     }
 }
