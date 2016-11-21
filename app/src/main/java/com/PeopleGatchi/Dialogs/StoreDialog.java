@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.PeopleGatchi.Models.Item;
 import com.PeopleGatchi.R;
+import com.PeopleGatchi.Utils.BankControls;
 import com.PeopleGatchi.Utils.InventoryControls;
 import com.PeopleGatchi.Utils.Utils;
 
@@ -78,9 +79,7 @@ public class StoreDialog extends Dialog{
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Item item = FOODITEMS[i];
-                Toast.makeText(context, item.getName() + " Cost: " +item.getPrice(), Toast.LENGTH_SHORT).show();
-                InventoryControls.addItem(item);
-
+                buyItem(item);
             }
         });
 
@@ -103,8 +102,7 @@ public class StoreDialog extends Dialog{
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Item item = DRINKITEMS[i];
-                Toast.makeText(context, item.getName() + " Cost: " +item.getPrice(), Toast.LENGTH_SHORT).show();
-                InventoryControls.addItem(item);
+                buyItem(item);
             }
         });
 
@@ -119,9 +117,7 @@ public class StoreDialog extends Dialog{
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Item item = OTHERITEMS[i];
-                Toast.makeText(context, item.getName() + " Cost: " + item.getPrice(), Toast.LENGTH_SHORT).show();
-                InventoryControls.addItem(item);
-
+                buyItem(item);
             }
         });
 
@@ -146,6 +142,21 @@ public class StoreDialog extends Dialog{
                 }
             }
         });
+    }
+
+    private void buyItem(Item item){
+
+        if (BankControls.getMoney() > item.getPrice()) {
+            if (InventoryControls.getSize() < 40) {
+                BankControls.setMoney(-item.getPrice());
+                Toast.makeText(context, "You Bought: " + item.getName() + " Cost: " + item.getPrice(), Toast.LENGTH_SHORT).show();
+            InventoryControls.addItem(item);
+        } else {
+                Toast.makeText(context, "Your Inventory is full.", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Toast.makeText(context, "You do not have enough money.", Toast.LENGTH_SHORT).show();
+        }
     }
 
 
