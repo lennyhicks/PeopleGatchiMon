@@ -90,18 +90,6 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/character_iv"
-                android:background="@drawable/hp_cat"
-                android:layout_marginLeft="200dp"
-                android:layout_marginTop="200dp"
-                android:layout_marginRight="200dp"
-                android:layout_marginBottom="110dp"
-                android:layout_centerInParent="true"
-                android:layout_alignParentBottom="true"
-                android:layout_width="150dp"
-                android:layout_height="150dp"/>
-
         </RelativeLayout>
 
 
@@ -264,6 +252,14 @@
             />
 
     </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/character_iv"
+            android:background="@drawable/hp_cat"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_above="@+id/progress_bars"
+            android:layout_centerHorizontal="true"/>
 
     </RelativeLayout>
 
