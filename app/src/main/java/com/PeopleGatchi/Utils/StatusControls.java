@@ -12,6 +12,7 @@ import com.PeopleGatchi.Models.Persisting.Rest;
 import com.PeopleGatchi.Models.Persisting.ScienceEd;
 import com.PeopleGatchi.Models.Persisting.Thirst;
 
+import static com.PeopleGatchi.Utils.BankControls.money;
 import static com.orm.SugarRecord.findById;
 
 /**
@@ -26,7 +27,6 @@ public class StatusControls {
     static Thirst thirst = new Thirst(20);
     static Hygiene hygiene = new Hygiene(20);
     static Rest rest = new Rest(20);
-    static Money money = new Money();
     static ScienceEd scienceEd = new ScienceEd();
     static MathEd mathEd = new MathEd();
     static PhiloEd philoEd = new PhiloEd();
@@ -89,16 +89,7 @@ public class StatusControls {
         rest.save();
     }
 
-    public static Integer getMoney() {
-        return money.moneyLevel;
-    }
 
-    public static void setMoney(Integer payment) {
-        //TODO Calculations need to happen here
-
-        money.moneyLevel += payment;
-        money.save();
-    }
 
     public static Integer getScienceEd(){
         return scienceEd.sciEdLevel;
@@ -207,7 +198,6 @@ public class StatusControls {
         philoEd.save();
 
         updateLevels();
-//        getLevels();
     }
 
     public static void updateLevels(){
