@@ -8,15 +8,16 @@ import com.orm.dsl.Table;
  */
 
 @Table
-public class Gender  extends SugarRecord {
-    //bladder level down, happiness goes up.
+public class User extends SugarRecord {
     private Long id;
+    public String pokeName;
     public String pokeGender;
 
-    public Gender(){
+    public User(){
     }
 
-    public Gender(String genderChoice){
-        this.pokeGender = genderChoice;
+    public User(String inputName, String chooseGender){
+        this.pokeName = inputName;
+        this.pokeGender = chooseGender;
     }
 }

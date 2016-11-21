@@ -11,8 +11,7 @@ import com.PeopleGatchi.Models.Persisting.Poo;
 import com.PeopleGatchi.Models.Persisting.Rest;
 import com.PeopleGatchi.Models.Persisting.ScienceEd;
 import com.PeopleGatchi.Models.Persisting.Thirst;
-import com.PeopleGatchi.Models.Persisting.Name;
-import com.PeopleGatchi.Models.Persisting.Gender;
+import com.PeopleGatchi.Models.Persisting.User;
 
 import static com.orm.SugarRecord.findById;
 
@@ -32,8 +31,8 @@ public class StatusControls {
     static ScienceEd scienceEd = new ScienceEd();
     static MathEd mathEd = new MathEd();
     static PhiloEd philoEd = new PhiloEd();
-    static Name name = new Name();
-    static Gender gender = new Gender();
+    static User name = new User();
+    static User gender = new User();
 
     public static void setPooBladder(Integer bladderControl) {
         if(pooBladder == null) {
@@ -215,8 +214,8 @@ public class StatusControls {
         scienceEd = new ScienceEd(0);
         mathEd = new MathEd(0);
         philoEd = new PhiloEd(0);
-        name = new Name();
-        gender = new Gender();
+        name = new User();
+        gender = new User();
 
 
         pooBladder.save();
@@ -249,7 +248,7 @@ public class StatusControls {
         mathEd = MathEd.findById(MathEd.class, 1);
         scienceEd = findById(ScienceEd.class, 1);
         philoEd = findById(PhiloEd.class, 1);
-        name = findById(Name.class, 1);
-        gender = findById(Gender.class, 1);
+        name = findById(User.class, 1);
+        gender = findById(User.class, 1);
     }
 }

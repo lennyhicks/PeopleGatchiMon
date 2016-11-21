@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 
 import com.PeopleGatchi.PeopleGatchiApplication;
-import com.PeopleGatchi.R;
+import com.PeopleGatchi.R;Dudd
 import com.PeopleGatchi.Stages.HomeStage;
 import com.PeopleGatchi.Utils.StatusControls;
 
@@ -65,11 +65,15 @@ public class CreateView extends LinearLayout {
         categories.add("cis male");
         categories.add("non-conforming");
 
-        ArrayAdapter<String> adapter = new ArrayAdapter(context, android.R.layout.simple_spinner_item, categories);
+        ArrayAdapter<String> adapter = new ArrayAdapter(context, android.R.layout.simple_spinner_item,
+                categories);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         chooseGender.setAdapter(adapter);
-  //      StatusControls.setGender(chooseGender);
+
+        String gender = chooseGender.getSelectedItem().toString();
+
+        StatusControls.setGender(gender);
     }
 
 //    public void onItemSelected(AdapterView<?> parent, View view, int position){
