@@ -62,6 +62,8 @@ public class JobView extends LinearLayout {
         int payment = ((int) (Math.random() * 20) + 10);
         // let them know they're getting paid for X amount of work.
         Toast.makeText(context, "You were paid $" + payment + ".", Toast.LENGTH_SHORT).show();
+        // puts the payment into the bank.
+        StatusControls.setMoney(payment);
         // Shows the user their Updated bank balance after payment added.
         Toast.makeText(context, "Your bank balance is now $$$" + StatusControls.getMoney() + ".", Toast.LENGTH_LONG).show();
         //Actually retrieving the updated value.

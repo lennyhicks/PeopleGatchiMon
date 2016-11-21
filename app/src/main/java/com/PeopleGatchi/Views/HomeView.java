@@ -77,6 +77,7 @@ public class HomeView extends RelativeLayout {
     @Bind(R.id.work_button)
     ImageButton workButton;
 
+
     public HomeView(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
@@ -97,7 +98,7 @@ public class HomeView extends RelativeLayout {
         poopBar.setProgress(StatusControls.getPooLevel());
         sleepBar.setProgress(StatusControls.getRestLevel());
 
-        Toast.makeText(context, StatusControls.getPooLevel()+ "", Toast.LENGTH_LONG).show();
+        bankAmount.setText("$" + StatusControls.getMoney());
 
         imageView.setImageResource(Utils.setHappinessImage());
 
