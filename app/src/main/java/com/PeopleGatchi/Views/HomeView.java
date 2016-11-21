@@ -2,6 +2,7 @@ package com.PeopleGatchi.Views;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.os.Handler;
 import android.util.AttributeSet;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -20,9 +21,6 @@ import com.PeopleGatchi.Utils.BankControls;
 import com.PeopleGatchi.Utils.StatusControls;
 import com.PeopleGatchi.Utils.Utils;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -37,6 +35,29 @@ public class HomeView extends RelativeLayout {
     private Flow flow;
 
     private Context context;
+
+    private Handler handler;
+    private Runnable handlerTask;
+
+    void startTimer(){
+        handler = new Handler();
+        handlerTask = new Runnable()
+        {
+            @Override
+            public void run() {
+                foodBar.setProgress(StatusControls.getHungerLevel());
+                drinkBar.setProgress(StatusControls.getHygieneLevel());
+                hygieneBar.setProgress(StatusControls.getThirstLevel());
+                peeBar.setProgress(StatusControls.getPeeLevel());
+                poopBar.setProgress(StatusControls.getPooLevel());
+                sleepBar.setProgress(StatusControls.getRestLevel());
+                bankAmount.setText("Bank: $"+BankControls.getMoney());
+                imageView.setImageResource(Utils.setHappinessImage());
+                handler.postDelayed(handlerTask, 200);
+            }
+        };
+        handlerTask.run();
+    }
 
 
     @Bind(R.id.food_bar)
@@ -81,6 +102,9 @@ public class HomeView extends RelativeLayout {
     @Bind(R.id.work_button)
     ImageButton workButton;
 
+    @Bind(R.id.display_name)
+    TextView name;
+
     public HomeView(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
@@ -93,23 +117,13 @@ public class HomeView extends RelativeLayout {
 
         flow = PeopleGatchiApplication.getMainFlow();
 
+        name.setText(StatusControls.getName());
+
         StatusControls.firstRun();
 
-        imageView.setImageResource(Utils.setHappinessImage());
-updateScreen();
-        new Timer().scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
-                foodBar.setProgress(StatusControls.getHungerLevel());
-                drinkBar.setProgress(StatusControls.getHygieneLevel());
-                hygieneBar.setProgress(StatusControls.getThirstLevel());
-                peeBar.setProgress(StatusControls.getPeeLevel());
-                poopBar.setProgress(StatusControls.getPooLevel());
-                sleepBar.setProgress(StatusControls.getRestLevel());
-//                bankAmount.setText("$"+StatusControls.getMoney());
-//                imageView.setImageResource(Utils.setHappinessImage());
-            }
-        },100,200);
+        startTimer();
+        updateScreen();
+
 
     }
 
@@ -229,6 +243,7 @@ updateScreen();
     }
 
     public void updateScreen(){
-
+        bankAmount.setText("$"+BankControls.getMoney());
+        imageView.setImageResource(Utils.setHappinessImage());
     }
 }
