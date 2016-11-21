@@ -15,7 +15,7 @@ public class UseItem {
         itemEffects(item.getName().toLowerCase());
     }
 
-    public boolean itemEffects(String name){
+    public static boolean itemEffects(String name){
         switch (name){
             case "candy":
                 if(StatusControls.getHungerLevel() < Constants.MAX_LEVEL - 2) {

@@ -35,10 +35,14 @@ public class StatusControls {
     static User gender = new User();
 
     public static void setPooBladder(Integer bladderControl) {
+
         if(pooBladder == null) {
             pooBladder = new Poo(20);
         }
         pooBladder.pooLevel += bladderControl;
+        if(pooBladder.pooLevel < 0) {
+            pooBladder.pooLevel = 0;
+        }
         pooBladder.save();
 
     }
@@ -48,6 +52,9 @@ public class StatusControls {
             peeBladder = new Pee(20);
         }
         peeBladder.peeLevel += bladderControl;
+        if(peeBladder.peeLevel < 0){
+            peeBladder.peeLevel = 0;
+        }
         peeBladder.save();
 
     }
@@ -65,6 +72,9 @@ public class StatusControls {
             hunger = new Hunger(20);
         }
         hunger.hungerLevel += hungerControl;
+        if (hunger.hungerLevel < 0){
+            hunger.hungerLevel = 0;
+        }
         hunger.save();
     }
 
@@ -73,6 +83,9 @@ public class StatusControls {
             thirst = new Thirst(20);
         }
         thirst.thirstLevel += thirstControl;
+        if (thirst.thirstLevel < 0){
+            thirst.thirstLevel = 0;
+        }
         thirst.save();
     }
 
@@ -81,6 +94,9 @@ public class StatusControls {
             hygiene = new Hygiene(20);
         }
         hygiene.hygieneLevel += hygieneControl;
+        if (hygiene.hygieneLevel < 0){
+            hygiene.hygieneLevel = 0;
+        }
         hygiene.save();
     }
 
@@ -89,6 +105,9 @@ public class StatusControls {
             rest = new Rest(20);
         }
         rest.restLevel += restControl;
+        if ( rest.restLevel < 0) {
+            rest.restLevel = 0;
+        }
         rest.save();
     }
 
