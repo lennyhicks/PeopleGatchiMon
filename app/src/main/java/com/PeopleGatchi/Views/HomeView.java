@@ -116,7 +116,7 @@ updateScreen();
             }
         },100,200);
 
-        bankAmount.setText("$"+StatusControls.getMoney());
+        bankAmount.setText("$"+BankControls.getMoney());
 
         imageView.setImageResource(Utils.setHappinessImage());
     }
@@ -161,8 +161,12 @@ updateScreen();
         //int cleanBaby = Utils.getRand(15) + 5;
         int cleanBaby = Utils.getRand(StatusControls.getHygieneLevel());
         StatusControls.setHygiene(cleanBaby);
-        Toast.makeText(context, "Yay, so fresh and so clean clean!! \n your Hygiene level has increased by: " + cleanBaby, Toast.LENGTH_SHORT).show();
-        update();
+        if(cleanBaby == 20) {
+            Toast.makeText(context, "You cant get any cleaner..!", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(context, "Yay, so fresh and so clean clean!! \n your Hygiene level has increased by: " + cleanBaby, Toast.LENGTH_SHORT).show();
+
+        }update();
     }
 
     @OnClick(R.id.pee_bar)
@@ -258,12 +262,12 @@ updateScreen();
     public void update(){
         foodBar.setProgress(StatusControls.getHungerLevel());
         drinkBar.setProgress(StatusControls.getHygieneLevel());
-        hygieneBar.setProgress(StatusControls.getThirstLevel());
+        hygieneBar.setProgress(StatusControls.getHygieneLevel());
         peeBar.setProgress(StatusControls.getPeeLevel());
         poopBar.setProgress(StatusControls.getPooLevel());
         sleepBar.setProgress(StatusControls.getRestLevel());
 
-        bankAmount.setText("$"+StatusControls.getMoney());
+        bankAmount.setText("$"+BankControls.getMoney());
 
         imageView.setImageResource(Utils.setHappinessImage());
     }
