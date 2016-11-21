@@ -17,7 +17,7 @@ public class Utils {
 
     public static Integer getRand(Integer max){
         Random r = new Random();
-        if (max > 0) {
+        if (max >= 0) {
             max = Constants.MAX_LEVEL - max;
         }else{
             max = Math.abs(max);
