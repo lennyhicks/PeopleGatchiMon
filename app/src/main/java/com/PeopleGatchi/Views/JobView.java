@@ -5,7 +5,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.util.AttributeSet;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.PeopleGatchi.PeopleGatchiApplication;
 import com.PeopleGatchi.R;
@@ -19,11 +19,12 @@ import flow.Flow;
 /**
  * Created by eaglebrosi on 11/16/16.
  */
-// todo move the payment into bank.
+// todo gotta add time punishment to prevent spamming buttons!
 public class JobView extends LinearLayout {
     private Context context;
     public double bankBalance;
     private Flow flow;
+    private int payment;
 
     @Bind(R.id.labor_butt)
     Button labor;
@@ -39,6 +40,12 @@ public class JobView extends LinearLayout {
 
     @Bind(R.id.go_home)
     FloatingActionButton goHome;
+
+    @Bind(R.id.money_laundering)
+    TextView wheresTheMoney;
+
+    @Bind(R.id.bank_update)
+    TextView updateBank;
 
     public JobView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -59,16 +66,9 @@ public class JobView extends LinearLayout {
         //hour += 8;
         //Utils.Time.increaseHour();  Notes on how time is to be kept.
         // manual labor gets a set pay between 15 and 5 dollars an hour.
-        int payment = ((int) (Math.random() * 20) + 10);
-        // let them know they're getting paid for X amount of work.
-        Toast.makeText(context, "You were paid $" + payment + ".", Toast.LENGTH_SHORT).show();
-        // puts the payment into the bank.
-        StatusControls.setMoney(payment);
-        // Shows the user their Updated bank balance after payment added.
-        Toast.makeText(context, "Your bank balance is now $$$" + StatusControls.getMoney() + ".", Toast.LENGTH_LONG).show();
-        //Actually retrieving the updated value.
-        int newMoney= StatusControls.getMoney() + payment;
-        //StatusControls.setMoney(newMoney);
+        payment = ((int) (Math.random() * 20) + 10);
+        //now we call the function
+        updateMoney();
     }
 
     @OnClick(R.id.engineer_butt)
@@ -76,15 +76,9 @@ public class JobView extends LinearLayout {
         //time passes while working
 //        Utils.addTime();
         // So based on your level of education your ceiling and floor go up.
-        int payment = ((int) (Math.random() * EducationView.mathEdScore) + EducationView.mathEdScore / 2);
-        // we throw this into the Bank
-//        BankManager.deposit(payment);
+        payment = ((int) (Math.random() * StatusControls.getMathEd()) + StatusControls.getMathEd() / 2);
         // we let the person know how much they were paid.
-        Toast.makeText(context, "You were paid $" + payment + ".", Toast.LENGTH_LONG).show();
-        // puts the payment into the bank.
-        StatusControls.setMoney(payment);
-        // Shows the user their Updated bank balance after payment added.
-        Toast.makeText(context, "Your bank balance is now $$$" + StatusControls.getMoney() + ".", Toast.LENGTH_LONG).show();
+        updateMoney();
     }
 
     @OnClick(R.id.science_butt)
@@ -92,18 +86,9 @@ public class JobView extends LinearLayout {
         //time passes while working
 //        Utils.addTime();
         // Based on your level of education your ceiling and floor go up.
-        int payment = ((int) (Math.random() * EducationView.sciEdScore) + EducationView.sciEdScore / 2);
-        // we throw this into the Bank
-//        BankManager.deposit(payment);
+        payment = ((int) (Math.random() * StatusControls.getScienceEd()) + StatusControls.getScienceEd() / 2);
         // we let the person know how much they were paid.
-        Toast.makeText(context, "You were paid $" + payment + ".", Toast.LENGTH_LONG).show();
-        // puts the payment into the bank.
-        StatusControls.setMoney(payment);
-        // Shows the user their Updated bank balance after payment added.
-        Toast.makeText(context, "Your bank balance is now $$$" + StatusControls.getMoney() + ".", Toast.LENGTH_LONG).show();
-        //Actually retrieving the updated value.
-        int newMoney= StatusControls.getMoney() + payment;
-        //StatusControls.setMoney(newMoney);
+        updateMoney();
     }
 
     @OnClick(R.id.philo_butt)
@@ -111,25 +96,21 @@ public class JobView extends LinearLayout {
         //time passes while working
 //        Utils.addTime();
         // Based on your level of education your ceiling and floor go up.
-        // The Floor to philosophy pay is low and never increases.
-        int payment = ((int) (Math.random() * EducationView.sciEdScore) + 5);
-        // we throw this into the Bank
-//        BankManager.deposit(payment);
+        // The Floor to philosophy pay is low and never increases. AKA sometimes they don't get paid.
+        payment = ((int) (Math.random() * StatusControls.getPhiloEd()));
         // we let the person know how much they were paid.
-        Toast.makeText(context, "You were paid $" + payment + ".", Toast.LENGTH_LONG).show();
-        // puts the payment into the bank.
-        StatusControls.setMoney(payment);
-        // Shows the user their Updated bank balance after payment added.
-        Toast.makeText(context, "Your bank balance is now $$$" + StatusControls.getMoney() + ".", Toast.LENGTH_LONG).show();
-        //Actually retrieving the updated value.
-        int newMoney= StatusControls.getMoney() + payment;
-        //StatusControls.setMoney(newMoney);
+        updateMoney();
     }
 
     @OnClick(R.id.go_home)
     public void goHome() {
         flow = PeopleGatchiApplication.getMainFlow();
-        //History newHistory = History.single(new HomeStage());
         flow.goBack();
+    }
+
+    public void updateMoney(){
+        StatusControls.setMoney(payment);
+        wheresTheMoney.setText("You were paid: $"+ payment+".");
+        updateBank.setText("Bank Balance: $"+StatusControls.getMoney()+".");
     }
 }

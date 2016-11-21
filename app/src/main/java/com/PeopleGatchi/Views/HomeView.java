@@ -10,12 +10,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.PeopleGatchi.Components.Constants;
 import com.PeopleGatchi.Dialogs.InventoryDialog;
 import com.PeopleGatchi.Dialogs.StoreDialog;
 import com.PeopleGatchi.PeopleGatchiApplication;
 import com.PeopleGatchi.R;
 import com.PeopleGatchi.Stages.EducationStage;
 import com.PeopleGatchi.Stages.JobStage;
+import com.PeopleGatchi.Utils.InventoryControls;
 import com.PeopleGatchi.Utils.StatusControls;
 import com.PeopleGatchi.Utils.Utils;
 
@@ -77,7 +79,6 @@ public class HomeView extends RelativeLayout {
     @Bind(R.id.work_button)
     ImageButton workButton;
 
-
     public HomeView(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
@@ -98,10 +99,9 @@ public class HomeView extends RelativeLayout {
         poopBar.setProgress(StatusControls.getPooLevel());
         sleepBar.setProgress(StatusControls.getRestLevel());
 
-        bankAmount.setText("$" + StatusControls.getMoney());
+        bankAmount.setText("$"+StatusControls.getMoney());
 
         imageView.setImageResource(Utils.setHappinessImage());
-
     }
 
     @OnClick(R.id.food_bar)
@@ -169,6 +169,7 @@ public class HomeView extends RelativeLayout {
        // StatusControls.updatePooBladder(dumpSize);
     }
 
+    // TODO does this need to be in here. It's probably my fault that it exist.
     @OnClick(R.id.bank_amount)
     public void bankTotal(){
 
@@ -199,6 +200,7 @@ public class HomeView extends RelativeLayout {
 
     @OnClick(R.id.inventory_button)
     public void goToInventory(){
+        InventoryControls.addItem(Constants.FOODITEMS[1]);
 
         final InventoryDialog inventoryDialog = new InventoryDialog(context);
         inventoryDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
@@ -210,13 +212,10 @@ public class HomeView extends RelativeLayout {
         inventoryDialog.show();
 
 
-//        History newHistory = flow.getHistory().buildUpon().push(new InventoryStage()).build();
-//        flow.setHistory(newHistory, Flow.Direction.FORWARD);
     }
 
     @OnClick(R.id.education_button)
     public void goToSchool(){
-        //History newHistory = History.single(new EducationStage());
         History newHistory = flow.getHistory().buildUpon().push(new EducationStage()).build();
         flow.setHistory(newHistory, Flow.Direction.FORWARD);
 
@@ -224,10 +223,11 @@ public class HomeView extends RelativeLayout {
 
     @OnClick(R.id.work_button)
     public void goToWork(){
-        //History newHistory = History.single(new JobStage());
         History newHistory = flow.getHistory().buildUpon().push(new JobStage()).build();
         flow.setHistory(newHistory, Flow.Direction.FORWARD);
-
     }
 
+    public void printBank(){
+        bankAmount.setText("Bank Balance: $"+StatusControls.getMoney()+".");
+    }
 }
