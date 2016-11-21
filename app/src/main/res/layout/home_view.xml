@@ -1,101 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+
+<com.PeopleGatchi.Views.HomeView xmlns:android="http://schemas.android.com/apk/res/android"
+                                 xmlns:app="http://schemas.android.com/apk/res-auto"
+                                 android:orientation="vertical" android:layout_width="match_parent"
+                                 android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/livingroom">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:id="@+id/progress_bars"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true">
-
-        <ProgressBar
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/food_bar"
-            android:layout_marginBottom="65dp"
-            android:indeterminate="false"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="33dp" />
-
-        <ProgressBar
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/drink_bar"
-            android:indeterminate="false"
-            android:layout_alignTop="@+id/food_bar"
-            android:layout_alignStart="@+id/food_bar"
-            android:layout_marginTop="25dp" />
-
-        <ProgressBar
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/sleep_bar"
-            android:indeterminate="false"
-            android:layout_below="@+id/drink_bar"
-            android:layout_alignStart="@+id/drink_bar"
-            android:layout_marginTop="12dp" />
-
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            app:srcCompat="@android:drawable/picture_frame"
-            android:id="@+id/imageView"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
-
-        <ProgressBar
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/hygiene_bar"
-            android:indeterminate="false"
-            android:layout_alignTop="@+id/food_bar"
-            android:layout_toEndOf="@+id/imageView"
-            android:layout_marginStart="16dp" />
-
-        <ProgressBar
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/pee_bar"
-            android:indeterminate="false"
-            android:layout_alignTop="@+id/drink_bar"
-            android:layout_alignStart="@+id/hygiene_bar" />
-
-        <ProgressBar
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/poop_bar"
-            android:indeterminate="false"
-            android:layout_alignTop="@+id/sleep_bar"
-            android:layout_alignStart="@+id/pee_bar" />
-
-    </RelativeLayout>
-
-    <TextView
-        android:text="Bank Amount"
-        android:layout_width="144dp"
         android:layout_height="wrap_content"
-        android:id="@+id/bank_amount"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        android:layout_alignParentTop="true"
-        android:layout_toStartOf="@+id/clock"
-        android:layout_marginEnd="41dp" />
+        android:background="@color/purple">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/display_name"
+            android:textColor="#ffffff"
+            android:layout_marginTop="5dp"
+            android:layout_alignParentTop="true"
+            android:textSize="20sp"
+            android:layout_alignParentStart="true"/>
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/arrow_up_float"
-        android:id="@+id/imageButton2"
+        app:srcCompat="@drawable/fastforward"
+        android:id="@+id/fastforward_button"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true" />
 
@@ -104,8 +37,232 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/clock"
+        android:paddingTop="10dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         android:layout_alignParentTop="true"
-        android:layout_toStartOf="@+id/imageButton2" />
+        android:layout_toStartOf="@+id/fastforward_button"
+        android:layout_alignBottom="@+id/fastforward_button" />
 
-</RelativeLayout>
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/store"
+        android:id="@+id/store_button"
+        android:layout_alignTop="@+id/inventory_button"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Bank Amount"
+        android:layout_width="144dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/bank_amount"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:paddingTop="10dp"
+        android:gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"/>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/work"
+        android:id="@+id/work_button"
+        android:layout_below="@+id/bank_amount"
+        android:layout_alignParentEnd="true" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/education"
+        android:id="@+id/education_button"
+        android:layout_alignTop="@+id/work_button"
+        android:layout_toLeftOf="@id/work_button" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/backpack"
+        android:id="@+id/inventory_button"
+        android:layout_below="@+id/bank_amount"
+        android:layout_toEndOf="@+id/store_button" />
+    </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+        </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:id="@+id/progress_bars"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorAccent">
+
+        <ProgressBar
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/food_bar"
+            android:layout_marginBottom="65dp"
+            android:indeterminate="false"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="33dp"
+            android:progressDrawable="@drawable/progressbar_style"
+            android:clickable="true"
+            android:max="20"
+            android:visibility="visible"/>
+
+
+
+
+        <ProgressBar
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/drink_bar"
+            android:indeterminate="false"
+            android:layout_alignTop="@+id/food_bar"
+            android:layout_alignStart="@+id/food_bar"
+            android:layout_marginTop="25dp"
+            android:progressDrawable="@drawable/progressbar_style"
+            android:clickable="true"
+            android:max="20"
+            android:visibility="visible"/>
+
+
+        <ImageView
+            android:id="@+id/drink_bar_img"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:layout_toLeftOf="@id/drink_bar"
+            android:layout_alignBottom="@id/drink_bar"
+            android:background="@drawable/water" />
+
+        <ImageView
+            android:id="@+id/food_bar_img"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:layout_above="@id/drink_bar_img"
+            android:layout_alignBottom="@id/food_bar"
+            android:background="@drawable/food"
+            android:visibility="visible"/>
+
+        <ProgressBar
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/sleep_bar"
+            android:indeterminate="false"
+            android:layout_below="@+id/drink_bar"
+            android:layout_alignStart="@+id/drink_bar"
+            android:layout_marginTop="12dp"
+            android:progressDrawable="@drawable/progressbar_style"
+            android:clickable="true"
+            android:max="20"
+            android:visibility="visible"/>
+
+        <ImageView
+            android:id="@+id/sleep_bar_img"
+            android:layout_width="30dp"
+            android:layout_height="25dp"
+            android:layout_toLeftOf="@id/sleep_bar"
+            android:layout_alignBottom="@id/sleep_bar"
+            android:background="@drawable/bed" />
+
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:srcCompat="@android:drawable/picture_frame"
+            android:id="@+id/image_view"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"/>
+
+
+        <ProgressBar
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/hygiene_bar"
+            android:indeterminate="false"
+            android:layout_alignTop="@+id/food_bar"
+            android:layout_toEndOf="@+id/image_view"
+            android:layout_marginStart="16dp"
+            android:progressDrawable="@drawable/progressbar_style"
+            android:clickable="true"
+            android:max="20"
+            android:visibility="visible"/>
+
+        <ImageView
+            android:id="@+id/hygiene_bar_img"
+            android:layout_width="30dp"
+            android:layout_height="25dp"
+            android:layout_toRightOf="@id/hygiene_bar"
+            android:layout_alignBottom="@id/hygiene_bar"
+            android:background="@drawable/bath"
+            />
+
+        <ProgressBar
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/pee_bar"
+            android:indeterminate="false"
+            android:layout_alignTop="@+id/drink_bar"
+            android:layout_alignStart="@+id/hygiene_bar"
+            android:progressDrawable="@drawable/progressbar_style"
+            android:clickable="true"
+            android:max="20"
+            android:visibility="visible"/>
+
+        <ImageView
+            android:id="@+id/pee_bar_img"
+            android:layout_width="30dp"
+            android:layout_height="25dp"
+            android:layout_toRightOf="@id/pee_bar"
+            android:layout_alignBottom="@id/pee_bar"
+            android:background="@drawable/terlet"
+            />
+
+        <ProgressBar
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/poop_bar"
+            android:indeterminate="false"
+            android:layout_alignTop="@+id/sleep_bar"
+            android:layout_alignStart="@+id/pee_bar"
+            android:progressDrawable="@drawable/progressbar_style"
+            android:clickable="true"
+            android:max="20"
+            android:visibility="visible"/>
+
+        <ImageView
+            android:id="@+id/poop_bar_img"
+            android:layout_width="30dp"
+            android:layout_height="25dp"
+            android:layout_toRightOf="@+id/poop_bar"
+            android:layout_alignBottom="@id/poop_bar"
+            android:background="@drawable/poo"
+            />
+
+    </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/character_iv"
+            android:background="@drawable/hp_cat"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_above="@+id/progress_bars"
+            android:layout_centerHorizontal="true"/>
+
+    </RelativeLayout>
+
+
+</com.PeopleGatchi.Views.HomeView>

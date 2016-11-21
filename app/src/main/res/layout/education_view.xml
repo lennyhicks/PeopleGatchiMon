@@ -1,6 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.PeopleGatchi.Views.EducationView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+                                      android:layout_height="match_parent">
 
-</LinearLayout>
+    <TextView
+        android:text="Education is the key \n to unlocking your poke-tential."
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp" />
+
+    <Button
+        android:text="Science"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/increase_science"
+        android:background="@android:color/holo_purple"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="5dp"/>
+
+    <Button
+        android:text="Math"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/increase_math"
+        android:background="@android:color/holo_blue_bright"
+        android:layout_marginBottom="5dp"/>
+
+
+    <Button
+        android:text="Philosophy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/increase_philo"
+        android:background="@android:color/holo_orange_dark"
+        android:layout_marginBottom="5dp"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:fabSize="mini"
+        app:srcCompat="@drawable/store"
+        android:id="@+id/home_button"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/science_score"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:layout_marginTop="50dp"
+        android:textColor="@android:color/holo_purple"
+        android:textStyle="bold"
+        android:layout_marginBottom="5dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/math_score"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:textColor="@android:color/holo_blue_bright"
+        android:textStyle="bold"
+        android:layout_marginBottom="5dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/philo_score"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:textColor="@android:color/holo_orange_dark"
+        android:textStyle="bold"
+        android:layout_marginBottom="5dp"/>
+</com.PeopleGatchi.Views.EducationView>

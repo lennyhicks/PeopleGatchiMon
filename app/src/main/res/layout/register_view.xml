@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PeopleGatchi.PeopleGatchi.Views.RegisterView xmlns:android="http://schemas.android.com/apk/res/android"
-                                              android:orientation="vertical"
-                                              android:layout_width="match_parent"
-                                              android:layout_height="match_parent">
+<com.PeopleGatchi.Views.RegisterView xmlns:android="http://schemas.android.com/apk/res/android"
+                                     android:orientation="vertical"
+                                     android:layout_width="match_parent"
+                                     android:layout_height="match_parent">
 
     <EditText
         android:layout_width="300dp"
@@ -45,4 +45,4 @@
         android:id="@+id/registerButton"
         android:layout_gravity="center_horizontal"/>
 
-</PeopleGatchi.PeopleGatchi.Views.RegisterView>
+</com.PeopleGatchi.Views.RegisterView>

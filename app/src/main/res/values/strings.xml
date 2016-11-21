@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Budget</string>
+    <string name="app_name">PeopleGatchiMon</string>
     <string name="register">Register</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="password">Password</string>
