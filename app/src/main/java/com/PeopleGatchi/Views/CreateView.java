@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 
 import com.PeopleGatchi.PeopleGatchiApplication;
-import com.PeopleGatchi.R;Dudd
+import com.PeopleGatchi.R;
 import com.PeopleGatchi.Stages.HomeStage;
 import com.PeopleGatchi.Utils.StatusControls;
 
@@ -45,8 +45,6 @@ public class CreateView extends LinearLayout {
         super(context, attrs);
         this.context = context;
     }
-
-
 
     @Override
     protected void onFinishInflate() {
