@@ -101,7 +101,7 @@ public class HomeView extends RelativeLayout {
         StatusControls.firstRun();
 
         imageView.setImageResource(Utils.setHappinessImage());
-updateScreen();
+        updateScreen();
         new Timer().scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
