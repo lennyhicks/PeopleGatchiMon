@@ -19,6 +19,7 @@ public class InventoryControls {
     }
 
     public static void useItem(Item i){
+        UseItem.itemEffects(i.getName().toLowerCase());
         inventory.inventory.remove(i);
     }
 
