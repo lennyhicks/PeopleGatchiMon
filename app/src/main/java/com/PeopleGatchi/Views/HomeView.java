@@ -81,6 +81,9 @@ public class HomeView extends RelativeLayout {
     @Bind(R.id.work_button)
     ImageButton workButton;
 
+    @Bind(R.id.display_name)
+    TextView name;
+
     public HomeView(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
@@ -92,6 +95,8 @@ public class HomeView extends RelativeLayout {
         ButterKnife.bind(this);
 
         flow = PeopleGatchiApplication.getMainFlow();
+
+        name.setText(StatusControls.getName());
 
         StatusControls.firstRun();
 
