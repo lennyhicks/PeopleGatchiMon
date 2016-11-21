@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.PeopleGatchi.PeopleGatchiApplication;
 import com.PeopleGatchi.R;
+import com.PeopleGatchi.Utils.BankControls;
 import com.PeopleGatchi.Utils.StatusControls;
 
 import butterknife.Bind;
@@ -109,8 +110,8 @@ public class JobView extends LinearLayout {
     }
 
     public void updateMoney(){
-        StatusControls.setMoney(payment);
+        BankControls.setMoney(payment);
         wheresTheMoney.setText("You were paid: $"+ payment+".");
-        updateBank.setText("Bank Balance: $"+StatusControls.getMoney()+".");
+        updateBank.setText("Bank Balance: $"+BankControls.getMoney()+".");
     }
 }
