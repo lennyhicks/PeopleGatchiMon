@@ -2,7 +2,7 @@ package com.PeopleGatchi.Models;
 
 import android.content.SharedPreferences;
 
-import com.PeopleGatchi.Stages.CreateStage;
+import com.PeopleGatchi.Stages.DeathStage;
 
 import flow.Flow;
 import flow.History;
@@ -26,8 +26,8 @@ public class Death {
             editor.apply();
 
             //TODO UPDATE THIS TO THE DEATH STAGE!!!
-            History newHistory = History.single(new CreateStage());
-            flow.setHistory(newHistory, Flow.Direction.REPLACE);
+            History newHistory = History.single(new DeathStage());
+            flow.setHistory(newHistory, Flow.Direction.FORWARD);
         }
     }
 }
