@@ -9,10 +9,10 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.PeopleGatchi.Dialogs.InventoryDialog;
 import com.PeopleGatchi.Dialogs.StoreDialog;
+import com.PeopleGatchi.Models.Death;
 import com.PeopleGatchi.PeopleGatchiApplication;
 import com.PeopleGatchi.R;
 import com.PeopleGatchi.Stages.EducationStage;
@@ -20,6 +20,9 @@ import com.PeopleGatchi.Stages.JobStage;
 import com.PeopleGatchi.Utils.BankControls;
 import com.PeopleGatchi.Utils.StatusControls;
 import com.PeopleGatchi.Utils.Utils;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -33,32 +36,36 @@ import flow.History;
 
 public class HomeView extends RelativeLayout {
     private Flow flow;
+    private String date;
 
     private Context context;
-
+    private String updateMessage;
     private Handler handler;
     private Runnable handlerTask;
 
-    void startTimer(){
+    void startTimer() {
         handler = new Handler();
-        handlerTask = new Runnable()
-        {
+        handlerTask = new Runnable() {
             @Override
             public void run() {
                 foodBar.setProgress(StatusControls.getHungerLevel());
-                drinkBar.setProgress(StatusControls.getHygieneLevel());
-                hygieneBar.setProgress(StatusControls.getThirstLevel());
+                drinkBar.setProgress(StatusControls.getThirstLevel());
+                hygieneBar.setProgress(StatusControls.getHygieneLevel());
                 peeBar.setProgress(StatusControls.getPeeLevel());
                 poopBar.setProgress(StatusControls.getPooLevel());
                 sleepBar.setProgress(StatusControls.getRestLevel());
-                bankAmount.setText("Bank: $"+BankControls.getMoney());
+                bankAmount.setText("Bank: $" + BankControls.getMoney());
                 imageView.setImageResource(Utils.setHappinessImage());
+                Death death = new Death();
+                death.isDead();
                 handler.postDelayed(handlerTask, 200);
             }
         };
         handlerTask.run();
     }
 
+    @Bind(R.id.update_text)
+    TextView updateText;
 
     @Bind(R.id.food_bar)
     ProgressBar foodBar;
@@ -125,31 +132,49 @@ public class HomeView extends RelativeLayout {
         updateScreen();
 
 
+        bankAmount.setText("$" + BankControls.getMoney());
+
+        imageView.setImageResource(Utils.setHappinessImage());
+
+        setClock(clock);
     }
 
     @OnClick(R.id.food_bar)
-    public void feedPet(){
+    public void feedPet() {
         int foodAmount = Utils.getRand(StatusControls.getHungerLevel());
         StatusControls.setHunger(foodAmount);
-        Toast.makeText(context, "BELCH!! Whew, i'm stuffed!!! \n Your food level has increased by: " + foodAmount, Toast.LENGTH_SHORT).show();
+        StatusControls.setPooBladder(-foodAmount/2);
+        StatusControls.setRest(-foodAmount/3);
+        StatusControls.setHygiene(-foodAmount/3);
+        updateMessage = "Your stomach thanks you, but now you may need to use the bathroom and sleep. Don't forget to wash your hands!";
+        updateText();
     }
 
     @OnClick(R.id.drink_bar)
-    public void waterPet(){
+    public void waterPet() {
         int drinkAmount = Utils.getRand(StatusControls.getThirstLevel());
         StatusControls.setThirst(drinkAmount);
-        Toast.makeText(context, "Slurp slurp, mmmm! \n Your Thirst level has increased by: " + drinkAmount, Toast.LENGTH_SHORT).show();
+        StatusControls.setPeeBladder(-drinkAmount/2);
+        StatusControls.setHygiene(-drinkAmount/3);
+        updateMessage = "Your thirst has been quenched, but now you may need to use the bathroom. Don't forget to wash your hands!";
+        updateText();
     }
 
     @OnClick(R.id.sleep_bar)
-    public void restPet(){
+    public void restPet() {
         int sleepyTime = Utils.getRand(StatusControls.getRestLevel());
         StatusControls.setRest(sleepyTime);
-        Toast.makeText(context, "Whew, I feel rested and ready! \n your Sleep level has increased by: " + sleepyTime, Toast.LENGTH_SHORT).show();
+        StatusControls.setHunger(-sleepyTime/2);
+        StatusControls.setThirst(-sleepyTime/2);
+        StatusControls.setPooBladder(-sleepyTime/3);
+        StatusControls.setPeeBladder(-sleepyTime/3);
+        StatusControls.setHygiene(-sleepyTime/3);
+        updateMessage = "You're now well rested but, there are probably a few other things that need your attention too!";
+        updateText();
     }
 
     @OnClick(R.id.image_view)
-    public void happinessView(){
+    public void happinessView() {
 
     }
 
@@ -158,51 +183,57 @@ public class HomeView extends RelativeLayout {
         int cleanBaby = Utils.getRand(StatusControls.getHygieneLevel());
         StatusControls.setHygiene(cleanBaby);
         if (cleanBaby == 20) {
-            Toast.makeText(context, "You cant get any cleaner..!", Toast.LENGTH_SHORT).show();
+            updateMessage = "You cant get any cleaner..!";
         } else {
-            Toast.makeText(context, "Yay, so fresh and so clean clean!! \n your Hygiene level has increased by: " + cleanBaby, Toast.LENGTH_SHORT).show();
-
+            updateMessage = "Yay, so fresh and so clean clean!!";
         }
+        updateText();
     }
 
     @OnClick(R.id.pee_bar)
-    public void drainPet(){
+    public void drainPet() {
         int drainPet = Utils.getRand(StatusControls.getPeeLevel());
         StatusControls.setPeeBladder(drainPet);
-        Toast.makeText(context, "Yay, we made a pee-pee, Yay!!! \n your pee-pee level has been relieved by: " + drainPet, Toast.LENGTH_SHORT).show();
+        StatusControls.setThirst(-drainPet/2);
+        StatusControls.setHygiene(-drainPet/3);
+        updateMessage = "Your pee bladder thanks you, but you may now be thirsty. Don't forget to wash your hands!";
+        updateText();
     }
 
     @OnClick(R.id.poop_bar)
-    public void pottyPet(){
+    public void pottyPet() {
         int dumpSize = Utils.getRand(StatusControls.getPooLevel());
         StatusControls.setPooBladder(dumpSize);
-        if(dumpSize == 20){
-            Toast.makeText(context, "HOLY COW, You just dropped a bigfoot!!! And now you're dead. \n your poo level has been relieved by: " + dumpSize, Toast.LENGTH_SHORT).show();
+        StatusControls.setHunger(-dumpSize/2);
+        StatusControls.setHygiene(-dumpSize/3);
+        if (dumpSize == 20) {
+            updateMessage = "Holy Cow! That was a sweet sweet #2!! However, now you're getting hungry. Don't forget to wash your hands!";
         } else {
-            Toast.makeText(context, "That was a sweet sweet #2! " + dumpSize, Toast.LENGTH_SHORT).show();
+            updateMessage = "Your poo bladder thanks you, but now you may be hungry. Don't forget to wash your hands!";
             //       Status.poo(dumpSize);
         }
-       // StatusControls.updatePooBladder(dumpSize);
+        updateText();
+        // StatusControls.updatePooBladder(dumpSize);
     }
 
     // TODO does this need to be in here. It's probably my fault that it exist.
     @OnClick(R.id.bank_amount)
-    public void bankTotal(){
+    public void bankTotal() {
 
     }
 
     @OnClick(R.id.fastforward_button)
-    public void increaseTime(){
+    public void increaseTime() {
 
     }
 
     @OnClick(R.id.clock)
-    public void clock(){
+    public void clock() {
 
     }
 
     @OnClick(R.id.store_button)
-    public void goToStore(){
+    public void goToStore() {
 
         final StoreDialog storeDialog = new StoreDialog(context);
         storeDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
@@ -215,7 +246,7 @@ public class HomeView extends RelativeLayout {
     }
 
     @OnClick(R.id.inventory_button)
-    public void goToInventory(){
+    public void goToInventory() {
         final InventoryDialog inventoryDialog = new InventoryDialog(context);
         inventoryDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override
@@ -227,26 +258,53 @@ public class HomeView extends RelativeLayout {
     }
 
     @OnClick(R.id.education_button)
-    public void goToSchool(){
+    public void goToSchool() {
         History newHistory = flow.getHistory().buildUpon().push(new EducationStage()).build();
         flow.setHistory(newHistory, Flow.Direction.FORWARD);
 
     }
 
     @OnClick(R.id.work_button)
-    public void goToWork(){
+    public void goToWork() {
         History newHistory = flow.getHistory().buildUpon().push(new JobStage()).build();
         flow.setHistory(newHistory, Flow.Direction.FORWARD);
 
     }
 
-    public void printBank(){
-        bankAmount.setText("Bank Balance: $"+ BankControls.getMoney()+".");
+    public void printBank() {
+        bankAmount.setText("Bank Balance: $" + BankControls.getMoney() + ".");
     }
 
-    public void updateScreen(){
-        bankAmount.setText("$"+BankControls.getMoney());
+    public void updateScreen() {
+        bankAmount.setText("$" + BankControls.getMoney());
         imageView.setImageResource(Utils.setHappinessImage());
+
+    }
+
+
+    public void setClock(TextView clock) {
+        this.clock = clock;
+
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("h:mm a");
+        calendar.add(Calendar.HOUR, 1);
+        calendar.add(Calendar.MINUTE, 30);
+        date = dateFormat.format(calendar.getTime());
+        clock.setText(date);
+
+    }
+
+    public void updateText() {
+        updateText.setText(updateMessage);
+
+
+        handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                updateText.setText(null);
+            }
+        }, 5000);
     }
 
     public static void workSchoolDay (){
@@ -258,3 +316,23 @@ public class HomeView extends RelativeLayout {
         StatusControls.setRest(-5);
     }
 }
+
+//        handler = new Handler();
+//        handlerTask = new Runnable()
+//        {
+//            @Override
+//            public void run() {
+//                handler.postDelayed(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        updateText.setText(null);
+//                    }
+//                }, 5000);
+//
+//              //  updateText.setText(null);
+//
+//            }
+//        };
+//        handlerTask.run();
+//    }
+
