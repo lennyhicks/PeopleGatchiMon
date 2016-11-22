@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.PeopleGatchi.Stages.CreateStage;
 import com.PeopleGatchi.Stages.HomeStage;
@@ -123,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
                     StatusControls.setRest(-20);
                     StatusControls.setPeeBladder(-20);
                     StatusControls.setPooBladder(-20);
-                    handler.postDelayed(handlerTask, 2000);
+                    handler.postDelayed(handlerTask, 9000);
                 }
             };
             handlerTask.run();
