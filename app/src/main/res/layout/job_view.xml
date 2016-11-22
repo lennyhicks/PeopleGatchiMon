@@ -54,8 +54,9 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         app:fabSize="mini"
-        app:srcCompat="@drawable/store"
-        android:id="@+id/go_home" />
+        app:srcCompat="@drawable/home"
+        android:id="@+id/go_home"
+        android:layout_margin="10dp"/>
 
     <TextView
         android:layout_width="match_parent"
