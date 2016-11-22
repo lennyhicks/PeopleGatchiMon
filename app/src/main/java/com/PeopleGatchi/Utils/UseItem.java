@@ -1,7 +1,11 @@
 package com.PeopleGatchi.Utils;
 
-import com.PeopleGatchi.Components.Constants;
+import android.content.Context;
+import android.widget.Toast;
+
 import com.PeopleGatchi.Models.Item;
+
+import static com.PeopleGatchi.Components.Constants.MAX_LEVEL;
 
 /**
  * Created by lennyhicks on 11/21/16.
@@ -9,25 +13,40 @@ import com.PeopleGatchi.Models.Item;
 
 public class UseItem {
     Item item;
+    Context context;
 
-    public UseItem(Item item){
+    public UseItem(Context context,Item item){
         this.item = item;
-        itemEffects(item.getName().toLowerCase());
+        this.context = context;
+        itemEffects(context, item.getName().toLowerCase());
     }
 
-    public static boolean itemEffects(String name){
+    public static void itemEffects(Context context, String name){
         switch (name){
             case "candy":
-                if(StatusControls.getHungerLevel() < Constants.MAX_LEVEL - 2) {
+                if(StatusControls.getHungerLevel() < MAX_LEVEL - 2 && StatusControls.getPooLevel() > 1) {
                     StatusControls.setHunger(2);
                     StatusControls.setPooBladder(-1);
-                    return true;
+                    break;
+                } else if (StatusControls.getHungerLevel() + 2 > MAX_LEVEL) {
+                    Toast.makeText(context, "You are not hungry enough to eat this", Toast.LENGTH_SHORT).show();
+                    break;
+                } else if (StatusControls.getPooLevel() - 1 < 0){
+                    Toast.makeText(context, "You have to use the bathroom to bad to use this item", Toast.LENGTH_SHORT).show();
+                    break;
                 }
-                return false;
             case "pretzels":
-                StatusControls.setHunger(3);
-                StatusControls.setPooBladder(-1);
-                break;
+                if(StatusControls.getHungerLevel() < MAX_LEVEL - 3 && StatusControls.getPooLevel() > 1) {
+                    StatusControls.setHunger(3);
+                    StatusControls.setPooBladder(-1);
+                    break;
+                } else if (StatusControls.getHungerLevel() + 2 > MAX_LEVEL) {
+                    Toast.makeText(context, "You are not hungry enough to eat this", Toast.LENGTH_SHORT).show();
+                    break;
+                } else if (StatusControls.getPeeLevel() - 1 < 0){
+                    Toast.makeText(context, "You have to use the bathroom to bad to use this item", Toast.LENGTH_SHORT).show();
+                    break;
+                }
             case "mushrooms":
                 StatusControls.setHunger(4);
                 StatusControls.setPooBladder(-1);
@@ -102,6 +121,5 @@ public class UseItem {
                 StatusControls.setThirst(-5);
                 break;
         }
-        return false;
     }
 }
