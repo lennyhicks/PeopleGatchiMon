@@ -163,11 +163,15 @@ public class HomeView extends RelativeLayout {
     }
 
     @OnClick(R.id.hygiene_bar)
-    public void cleanPet(){
+    public void cleanPet() {
         int cleanBaby = Utils.getRand(StatusControls.getHygieneLevel());
         StatusControls.setHygiene(cleanBaby);
-        Toast.makeText(context, "Yay, so fresh and so clean clean!! \n your Hygiene level has increased by: " + cleanBaby, Toast.LENGTH_SHORT).show();
+        if (cleanBaby == 20) {
+            Toast.makeText(context, "You cant get any cleaner..!", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "Yay, so fresh and so clean clean!! \n your Hygiene level has increased by: " + cleanBaby, Toast.LENGTH_SHORT).show();
 
+        }
     }
 
     @OnClick(R.id.pee_bar)

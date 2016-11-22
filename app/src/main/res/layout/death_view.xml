@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.PeopleGatchi.Views.DeathView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ff0000">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:gravity="center"
+        android:textSize="25sp"
+        android:textColor="#ffffff"
+        android:id="@+id/death_text" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/dead"
+        android:layout_marginTop="70dp"
+        android:id="@+id/imageView" />
+
+    <Button
+        android:background="#000000"
+        android:text="play again?"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:textSize="25sp"
+        android:textColor="#ffffff"
+        android:id="@+id/play_again" />
+
+</com.PeopleGatchi.Views.DeathView>
