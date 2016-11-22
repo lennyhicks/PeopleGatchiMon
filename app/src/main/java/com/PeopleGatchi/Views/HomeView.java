@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.PeopleGatchi.Dialogs.InventoryDialog;
 import com.PeopleGatchi.Dialogs.StoreDialog;
+import com.PeopleGatchi.Models.Death;
 import com.PeopleGatchi.PeopleGatchiApplication;
 import com.PeopleGatchi.R;
 import com.PeopleGatchi.Stages.EducationStage;
@@ -55,8 +56,10 @@ public class HomeView extends RelativeLayout {
                 peeBar.setProgress(StatusControls.getPeeLevel());
                 poopBar.setProgress(StatusControls.getPooLevel());
                 sleepBar.setProgress(StatusControls.getRestLevel());
-                bankAmount.setText("Bank: $"+BankControls.getMoney());
+                bankAmount.setText("Bank: $" + BankControls.getMoney());
                 imageView.setImageResource(Utils.setHappinessImage());
+                Death death = new Death();
+                death.isDead();
                 handler.postDelayed(handlerTask, 200);
             }
         };
@@ -256,7 +259,7 @@ public class HomeView extends RelativeLayout {
     }
 
     public void updateScreen(){
-        bankAmount.setText("$"+BankControls.getMoney());
+        bankAmount.setText("$"+ BankControls.getMoney());
         imageView.setImageResource(Utils.setHappinessImage());
 
     }
