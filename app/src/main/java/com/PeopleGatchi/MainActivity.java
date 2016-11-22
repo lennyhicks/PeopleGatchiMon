@@ -13,6 +13,8 @@ import com.PeopleGatchi.Utils.StatusControls;
 import com.davidstemmer.flow.plugin.screenplay.ScreenplayDispatcher;
 import com.orm.SugarContext;
 
+import java.text.SimpleDateFormat;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import flow.Flow;
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private SharedPreferences peoplegatchiPrefs;
     private Handler handler;
     private Runnable handlerTask;
+    private Long leaveGameTime;
 
     @Bind(R.id.container)
     RelativeLayout container;
@@ -108,6 +111,28 @@ public class MainActivity extends AppCompatActivity {
             //placeholderMethod();
         }
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        leaveGameTime = System.currentTimeMillis();
+
+        SimpleDateFormat formatter = new SimpleDateFormat("mm/dd/yyyy hh:mm:ss a");
+        String newFormat = formatter.format(leaveGameTime);
+
+        checkLevels();
+    }
+
+    public void checkLevels(){
+        //TODO make this work!
+        // when the status bar gets to 5, it should be a warning.
+        int restTime = 5 - StatusControls.getRestLevel();
+        int feedTime = 5 - StatusControls.getHungerLevel();
+        int bathTime = 5 - StatusControls.getHygieneLevel();
+        int drinkTime = 5 - StatusControls.getThirstLevel();
+        int peeTime = 5 - StatusControls.getPeeLevel();
+        int pooTime = 5 - StatusControls.getPooLevel();
+
+    }
 }
-
-
