@@ -2,7 +2,6 @@ package com.PeopleGatchi.Dialogs;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -59,14 +58,6 @@ public class InventoryDialog extends Dialog{
                 Toast.makeText(context, "You tapped " + items[i].getName(), Toast.LENGTH_SHORT).show();
                 InventoryControls.useItem(items[i]);
                 refreshItems();
-                final StoreDialog inventoryDialog = new StoreDialog(context);
-                inventoryDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-                    @Override
-                    public void onDismiss(DialogInterface dialog) {
-
-                    }
-                });
-                inventoryDialog.show();
             }
         });
     }

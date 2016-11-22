@@ -16,10 +16,14 @@ import java.util.Random;
 public class Utils {
 
     public static Integer getRand(Integer max){
+        Random r = new Random();
         if (max > 0) {
             max = Constants.MAX_LEVEL - max;
+        }else{
+            max = Math.abs(max);
+            return -(r.nextInt(max + 1));
         }
-      Random r = new Random();
+
         return r.nextInt(max + 1);
 
     }
