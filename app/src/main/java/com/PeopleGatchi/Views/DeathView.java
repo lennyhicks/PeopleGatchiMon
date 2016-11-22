@@ -8,12 +8,16 @@ import android.widget.TextView;
 
 import com.PeopleGatchi.PeopleGatchiApplication;
 import com.PeopleGatchi.R;
+import com.PeopleGatchi.Stages.CreateStage;
 import com.PeopleGatchi.Utils.StatusControls;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import flow.Flow;
+import flow.History;
+
+import static flow.History.single;
 
 /**
  * Created by eaglebrosi on 11/21/16.
@@ -23,6 +27,8 @@ public class DeathView extends RelativeLayout {
     private Context context;
     private Flow flow;
 
+
+
     @Bind(R.id.rip)
     TextView restInPeace;
 
@@ -30,7 +36,7 @@ public class DeathView extends RelativeLayout {
     TextView condolences;
 
     @Bind(R.id.play_again)
-    Button playAgain;
+    Button playAgainBtn;
 
     public DeathView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -42,14 +48,17 @@ public class DeathView extends RelativeLayout {
         super.onFinishInflate();
         ButterKnife.bind(this);
 
+        flow = PeopleGatchiApplication.getMainFlow();
+
         condolences.setText(StatusControls.getName());
 
 //        condolences.setText("Poor sweet "+ StatusControls.getName()+ " has passed away.\n Let's hope they are gently resting \n waiting for the time when you will meet again.");
     }
 
     @OnClick(R.id.play_again)
-    public void playAgain(){
-        flow = PeopleGatchiApplication.getMainFlow();
-        flow.goBack();
+    public void playAgain() {
+        History newHistory = History.single(new CreateStage());
+        flow.setHistory(newHistory, Flow.Direction.REPLACE);
     }
+
 }
