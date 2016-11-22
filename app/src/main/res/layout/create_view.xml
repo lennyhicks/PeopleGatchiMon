@@ -18,7 +18,8 @@
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/pick_name"
-        android:hint="@string/name" />
+        android:hint="@string/name"
+        android:maxLength="8"/>
 
     <Spinner
         android:layout_width="match_parent"
