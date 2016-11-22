@@ -224,8 +224,6 @@ public class HomeView extends RelativeLayout {
             }
         });
         inventoryDialog.show();
-
-
     }
 
     @OnClick(R.id.education_button)
@@ -249,5 +247,14 @@ public class HomeView extends RelativeLayout {
     public void updateScreen(){
         bankAmount.setText("$"+BankControls.getMoney());
         imageView.setImageResource(Utils.setHappinessImage());
+    }
+
+    public static void workSchoolDay (){
+        StatusControls.setHunger(-5);
+        StatusControls.setThirst(-5);
+        StatusControls.setPeeBladder(-5);
+        StatusControls.setPooBladder(-5);
+        StatusControls.setHygiene(-5);
+        StatusControls.setRest(-5);
     }
 }

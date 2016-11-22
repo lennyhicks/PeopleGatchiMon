@@ -111,6 +111,7 @@ public class JobView extends LinearLayout {
 
     public void updateMoney(){
         BankControls.setMoney(payment);
+        HomeView.workSchoolDay();
         wheresTheMoney.setText("You were paid: $"+ payment+".");
         updateBank.setText("Bank Balance: $"+BankControls.getMoney()+".");
     }
