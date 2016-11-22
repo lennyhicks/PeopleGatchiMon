@@ -43,10 +43,9 @@ public class HomeView extends RelativeLayout {
     private Handler handler;
     private Runnable handlerTask;
 
-    void startTimer(){
+    void startTimer() {
         handler = new Handler();
-        handlerTask = new Runnable()
-        {
+        handlerTask = new Runnable() {
             @Override
             public void run() {
                 foodBar.setProgress(StatusControls.getHungerLevel());
@@ -65,7 +64,7 @@ public class HomeView extends RelativeLayout {
         handlerTask.run();
     }
 
-    @Bind(R.id. update_text)
+    @Bind(R.id.update_text)
     TextView updateText;
 
     @Bind(R.id.food_bar)
@@ -141,26 +140,36 @@ public class HomeView extends RelativeLayout {
     }
 
     @OnClick(R.id.food_bar)
-    public void feedPet(){
+    public void feedPet() {
         int foodAmount = Utils.getRand(StatusControls.getHungerLevel());
         StatusControls.setHunger(foodAmount);
-        updateMessage = "BELCH!! Whew, i'm stuffed!!! \n Your food level has increased by: " + foodAmount;
+        StatusControls.setPooBladder(-foodAmount/2);
+        StatusControls.setRest(-foodAmount/3);
+        StatusControls.setHygiene(-foodAmount/3);
+        updateMessage = "Your stomach thanks you, but now you may need to use the bathroom and sleep. Don't forget to wash your hands!";
         updateText();
     }
 
     @OnClick(R.id.drink_bar)
-    public void waterPet(){
+    public void waterPet() {
         int drinkAmount = Utils.getRand(StatusControls.getThirstLevel());
         StatusControls.setThirst(drinkAmount);
-        updateMessage = "Slurp slurp, mmmm! \n Your Thirst level has increased by: " + drinkAmount;
+        StatusControls.setPeeBladder(-drinkAmount/2);
+        StatusControls.setHygiene(-drinkAmount/3);
+        updateMessage = "Your thirst has been quenched, but now you may need to use the bathroom. Don't forget to wash your hands!";
         updateText();
     }
 
     @OnClick(R.id.sleep_bar)
-    public void restPet(){
+    public void restPet() {
         int sleepyTime = Utils.getRand(StatusControls.getRestLevel());
         StatusControls.setRest(sleepyTime);
-        updateMessage = "Whew, I feel rested and ready! \n your Sleep level has increased by: " + sleepyTime;
+        StatusControls.setHunger(-sleepyTime/2);
+        StatusControls.setThirst(-sleepyTime/2);
+        StatusControls.setPooBladder(-sleepyTime/3);
+        StatusControls.setPeeBladder(-sleepyTime/3);
+        StatusControls.setHygiene(-sleepyTime/3);
+        updateMessage = "You're now well rested but, there are probably a few other things that need your attention too!";
         updateText();
     }
 
@@ -176,27 +185,31 @@ public class HomeView extends RelativeLayout {
         if (cleanBaby == 20) {
             updateMessage = "You cant get any cleaner..!";
         } else {
-            updateMessage = "Yay, so fresh and so clean clean!! \n your Hygiene level has increased by: " + cleanBaby;
+            updateMessage = "Yay, so fresh and so clean clean!!";
         }
         updateText();
     }
 
     @OnClick(R.id.pee_bar)
-    public void drainPet(){
+    public void drainPet() {
         int drainPet = Utils.getRand(StatusControls.getPeeLevel());
         StatusControls.setPeeBladder(drainPet);
-        updateMessage = "Yay, we made a pee-pee, Yay!!! \n your pee-pee level has been relieved by: " + drainPet;
+        StatusControls.setThirst(-drainPet/2);
+        StatusControls.setHygiene(-drainPet/3);
+        updateMessage = "Your pee bladder thanks you, but you may now be thirsty. Don't forget to wash your hands!";
         updateText();
     }
 
     @OnClick(R.id.poop_bar)
-    public void pottyPet(){
+    public void pottyPet() {
         int dumpSize = Utils.getRand(StatusControls.getPooLevel());
         StatusControls.setPooBladder(dumpSize);
-        if(dumpSize == 20){
-            updateMessage = "HOLY COW, You just dropped a bigfoot!!! And now you're dead. \n your poo level has been relieved by: " + dumpSize;
+        StatusControls.setHunger(-dumpSize/2);
+        StatusControls.setHygiene(-dumpSize/3);
+        if (dumpSize == 20) {
+            updateMessage = "Holy Cow! That was a sweet sweet #2!! However, now you're getting hungry. Don't forget to wash your hands!";
         } else {
-            Toast.makeText(context, "That was a sweet sweet #2! " + dumpSize, Toast.LENGTH_SHORT).show();
+            updateMessage = "Your poo bladder thanks you, but now you may be hungry. Don't forget to wash your hands!";
             //       Status.poo(dumpSize);
         }
         updateText();
@@ -233,7 +246,7 @@ public class HomeView extends RelativeLayout {
     }
 
     @OnClick(R.id.inventory_button)
-    public void goToInventory(){
+    public void goToInventory() {
         final InventoryDialog inventoryDialog = new InventoryDialog(context);
         inventoryDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override
@@ -260,16 +273,15 @@ public class HomeView extends RelativeLayout {
 
     }
 
-    public void printBank(){
-        bankAmount.setText("Bank Balance: $"+ BankControls.getMoney()+".");
+    public void printBank() {
+        bankAmount.setText("Bank Balance: $" + BankControls.getMoney() + ".");
     }
 
-    public void updateScreen(){
-        bankAmount.setText("$"+ BankControls.getMoney());
+    public void updateScreen() {
+        bankAmount.setText("$" + BankControls.getMoney());
         imageView.setImageResource(Utils.setHappinessImage());
 
     }
-
 
 
     public void setClock(TextView clock) {
@@ -284,25 +296,36 @@ public class HomeView extends RelativeLayout {
 
     }
 
-    public void updateText(){
+    public void updateText() {
         updateText.setText(updateMessage);
 
+
         handler = new Handler();
-        handlerTask = new Runnable()
-        {
+        handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        updateText.setText(null);
-                    }
-                }, 5000);
-
-              //  updateText.setText(null);
-
+                updateText.setText(null);
             }
-        };
-        handlerTask.run();
+        }, 5000);
     }
 }
+
+//        handler = new Handler();
+//        handlerTask = new Runnable()
+//        {
+//            @Override
+//            public void run() {
+//                handler.postDelayed(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        updateText.setText(null);
+//                    }
+//                }, 5000);
+//
+//              //  updateText.setText(null);
+//
+//            }
+//        };
+//        handlerTask.run();
+//    }
+
