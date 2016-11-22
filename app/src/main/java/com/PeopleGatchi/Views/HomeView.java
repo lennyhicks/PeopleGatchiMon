@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.PeopleGatchi.Dialogs.InventoryDialog;
 import com.PeopleGatchi.Dialogs.StoreDialog;
@@ -42,23 +43,31 @@ public class HomeView extends RelativeLayout {
     private String updateMessage;
     private Handler handler;
     private Runnable handlerTask;
+    public static Calendar calendar;
+    private static boolean runningTimer = false;
+    public Integer speed = 20;
 
     void startTimer(){
+        runningTimer = true;
         handler = new Handler();
         handlerTask = new Runnable()
         {
             @Override
             public void run() {
-                foodBar.setProgress(StatusControls.getHungerLevel());
-                drinkBar.setProgress(StatusControls.getThirstLevel());
-                hygieneBar.setProgress(StatusControls.getHygieneLevel());
-                peeBar.setProgress(StatusControls.getPeeLevel());
-                poopBar.setProgress(StatusControls.getPooLevel());
-                sleepBar.setProgress(StatusControls.getRestLevel());
+                setClock(clock);
+                if(calendar.get(Calendar.MINUTE) % speed == 0) {
+                    foodBar.setProgress(StatusControls.getHungerLevel());
+                    drinkBar.setProgress(StatusControls.getThirstLevel());
+                    hygieneBar.setProgress(StatusControls.getHygieneLevel());
+                    peeBar.setProgress(StatusControls.getPeeLevel());
+                    poopBar.setProgress(StatusControls.getPooLevel());
+                    sleepBar.setProgress(StatusControls.getRestLevel());
+                }
                 bankAmount.setText("Bank: $" + BankControls.getMoney());
                 imageView.setImageResource(Utils.setHappinessImage());
                 Death death = new Death();
                 death.isDead();
+
                 handler.postDelayed(handlerTask, 200);
             }
         };
@@ -121,6 +130,7 @@ public class HomeView extends RelativeLayout {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
+        calendar = Calendar.getInstance();
         ButterKnife.bind(this);
 
         flow = PeopleGatchiApplication.getMainFlow();
@@ -129,14 +139,17 @@ public class HomeView extends RelativeLayout {
 
         StatusControls.firstRun();
 
-        startTimer();
+        if(!runningTimer) {
+            startTimer();
+        }
+
         updateScreen();
 
 
         bankAmount.setText("$" + BankControls.getMoney());
 
         imageView.setImageResource(Utils.setHappinessImage());
-
+        calendar = Calendar.getInstance();
         setClock(clock);
     }
 
@@ -145,7 +158,6 @@ public class HomeView extends RelativeLayout {
         int foodAmount = Utils.getRand(StatusControls.getHungerLevel());
         StatusControls.setHunger(foodAmount);
         updateMessage = "BELCH!! Whew, i'm stuffed!!! \n Your food level has increased by: " + foodAmount;
-        updateText();
     }
 
     @OnClick(R.id.drink_bar)
@@ -153,7 +165,6 @@ public class HomeView extends RelativeLayout {
         int drinkAmount = Utils.getRand(StatusControls.getThirstLevel());
         StatusControls.setThirst(drinkAmount);
         updateMessage = "Slurp slurp, mmmm! \n Your Thirst level has increased by: " + drinkAmount;
-        updateText();
     }
 
     @OnClick(R.id.sleep_bar)
@@ -161,7 +172,6 @@ public class HomeView extends RelativeLayout {
         int sleepyTime = Utils.getRand(StatusControls.getRestLevel());
         StatusControls.setRest(sleepyTime);
         updateMessage = "Whew, I feel rested and ready! \n your Sleep level has increased by: " + sleepyTime;
-        updateText();
     }
 
     @OnClick(R.id.image_view)
@@ -178,7 +188,6 @@ public class HomeView extends RelativeLayout {
         } else {
             updateMessage = "Yay, so fresh and so clean clean!! \n your Hygiene level has increased by: " + cleanBaby;
         }
-        updateText();
     }
 
     @OnClick(R.id.pee_bar)
@@ -186,7 +195,6 @@ public class HomeView extends RelativeLayout {
         int drainPet = Utils.getRand(StatusControls.getPeeLevel());
         StatusControls.setPeeBladder(drainPet);
         updateMessage = "Yay, we made a pee-pee, Yay!!! \n your pee-pee level has been relieved by: " + drainPet;
-        updateText();
     }
 
     @OnClick(R.id.poop_bar)
@@ -199,7 +207,6 @@ public class HomeView extends RelativeLayout {
             Toast.makeText(context, "That was a sweet sweet #2! " + dumpSize, Toast.LENGTH_SHORT).show();
             //       Status.poo(dumpSize);
         }
-        updateText();
         // StatusControls.updatePooBladder(dumpSize);
     }
 
@@ -260,10 +267,6 @@ public class HomeView extends RelativeLayout {
 
     }
 
-    public void printBank(){
-        bankAmount.setText("Bank Balance: $"+ BankControls.getMoney()+".");
-    }
-
     public void updateScreen(){
         bankAmount.setText("$"+ BankControls.getMoney());
         imageView.setImageResource(Utils.setHappinessImage());
@@ -274,35 +277,10 @@ public class HomeView extends RelativeLayout {
 
     public void setClock(TextView clock) {
         this.clock = clock;
-
-        Calendar calendar = Calendar.getInstance();
         SimpleDateFormat dateFormat = new SimpleDateFormat("h:mm a");
-        calendar.add(Calendar.HOUR, 1);
-        calendar.add(Calendar.MINUTE, 30);
+        calendar.add(Calendar.MINUTE, 1);
         date = dateFormat.format(calendar.getTime());
         clock.setText(date);
 
-    }
-
-    public void updateText(){
-        updateText.setText(updateMessage);
-
-        handler = new Handler();
-        handlerTask = new Runnable()
-        {
-            @Override
-            public void run() {
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        updateText.setText(null);
-                    }
-                }, 5000);
-
-              //  updateText.setText(null);
-
-            }
-        };
-        handlerTask.run();
     }
 }

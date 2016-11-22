@@ -16,6 +16,7 @@ import com.davidstemmer.flow.plugin.screenplay.ScreenplayDispatcher;
 import com.orm.SugarContext;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import butterknife.Bind;
@@ -24,6 +25,7 @@ import flow.Flow;
 import flow.History;
 
 import static com.PeopleGatchi.R.layout.activity_main;
+import static com.PeopleGatchi.Views.HomeView.calendar;
 
 public class MainActivity extends AppCompatActivity {
     private String TAG = "MainActivity";
@@ -74,6 +76,10 @@ public class MainActivity extends AppCompatActivity {
 
             History newHistory = History.single(new CreateStage());
             flow.setHistory(newHistory, Flow.Direction.REPLACE);
+
+            calendar.set(Calendar.HOUR, 1);
+            calendar.set(Calendar.MINUTE, 00);
+
         } else {
             History newHistory = History.single(new HomeStage());
             flow.setHistory(newHistory, Flow.Direction.REPLACE);

@@ -21,8 +21,9 @@ public class InventoryControls {
     }
 
     public static void useItem(Context context, Item i){
-        UseItem.itemEffects(context, i.getName().toLowerCase());
-        inventory.inventory.remove(i);
+        if(UseItem.itemEffects(context, i.getName().toLowerCase())) {
+            inventory.inventory.remove(i);
+        }
     }
 
     public static ArrayList<Item> getInventory(){
