@@ -91,8 +91,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        TimeControls.getTime();
-        Toast.makeText(this, "Time: " + TimeControls.getTime(), Toast.LENGTH_SHORT).show();
+
     }
 
     @Override
