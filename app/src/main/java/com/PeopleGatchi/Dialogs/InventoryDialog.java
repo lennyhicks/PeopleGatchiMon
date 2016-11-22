@@ -56,7 +56,7 @@ public class InventoryDialog extends Dialog{
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Toast.makeText(context, "You tapped " + items[i].getName(), Toast.LENGTH_SHORT).show();
-                InventoryControls.useItem(items[i]);
+                InventoryControls.useItem(context, items[i]);
                 refreshItems();
             }
         });
