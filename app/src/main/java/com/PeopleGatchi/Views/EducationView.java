@@ -55,15 +55,10 @@ public class EducationView extends LinearLayout {
         ButterKnife.bind(this);
 
         pokeStats();
-//
-//        EventBus.getDefault().register(this);
     }
 
     @OnClick(R.id.increase_science)
     public void changeScience(){
-        //time passes when being taught.
-//        Utils.addTime();
-        // sometimes you learns betters then others.
         int increase= ((int)(Math.random()*5)+1);
         StatusControls.setScienceEd(increase);
         pokeStats();
@@ -71,9 +66,6 @@ public class EducationView extends LinearLayout {
 
     @OnClick(R.id.increase_math)
     public void changeMath(){
-        //time passes when being taught.
-//        Utils.addTime();
-        // sometimes you learns betters then others.
         int increase= ((int)(Math.random()*5)+1);
         StatusControls.setMathEd(increase);
         pokeStats();
@@ -81,9 +73,6 @@ public class EducationView extends LinearLayout {
 
     @OnClick(R.id.increase_philo)
     public void changePhilo(){
-        //time passes when being taught.
-//        Utils.addTime();
-        // sometimes you learns betters then others.
         int increase= ((int)(Math.random()*5)+1);
         StatusControls.setPhiloEd(increase);
         pokeStats();
@@ -92,7 +81,6 @@ public class EducationView extends LinearLayout {
     @OnClick(R.id.home_button)
     public void homeButton(){
         flow = PeopleGatchiApplication.getMainFlow();
-        //History newHistory = History.single(new HomeStage());
         flow.goBack();
     }
 
@@ -100,5 +88,7 @@ public class EducationView extends LinearLayout {
         philoLevel.setText("Your Philosophy Score is: "+ StatusControls.getPhiloEd());
         mathLevel.setText("Your Maths score is: "+ StatusControls.getMathEd());
         scienceLevel.setText("Your Science score is: "+ StatusControls.getScienceEd());
+        // passes time.
+        HomeView.workSchoolDay();
     }
 }
