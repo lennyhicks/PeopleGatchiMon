@@ -117,13 +117,13 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void run() {
 
-                    StatusControls.setHunger(-2);
-                    StatusControls.setThirst(-2);
-                    StatusControls.setHygiene(-2);
-                    StatusControls.setRest(-2);
-                    StatusControls.setPeeBladder(-2);
-                    StatusControls.setPooBladder(-2);
-                    handler.postDelayed(handlerTask, 9000);
+                    StatusControls.setHunger(-1);
+                    StatusControls.setThirst(-1);
+                    StatusControls.setHygiene(-1);
+                    StatusControls.setRest(-1);
+                    StatusControls.setPeeBladder(-1);
+                    StatusControls.setPooBladder(-1);
+                    handler.postDelayed(handlerTask, 15000);
                 }
             };
             handlerTask.run();
