@@ -255,8 +255,6 @@ public class HomeView extends RelativeLayout {
             }
         });
         inventoryDialog.show();
-
-
     }
 
     @OnClick(R.id.education_button)
@@ -307,6 +305,15 @@ public class HomeView extends RelativeLayout {
                 updateText.setText(null);
             }
         }, 5000);
+    }
+
+    public static void workSchoolDay (){
+        StatusControls.setHunger(-5);
+        StatusControls.setThirst(-5);
+        StatusControls.setPeeBladder(-5);
+        StatusControls.setPooBladder(-5);
+        StatusControls.setHygiene(-5);
+        StatusControls.setRest(-5);
     }
 }
 
