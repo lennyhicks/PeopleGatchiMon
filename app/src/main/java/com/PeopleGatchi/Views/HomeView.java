@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.PeopleGatchi.Dialogs.InventoryDialog;
 import com.PeopleGatchi.Dialogs.StoreDialog;
+import com.PeopleGatchi.Models.Death;
 import com.PeopleGatchi.PeopleGatchiApplication;
 import com.PeopleGatchi.R;
 import com.PeopleGatchi.Stages.EducationStage;
@@ -19,6 +20,9 @@ import com.PeopleGatchi.Stages.JobStage;
 import com.PeopleGatchi.Utils.BankControls;
 import com.PeopleGatchi.Utils.StatusControls;
 import com.PeopleGatchi.Utils.Utils;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -32,6 +36,7 @@ import flow.History;
 
 public class HomeView extends RelativeLayout {
     private Flow flow;
+    private String date;
 
     private Context context;
     private String updateMessage;
@@ -50,8 +55,10 @@ public class HomeView extends RelativeLayout {
                 peeBar.setProgress(StatusControls.getPeeLevel());
                 poopBar.setProgress(StatusControls.getPooLevel());
                 sleepBar.setProgress(StatusControls.getRestLevel());
-                bankAmount.setText("Bank: $"+BankControls.getMoney());
+                bankAmount.setText("Bank: $" + BankControls.getMoney());
                 imageView.setImageResource(Utils.setHappinessImage());
+                Death death = new Death();
+                death.isDead();
                 handler.postDelayed(handlerTask, 200);
             }
         };
@@ -126,6 +133,11 @@ public class HomeView extends RelativeLayout {
         updateScreen();
 
 
+        bankAmount.setText("$" + BankControls.getMoney());
+
+        imageView.setImageResource(Utils.setHappinessImage());
+
+        setClock(clock);
     }
 
     @OnClick(R.id.food_bar)
@@ -153,7 +165,7 @@ public class HomeView extends RelativeLayout {
     }
 
     @OnClick(R.id.image_view)
-    public void happinessView(){
+    public void happinessView() {
 
     }
 
@@ -184,7 +196,7 @@ public class HomeView extends RelativeLayout {
         if(dumpSize == 20){
             updateMessage = "HOLY COW, You just dropped a bigfoot!!! And now you're dead. \n your poo level has been relieved by: " + dumpSize;
         } else {
-            updateMessage = "That was a sweet sweet #2! " + dumpSize;
+            Toast.makeText(context, "That was a sweet sweet #2! " + dumpSize, Toast.LENGTH_SHORT).show();
             //       Status.poo(dumpSize);
         }
         updateText();
@@ -193,22 +205,22 @@ public class HomeView extends RelativeLayout {
 
     // TODO does this need to be in here. It's probably my fault that it exist.
     @OnClick(R.id.bank_amount)
-    public void bankTotal(){
+    public void bankTotal() {
 
     }
 
     @OnClick(R.id.fastforward_button)
-    public void increaseTime(){
+    public void increaseTime() {
 
     }
 
     @OnClick(R.id.clock)
-    public void clock(){
+    public void clock() {
 
     }
 
     @OnClick(R.id.store_button)
-    public void goToStore(){
+    public void goToStore() {
 
         final StoreDialog storeDialog = new StoreDialog(context);
         storeDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
@@ -235,14 +247,14 @@ public class HomeView extends RelativeLayout {
     }
 
     @OnClick(R.id.education_button)
-    public void goToSchool(){
+    public void goToSchool() {
         History newHistory = flow.getHistory().buildUpon().push(new EducationStage()).build();
         flow.setHistory(newHistory, Flow.Direction.FORWARD);
 
     }
 
     @OnClick(R.id.work_button)
-    public void goToWork(){
+    public void goToWork() {
         History newHistory = flow.getHistory().buildUpon().push(new JobStage()).build();
         flow.setHistory(newHistory, Flow.Direction.FORWARD);
 
@@ -253,8 +265,23 @@ public class HomeView extends RelativeLayout {
     }
 
     public void updateScreen(){
-        bankAmount.setText("$"+BankControls.getMoney());
+        bankAmount.setText("$"+ BankControls.getMoney());
         imageView.setImageResource(Utils.setHappinessImage());
+
+    }
+
+
+
+    public void setClock(TextView clock) {
+        this.clock = clock;
+
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("h:mm a");
+        calendar.add(Calendar.HOUR, 1);
+        calendar.add(Calendar.MINUTE, 30);
+        date = dateFormat.format(calendar.getTime());
+        clock.setText(date);
+
     }
 
     public void updateText(){

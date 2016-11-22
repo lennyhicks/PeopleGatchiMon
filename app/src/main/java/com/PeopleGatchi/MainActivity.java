@@ -6,12 +6,17 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.PeopleGatchi.Stages.CreateStage;
 import com.PeopleGatchi.Stages.HomeStage;
 import com.PeopleGatchi.Utils.StatusControls;
+import com.PeopleGatchi.Utils.TimeControls;
 import com.davidstemmer.flow.plugin.screenplay.ScreenplayDispatcher;
 import com.orm.SugarContext;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -27,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private SharedPreferences peoplegatchiPrefs;
     private Handler handler;
     private Runnable handlerTask;
+    public static SimpleDateFormat dateFormat = new SimpleDateFormat("h:mm a");
 
     @Bind(R.id.container)
     RelativeLayout container;
@@ -46,6 +52,11 @@ public class MainActivity extends AppCompatActivity {
         StatusControls.firstRun();
 
         decreaseStats();
+
+        Date date = new Date();
+        dateFormat.format(date);
+        TimeControls.setTime(date);
+        Toast.makeText(this, "Meow Time: " + TimeControls.getTime(), Toast.LENGTH_SHORT).show();
 
         try {
             flow = PeopleGatchiApplication.getMainFlow();
@@ -67,6 +78,21 @@ public class MainActivity extends AppCompatActivity {
             History newHistory = History.single(new HomeStage());
             flow.setHistory(newHistory, Flow.Direction.REPLACE);
         }
+    }
+
+    @Override
+    protected void onPause() {
+        Date date = new Date();
+        TimeControls.setTime(date);
+        super.onPause();
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        TimeControls.getTime();
+        Toast.makeText(this, "Time: " + TimeControls.getTime(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
