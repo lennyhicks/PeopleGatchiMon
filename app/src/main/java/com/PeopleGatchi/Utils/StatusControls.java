@@ -23,7 +23,7 @@ import static com.orm.SugarRecord.findById;
 public class StatusControls {
     static Poo pooBladder = new Poo(20);
     static Pee peeBladder = new Pee(20);
-    static Happiness happiness= new Happiness();
+    public static Happiness happiness= new Happiness();
     static Hunger hunger = new Hunger(20);
     static Thirst thirst = new Thirst(20);
     static Hygiene hygiene = new Hygiene(20);
@@ -260,4 +260,6 @@ public class StatusControls {
         name = findById(User.class, 1);
         gender = findById(User.class, 1);
     }
+
+
 }
