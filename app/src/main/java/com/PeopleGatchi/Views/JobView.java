@@ -19,6 +19,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import flow.Flow;
 
+import static com.PeopleGatchi.Views.EducationView.warningMessage;
+
 /**
  * Created by eaglebrosi on 11/16/16.
  */
@@ -122,24 +124,28 @@ public class JobView extends LinearLayout {
     }
 
     public void statusCheck() {
-        if (StatusControls.getHungerLevel() <= 7) {
+        if (StatusControls.getHungerLevel() <= 5) {
+            warningMessage = "Your baby is super hungry!\n Go fed them!";
+        } else if (StatusControls.getPooLevel() <= 5) {
+            warningMessage = "Your baby really needs to go!\n Let them go to the bathroom!";
+        } else if (StatusControls.getPeeLevel() <= 5) {
+            warningMessage = "Your baby needs to tinkle! \n Let them pee!";
+        } else if (StatusControls.getHygieneLevel() <= 5) {
+            warningMessage = "Your baby is filthy!\n Bathe them!";
+        } else if (StatusControls.getThirstLevel() <= 5) {
+            warningMessage = "Your sweet baby needs a drink!\n Don't let them go thirsty!";
+        } else if (StatusControls.getRestLevel() <= 5) {
+            warningMessage = "Your baby needs a nap!\n Put them to bed!";
+        }
+        checkDisable();
+    }
+
+    public void checkDisable() {
+        if ((StatusControls.getHungerLevel() <= 5) || (StatusControls.getPooLevel() <= 5) || (StatusControls.getPeeLevel() <= 5)
+                || (StatusControls.getHygieneLevel() <= 5) || (StatusControls.getThirstLevel() <= 5)
+                || (StatusControls.getRestLevel() <= 5)) {
+            Toast.makeText(context, warningMessage, Toast.LENGTH_SHORT).show();
             disableButton();
-            Toast.makeText(context, "Your baby is super hungry!\n Go fed them!", Toast.LENGTH_SHORT).show();
-        } else if (StatusControls.getPooLevel() <= 7) {
-            disableButton();
-            Toast.makeText(context, "Your baby really needs to go!\n Let them go to the bathroom!", Toast.LENGTH_SHORT).show();
-        } else if (StatusControls.getPeeLevel() <= 7) {
-            disableButton();
-            Toast.makeText(context, "Your baby needs to tinkle! \n Let them pee!", Toast.LENGTH_SHORT).show();
-        } else if (StatusControls.getHygieneLevel() <= 7) {
-            disableButton();
-            Toast.makeText(context, "Your baby is filthy!\n Bathe them!", Toast.LENGTH_SHORT).show();
-        } else if (StatusControls.getThirstLevel() <= 7) {
-            disableButton();
-            Toast.makeText(context, "Your sweet baby needs a drink!\n Don't let them go thirsty!", Toast.LENGTH_SHORT).show();
-        } else if (StatusControls.getRestLevel() <= 7) {
-            disableButton();
-            Toast.makeText(context, "Your baby needs a nap!\n Put them to bed!", Toast.LENGTH_SHORT).show();
         }
     }
 
