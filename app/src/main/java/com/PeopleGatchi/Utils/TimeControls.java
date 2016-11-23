@@ -15,6 +15,7 @@ public class TimeControls {
 
     static Time time = new Time();
 
+    
     public static Date getTime() {
         
         return time.lastRan;
