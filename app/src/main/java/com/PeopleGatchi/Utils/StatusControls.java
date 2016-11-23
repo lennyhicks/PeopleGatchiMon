@@ -263,8 +263,8 @@ public class StatusControls {
     }
 
     public static void resetGame() {
-        name = new User();
-        gender = new User();
+        setName(getName());
+        setGender(getGender());
         setPooBladder(20);
         setPeeBladder(20);
         setHunger(20);
