@@ -51,6 +51,7 @@ public class CreateView extends LinearLayout {
         super.onFinishInflate();
         ButterKnife.bind(this);
 
+
         //spinner element
 //        gender = (Spinner) findViewById(spinner);
 

@@ -17,8 +17,6 @@ import butterknife.OnClick;
 import flow.Flow;
 import flow.History;
 
-import static flow.History.single;
-
 /**
  * Created by eaglebrosi on 11/21/16.
  */
@@ -57,8 +55,11 @@ public class DeathView extends RelativeLayout {
 
     @OnClick(R.id.play_again)
     public void playAgain() {
+        StatusControls.resetGame();
         History newHistory = History.single(new CreateStage());
         flow.setHistory(newHistory, Flow.Direction.REPLACE);
+
+
     }
 
 }

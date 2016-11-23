@@ -125,7 +125,8 @@ public class MainActivity extends AppCompatActivity {
                     StatusControls.setRest(-1);
                     StatusControls.setPeeBladder(-1);
                     StatusControls.setPooBladder(-1);
-                    handler.postDelayed(handlerTask, 15000);
+                    handler.postDelayed(handlerTask, 2000);
+//                    handler.postDelayed(handlerTask, 15000);
                 }
             };
             handlerTask.run();

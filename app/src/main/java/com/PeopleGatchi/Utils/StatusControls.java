@@ -14,6 +14,7 @@ import com.PeopleGatchi.Models.Persisting.Thirst;
 import com.PeopleGatchi.Models.Persisting.User;
 
 import static com.PeopleGatchi.Utils.BankControls.money;
+import static com.PeopleGatchi.Utils.BankControls.setMoney;
 import static com.orm.SugarRecord.findById;
 
 /**
@@ -261,5 +262,19 @@ public class StatusControls {
         gender = findById(User.class, 1);
     }
 
+    public static void resetGame() {
+        name = new User();
+        gender = new User();
+        setPooBladder(20);
+        setPeeBladder(20);
+        setHunger(20);
+        setThirst(20);
+        setHygiene(20);
+        setRest(20);
+        setMoney(0);
+        setScienceEd(0);
+        setMathEd(0);
+        setPhiloEd(0);
+    }
 
 }
