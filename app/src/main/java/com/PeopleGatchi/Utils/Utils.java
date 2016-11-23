@@ -9,11 +9,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
+import static com.PeopleGatchi.Components.Constants.BASE_HAPPINESS;
+import static com.PeopleGatchi.Components.Constants.DEATH;
+import static com.PeopleGatchi.Utils.StatusControls.adjustedDeath;
+import static com.PeopleGatchi.Utils.StatusControls.happiness;
+import static com.PeopleGatchi.Utils.StatusControls.shelterHappiness;
+
 /**
  * Created by lennyhicks on 11/16/16.
  */
 
 public class Utils {
+
 
     public static Integer getRand(Integer max){
         Random r = new Random();
@@ -34,7 +41,7 @@ public class Utils {
             return R.drawable.happy;
         }else if (happinessLevel >= 40) {
             return R.drawable.annoyed;
-        } else if (happinessLevel >= 5) {
+        } else if (happinessLevel >= 16) {
             return R.drawable.sad;
         }else {
             return R.drawable.dead;
@@ -62,5 +69,15 @@ public class Utils {
                 hash.add(hm);
             }
             return hash;
+    }
+
+    public static void adjustedStatus() {
+        if (shelterHappiness >= 1) {
+            happiness.happinessLevel = BASE_HAPPINESS + shelterHappiness;
+            adjustedDeath = DEATH - shelterHappiness;
+        } else {
+            happiness.happinessLevel = BASE_HAPPINESS;
+            adjustedDeath = DEATH;
+        }
     }
 }
