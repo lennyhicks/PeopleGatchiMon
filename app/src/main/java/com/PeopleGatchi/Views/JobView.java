@@ -24,7 +24,7 @@ import static com.PeopleGatchi.Views.EducationView.warningMessage;
 /**
  * Created by eaglebrosi on 11/16/16.
  */
-// todo gotta add time punishment to prevent spamming buttons!
+
 public class JobView extends LinearLayout {
     private Context context;
     public double bankBalance;
