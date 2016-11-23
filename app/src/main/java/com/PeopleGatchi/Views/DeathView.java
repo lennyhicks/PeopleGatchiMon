@@ -44,7 +44,7 @@ public class DeathView extends RelativeLayout {
         super.onFinishInflate();
         ButterKnife.bind(this);
 
-        // Get the name for the tombstone.
+        // Prints the name on the tombstone.
         flow = PeopleGatchiApplication.getMainFlow();
         condolences.setText(StatusControls.getName());
     }

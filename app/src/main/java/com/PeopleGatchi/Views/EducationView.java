@@ -108,9 +108,9 @@ public class EducationView extends LinearLayout {
     public void checkDisable() {
         // This looks to see if any of the statuses are in danger of being too low (so you don't work yourself to death).
         // It toast a warning message and then calls the disable button.
-        if ((StatusControls.getHungerLevel() <= 5) || (StatusControls.getPooLevel() <= 5) || (StatusControls.getPeeLevel() <= 5)
-                || (StatusControls.getHygieneLevel() <= 5) || (StatusControls.getThirstLevel() <= 5)
-                || (StatusControls.getRestLevel() <= 5)) {
+        if ((StatusControls.getHungerLevel() <= 7) || (StatusControls.getPooLevel() <= 7) || (StatusControls.getPeeLevel() <= 7)
+                || (StatusControls.getHygieneLevel() <= 7) || (StatusControls.getThirstLevel() <= 7)
+                || (StatusControls.getRestLevel() <= 7)) {
             setWarningMessage();
             Toast.makeText(context, warningMessage, Toast.LENGTH_SHORT).show();
             disableButton();
@@ -119,17 +119,17 @@ public class EducationView extends LinearLayout {
 
     public void setWarningMessage() {
         // Sets the warning message for when any status are low.
-        if (StatusControls.getHungerLevel() <= 5) {
+        if (StatusControls.getHungerLevel() <= 7) {
             warningMessage = "Your baby is super hungry!\n Go fed them!";
-        } else if (StatusControls.getPooLevel() <= 5) {
+        } else if (StatusControls.getPooLevel() <= 7) {
             warningMessage = "Your baby really needs to go!\n Let them go to the bathroom!";
-        } else if (StatusControls.getPeeLevel() <= 5) {
+        } else if (StatusControls.getPeeLevel() <= 7) {
             warningMessage = "Your baby needs to tinkle! \n Let them pee!";
-        } else if (StatusControls.getHygieneLevel() <= 5) {
+        } else if (StatusControls.getHygieneLevel() <= 7) {
             warningMessage = "Your baby is filthy!\n Bathe them!";
-        } else if (StatusControls.getThirstLevel() <= 5) {
+        } else if (StatusControls.getThirstLevel() <= 7) {
             warningMessage = "Your sweet baby needs a drink!\n Don't let them go thirsty!";
-        } else if (StatusControls.getRestLevel() <= 5) {
+        } else if (StatusControls.getRestLevel() <= 7) {
             warningMessage = "Your baby needs a nap!\n Put them to bed!";
         }
     }

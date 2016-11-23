@@ -12,7 +12,6 @@ import java.util.Date;
 public class TimeControls {
     public static Calendar calendar;
 
-
     static Time time = new Time();
 
     public static Date getTime() {
@@ -23,8 +22,4 @@ public class TimeControls {
         time.lastRan = lastRan;
         time.save();
     }
-
-
-
 }
-
