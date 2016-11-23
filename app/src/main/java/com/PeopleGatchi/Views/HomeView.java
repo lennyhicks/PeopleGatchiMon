@@ -45,7 +45,7 @@ public class HomeView extends RelativeLayout {
     private Runnable handlerTask;
     public static Calendar calendar;
     private static boolean runningTimer = false;
-    public Integer speed = 20;
+    public Integer speed = 200;
 
     void startTimer(){
         runningTimer = true;
@@ -55,20 +55,28 @@ public class HomeView extends RelativeLayout {
             @Override
             public void run() {
                 setClock(clock);
-                if(calendar.get(Calendar.MINUTE) % speed == 0) {
-                    foodBar.setProgress(StatusControls.getHungerLevel());
-                    drinkBar.setProgress(StatusControls.getThirstLevel());
-                    hygieneBar.setProgress(StatusControls.getHygieneLevel());
-                    peeBar.setProgress(StatusControls.getPeeLevel());
-                    poopBar.setProgress(StatusControls.getPooLevel());
-                    sleepBar.setProgress(StatusControls.getRestLevel());
+                if(calendar.get(Calendar.MINUTE) % 20 == 0){
+                    StatusControls.setHunger(-1);
+                    StatusControls.setThirst(-1);
+                    StatusControls.setHygiene(-1);
+                    StatusControls.setRest(-1);
+                    StatusControls.setPeeBladder(-1);
+                    StatusControls.setPooBladder(-1);
                 }
-                bankAmount.setText("Bank: $" + BankControls.getMoney());
+                foodBar.setProgress(StatusControls.getHungerLevel());
+                drinkBar.setProgress(StatusControls.getThirstLevel());
+                hygieneBar.setProgress(StatusControls.getHygieneLevel());
+                peeBar.setProgress(StatusControls.getPeeLevel());
+                poopBar.setProgress(StatusControls.getPooLevel());
+                sleepBar.setProgress(StatusControls.getRestLevel());
+
+
+                bankAmount.setText("$" + BankControls.getMoney());
                 imageView.setImageResource(Utils.setHappinessImage());
                 Death death = new Death();
                 death.isDead();
 
-                handler.postDelayed(handlerTask, 200);
+                handler.postDelayed(handlerTask, speed);
             }
         };
         handlerTask.run();
@@ -218,11 +226,12 @@ public class HomeView extends RelativeLayout {
 
     @OnClick(R.id.fastforward_button)
     public void increaseTime() {
-
+        speed = 100;
     }
 
     @OnClick(R.id.clock)
     public void clock() {
+        speed = 400;
 
     }
 

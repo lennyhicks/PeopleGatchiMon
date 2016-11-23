@@ -53,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
         SugarContext.init(getApplicationContext());
         StatusControls.firstRun();
 
-        decreaseStats();
 
         Date date = new Date();
         dateFormat.format(date);
@@ -116,30 +115,6 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
-    public void decreaseStats(){
-       // newMethod();
-        handler = new Handler();
-            handlerTask = new Runnable()
-            {
-                @Override
-                public void run() {
-
-                    StatusControls.setHunger(-1);
-                    StatusControls.setThirst(-1);
-                    StatusControls.setHygiene(-1);
-                    StatusControls.setRest(-1);
-                    StatusControls.setPeeBladder(-1);
-                    StatusControls.setPooBladder(-1);
-                    handler.postDelayed(handlerTask, 15000);
-                }
-            };
-            handlerTask.run();
-    }
-    public void newMethod(){
-        if(StatusControls.getHungerLevel() < 0){
-            //placeholderMethod();
-        }
-    }
 }
 
 
