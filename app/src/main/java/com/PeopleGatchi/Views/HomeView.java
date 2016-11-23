@@ -182,6 +182,10 @@ public class HomeView extends RelativeLayout {
     public void cleanPet() {
         int cleanBaby = Utils.getRand(StatusControls.getHygieneLevel());
         StatusControls.setHygiene(cleanBaby);
+        StatusControls.setPooBladder(-cleanBaby/3);
+        StatusControls.setHunger(-cleanBaby/3);
+        StatusControls.setThirst(-cleanBaby/3);
+        StatusControls.setRest(-cleanBaby/3);
         if (cleanBaby == 20) {
             updateMessage = "You cant get any cleaner..!";
         } else {
