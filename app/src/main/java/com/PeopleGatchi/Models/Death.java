@@ -19,11 +19,8 @@ public class Death {
 
         if (happiness.happinessLevel <= 5) {
            Flow flow = PeopleGatchiApplication.getMainFlow();
-            History newHistory = flow.getHistory()
-                    .buildUpon()
-                    .push(new DeathStage())
-                    .build();
-            flow.setHistory(newHistory, Flow.Direction.FORWARD);
+            History newHistory = History.single(new DeathStage());
+            flow.setHistory(newHistory, Flow.Direction.BACKWARD);
         } else {
             return;
         }

@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private Handler handler;
     private Runnable handlerTask;
     public static SimpleDateFormat dateFormat = new SimpleDateFormat("h:mm a");
+    private Context context;
 
     @Bind(R.id.container)
     RelativeLayout container;
@@ -123,15 +124,11 @@ public class MainActivity extends AppCompatActivity {
                     StatusControls.setRest(-1);
                     StatusControls.setPeeBladder(-1);
                     StatusControls.setPooBladder(-1);
-                    handler.postDelayed(handlerTask, 15000);
+                    handler.postDelayed(handlerTask, 2000);
+//                    handler.postDelayed(handlerTask, 15000);
                 }
             };
             handlerTask.run();
-    }
-    public void newMethod(){
-        if(StatusControls.getHungerLevel() < 0){
-            //placeholderMethod();
-        }
     }
 }
 

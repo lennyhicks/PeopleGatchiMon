@@ -308,12 +308,12 @@ public class HomeView extends RelativeLayout {
     }
 
     public static void workSchoolDay (){
-        StatusControls.setHunger(-5);
-        StatusControls.setThirst(-5);
-        StatusControls.setPeeBladder(-5);
-        StatusControls.setPooBladder(-5);
-        StatusControls.setHygiene(-5);
-        StatusControls.setRest(-5);
+        StatusControls.setHunger(-2);
+        StatusControls.setThirst(-2);
+        StatusControls.setPeeBladder(-2);
+        StatusControls.setPooBladder(-2);
+        StatusControls.setHygiene(-2);
+        StatusControls.setRest(-2);
     }
 }
 
