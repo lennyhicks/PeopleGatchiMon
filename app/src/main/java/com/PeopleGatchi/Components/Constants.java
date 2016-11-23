@@ -11,8 +11,8 @@ public final class Constants {
     public static final String tokenExpiration = "tokenExpiration";
     public static final int WORK_TIME = 8;
     public static final int MAX_LEVEL = 20;
-    public static final int baseHappiness = 120;
-    public static final int death = 15;
+    public static final int BASE_HAPPINESS = 120;
+    public static final int DEATH = 15;
 
 
 
