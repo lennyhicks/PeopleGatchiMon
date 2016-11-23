@@ -23,6 +23,7 @@ import flow.History;
 
 public class DeathView extends RelativeLayout {
     private Context context;
+    private Flow flow;
 
 
     @Bind(R.id.rip)
@@ -54,6 +55,6 @@ public class DeathView extends RelativeLayout {
         StatusControls.firstRun();
         Flow flow = PeopleGatchiApplication.getMainFlow();
         History newHistory = History.single(new CreateStage());
-        flow.setHistory(newHistory, Flow.Direction.FORWARD);
+        flow.setHistory(newHistory, Flow.Direction.REPLACE);
     }
 }

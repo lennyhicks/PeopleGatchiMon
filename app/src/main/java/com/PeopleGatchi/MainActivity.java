@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void decreaseStats(){
-       // newMethod();
+       
         handler = new Handler();
             handlerTask = new Runnable()
             {
