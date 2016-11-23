@@ -16,7 +16,7 @@ public class Death {
 
 
     public void isDead () {
-
+//If happiness is less than or equal to 5 your pet will die.
         if (happiness.happinessLevel <= 5) {
            Flow flow = PeopleGatchiApplication.getMainFlow();
             History newHistory = History.single(new DeathStage());
