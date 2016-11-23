@@ -49,7 +49,7 @@ public class Utils {
 
         } else if (happinessLevel >= 16) {
             return R.drawable.sad;
-            
+
         }else {
             return R.drawable.dead;
         }
