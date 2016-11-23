@@ -168,8 +168,8 @@ public class HomeView extends RelativeLayout {
         //Displays message in a text view.
         int sleepyTime = Utils.getRand(StatusControls.getRestLevel());
         StatusControls.setRest(sleepyTime);
-        StatusControls.setHunger(-sleepyTime/2);
-        StatusControls.setThirst(-sleepyTime/2);
+        StatusControls.setHunger(-sleepyTime/3);
+        StatusControls.setThirst(-sleepyTime/3);
         StatusControls.setPooBladder(-sleepyTime/3);
         StatusControls.setPeeBladder(-sleepyTime/3);
         StatusControls.setHygiene(-sleepyTime/3);
@@ -183,7 +183,6 @@ public class HomeView extends RelativeLayout {
         //Displays message in a text view.
         int cleanBaby = Utils.getRand(StatusControls.getHygieneLevel());
         StatusControls.setHygiene(cleanBaby);
-        StatusControls.setPooBladder(-cleanBaby/3);
         StatusControls.setHunger(-cleanBaby/3);
         StatusControls.setThirst(-cleanBaby/3);
         StatusControls.setRest(-cleanBaby/3);

@@ -136,7 +136,6 @@ public class MainActivity extends AppCompatActivity {
                         StatusControls.setPeeBladder(-1);
                         StatusControls.setPooBladder(-1);
                         handler.postDelayed(handlerTask, 360000);
-//                    handler.postDelayed(handlerTask, 15000);
                     }
                 }
             };
