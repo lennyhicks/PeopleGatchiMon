@@ -4,93 +4,13 @@
                                  xmlns:app="http://schemas.android.com/apk/res-auto"
                                  android:orientation="vertical" android:layout_width="match_parent"
                                  android:layout_height="match_parent">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/livingroom">
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/purple">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/display_name"
-            android:textColor="#ffffff"
-            android:textStyle="bold"
-            android:layout_marginTop="5dp"
-            android:layout_alignParentTop="true"
-            android:textSize="25sp"
-            android:layout_alignParentStart="true"/>
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/fastforward"
-        android:id="@+id/fastforward_button"
+        android:background="@drawable/livingroom"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true" />
-
-
-        <TextView
-        android:text="00:00"
-            android:textColor="#ffffff"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/clock"
-            android:textSize="25sp"
-        android:paddingTop="10dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        android:layout_alignParentTop="true"
-        android:layout_toStartOf="@+id/fastforward_button"
-        android:layout_alignBottom="@+id/fastforward_button" />
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/store"
-        android:id="@+id/store_button"
-        android:layout_alignTop="@+id/inventory_button"
-        android:layout_alignParentStart="true" />
-
-        <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/work"
-        android:id="@+id/work_button"
-        android:layout_below="@+id/bank_amount"
-        android:layout_alignParentEnd="true" />
-
-        <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/backpack"
-        android:id="@+id/inventory_button"
-        android:layout_below="@+id/bank_amount"
-        android:layout_toEndOf="@+id/store_button" />
-
-        <TextView
-            android:layout_width="144dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/bank_amount"
-            android:textSize="20sp"
-            android:textColor="#ffffff"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:paddingTop="10dp"
-            android:gravity="center"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/education"
-            android:id="@+id/education_button"
-            android:layout_below="@+id/display_name"
-            android:layout_toStartOf="@+id/fastforward_button" />
-    </RelativeLayout>
+        android:layout_alignParentStart="true">
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -277,6 +197,92 @@
             android:textColor="#ffffff"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:layout_above="@+id/character_iv" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/purple"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true">
+
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/fastforward"
+            android:id="@+id/fastforward_button"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true" />
+
+
+            <TextView
+            android:text="00:00"
+                android:textColor="#ffffff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/clock"
+                android:textSize="25sp"
+            android:paddingTop="5dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@+id/fastforward_button"
+            android:layout_alignBottom="@+id/fastforward_button" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/store"
+            android:id="@+id/store_button"
+            android:layout_alignTop="@+id/inventory_button"
+            android:layout_alignParentStart="true" />
+
+            <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/work"
+            android:id="@+id/work_button"
+            android:layout_below="@+id/bank_amount"
+            android:layout_alignParentEnd="true" />
+
+            <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/backpack"
+            android:id="@+id/inventory_button"
+            android:layout_below="@+id/bank_amount"
+            android:layout_toEndOf="@+id/store_button" />
+
+            <TextView
+                android:layout_width="144dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/bank_amount"
+                android:textSize="25sp"
+                android:textColor="#ffffff"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:paddingTop="5dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/display_name"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:maxLength="8"
+                android:layout_below="@+id/clock"
+                android:layout_centerHorizontal="true" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/education"
+                android:id="@+id/education_button"
+                android:layout_alignTop="@+id/work_button"
+                android:layout_toStartOf="@+id/fastforward_button" />
+
+        </RelativeLayout>
 
     </RelativeLayout>
 
