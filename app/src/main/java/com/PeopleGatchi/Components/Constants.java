@@ -11,6 +11,8 @@ public final class Constants {
     public static final String tokenExpiration = "tokenExpiration";
     public static final int WORK_TIME = 8;
     public static final int MAX_LEVEL = 20;
+    public static final int BASE_HAPPINESS = 120;
+    public static final int DEATH = 15;
 
     public static Item[] FOODITEMS = new Item[] {
             new Item("Candy", 2, R.drawable.halloweencandy),

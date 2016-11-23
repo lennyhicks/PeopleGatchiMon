@@ -34,6 +34,9 @@ public class StatusControls {
     static PhiloEd philoEd = new PhiloEd();
     static User name = new User();
     static User gender = new User();
+    static Integer shelterHappiness = 0;
+    static Integer adjustedDeath = 0;
+
 
     public static void setPooBladder(Integer bladderControl) {
 
@@ -160,12 +163,14 @@ public class StatusControls {
     }
 
     public static Integer getLevels(){
-        happiness.happinessLevel =  getPeeLevel() +
-                                    getPooLevel() +
-                                    getHungerLevel() +
-                                    getThirstLevel() +
-                                    getHygieneLevel() +
-                                    getRestLevel();
+        if (adjustedDeath == 0) {
+            happiness.happinessLevel = getPeeLevel() +
+                    getPooLevel() +
+                    getHungerLevel() +
+                    getThirstLevel() +
+                    getHygieneLevel() +
+                    getRestLevel();
+        }
         return happiness.happinessLevel;
     }
 
@@ -275,6 +280,23 @@ public class StatusControls {
         setScienceEd(0);
         setMathEd(0);
         setPhiloEd(0);
+        setShelterHappiness(0);
+        setAdjustedDeath(0);
     }
 
+    public static Integer getShelterHappiness() {
+        return shelterHappiness;
+    }
+
+    public static void setShelterHappiness(Integer shelterHappiness) {
+        StatusControls.shelterHappiness = shelterHappiness;
+    }
+
+    public static Integer getAdjustedDeath() {
+        return adjustedDeath;
+    }
+
+    public static void setAdjustedDeath(Integer adjustedDeath) {
+        StatusControls.adjustedDeath = adjustedDeath;
+    }
 }
