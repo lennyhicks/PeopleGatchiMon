@@ -28,6 +28,7 @@ public class EducationView extends LinearLayout {
     private Flow flow;
     private Handler handler;
     private Runnable handlerTask;
+    public static String warningMessage;
 
     @Bind(R.id.increase_science)
     Button increaseScience;
@@ -101,26 +102,29 @@ public class EducationView extends LinearLayout {
 
     public void statusCheck() {
         if (StatusControls.getHungerLevel() <= 5) {
-            disableButton();
-            Toast.makeText(context, "Your baby is super hungry!\n Go fed them!", Toast.LENGTH_SHORT).show();
+            warningMessage = "Your baby is super hungry!\n Go fed them!";
         } else if (StatusControls.getPooLevel() <= 5) {
-            disableButton();
-            Toast.makeText(context, "Your baby really needs to go!\n Let them go to the bathroom!", Toast.LENGTH_SHORT).show();
+            warningMessage = "Your baby really needs to go!\n Let them go to the bathroom!";
         } else if (StatusControls.getPeeLevel() <= 5) {
-            disableButton();
-            Toast.makeText(context, "Your baby needs to tinkle! \n Let them pee!", Toast.LENGTH_SHORT).show();
+            warningMessage = "Your baby needs to tinkle! \n Let them pee!";
         } else if (StatusControls.getHygieneLevel() <= 5) {
-            disableButton();
-            Toast.makeText(context, "Your baby is filthy!\n Bathe them!", Toast.LENGTH_SHORT).show();
+            warningMessage = "Your baby is filthy!\n Bathe them!";
         } else if (StatusControls.getThirstLevel() <= 5) {
-            disableButton();
-            Toast.makeText(context, "Your sweet baby needs a drink!\n Don't let them go thirsty!", Toast.LENGTH_SHORT).show();
+            warningMessage = "Your sweet baby needs a drink!\n Don't let them go thirsty!";
         } else if (StatusControls.getRestLevel() <= 5) {
-            disableButton();
-            Toast.makeText(context, "Your baby needs a nap!\n Put them to bed!", Toast.LENGTH_SHORT).show();
+            warningMessage = "Your baby needs a nap!\n Put them to bed!";
         }
+        checkDisable();
     }
 
+    public void checkDisable() {
+        if ((StatusControls.getHungerLevel() <= 5) || (StatusControls.getPooLevel() <= 5) || (StatusControls.getPeeLevel() <= 5)
+                || (StatusControls.getHygieneLevel() <= 5) || (StatusControls.getThirstLevel() <= 5)
+                || (StatusControls.getRestLevel() <= 5)) {
+            Toast.makeText(context, warningMessage, Toast.LENGTH_SHORT).show();
+            disableButton();
+        }
+    }
 
     public void disableButton() {
         handler = new Handler();
