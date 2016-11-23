@@ -94,6 +94,7 @@ public class CreateView extends LinearLayout {
        String pokeName = pickName.getText().toString();
 
         StatusControls.setName(pokeName);
+        StatusControls.resetGame();
 
        // Toast.makeText(context, "You named you baby "+ getPetName, Toast.LENGTH_SHORT).show();
 
