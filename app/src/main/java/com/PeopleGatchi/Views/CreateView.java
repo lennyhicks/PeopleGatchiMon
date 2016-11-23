@@ -48,17 +48,10 @@ public class CreateView extends LinearLayout {
 
     @Override
     protected void onFinishInflate() {
+        // This OnFinishInflate is mostly just the spinner function.
         super.onFinishInflate();
         ButterKnife.bind(this);
 
-
-        //spinner element
-//        gender = (Spinner) findViewById(spinner);
-
-        //spinner click listener
-//        gender.setOnItemSelectedListener(context);
-
-        //configures what are options are.
         ArrayList<String> categories = new ArrayList<>();
         categories.add("cis female");
         categories.add("cis male");
@@ -69,24 +62,13 @@ public class CreateView extends LinearLayout {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         chooseGender.setAdapter(adapter);
-
         String gender = chooseGender.getSelectedItem().toString();
-
         StatusControls.setGender(gender);
     }
 
-//    public void onItemSelected(AdapterView<?> parent, View view, int position){
-//        String item = parent.getItemAtPosition(position).toString();
-//
-//        Toast.makeText(context, "Selected: " + item, Toast.LENGTH_SHORT).show();
-//    }
-//
-//    public void onNothingSelected(AdapterView<?> arg0){}
-
-
     @OnClick(R.id.submit_button)
     public void createCharacter() {
-        //dropa the keyboard off the screen when the user hits the button.
+        //drops the keyboard off the screen when the user hits the button.
         InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(pickName.getWindowToken(), 0);
 
@@ -95,8 +77,6 @@ public class CreateView extends LinearLayout {
 
         StatusControls.setName(pokeName);
         StatusControls.resetGame();
-
-       // Toast.makeText(context, "You named you baby "+ getPetName, Toast.LENGTH_SHORT).show();
 
         // The submit button also takes you to the home screen.
         Flow flow = PeopleGatchiApplication.getMainFlow();
