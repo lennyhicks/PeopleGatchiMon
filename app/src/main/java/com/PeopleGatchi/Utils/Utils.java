@@ -34,7 +34,7 @@ public class Utils {
             return R.drawable.happy;
         }else if (happinessLevel >= 40) {
             return R.drawable.annoyed;
-        } else if (happinessLevel >= 5) {
+        } else if (happinessLevel >= 16) {
             return R.drawable.sad;
         }else {
             return R.drawable.dead;
