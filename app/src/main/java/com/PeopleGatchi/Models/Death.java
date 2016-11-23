@@ -17,7 +17,7 @@ public class Death {
 
     public void isDead () {
 
-        if (happiness.happinessLevel <= 5) {
+        if (happiness.happinessLevel <= 10) {
            Flow flow = PeopleGatchiApplication.getMainFlow();
             History newHistory = History.single(new DeathStage());
             flow.setHistory(newHistory, Flow.Direction.REPLACE);
