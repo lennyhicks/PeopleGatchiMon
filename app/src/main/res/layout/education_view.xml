@@ -44,8 +44,9 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         app:fabSize="mini"
-        app:srcCompat="@drawable/store"
-        android:id="@+id/home_button"/>
+        app:srcCompat="@drawable/home"
+        android:id="@+id/home_button"
+        android:layout_margin="10dp"/>
 
     <TextView
         android:layout_width="match_parent"
