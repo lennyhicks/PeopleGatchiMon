@@ -10,15 +10,18 @@ import java.util.Date;
  */
 
 public class TimeControls {
+    
     public static Calendar calendar;
 
     static Time time = new Time();
 
     public static Date getTime() {
+        
         return time.lastRan;
     }
 
     public static void setTime(Date lastRan) {
+        
         time.lastRan = lastRan;
         time.save();
     }
