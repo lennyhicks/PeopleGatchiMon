@@ -65,7 +65,7 @@ public class EducationView extends LinearLayout {
     }
 
     @OnClick(R.id.increase_science)
-    // Increases your Science score with a random number between 1 and 5.
+    // Increases your Science score with a random number between 1 and 5. Sometimes you learn better.
     public void changeScience() {
         int increase = ((int) (Math.random() * 5) + 1);
         StatusControls.setScienceEd(increase);
