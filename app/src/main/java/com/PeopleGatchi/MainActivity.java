@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private Handler handler;
     private Runnable handlerTask;
     public static SimpleDateFormat dateFormat = new SimpleDateFormat("h:mm a");
+    private Context context;
 
     @Bind(R.id.container)
     RelativeLayout container;
@@ -128,11 +129,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             };
             handlerTask.run();
-    }
-    public void newMethod(){
-        if(StatusControls.getHungerLevel() < 0){
-            //placeholderMethod();
-        }
     }
 }
 

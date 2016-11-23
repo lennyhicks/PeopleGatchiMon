@@ -1,11 +1,13 @@
 package com.PeopleGatchi.Views;
 
 import android.content.Context;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.util.AttributeSet;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.PeopleGatchi.PeopleGatchiApplication;
 import com.PeopleGatchi.R;
@@ -26,6 +28,8 @@ public class JobView extends LinearLayout {
     public double bankBalance;
     private Flow flow;
     private int payment;
+    private Handler handler;
+    private Runnable handlerTask;
 
     @Bind(R.id.labor_butt)
     Button labor;
@@ -110,9 +114,47 @@ public class JobView extends LinearLayout {
     }
 
     public void updateMoney(){
+        statusCheck();
         BankControls.setMoney(payment);
         HomeView.workSchoolDay();
         wheresTheMoney.setText("You were paid: $"+ payment+".");
         updateBank.setText("Bank Balance: $"+BankControls.getMoney()+".");
+    }
+
+    public void statusCheck() {
+        if (StatusControls.getHungerLevel() <= 7) {
+            disableButton();
+            Toast.makeText(context, "Your baby is super hungry!\n Go fed them!", Toast.LENGTH_SHORT).show();
+        } else if (StatusControls.getPooLevel() <= 7) {
+            disableButton();
+            Toast.makeText(context, "Your baby really needs to go!\n Let them go to the bathroom!", Toast.LENGTH_SHORT).show();
+        } else if (StatusControls.getPeeLevel() <= 7) {
+            disableButton();
+            Toast.makeText(context, "Your baby needs to tinkle! \n Let them pee!", Toast.LENGTH_SHORT).show();
+        } else if (StatusControls.getHygieneLevel() <= 7) {
+            disableButton();
+            Toast.makeText(context, "Your baby is filthy!\n Bathe them!", Toast.LENGTH_SHORT).show();
+        } else if (StatusControls.getThirstLevel() <= 7) {
+            disableButton();
+            Toast.makeText(context, "Your sweet baby needs a drink!\n Don't let them go thirsty!", Toast.LENGTH_SHORT).show();
+        } else if (StatusControls.getRestLevel() <= 7) {
+            disableButton();
+            Toast.makeText(context, "Your baby needs a nap!\n Put them to bed!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void disableButton() {
+        handler = new Handler();
+        handlerTask = new Runnable() {
+            @Override
+            public void run() {
+                labor.setEnabled(false);
+                philosophy.setEnabled(false);
+                science.setEnabled(false);
+                engineer.setEnabled(false);
+                handler.postDelayed(handlerTask, 15000);
+            }
+        };
+        handlerTask.run();
     }
 }
