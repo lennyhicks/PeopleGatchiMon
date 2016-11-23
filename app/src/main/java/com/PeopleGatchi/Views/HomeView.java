@@ -146,7 +146,11 @@ public class HomeView extends RelativeLayout {
         StatusControls.setPooBladder(-foodAmount/2);
         StatusControls.setRest(-foodAmount/3);
         StatusControls.setHygiene(-foodAmount/3);
-        updateMessage = "Your stomach thanks you, but now you may need to use the bathroom and sleep. Don't forget to wash your hands!";
+        if (foodAmount == 20) {
+            updateMessage = "Your stomach thanks you, but now you may need to use the bathroom and sleep. Don't forget to wash your hands!";
+        } else {
+            updateMessage = "Beeelch!! Uhg, I'm stuffed..";
+        }
         updateText();
     }
 
@@ -158,7 +162,11 @@ public class HomeView extends RelativeLayout {
         StatusControls.setThirst(drinkAmount);
         StatusControls.setPeeBladder(-drinkAmount/2);
         StatusControls.setHygiene(-drinkAmount/3);
-        updateMessage = "Your thirst has been quenched, but now you may need to use the bathroom. Don't forget to wash your hands!";
+        if (drinkAmount == 20) {
+            updateMessage = "Your thirst has been quenched, but now you may need to use the bathroom. Don't forget to wash your hands!";
+        } else {
+            updateMessage = "Slurp, Slurp, Mmmm..";
+        }
         updateText();
     }
 
@@ -173,7 +181,11 @@ public class HomeView extends RelativeLayout {
         StatusControls.setPooBladder(-sleepyTime/3);
         StatusControls.setPeeBladder(-sleepyTime/3);
         StatusControls.setHygiene(-sleepyTime/3);
-        updateMessage = "You're now well rested but, there are probably a few other things that need your attention too!";
+        if (sleepyTime == 20) {
+            updateMessage = "You're now well rested but, there are probably a few other things that need your attention too!";
+        } else {
+            updateMessage = "Yawn.. That was a good nap.";
+        }
         updateText();
     }
 
@@ -202,7 +214,11 @@ public class HomeView extends RelativeLayout {
         StatusControls.setPeeBladder(drainPet);
         StatusControls.setThirst(-drainPet/2);
         StatusControls.setHygiene(-drainPet/3);
-        updateMessage = "Your pee bladder thanks you, but you may now be thirsty. Don't forget to wash your hands!";
+        if (drainPet == 20) {
+            updateMessage = "Your pee bladder thanks you, but you may now be thirsty. Don't forget to wash your hands!";
+        } else {
+            updateMessage = "Whew, my eyes were floating!";
+        }
         updateText();
     }
 
