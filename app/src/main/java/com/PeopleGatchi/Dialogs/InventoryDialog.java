@@ -55,7 +55,9 @@ public class InventoryDialog extends Dialog{
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(context, "You tapped " + items[i].getName(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "You consumed " + items[i].getName(), Toast.LENGTH_SHORT).show();
+                String itemConsumed = items[i].getName();
+                Utils.shelterAdjustment(itemConsumed);
                 Utils.adjustedStatus();
                 InventoryControls.useItem(items[i]);
                 refreshItems();
