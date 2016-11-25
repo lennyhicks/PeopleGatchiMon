@@ -1,5 +1,7 @@
 package com.PeopleGatchi.Utils;
 
+import android.content.Context;
+
 import com.PeopleGatchi.Models.Item;
 import com.PeopleGatchi.Models.Persisting.Inventory;
 
@@ -18,9 +20,10 @@ public class InventoryControls {
         }
     }
 
-    public static void useItem(Item i){
-        UseItem.itemEffects(i.getName().toLowerCase());
-        inventory.inventory.remove(i);
+    public static void useItem(Context context, Item i){
+        if(UseItem.itemEffects(context, i.getName().toLowerCase())) {
+            inventory.inventory.remove(i);
+        }
     }
 
     public static ArrayList<Item> getInventory(){

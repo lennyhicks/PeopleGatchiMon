@@ -59,7 +59,7 @@ public class InventoryDialog extends Dialog{
                 String itemConsumed = items[i].getName();
                 Utils.shelterAdjustment(itemConsumed);
                 Utils.adjustedStatus();
-                InventoryControls.useItem(items[i]);
+                InventoryControls.useItem(context, items[i]);
                 refreshItems();
             }
         });

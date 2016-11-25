@@ -25,6 +25,7 @@ public class DeathView extends RelativeLayout {
     private Context context;
     private Flow flow;
 
+
     @Bind(R.id.rip)
     TextView restInPeace;
 
