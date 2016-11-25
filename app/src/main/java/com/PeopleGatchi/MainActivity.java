@@ -16,6 +16,7 @@ import com.davidstemmer.flow.plugin.screenplay.ScreenplayDispatcher;
 import com.orm.SugarContext;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import butterknife.Bind;
@@ -24,6 +25,7 @@ import flow.Flow;
 import flow.History;
 
 import static com.PeopleGatchi.R.layout.activity_main;
+import static com.PeopleGatchi.Views.HomeView.calendar;
 
 public class MainActivity extends AppCompatActivity {
     private String TAG = "MainActivity";
@@ -52,8 +54,6 @@ public class MainActivity extends AppCompatActivity {
         SugarContext.init(getApplicationContext());
         StatusControls.firstRun();
 
-        decreaseStats();
-
         Date date = new Date();
         dateFormat.format(date);
         TimeControls.setTime(date);
@@ -75,6 +75,10 @@ public class MainActivity extends AppCompatActivity {
 
             History newHistory = History.single(new CreateStage());
             flow.setHistory(newHistory, Flow.Direction.REPLACE);
+
+            calendar.set(Calendar.HOUR, 1);
+            calendar.set(Calendar.MINUTE, 00);
+
         } else {
             History newHistory = History.single(new HomeStage());
             flow.setHistory(newHistory, Flow.Direction.REPLACE);
@@ -92,6 +96,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        TimeControls.getTime();
+        Toast.makeText(this, "Time: " + TimeControls.getTime(), Toast.LENGTH_SHORT).show();
 
     }
 
@@ -110,37 +116,7 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
-    public void decreaseStats(){
-       
-        handler = new Handler();
-            handlerTask = new Runnable()
-            {
-                @Override
-                public void run() {
-                    if ((StatusControls.getHungerLevel() <= 0) || (StatusControls.getPooLevel() <= 0) || (StatusControls.getPeeLevel() <= 0)
-                            || (StatusControls.getHygieneLevel() <= 0) || (StatusControls.getThirstLevel() <= 0)
-                            || (StatusControls.getRestLevel() <= 0)) {
-                        StatusControls.setHunger(-3);
-                        StatusControls.setThirst(-3);
-                        StatusControls.setHygiene(-3);
-                        StatusControls.setRest(-3);
-                        StatusControls.setPeeBladder(-3);
-                        StatusControls.setPooBladder(-3);
-                        handler.postDelayed(handlerTask, 360000);
-                    }else {
 
-                        StatusControls.setHunger(-1);
-                        StatusControls.setThirst(-1);
-                        StatusControls.setHygiene(-1);
-                        StatusControls.setRest(-1);
-                        StatusControls.setPeeBladder(-1);
-                        StatusControls.setPooBladder(-1);
-                        handler.postDelayed(handlerTask, 360000);
-                    }
-                }
-            };
-            handlerTask.run();
-    }
 }
 
 
