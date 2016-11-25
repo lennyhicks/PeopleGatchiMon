@@ -14,8 +14,6 @@ public final class Constants {
     public static final int BASE_HAPPINESS = 120;
     public static final int DEATH = 15;
 
-
-
     public static Item[] FOODITEMS = new Item[] {
             new Item("Candy", 2, R.drawable.halloweencandy),
             new Item("Pretzels", 5, R.drawable.pretzel),
@@ -54,7 +52,4 @@ public final class Constants {
             new Item("Lg House", 300000, R.drawable.church),
             new Item("DIAMONDZ", 500000, R.drawable.minecraftdiamond)
     };
-
-
-
 }
