@@ -48,12 +48,12 @@ public class HomeView extends RelativeLayout {
     public Integer speed = 200;
 
     void startTimer(){
-        runningTimer = true;
         handler = new Handler();
         handlerTask = new Runnable()
         {
             @Override
             public void run() {
+
                 setClock(clock);
                 if(calendar.get(Calendar.MINUTE) % 20 == 0){
                     StatusControls.setHunger(-1);
@@ -75,6 +75,7 @@ public class HomeView extends RelativeLayout {
                 imageView.setImageResource(Utils.setHappinessImage());
                 Death death = new Death();
                 death.isDead();
+                runningTimer = true;
 
                 handler.postDelayed(handlerTask, speed);
             }
@@ -147,9 +148,8 @@ public class HomeView extends RelativeLayout {
 
         StatusControls.firstRun();
 
-        if(!runningTimer) {
             startTimer();
-        }
+
 
         updateScreen();
 
@@ -226,13 +226,16 @@ public class HomeView extends RelativeLayout {
 
     @OnClick(R.id.fastforward_button)
     public void increaseTime() {
+        handler.removeCallbacks(handlerTask);
         speed = 100;
+        startTimer();
     }
 
     @OnClick(R.id.clock)
     public void clock() {
-        speed = 400;
-
+        handler.removeCallbacks(handlerTask);
+        speed = 2000;
+        startTimer();
     }
 
     @OnClick(R.id.store_button)
