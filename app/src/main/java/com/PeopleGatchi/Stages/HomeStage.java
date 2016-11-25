@@ -11,7 +11,13 @@ import com.PeopleGatchi.Riggers.SlideRigger;
  */
 
 public class HomeStage extends IndexedStage {
+
+    /*
+    Stage needed by screenplay to create flow to the Home View
+     */
+
     public final SlideRigger rigger;
+
 
     public HomeStage(Application context){
         super(HomeStage.class.getName());

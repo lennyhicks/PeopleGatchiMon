@@ -9,9 +9,13 @@ import com.orm.dsl.Table;
 
 @Table
 public class Hunger extends SugarRecord {
-    //bladder level down, happiness goes up.
+
+    /*
+    Model needed for sugarapp to create local persistence for hunger
+     */
     private Long id;
     public Integer hungerLevel;
+
 
     public Hunger(){
     }

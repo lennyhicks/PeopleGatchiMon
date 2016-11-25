@@ -47,36 +47,6 @@ public class HomeView extends RelativeLayout {
     public static Calendar calendar;
     public Integer speed = 500;
 
-    void startTimer(){
-        handlers = new Handler();
-        handlerTasks = new Runnable() {
-
-            @Override
-            public void run() {
-                //Runnable that checks progress bar status every 500 milliseconds (.5 seconds).
-
-                setClock(clock);
-                if(calendar.get(Calendar.MINUTE) % 30 == 0){
-                    decreaseStats();
-                }
-                foodBar.setProgress(StatusControls.getHungerLevel());
-                drinkBar.setProgress(StatusControls.getThirstLevel());
-                hygieneBar.setProgress(StatusControls.getHygieneLevel());
-                peeBar.setProgress(StatusControls.getPeeLevel());
-                poopBar.setProgress(StatusControls.getPooLevel());
-                sleepBar.setProgress(StatusControls.getRestLevel());
-
-
-                bankAmount.setText("$" + BankControls.getMoney());
-                imageView.setImageResource(Utils.setHappinessImage());
-                Death death = new Death();
-                death.isDead();
-
-                handlers.postDelayed(handlerTasks, speed);
-            }
-        };
-        handlerTasks.run();
-    }
 
     @Bind(R.id.update_text)
     TextView updateText;
@@ -126,17 +96,21 @@ public class HomeView extends RelativeLayout {
     @Bind(R.id.display_name)
     TextView name;
 
+
     public HomeView(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
     }
 
+    /*
+    Generates user name from registration / login screen to display on Main Screen.
+    Shows the user how much money they currently have.
+    Sets specific happiness image based on current progress bar status.
+    Displays clock.
+     */
     @Override
     protected void onFinishInflate() {
-        //Generates user name from registration / login screen to display on Main Screen.
-        //Shows the user how much money they currently have.
-        //Sets specific happiness image based on current progress bar status.
-        //Displays clock.
+
         super.onFinishInflate();
         calendar = Calendar.getInstance();
         ButterKnife.bind(this);
@@ -153,15 +127,53 @@ public class HomeView extends RelativeLayout {
         setClock(clock);
     }
 
+
+    /*
+    Runnable that checks progress bar status every 500 milliseconds (.5 seconds).
+     */
+    void startTimer() {
+
+        handlers = new Handler();
+        handlerTasks = new Runnable() {
+
+            @Override
+            public void run() {
+
+                setClock(clock);
+                if (calendar.get(Calendar.MINUTE) % 30 == 0) {
+                    decreaseStats();
+                }
+                foodBar.setProgress(StatusControls.getHungerLevel());
+                drinkBar.setProgress(StatusControls.getThirstLevel());
+                hygieneBar.setProgress(StatusControls.getHygieneLevel());
+                peeBar.setProgress(StatusControls.getPeeLevel());
+                poopBar.setProgress(StatusControls.getPooLevel());
+                sleepBar.setProgress(StatusControls.getRestLevel());
+
+
+                bankAmount.setText("$" + BankControls.getMoney());
+                imageView.setImageResource(Utils.setHappinessImage());
+                Death death = new Death();
+                death.isDead();
+
+                handlers.postDelayed(handlerTasks, speed);
+            }
+        };
+        handlerTasks.run();
+    }
+
+    /*
+    Declares foodAmount as a variable that generates a random number to decrease status bars.
+    Displays message in a text view.
+     */
     @OnClick(R.id.food_bar)
     public void feedPet() {
-        //Declares foodAmount as a variable that generates a random number to decrease status bars.
-        //Displays message in a text view.
+
         int foodAmount = Utils.getRand(StatusControls.getHungerLevel());
         StatusControls.setHunger(foodAmount);
-        StatusControls.setPooBladder(-foodAmount/2);
-        StatusControls.setRest(-foodAmount/3);
-        StatusControls.setHygiene(-foodAmount/3);
+        StatusControls.setPooBladder(-foodAmount / 2);
+        StatusControls.setRest(-foodAmount / 3);
+        StatusControls.setHygiene(-foodAmount / 3);
         if (foodAmount == 20) {
             updateMessage = "Your stomach thanks you, but now you may need to use the bathroom and sleep. Don't forget to wash your hands!";
         } else {
@@ -169,14 +181,17 @@ public class HomeView extends RelativeLayout {
         }
     }
 
+    /*
+    Declares waterPet as a variable that generates a random number to decrease status bars.
+    Displays message in a text view.
+     */
     @OnClick(R.id.drink_bar)
     public void waterPet() {
-        //Declares waterPet as a variable that generates a random number to decrease status bars.
-        //Displays message in a text view.
+
         int drinkAmount = Utils.getRand(StatusControls.getThirstLevel());
         StatusControls.setThirst(drinkAmount);
-        StatusControls.setPeeBladder(-drinkAmount/2);
-        StatusControls.setHygiene(-drinkAmount/3);
+        StatusControls.setPeeBladder(-drinkAmount / 2);
+        StatusControls.setHygiene(-drinkAmount / 3);
         if (drinkAmount == 20) {
             updateMessage = "Your thirst has been quenched, but now you may need to use the bathroom. Don't forget to wash your hands!";
         } else {
@@ -184,17 +199,20 @@ public class HomeView extends RelativeLayout {
         }
     }
 
+    /*
+    Declares restPet as a variable that generates a random number to decrease status bars.
+    Displays message in a text view.
+     */
     @OnClick(R.id.sleep_bar)
     public void restPet() {
-        //Declares restPet as a variable that generates a random number to decrease status bars.
-        //Displays message in a text view.
+
         int sleepyTime = Utils.getRand(StatusControls.getRestLevel());
         StatusControls.setRest(sleepyTime);
-        StatusControls.setHunger(-sleepyTime/3);
-        StatusControls.setThirst(-sleepyTime/3);
-        StatusControls.setPooBladder(-sleepyTime/3);
-        StatusControls.setPeeBladder(-sleepyTime/3);
-        StatusControls.setHygiene(-sleepyTime/3);
+        StatusControls.setHunger(-sleepyTime / 3);
+        StatusControls.setThirst(-sleepyTime / 3);
+        StatusControls.setPooBladder(-sleepyTime / 3);
+        StatusControls.setPeeBladder(-sleepyTime / 3);
+        StatusControls.setHygiene(-sleepyTime / 3);
         if (sleepyTime == 20) {
             updateMessage = "You're now well rested but, there are probably a few other things that need your attention too!";
         } else {
@@ -202,15 +220,18 @@ public class HomeView extends RelativeLayout {
         }
     }
 
+    /*
+    Declares cleanPet as a variable that generates a random number to decrease status bars.
+    Displays message in a text view.
+     */
     @OnClick(R.id.hygiene_bar)
     public void cleanPet() {
-        //Declares cleanPet as a variable that generates a random number to decrease status bars.
-        //Displays message in a text view.
+
         int cleanBaby = Utils.getRand(StatusControls.getHygieneLevel());
         StatusControls.setHygiene(cleanBaby);
-        StatusControls.setHunger(-cleanBaby/3);
-        StatusControls.setThirst(-cleanBaby/3);
-        StatusControls.setRest(-cleanBaby/3);
+        StatusControls.setHunger(-cleanBaby / 3);
+        StatusControls.setThirst(-cleanBaby / 3);
+        StatusControls.setRest(-cleanBaby / 3);
         if (cleanBaby == 20) {
             updateMessage = "You cant get any cleaner..!";
         } else {
@@ -218,14 +239,17 @@ public class HomeView extends RelativeLayout {
         }
     }
 
+    /*
+    Declares drainPet as a variable that generates a random number to decrease status bars.
+    Displays message in a text view.
+     */
     @OnClick(R.id.pee_bar)
     public void drainPet() {
-        //Declares drainPet as a variable that generates a random number to decrease status bars.
-        //Displays message in a text view.
+
         int drainPet = Utils.getRand(StatusControls.getPeeLevel());
         StatusControls.setPeeBladder(drainPet);
-        StatusControls.setThirst(-drainPet/2);
-        StatusControls.setHygiene(-drainPet/3);
+        StatusControls.setThirst(-drainPet / 2);
+        StatusControls.setHygiene(-drainPet / 3);
         if (drainPet == 20) {
             updateMessage = "Your pee bladder thanks you, but you may now be thirsty. Don't forget to wash your hands!";
         } else {
@@ -233,26 +257,22 @@ public class HomeView extends RelativeLayout {
         }
     }
 
+    /*
+    Declares pottyPet as a variable that generates a random number to decrease status bars.
+    Displays message in a text view.
+     */
     @OnClick(R.id.poop_bar)
     public void pottyPet() {
-        //Declares pottyPet as a variable that generates a random number to decrease status bars.
-        //Displays message in a text view.
+
         int dumpSize = Utils.getRand(StatusControls.getPooLevel());
         StatusControls.setPooBladder(dumpSize);
-        StatusControls.setHunger(-dumpSize/2);
-        StatusControls.setHygiene(-dumpSize/3);
+        StatusControls.setHunger(-dumpSize / 2);
+        StatusControls.setHygiene(-dumpSize / 3);
         if (dumpSize == 20) {
             updateMessage = "Holy Cow! That was a sweet sweet #2!! However, now you're getting hungry. Don't forget to wash your hands!";
         } else {
             updateMessage = "Your poo bladder thanks you, but now you may be hungry. Don't forget to wash your hands!";
         }
-        // StatusControls.updatePooBladder(dumpSize);
-    }
-
-    // TODO does this need to be in here. It's probably my fault that it exist.
-    @OnClick(R.id.bank_amount)
-    public void bankTotal() {
-
     }
 
     @OnClick(R.id.fastforward_button)
@@ -269,9 +289,12 @@ public class HomeView extends RelativeLayout {
         startTimer();
     }
 
+    /*
+    Opens the store dialog interface.
+     */
     @OnClick(R.id.store_button)
     public void goToStore() {
-//Opens the store dialog interface.
+
         final StoreDialog storeDialog = new StoreDialog(context);
         storeDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override
@@ -282,9 +305,12 @@ public class HomeView extends RelativeLayout {
         storeDialog.show();
     }
 
+    /*
+    Opens inventory dialog interface.
+     */
     @OnClick(R.id.inventory_button)
     public void goToInventory() {
-        //Opens inventory dialog interface.
+
         final InventoryDialog inventoryDialog = new InventoryDialog(context);
         inventoryDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override
@@ -308,13 +334,16 @@ public class HomeView extends RelativeLayout {
     }
 
 
-    public void updateScreen(){
-        bankAmount.setText("$"+ BankControls.getMoney());
+    public void updateScreen() {
+        bankAmount.setText("$" + BankControls.getMoney());
         imageView.setImageResource(Utils.setHappinessImage());
     }
 
+    /*
+    Sets the format for the clock.
+     */
     public void setClock(TextView clock) {
-        //Sets the format for the clock.
+
         this.clock = clock;
         SimpleDateFormat dateFormat = new SimpleDateFormat("h:mm a");
         calendar.add(Calendar.MINUTE, 1);
@@ -322,9 +351,12 @@ public class HomeView extends RelativeLayout {
         clock.setText(date);
     }
 
+    /*
+    Being referenced from progress bar methods to update text view for message purposes.
+    Also sets a 5000 millisecond timer (5 seconds) for the message to disappear.
+     */
     public void updateText() {
-        //Being referenced from progress bar methods to update text view for message purposes.
-        //Also sets a 5000 millisecond timer (5 seconds) for the message to disappear.
+
         updateText.setText(updateMessage);
         handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -335,8 +367,11 @@ public class HomeView extends RelativeLayout {
         }, 5000);
     }
 
-    public static void workSchoolDay (){
-        //Decreases progress bars by 2 points for each time user clicks education, or work.
+    /*
+    Decreases progress bars by 2 points for each time user clicks education, or work.
+     */
+    public static void workSchoolDay() {
+
         StatusControls.setHunger(-2);
         StatusControls.setThirst(-2);
         StatusControls.setPeeBladder(-2);
@@ -345,17 +380,25 @@ public class HomeView extends RelativeLayout {
         StatusControls.setRest(-2);
     }
 
-    private void decreaseStats(){
-        if ((StatusControls.getHungerLevel() <= 0) || (StatusControls.getPooLevel() <= 0) || (StatusControls.getPeeLevel() <= 0)
-                || (StatusControls.getHygieneLevel() <= 0) || (StatusControls.getThirstLevel() <= 0)
+    /*
+    Decreases the stats of the user depending on what their stats are already at.  If they have
+    a status bar that is at 0 all other stats go down quicker than if they did not have a bar at 0.
+     */
+    private void decreaseStats() {
+        if ((StatusControls.getHungerLevel() <= 0)
+                || (StatusControls.getPooLevel() <= 0)
+                || (StatusControls.getPeeLevel() <= 0)
+                || (StatusControls.getHygieneLevel() <= 0)
+                || (StatusControls.getThirstLevel() <= 0)
                 || (StatusControls.getRestLevel() <= 0)) {
+
             StatusControls.setHunger(-3);
             StatusControls.setThirst(-3);
             StatusControls.setHygiene(-3);
             StatusControls.setRest(-3);
             StatusControls.setPeeBladder(-3);
             StatusControls.setPooBladder(-3);
-        }else {
+        } else {
 
             StatusControls.setHunger(-1);
             StatusControls.setThirst(-1);

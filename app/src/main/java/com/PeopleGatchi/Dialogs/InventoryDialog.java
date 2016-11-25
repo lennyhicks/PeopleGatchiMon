@@ -24,24 +24,29 @@ import static com.PeopleGatchi.R.id.inventory_grid;
  * Created by crystaladkins on 11/16/16.
  */
 
-public class InventoryDialog extends Dialog{
+public class InventoryDialog extends Dialog {
+
+    private String[] from = {"resource", "name"};
+    private Item[] items;
+    private int[] to = {R.id.inventory_img, R.id.inventory_name};
+    private SimpleAdapter adapter;
+    private Context context;
 
     @Bind(inventory_grid)
     GridView gridView;
-    String[] from = { "resource","name"};
-    Item[] items;
-    int[] to = { R.id.inventory_img,R.id.inventory_name};
-    SimpleAdapter adapter;
-
-    private Context context;
 
     public InventoryDialog(Context context) {
+
         super(context);
         this.context = context;
     }
 
+    /*
+    Sets up the dialog to show the items in the inventory in the proper GridView
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -65,7 +70,12 @@ public class InventoryDialog extends Dialog{
         });
     }
 
-    private void refreshItems(){
+    /*
+    Takes the updated items list for the users inventory and updates the adapter to display the
+    correct information in the GridView for the user.
+     */
+    private void refreshItems() {
+
         items = InventoryControls.getInventory().toArray(new Item[InventoryControls.getInventory().size()]);
         adapter = new SimpleAdapter(context, Utils.inventoryHashMap(items), R.layout.inventory_item, from, to);
         gridView.setAdapter(adapter);

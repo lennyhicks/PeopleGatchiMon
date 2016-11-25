@@ -29,9 +29,11 @@ import static com.PeopleGatchi.R.id.food;
  * Created by crystaladkins on 11/16/16.
  */
 
-public class StoreDialog extends Dialog{
+public class StoreDialog extends Dialog {
 
-    String[] from = { "resource","price","name"};
+    private String[] from = {"resource", "price", "name"};
+    private int[] to = {R.id.store_img, R.id.store_price, R.id.store_name};
+    private Context context;
 
     @Bind(R.id.storeTabHost)
     TabHost tabs;
@@ -39,24 +41,21 @@ public class StoreDialog extends Dialog{
     @Bind(R.id.food_grid)
     GridView foodView;
 
-
     @Bind(R.id.drink_grid)
     GridView drinkView;
-
 
     @Bind(R.id.item_grid)
     GridView itemView;
 
-
-    int[] to = { R.id.store_img,R.id.store_price,R.id.store_name};
-
-    private Context context;
 
     public StoreDialog(Context context) {
         super(context);
         this.context = context;
     }
 
+    /*
+    Sets up the dialog to display the correct store items in each tab
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -111,7 +110,8 @@ public class StoreDialog extends Dialog{
         itemTab.setIndicator("Items");
         tabs.addTab(itemTab);
 
-        SimpleAdapter itemAdapter = new SimpleAdapter(context, Utils.storeHashMap(OTHERITEMS), R.layout.store_item, from, to);
+        SimpleAdapter itemAdapter = new SimpleAdapter(context, Utils.storeHashMap(OTHERITEMS),
+                R.layout.store_item, from, to);
         itemView.setAdapter(itemAdapter);
         itemView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -124,40 +124,47 @@ public class StoreDialog extends Dialog{
         tabs.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
             public void onTabChanged(String s) {
-                switch (s){
-                    case "items" :
+                switch (s) {
+                    case "items":
                         drinkView.setVisibility(View.GONE);
                         foodView.setVisibility(View.GONE);
                         itemView.setVisibility(View.VISIBLE);
                         break;
-                    case "drinks" :
+                    case "drinks":
                         drinkView.setVisibility(View.VISIBLE);
                         foodView.setVisibility(View.GONE);
                         itemView.setVisibility(View.GONE);
                         break;
-                    case "food" :
+                    case "food":
                         drinkView.setVisibility(View.GONE);
                         foodView.setVisibility(View.VISIBLE);
                         itemView.setVisibility(View.GONE);
+                        break;
+                    default:
+                        Toast.makeText(context, "Unable to display tab, Please try again",
+                                Toast.LENGTH_SHORT).show();
+                        break;
                 }
             }
         });
     }
 
-    private void buyItem(Item item){
+    /*
+    Updates users bank after taking the money from the purchase.  Also lets users know via toast
+    if there are any issues with buying the item they wanted.
+     */
+    private void buyItem(Item item) {
 
         if (BankControls.getMoney() > item.getPrice()) {
             if (InventoryControls.getSize() < 40) {
                 BankControls.setMoney(-item.getPrice());
                 Toast.makeText(context, "You Bought: " + item.getName() + " Cost: " + item.getPrice(), Toast.LENGTH_SHORT).show();
-            InventoryControls.addItem(item);
-        } else {
+                InventoryControls.addItem(item);
+            } else {
                 Toast.makeText(context, "Your Inventory is full.", Toast.LENGTH_SHORT).show();
             }
         } else {
             Toast.makeText(context, "You do not have enough money.", Toast.LENGTH_SHORT).show();
         }
     }
-
-
 }

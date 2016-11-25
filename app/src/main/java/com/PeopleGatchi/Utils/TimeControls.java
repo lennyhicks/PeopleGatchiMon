@@ -20,6 +20,9 @@ public class TimeControls {
         return time.lastRan;
     }
 
+    /*
+    Saves the time that the user last left the game
+     */
     public static void setTime(Date lastRan) {
         
         time.lastRan = lastRan;

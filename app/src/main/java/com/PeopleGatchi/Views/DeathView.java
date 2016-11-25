@@ -22,9 +22,9 @@ import flow.History;
  */
 
 public class DeathView extends RelativeLayout {
+
     private Context context;
     private Flow flow;
-
 
     @Bind(R.id.rip)
     TextView restInPeace;
@@ -34,6 +34,7 @@ public class DeathView extends RelativeLayout {
 
     @Bind(R.id.play_again)
     Button playAgainBtn;
+
 
     public DeathView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -50,9 +51,13 @@ public class DeathView extends RelativeLayout {
         condolences.setText(StatusControls.getName());
     }
 
+    /*
+    Takes the user to the create screen and resets the stats to be able to properly set a new
+    character
+     */
     @OnClick(R.id.play_again)
     public void playAgain() {
-        // Restarts the game and puts you back to the create screen.
+
         StatusControls.resetGame();
         History newHistory = History.single(new CreateStage());
         flow.setHistory(newHistory, Flow.Direction.REPLACE);

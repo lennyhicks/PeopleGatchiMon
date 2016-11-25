@@ -14,8 +14,10 @@ public class BankControls {
         return money.moneyLevel;
     }
 
+    /*
+    Takes the users current money level and adds what they received for working a job
+     */
     public static void setMoney(Integer payment) {
-        //TODO Calculations need to happen here
 
         money.moneyLevel += payment;
         money.save();
