@@ -22,11 +22,11 @@ import static com.PeopleGatchi.Utils.StatusControls.shelterHappiness;
 public class Utils {
 
 
-    public static Integer getRand(Integer max){
+    public static Integer getRand(Integer max) {
         Random r = new Random();
         if (max >= 0) {
             max = Constants.MAX_LEVEL - max;
-        }else{
+        } else {
             max = Math.abs(max);
             return -(r.nextInt(max + 1));
         }
@@ -39,36 +39,36 @@ public class Utils {
         Integer happinessLevel = StatusControls.getLevels();
         if (happinessLevel >= 80) {
             return R.drawable.happy;
-        }else if (happinessLevel >= 40) {
+        } else if (happinessLevel >= 40) {
             return R.drawable.annoyed;
         } else if (happinessLevel >= 16) {
             return R.drawable.sad;
-        }else {
+        } else {
             return R.drawable.dead;
         }
     }
 
-    public static List<HashMap<String,String>> storeHashMap(Item[] items) {
-        List<HashMap<String,String>> hash = new ArrayList<>();
-        for(int i=0;i<10;i++){
+    public static List<HashMap<String, String>> storeHashMap(Item[] items) {
+        List<HashMap<String, String>> hash = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
             HashMap<String, String> hm = new HashMap<>();
             hm.put("name", items[i].getName());
             hm.put("resource", Integer.toString(items[i].getResourceId()));
-            hm.put("price", "Price: $"+ Integer.toString(items[i].getPrice()));
+            hm.put("price", "Price: $" + Integer.toString(items[i].getPrice()));
             hash.add(hm);
         }
         return hash;
     }
 
-    public static List<HashMap<String,String>> inventoryHashMap(Item[] items) {
-        List<HashMap<String,String>> hash = new ArrayList<>();
-            for (int i = 0; i < InventoryControls.getSize(); i++) {
-                HashMap<String, String> hm = new HashMap<>();
-                hm.put("name", items[i].getName());
-                hm.put("resource", Integer.toString(items[i].getResourceId()));
-                hash.add(hm);
-            }
-            return hash;
+    public static List<HashMap<String, String>> inventoryHashMap(Item[] items) {
+        List<HashMap<String, String>> hash = new ArrayList<>();
+        for (int i = 0; i < InventoryControls.getSize(); i++) {
+            HashMap<String, String> hm = new HashMap<>();
+            hm.put("name", items[i].getName());
+            hm.put("resource", Integer.toString(items[i].getResourceId()));
+            hash.add(hm);
+        }
+        return hash;
     }
 
     public static void adjustedStatus() {

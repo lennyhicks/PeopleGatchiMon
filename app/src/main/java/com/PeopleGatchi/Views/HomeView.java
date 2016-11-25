@@ -2,6 +2,7 @@ package com.PeopleGatchi.Views;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Handler;
 import android.util.AttributeSet;
 import android.widget.ImageButton;
@@ -42,6 +43,7 @@ public class HomeView extends RelativeLayout {
     private String updateMessage;
     private Handler handler;
     private Runnable handlerTask;
+    private Runnable eatimage;
 
     void startTimer() {
         handler = new Handler();
@@ -112,6 +114,9 @@ public class HomeView extends RelativeLayout {
     @Bind(R.id.display_name)
     TextView name;
 
+    @Bind(R.id.character_iv)
+    ImageView charImg;
+
     public HomeView(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
@@ -126,6 +131,24 @@ public class HomeView extends RelativeLayout {
 
         name.setText(StatusControls.getName());
 
+        switch (StatusControls.getGender()) {
+            case "cis female":
+                charImg.setBackground(context.getResources().getDrawable(R.drawable.female_blink));
+                break;
+            case "cis male":
+                charImg.setBackground(context.getResources().getDrawable(R.drawable.male_blink));
+                break;
+            case "non-conforming":
+                charImg.setBackground(context.getResources().getDrawable(R.drawable.snowflake_blink));
+                break;
+            default:
+                charImg.setImageResource(R.drawable.hp_cat);
+        }
+
+        imageView.setImageResource(Utils.setHappinessImage());
+        ((AnimationDrawable) charImg.getBackground()).start();
+
+
         StatusControls.firstRun();
 
         startTimer();
@@ -134,7 +157,6 @@ public class HomeView extends RelativeLayout {
 
         bankAmount.setText("$" + BankControls.getMoney());
 
-        imageView.setImageResource(Utils.setHappinessImage());
 
         setClock(clock);
     }
@@ -143,19 +165,39 @@ public class HomeView extends RelativeLayout {
     public void feedPet() {
         int foodAmount = Utils.getRand(StatusControls.getHungerLevel());
         StatusControls.setHunger(foodAmount);
-        StatusControls.setPooBladder(-foodAmount/2);
-        StatusControls.setRest(-foodAmount/3);
-        StatusControls.setHygiene(-foodAmount/3);
+        StatusControls.setPooBladder(-foodAmount / 2);
+        StatusControls.setRest(-foodAmount / 3);
+        StatusControls.setHygiene(-foodAmount / 3);
         updateMessage = "Your stomach thanks you, but now you may need to use the bathroom and sleep. Don't forget to wash your hands!";
         updateText();
+
+                switch (StatusControls.getGender()) {
+                    case "cis female":
+                        charImg.setBackground(context.getResources().getDrawable(R.drawable.female_eat));
+                        break;
+                    case "cis male":
+                        charImg.setBackground(context.getResources().getDrawable(R.drawable.male_eat));
+                        break;
+                    case "non-conforming":
+                        charImg.setBackground(context.getResources().getDrawable(R.drawable.snowflake_eat));
+                        break;
+                    default:
+                        charImg.setImageResource(R.drawable.hp_cat);
+                }
+        imageView.setImageResource(Utils.setHappinessImage());
+        ((AnimationDrawable) charImg.getBackground()).start();
+        ((AnimationDrawable) charImg.getBackground()).setOneShot(true);
+
     }
+
+
 
     @OnClick(R.id.drink_bar)
     public void waterPet() {
         int drinkAmount = Utils.getRand(StatusControls.getThirstLevel());
         StatusControls.setThirst(drinkAmount);
-        StatusControls.setPeeBladder(-drinkAmount/2);
-        StatusControls.setHygiene(-drinkAmount/3);
+        StatusControls.setPeeBladder(-drinkAmount / 2);
+        StatusControls.setHygiene(-drinkAmount / 3);
         updateMessage = "Your thirst has been quenched, but now you may need to use the bathroom. Don't forget to wash your hands!";
         updateText();
     }
@@ -164,11 +206,11 @@ public class HomeView extends RelativeLayout {
     public void restPet() {
         int sleepyTime = Utils.getRand(StatusControls.getRestLevel());
         StatusControls.setRest(sleepyTime);
-        StatusControls.setHunger(-sleepyTime/2);
-        StatusControls.setThirst(-sleepyTime/2);
-        StatusControls.setPooBladder(-sleepyTime/3);
-        StatusControls.setPeeBladder(-sleepyTime/3);
-        StatusControls.setHygiene(-sleepyTime/3);
+        StatusControls.setHunger(-sleepyTime / 2);
+        StatusControls.setThirst(-sleepyTime / 2);
+        StatusControls.setPooBladder(-sleepyTime / 3);
+        StatusControls.setPeeBladder(-sleepyTime / 3);
+        StatusControls.setHygiene(-sleepyTime / 3);
         updateMessage = "You're now well rested but, there are probably a few other things that need your attention too!";
         updateText();
     }
@@ -194,8 +236,8 @@ public class HomeView extends RelativeLayout {
     public void drainPet() {
         int drainPet = Utils.getRand(StatusControls.getPeeLevel());
         StatusControls.setPeeBladder(drainPet);
-        StatusControls.setThirst(-drainPet/2);
-        StatusControls.setHygiene(-drainPet/3);
+        StatusControls.setThirst(-drainPet / 2);
+        StatusControls.setHygiene(-drainPet / 3);
         updateMessage = "Your pee bladder thanks you, but you may now be thirsty. Don't forget to wash your hands!";
         updateText();
     }
@@ -204,8 +246,8 @@ public class HomeView extends RelativeLayout {
     public void pottyPet() {
         int dumpSize = Utils.getRand(StatusControls.getPooLevel());
         StatusControls.setPooBladder(dumpSize);
-        StatusControls.setHunger(-dumpSize/2);
-        StatusControls.setHygiene(-dumpSize/3);
+        StatusControls.setHunger(-dumpSize / 2);
+        StatusControls.setHygiene(-dumpSize / 3);
         if (dumpSize == 20) {
             updateMessage = "Holy Cow! That was a sweet sweet #2!! However, now you're getting hungry. Don't forget to wash your hands!";
         } else {
@@ -307,13 +349,32 @@ public class HomeView extends RelativeLayout {
         }, 5000);
     }
 
-    public static void workSchoolDay (){
+    public static void workSchoolDay() {
         StatusControls.setHunger(-2);
         StatusControls.setThirst(-2);
         StatusControls.setPeeBladder(-2);
         StatusControls.setPooBladder(-2);
         StatusControls.setHygiene(-2);
         StatusControls.setRest(-2);
+    }
+
+    public void defaultImage() {
+        switch (StatusControls.getGender()) {
+            case "cis female":
+                charImg.setBackground(context.getResources().getDrawable(R.drawable.female_blink));
+                break;
+            case "cis male":
+                charImg.setBackground(context.getResources().getDrawable(R.drawable.male_blink));
+                break;
+            case "non-conforming":
+                charImg.setBackground(context.getResources().getDrawable(R.drawable.snowflake_blink));
+                break;
+            default:
+                charImg.setImageResource(R.drawable.hp_cat);
+        }
+
+        imageView.setImageResource(Utils.setHappinessImage());
+        ((AnimationDrawable) charImg.getBackground()).start();
     }
 }
 
@@ -335,4 +396,7 @@ public class HomeView extends RelativeLayout {
 //        };
 //        handlerTask.run();
 //    }
+
+
+
 

@@ -19,7 +19,7 @@
         android:shadowColor="@color/text_shadow"
         android:shadowDx="5"
         android:shadowDy="5"
-        android:shadowRadius="10"
+        android:shadowRadius="5"
         android:rotation="-3"/>
 
     <TextView
@@ -34,7 +34,7 @@
         android:shadowColor="@color/text_shadow"
         android:shadowDx="5"
         android:shadowDy="5"
-        android:shadowRadius="10"
+        android:shadowRadius="5"
         android:rotation="-3"/>
 
 

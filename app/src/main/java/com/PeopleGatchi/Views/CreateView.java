@@ -70,9 +70,9 @@ public class CreateView extends LinearLayout {
 
         chooseGender.setAdapter(adapter);
 
-        String gender = chooseGender.getSelectedItem().toString();
 
-        StatusControls.setGender(gender);
+
+
     }
 
 //    public void onItemSelected(AdapterView<?> parent, View view, int position){
@@ -91,9 +91,10 @@ public class CreateView extends LinearLayout {
         imm.hideSoftInputFromWindow(pickName.getWindowToken(), 0);
 
         // gets the value from the text field and sets it.
-       String pokeName = pickName.getText().toString();
-
+        String pokeName = pickName.getText().toString();
         StatusControls.setName(pokeName);
+        String gender = chooseGender.getSelectedItem().toString();
+        StatusControls.setGender(gender);
         StatusControls.resetGame();
 
        // Toast.makeText(context, "You named you baby "+ getPetName, Toast.LENGTH_SHORT).show();
