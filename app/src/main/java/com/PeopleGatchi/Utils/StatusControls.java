@@ -14,6 +14,7 @@ import com.PeopleGatchi.Models.Persisting.Thirst;
 import com.PeopleGatchi.Models.Persisting.User;
 
 import static com.PeopleGatchi.Utils.BankControls.money;
+import static com.PeopleGatchi.Utils.BankControls.setMoney;
 import static com.orm.SugarRecord.findById;
 
 /**
@@ -33,6 +34,9 @@ public class StatusControls {
     static PhiloEd philoEd = new PhiloEd();
     static User name = new User();
     static User gender = new User();
+    static Integer shelterHappiness = 0;
+    static Integer adjustedDeath = 0;
+
 
     public static void setPooBladder(Integer bladderControl) {
 
@@ -159,12 +163,14 @@ public class StatusControls {
     }
 
     public static Integer getLevels(){
-        happiness.happinessLevel =  getPeeLevel() +
-                                    getPooLevel() +
-                                    getHungerLevel() +
-                                    getThirstLevel() +
-                                    getHygieneLevel() +
-                                    getRestLevel();
+        if (adjustedDeath == 0) {
+            happiness.happinessLevel = getPeeLevel() +
+                    getPooLevel() +
+                    getHungerLevel() +
+                    getThirstLevel() +
+                    getHygieneLevel() +
+                    getRestLevel();
+        }
         return happiness.happinessLevel;
     }
 
@@ -261,5 +267,36 @@ public class StatusControls {
         gender = findById(User.class, 1);
     }
 
+    public static void resetGame() {
+        setName(getName());
+        setGender(getGender());
+        setPooBladder(20);
+        setPeeBladder(20);
+        setHunger(20);
+        setThirst(20);
+        setHygiene(20);
+        setRest(20);
+        setMoney(0);
+        setScienceEd(0);
+        setMathEd(0);
+        setPhiloEd(0);
+        setShelterHappiness(0);
+        setAdjustedDeath(0);
+    }
 
+    public static Integer getShelterHappiness() {
+        return shelterHappiness;
+    }
+
+    public static void setShelterHappiness(Integer shelterHappiness) {
+        StatusControls.shelterHappiness = shelterHappiness;
+    }
+
+    public static Integer getAdjustedDeath() {
+        return adjustedDeath;
+    }
+
+    public static void setAdjustedDeath(Integer adjustedDeath) {
+        StatusControls.adjustedDeath = adjustedDeath;
+    }
 }

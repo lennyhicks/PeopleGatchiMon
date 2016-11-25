@@ -1,7 +1,7 @@
 <com.PeopleGatchi.Views.CreateView xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1">
+    android:weightSum="1" android:background="@color/text_shadow_white">
 
     <TextView
         android:text="@string/create_a_character"
@@ -18,7 +18,8 @@
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/pick_name"
-        android:hint="@string/name" />
+        android:hint="@string/name"
+        android:maxLength="8"/>
 
     <Spinner
         android:layout_width="match_parent"

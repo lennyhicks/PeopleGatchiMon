@@ -23,7 +23,7 @@ import flow.History;
 
 public class DeathView extends RelativeLayout {
     private Context context;
-    
+
 
     @Bind(R.id.rip)
     TextView restInPeace;
@@ -32,7 +32,7 @@ public class DeathView extends RelativeLayout {
     TextView condolences;
 
     @Bind(R.id.play_again)
-    Button playAgain;
+    Button playAgainBtn;
 
     public DeathView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -44,17 +44,16 @@ public class DeathView extends RelativeLayout {
         super.onFinishInflate();
         ButterKnife.bind(this);
 
+        // Prints the name on the tombstone.
+        flow = PeopleGatchiApplication.getMainFlow();
         condolences.setText(StatusControls.getName());
-
-//        condolences.setText("Poor sweet "+ StatusControls.getName()+ " has passed away.\n Let's hope they are gently resting \n waiting for the time when you will meet again.");
     }
 
     @OnClick(R.id.play_again)
-    public void playAgain(){
-        StatusControls.firstRun();
-        Flow flow = PeopleGatchiApplication.getMainFlow();
+    public void playAgain() {
+        // Restarts the game and puts you back to the create screen.
+        StatusControls.resetGame();
         History newHistory = History.single(new CreateStage());
         flow.setHistory(newHistory, Flow.Direction.REPLACE);
-
     }
 }

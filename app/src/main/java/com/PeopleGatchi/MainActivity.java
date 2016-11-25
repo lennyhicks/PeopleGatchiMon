@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private Handler handler;
     private Runnable handlerTask;
     public static SimpleDateFormat dateFormat = new SimpleDateFormat("h:mm a");
+    private Context context;
 
     @Bind(R.id.container)
     RelativeLayout container;
@@ -53,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         SugarContext.init(getApplicationContext());
         StatusControls.firstRun();
 
+        decreaseStats();
 
         Date date = new Date();
         dateFormat.format(date);
@@ -98,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         TimeControls.getTime();
         Toast.makeText(this, "Time: " + TimeControls.getTime(), Toast.LENGTH_SHORT).show();
+
     }
 
     @Override
@@ -115,6 +118,37 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
+    public void decreaseStats(){
+
+        handler = new Handler();
+            handlerTask = new Runnable()
+            {
+                @Override
+                public void run() {
+                    if ((StatusControls.getHungerLevel() <= 0) || (StatusControls.getPooLevel() <= 0) || (StatusControls.getPeeLevel() <= 0)
+                            || (StatusControls.getHygieneLevel() <= 0) || (StatusControls.getThirstLevel() <= 0)
+                            || (StatusControls.getRestLevel() <= 0)) {
+                        StatusControls.setHunger(-3);
+                        StatusControls.setThirst(-3);
+                        StatusControls.setHygiene(-3);
+                        StatusControls.setRest(-3);
+                        StatusControls.setPeeBladder(-3);
+                        StatusControls.setPooBladder(-3);
+                        handler.postDelayed(handlerTask, 360000);
+                    }else {
+
+                        StatusControls.setHunger(-1);
+                        StatusControls.setThirst(-1);
+                        StatusControls.setHygiene(-1);
+                        StatusControls.setRest(-1);
+                        StatusControls.setPeeBladder(-1);
+                        StatusControls.setPooBladder(-1);
+                        handler.postDelayed(handlerTask, 360000);
+                    }
+                }
+            };
+            handlerTask.run();
+    }
 }
 
 
