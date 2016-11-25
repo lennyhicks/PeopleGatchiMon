@@ -41,28 +41,23 @@ public class HomeView extends RelativeLayout {
 
     private Context context;
     private String updateMessage;
+    private Handler handlers;
     private Handler handler;
-    private Runnable handlerTask;
+    private Runnable handlerTasks;
     public static Calendar calendar;
-    private static boolean runningTimer = false;
-    public Integer speed = 200;
+    public Integer speed = 500;
 
     void startTimer(){
-        handler = new Handler();
-        handlerTask = new Runnable() {
+        handlers = new Handler();
+        handlerTasks = new Runnable() {
 
             @Override
             public void run() {
-                //Runnable that checks progress bar status every 200 milliseconds (.2 seconds).
+                //Runnable that checks progress bar status every 500 milliseconds (.5 seconds).
 
                 setClock(clock);
-                if(calendar.get(Calendar.MINUTE) % 20 == 0){
-                    StatusControls.setHunger(-1);
-                    StatusControls.setThirst(-1);
-                    StatusControls.setHygiene(-1);
-                    StatusControls.setRest(-1);
-                    StatusControls.setPeeBladder(-1);
-                    StatusControls.setPooBladder(-1);
+                if(calendar.get(Calendar.MINUTE) % 30 == 0){
+                    decreaseStats();
                 }
                 foodBar.setProgress(StatusControls.getHungerLevel());
                 drinkBar.setProgress(StatusControls.getThirstLevel());
@@ -77,10 +72,10 @@ public class HomeView extends RelativeLayout {
                 Death death = new Death();
                 death.isDead();
 
-                handler.postDelayed(handlerTask, speed);
+                handlers.postDelayed(handlerTasks, speed);
             }
         };
-        handlerTask.run();
+        handlerTasks.run();
     }
 
     @Bind(R.id.update_text)
@@ -149,10 +144,8 @@ public class HomeView extends RelativeLayout {
         name.setText(StatusControls.getName());
         StatusControls.firstRun();
 
-            startTimer();
-
-
         startTimer();
+        updateText();
         updateScreen();
         bankAmount.setText("$" + BankControls.getMoney());
         imageView.setImageResource(Utils.setHappinessImage());
@@ -174,7 +167,6 @@ public class HomeView extends RelativeLayout {
         } else {
             updateMessage = "Beeelch!! Uhg, I'm stuffed..";
         }
-        updateText();
     }
 
     @OnClick(R.id.drink_bar)
@@ -190,7 +182,6 @@ public class HomeView extends RelativeLayout {
         } else {
             updateMessage = "Slurp, Slurp, Mmmm..";
         }
-        updateText();
     }
 
     @OnClick(R.id.sleep_bar)
@@ -209,7 +200,6 @@ public class HomeView extends RelativeLayout {
         } else {
             updateMessage = "Yawn.. That was a good nap.";
         }
-        updateText();
     }
 
     @OnClick(R.id.hygiene_bar)
@@ -241,7 +231,6 @@ public class HomeView extends RelativeLayout {
         } else {
             updateMessage = "Whew, my eyes were floating!";
         }
-        updateText();
     }
 
     @OnClick(R.id.poop_bar)
@@ -268,17 +257,16 @@ public class HomeView extends RelativeLayout {
 
     @OnClick(R.id.fastforward_button)
     public void increaseTime() {
-        handler.removeCallbacks(handlerTask);
-        speed = 100;
+        handlers.removeCallbacks(handlerTasks);
+        speed = 250;
         startTimer();
     }
 
     @OnClick(R.id.clock)
     public void clock() {
-        handler.removeCallbacks(handlerTask);
-        speed = 2000;
+        handlers.removeCallbacks(handlerTasks);
+        speed = 500;
         startTimer();
-        updateText();
     }
 
     @OnClick(R.id.store_button)
@@ -319,11 +307,6 @@ public class HomeView extends RelativeLayout {
         flow.setHistory(newHistory, Flow.Direction.FORWARD);
     }
 
-    public void updateScreen() {
-        //Updates text view on the main screen to show current balance, and updates happiness icon.
-        bankAmount.setText("$" + BankControls.getMoney());
-
-    }
 
     public void updateScreen(){
         bankAmount.setText("$"+ BankControls.getMoney());
@@ -333,7 +316,6 @@ public class HomeView extends RelativeLayout {
     public void setClock(TextView clock) {
         //Sets the format for the clock.
         this.clock = clock;
-        Calendar calendar = Calendar.getInstance();
         SimpleDateFormat dateFormat = new SimpleDateFormat("h:mm a");
         calendar.add(Calendar.MINUTE, 1);
         date = dateFormat.format(calendar.getTime());
@@ -361,6 +343,27 @@ public class HomeView extends RelativeLayout {
         StatusControls.setPooBladder(-2);
         StatusControls.setHygiene(-2);
         StatusControls.setRest(-2);
+    }
+
+    private void decreaseStats(){
+        if ((StatusControls.getHungerLevel() <= 0) || (StatusControls.getPooLevel() <= 0) || (StatusControls.getPeeLevel() <= 0)
+                || (StatusControls.getHygieneLevel() <= 0) || (StatusControls.getThirstLevel() <= 0)
+                || (StatusControls.getRestLevel() <= 0)) {
+            StatusControls.setHunger(-3);
+            StatusControls.setThirst(-3);
+            StatusControls.setHygiene(-3);
+            StatusControls.setRest(-3);
+            StatusControls.setPeeBladder(-3);
+            StatusControls.setPooBladder(-3);
+        }else {
+
+            StatusControls.setHunger(-1);
+            StatusControls.setThirst(-1);
+            StatusControls.setHygiene(-1);
+            StatusControls.setRest(-1);
+            StatusControls.setPeeBladder(-1);
+            StatusControls.setPooBladder(-1);
+        }
     }
 }
 
