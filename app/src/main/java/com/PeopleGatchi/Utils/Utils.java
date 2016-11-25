@@ -29,7 +29,6 @@ public class Utils {
         if (max >= 0) {
             max = Constants.MAX_LEVEL - max;
         }else{
-
             max = Math.abs(max);
             return -(r.nextInt(max + 1));
         }

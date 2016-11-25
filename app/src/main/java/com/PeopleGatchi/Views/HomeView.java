@@ -2,6 +2,7 @@ package com.PeopleGatchi.Views;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Handler;
 import android.util.AttributeSet;
 import android.widget.ImageButton;
@@ -126,6 +127,9 @@ public class HomeView extends RelativeLayout {
     @Bind(R.id.display_name)
     TextView name;
 
+    @Bind(R.id.character_iv)
+    ImageView charImg;
+
     public HomeView(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
@@ -142,6 +146,25 @@ public class HomeView extends RelativeLayout {
         ButterKnife.bind(this);
         flow = PeopleGatchiApplication.getMainFlow();
         name.setText(StatusControls.getName());
+
+        switch (StatusControls.getGender()) {
+            case "cis female":
+                charImg.setBackground(context.getResources().getDrawable(R.drawable.female_blink));
+                break;
+            case "cis male":
+                charImg.setBackground(context.getResources().getDrawable(R.drawable.male_blink));
+                break;
+            case "non-conforming":
+                charImg.setBackground(context.getResources().getDrawable(R.drawable.snowflake_blink));
+                break;
+            default:
+                charImg.setImageResource(R.drawable.hp_cat);
+        }
+
+        imageView.setImageResource(Utils.setHappinessImage());
+        ((AnimationDrawable) charImg.getBackground()).start();
+
+
         StatusControls.firstRun();
 
         startTimer();
@@ -167,6 +190,33 @@ public class HomeView extends RelativeLayout {
         } else {
             updateMessage = "Beeelch!! Uhg, I'm stuffed..";
         }
+        updateText();
+        handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                switch (StatusControls.getGender()) {
+                    case "cis female":
+                        charImg.setBackground(context.getResources().getDrawable(R.drawable.female_eat));
+                        ((AnimationDrawable) charImg.getBackground()).start();
+                        break;
+                    case "cis male":
+                        charImg.setBackground(context.getResources().getDrawable(R.drawable.male_eat));
+                        ((AnimationDrawable) charImg.getBackground()).start();
+                        break;
+                    case "non-conforming":
+                        charImg.setBackground(context.getResources().getDrawable(R.drawable.snowflake_eat));
+                        ((AnimationDrawable) charImg.getBackground()).start();
+                        break;
+                    default:
+                        charImg.setImageResource(R.drawable.hp_cat);
+                }
+            }
+        }, 500);
+        ((AnimationDrawable)charImg.getBackground()).stop();
+//        ((AnimationDrawable) charImg.getBackground()).start();
+//        ((AnimationDrawable) charImg.getBackground()).setOneShot(true);
+        defaultImage();
     }
 
     @OnClick(R.id.drink_bar)
@@ -182,6 +232,33 @@ public class HomeView extends RelativeLayout {
         } else {
             updateMessage = "Slurp, Slurp, Mmmm..";
         }
+        updateText();
+        handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                switch (StatusControls.getGender()) {
+                    case "cis female":
+                        charImg.setBackground(context.getResources().getDrawable(R.drawable.female_drink));
+                        ((AnimationDrawable) charImg.getBackground()).start();
+                        break;
+                    case "cis male":
+                        charImg.setBackground(context.getResources().getDrawable(R.drawable.male_drink));
+                        ((AnimationDrawable) charImg.getBackground()).start();
+                        break;
+                    case "non-conforming":
+                        charImg.setBackground(context.getResources().getDrawable(R.drawable.snowflake_drink));
+                        ((AnimationDrawable) charImg.getBackground()).start();
+                        break;
+                    default:
+                        charImg.setImageResource(R.drawable.hp_cat);
+                }
+            }
+        }, 500);
+        ((AnimationDrawable)charImg.getBackground()).stop();
+//        ((AnimationDrawable) charImg.getBackground()).start();
+//        ((AnimationDrawable) charImg.getBackground()).setOneShot(true);
+        defaultImage();
     }
 
     @OnClick(R.id.sleep_bar)
@@ -200,6 +277,33 @@ public class HomeView extends RelativeLayout {
         } else {
             updateMessage = "Yawn.. That was a good nap.";
         }
+        updateText();
+        handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                switch (StatusControls.getGender()) {
+                    case "cis female":
+                        charImg.setBackground(context.getResources().getDrawable(R.drawable.female_sleep));
+                        ((AnimationDrawable) charImg.getBackground()).start();
+                        break;
+                    case "cis male":
+                        charImg.setBackground(context.getResources().getDrawable(R.drawable.male_sleep));
+                        ((AnimationDrawable) charImg.getBackground()).start();
+                        break;
+                    case "non-conforming":
+                        charImg.setBackground(context.getResources().getDrawable(R.drawable.snowflake_sleep));
+                        ((AnimationDrawable) charImg.getBackground()).start();
+                        break;
+                    default:
+                        charImg.setImageResource(R.drawable.hp_cat);
+                }
+            }
+        }, 500);
+        ((AnimationDrawable)charImg.getBackground()).stop();
+//        ((AnimationDrawable) charImg.getBackground()).start();
+//        ((AnimationDrawable) charImg.getBackground()).setOneShot(true);
+        defaultImage();
     }
 
     @OnClick(R.id.hygiene_bar)
@@ -216,6 +320,33 @@ public class HomeView extends RelativeLayout {
         } else {
             updateMessage = "Yay, so fresh and so clean clean!!";
         }
+        updateText();
+        handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                switch (StatusControls.getGender()) {
+                    case "cis female":
+                        charImg.setBackground(context.getResources().getDrawable(R.drawable.female_bathe));
+                        ((AnimationDrawable) charImg.getBackground()).start();
+                        break;
+                    case "cis male":
+                        charImg.setBackground(context.getResources().getDrawable(R.drawable.male_bathe));
+                        ((AnimationDrawable) charImg.getBackground()).start();
+                        break;
+                    case "non-conforming":
+                        charImg.setBackground(context.getResources().getDrawable(R.drawable.snowflake_bathe));
+                        ((AnimationDrawable) charImg.getBackground()).start();
+                        break;
+                    default:
+                        charImg.setImageResource(R.drawable.hp_cat);
+                }
+            }
+        }, 500);
+        ((AnimationDrawable)charImg.getBackground()).stop();
+//        ((AnimationDrawable) charImg.getBackground()).start();
+//        ((AnimationDrawable) charImg.getBackground()).setOneShot(true);
+        defaultImage();
     }
 
     @OnClick(R.id.pee_bar)
@@ -231,6 +362,33 @@ public class HomeView extends RelativeLayout {
         } else {
             updateMessage = "Whew, my eyes were floating!";
         }
+        updateText();
+        handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                switch (StatusControls.getGender()) {
+                    case "cis female":
+                        charImg.setBackground(context.getResources().getDrawable(R.drawable.female_pee));
+                        ((AnimationDrawable) charImg.getBackground()).start();
+                        break;
+                    case "cis male":
+                        charImg.setBackground(context.getResources().getDrawable(R.drawable.male_pee));
+                        ((AnimationDrawable) charImg.getBackground()).start();
+                        break;
+                    case "non-conforming":
+                        charImg.setBackground(context.getResources().getDrawable(R.drawable.snowflake_pee));
+                        ((AnimationDrawable) charImg.getBackground()).start();
+                        break;
+                    default:
+                        charImg.setImageResource(R.drawable.hp_cat);
+                }
+            }
+        }, 500);
+        ((AnimationDrawable)charImg.getBackground()).stop();
+//        ((AnimationDrawable) charImg.getBackground()).start();
+//        ((AnimationDrawable) charImg.getBackground()).setOneShot(true);
+        defaultImage();
     }
 
     @OnClick(R.id.poop_bar)
@@ -239,14 +397,39 @@ public class HomeView extends RelativeLayout {
         //Displays message in a text view.
         int dumpSize = Utils.getRand(StatusControls.getPooLevel());
         StatusControls.setPooBladder(dumpSize);
-        StatusControls.setHunger(-dumpSize/2);
-        StatusControls.setHygiene(-dumpSize/3);
+        StatusControls.setHunger(-dumpSize / 2);
+        StatusControls.setHygiene(-dumpSize / 3);
         if (dumpSize == 20) {
             updateMessage = "Holy Cow! That was a sweet sweet #2!! However, now you're getting hungry. Don't forget to wash your hands!";
         } else {
             updateMessage = "Your poo bladder thanks you, but now you may be hungry. Don't forget to wash your hands!";
-        }
-        // StatusControls.updatePooBladder(dumpSize);
+        } updateText();
+        handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                switch (StatusControls.getGender()) {
+                    case "cis female":
+                        charImg.setBackground(context.getResources().getDrawable(R.drawable.female_poo));
+                        ((AnimationDrawable) charImg.getBackground()).start();
+                        break;
+                    case "cis male":
+                        charImg.setBackground(context.getResources().getDrawable(R.drawable.male_poo));
+                        ((AnimationDrawable) charImg.getBackground()).start();
+                        break;
+                    case "non-conforming":
+                        charImg.setBackground(context.getResources().getDrawable(R.drawable.snowflake_poo));
+                        ((AnimationDrawable) charImg.getBackground()).start();
+                        break;
+                    default:
+                        charImg.setImageResource(R.drawable.hp_cat);
+                }
+            }
+        }, 500);
+        ((AnimationDrawable)charImg.getBackground()).stop();
+//        ((AnimationDrawable) charImg.getBackground()).start();
+//        ((AnimationDrawable) charImg.getBackground()).setOneShot(true);
+        defaultImage();
     }
 
     // TODO does this need to be in here. It's probably my fault that it exist.
@@ -307,9 +490,9 @@ public class HomeView extends RelativeLayout {
         flow.setHistory(newHistory, Flow.Direction.FORWARD);
     }
 
-
-    public void updateScreen(){
-        bankAmount.setText("$"+ BankControls.getMoney());
+    public void updateScreen() {
+        //Updates text view on the main screen to show current balance, and updates happiness icon.
+        bankAmount.setText("$" + BankControls.getMoney());
         imageView.setImageResource(Utils.setHappinessImage());
     }
 
@@ -364,6 +547,30 @@ public class HomeView extends RelativeLayout {
             StatusControls.setPeeBladder(-1);
             StatusControls.setPooBladder(-1);
         }
+    }
+
+    public void defaultImage() {
+        switch (StatusControls.getGender()) {
+            case "cis female":
+                charImg.setBackground(context.getResources().getDrawable(R.drawable.female_blink));
+                ((AnimationDrawable) charImg.getBackground()).start();
+                break;
+            case "cis male":
+                charImg.setBackground(context.getResources().getDrawable(R.drawable.male_blink));
+                ((AnimationDrawable) charImg.getBackground()).start();
+                break;
+            case "non-conforming":
+                charImg.setBackground(context.getResources().getDrawable(R.drawable.snowflake_blink));
+                ((AnimationDrawable) charImg.getBackground()).start();
+                break;
+            default:
+                charImg.setImageResource(R.drawable.hp_cat);
+        }
+    }
+
+    @OnClick(R.id.character_iv)
+    public void charImg() {
+        defaultImage();
     }
 }
 

@@ -62,8 +62,6 @@ public class CreateView extends LinearLayout {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         chooseGender.setAdapter(adapter);
-        String gender = chooseGender.getSelectedItem().toString();
-        StatusControls.setGender(gender);
     }
 
     @OnClick(R.id.submit_button)
@@ -73,9 +71,10 @@ public class CreateView extends LinearLayout {
         imm.hideSoftInputFromWindow(pickName.getWindowToken(), 0);
 
         // gets the value from the text field and sets it.
-       String pokeName = pickName.getText().toString();
-
+        String pokeName = pickName.getText().toString();
         StatusControls.setName(pokeName);
+        String gender = chooseGender.getSelectedItem().toString();
+        StatusControls.setGender(gender);
         StatusControls.resetGame();
 
         // The submit button also takes you to the home screen.
