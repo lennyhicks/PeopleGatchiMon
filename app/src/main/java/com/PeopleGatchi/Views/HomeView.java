@@ -118,8 +118,10 @@ public class HomeView extends RelativeLayout {
         super.onFinishInflate();
         calendar = Calendar.getInstance();
         ButterKnife.bind(this);
+        StatusControls.firstRun();
         flow = PeopleGatchiApplication.getMainFlow();
         name.setText(StatusControls.getName());
+        StatusControls.setName(StatusControls.getName());
 
         switch (StatusControls.getGender()) {
             case "cis female":
@@ -138,8 +140,6 @@ public class HomeView extends RelativeLayout {
         imageView.setImageResource(Utils.setHappinessImage());
         ((AnimationDrawable) charImg.getBackground()).start();
 
-
-        StatusControls.firstRun();
 
         startTimer();
         updateText();
@@ -430,8 +430,7 @@ public class HomeView extends RelativeLayout {
             updateMessage = "Holy Cow! That was a sweet sweet #2!! However, now you're getting hungry. Don't forget to wash your hands!";
         } else {
             updateMessage = "Your poo bladder thanks you, but now you may be hungry. Don't forget to wash your hands!";
-        }
-        } updateText();
+        }updateText();
         handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override

@@ -345,4 +345,19 @@ public class StatusControls {
         setShelterHappiness(0);
         setAdjustedDeath(0);
     }
+
+    public static void resetLevels() {
+        setPooBladder(20);
+        setPeeBladder(20);
+        setHunger(20);
+        setThirst(20);
+        setHygiene(20);
+        setRest(20);
+        setMoney(0);
+        setScienceEd(0);
+        setMathEd(0);
+        setPhiloEd(0);
+        setShelterHappiness(0);
+        setAdjustedDeath(0);
+    }
 }
