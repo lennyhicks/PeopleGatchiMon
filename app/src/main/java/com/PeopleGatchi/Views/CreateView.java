@@ -75,7 +75,7 @@ public class CreateView extends LinearLayout {
         StatusControls.setName(pokeName);
         String gender = chooseGender.getSelectedItem().toString();
         StatusControls.setGender(gender);
-        StatusControls.resetGame();
+        StatusControls.resetLevels();
 
         // The submit button also takes you to the home screen.
         Flow flow = PeopleGatchiApplication.getMainFlow();

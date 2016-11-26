@@ -144,8 +144,10 @@ public class HomeView extends RelativeLayout {
         super.onFinishInflate();
         calendar = Calendar.getInstance();
         ButterKnife.bind(this);
+        StatusControls.firstRun();
         flow = PeopleGatchiApplication.getMainFlow();
         name.setText(StatusControls.getName());
+        StatusControls.setName(StatusControls.getName());
 
         switch (StatusControls.getGender()) {
             case "cis female":
@@ -164,8 +166,6 @@ public class HomeView extends RelativeLayout {
         imageView.setImageResource(Utils.setHappinessImage());
         ((AnimationDrawable) charImg.getBackground()).start();
 
-
-        StatusControls.firstRun();
 
         startTimer();
         updateText();
