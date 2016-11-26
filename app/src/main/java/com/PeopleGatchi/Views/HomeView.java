@@ -118,36 +118,34 @@ public class HomeView extends RelativeLayout {
         super.onFinishInflate();
         calendar = Calendar.getInstance();
         ButterKnife.bind(this);
-        StatusControls.firstRun();
         flow = PeopleGatchiApplication.getMainFlow();
         name.setText(StatusControls.getName());
-        StatusControls.setName(StatusControls.getName());
+        StatusControls.setGender(StatusControls.getGender());
 
-        switch (StatusControls.getGender()) {
-            case "cis female":
-                charImg.setBackground(context.getResources().getDrawable(R.drawable.female_blink));
-                break;
-            case "cis male":
-                charImg.setBackground(context.getResources().getDrawable(R.drawable.male_blink));
-                break;
-            case "non-conforming":
-                charImg.setBackground(context.getResources().getDrawable(R.drawable.snowflake_blink));
-                break;
-            default:
-                charImg.setImageResource(R.drawable.hp_cat);
-        }
+//        switch (StatusControls.getGender()) {
+//            case "cis female":
+//                charImg.setBackground(context.getResources().getDrawable(R.drawable.female_blink));
+//                break;
+//            case "cis male":
+//                charImg.setBackground(context.getResources().getDrawable(R.drawable.male_blink));
+//                break;
+//            case "non-conforming":
+//                charImg.setBackground(context.getResources().getDrawable(R.drawable.snowflake_blink));
+//                break;
+//            default:
+//                charImg.setImageResource(R.drawable.hp_cat);
+//        }
 
-        imageView.setImageResource(Utils.setHappinessImage());
-        ((AnimationDrawable) charImg.getBackground()).start();
+//        ((AnimationDrawable) charImg.getBackground()).start();
 
-
+        StatusControls.firstRun();
         startTimer();
         updateText();
         updateScreen();
         bankAmount.setText("$" + BankControls.getMoney());
-        imageView.setImageResource(Utils.setHappinessImage());
         calendar = Calendar.getInstance();
         setClock(clock);
+        defaultImage();
     }
 
 
