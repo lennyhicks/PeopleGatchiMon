@@ -10,8 +10,13 @@ import com.orm.dsl.Table;
 @Table
 public class Poo extends SugarRecord {
 
+    /*
+    Model needed for sugarapp to create local persistence for poo level
+     */
+
     private Long id;
     public Integer pooLevel;
+
 
     public Poo(){
     }

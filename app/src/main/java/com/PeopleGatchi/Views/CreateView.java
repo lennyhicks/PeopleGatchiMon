@@ -29,6 +29,7 @@ import static com.PeopleGatchi.R.id.spinner;
  */
 
 public class CreateView extends LinearLayout {
+
     private Context context;
     private Spinner gender;
 
@@ -41,14 +42,18 @@ public class CreateView extends LinearLayout {
     @Bind(R.id.submit_button)
     Button submit;
 
+
     public CreateView(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
     }
 
+    /*
+    Displays where the user can set their name and sets up the spinner to allow the user to select
+    their gender
+     */
     @Override
     protected void onFinishInflate() {
-        // This OnFinishInflate is mostly just the spinner function.
         super.onFinishInflate();
         ButterKnife.bind(this);
 
@@ -57,17 +62,21 @@ public class CreateView extends LinearLayout {
         categories.add("cis male");
         categories.add("non-conforming");
 
-        ArrayAdapter<String> adapter = new ArrayAdapter(context, android.R.layout.simple_spinner_item,
-                categories);
+        ArrayAdapter<String> adapter = new ArrayAdapter(context,
+                android.R.layout.simple_spinner_item, categories);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         chooseGender.setAdapter(adapter);
     }
 
+    /*
+    Sets the users name and gender and changes the view to the home view
+     */
     @OnClick(R.id.submit_button)
     public void createCharacter() {
         //drops the keyboard off the screen when the user hits the button.
-        InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+        InputMethodManager imm = (InputMethodManager) context
+                .getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(pickName.getWindowToken(), 0);
 
         // gets the value from the text field and sets it.

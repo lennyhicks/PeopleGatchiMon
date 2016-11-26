@@ -10,6 +10,10 @@ import com.orm.dsl.Table;
 @Table
 public class Happiness extends SugarRecord {
 
+    /*
+    Model needed for sugarapp to create local persistence for happiness
+     */
+
     private Long id;
     public Integer happinessLevel;
 

@@ -8,8 +8,14 @@ import com.orm.dsl.Table;
  */
 @Table
 public class PhiloEd extends SugarRecord {
+
+    /*
+    Model needed for sugarapp to create local persistence for the philosophy education level
+     */
+
     private Long id;
     public Integer philoEdLevel;
+
 
     public PhiloEd(){
     }

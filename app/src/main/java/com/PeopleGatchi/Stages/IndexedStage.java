@@ -8,7 +8,12 @@ import com.davidstemmer.screenplay.stage.XmlStage;
 
 public abstract class IndexedStage extends XmlStage {
 
+    /*
+    Stage needed by screenplay to create flow
+     */
+
     public final String id;
+
 
     protected IndexedStage(String id) {
         this.id = id;

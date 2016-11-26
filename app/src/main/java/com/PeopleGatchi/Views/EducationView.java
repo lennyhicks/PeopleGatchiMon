@@ -24,6 +24,7 @@ import static com.PeopleGatchi.R.id.increase_philo;
  * Created by eaglebrosi on 11/16/16.
  */
 public class EducationView extends LinearLayout {
+
     private Context context;
     private Flow flow;
     private Handler handler;
@@ -51,6 +52,7 @@ public class EducationView extends LinearLayout {
     @Bind(R.id.philo_score)
     TextView philoLevel;
 
+
     public EducationView(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
@@ -64,25 +66,34 @@ public class EducationView extends LinearLayout {
         pokeStats();
     }
 
+    /*
+    Increases your Science score with a random number between 1 and 5. Sometimes you learn better.
+     */
     @OnClick(R.id.increase_science)
-    // Increases your Science score with a random number between 1 and 5. Sometimes you learn better.
     public void changeScience() {
+
         int increase = ((int) (Math.random() * 5) + 1);
         StatusControls.setScienceEd(increase);
         pokeStats();
     }
 
+    /*
+    Increases your Math score with a random number between 1 and 5.
+     */
     @OnClick(R.id.increase_math)
-    // Increases your Math score with a random number between 1 and 5.
     public void changeMath() {
+
         int increase = ((int) (Math.random() * 5) + 1);
         StatusControls.setMathEd(increase);
         pokeStats();
     }
 
+    /*
+    Increases your Philosophy score with a random number between 0 and 6. It's Philosophy, sometimes you don't learn nothing.
+     */
     @OnClick(increase_philo)
-    // Increases your Philosophy score with a random number between 0 and 6. It's Philosophy, sometimes you don't learn nothing.
     public void changePhilo() {
+
         int increase = ((int) (Math.random() * 6));
         StatusControls.setPhiloEd(increase);
         pokeStats();
@@ -95,8 +106,11 @@ public class EducationView extends LinearLayout {
         flow.goBack();
     }
 
+    /*
+    This is the character sheet. It prints out the Philosophy, Math and Education scores.
+     */
     public void pokeStats() {
-        // This is the character sheet. It prints out the Philosophy, Math and Education scores.
+
         philoLevel.setText("Your Philosophy Score is: " + StatusControls.getPhiloEd());
         mathLevel.setText("Your Maths score is: " + StatusControls.getMathEd());
         scienceLevel.setText("Your Science score is: " + StatusControls.getScienceEd());
@@ -105,9 +119,12 @@ public class EducationView extends LinearLayout {
         checkDisable();
     }
 
+    /*
+    This looks to see if any of the statuses are in danger of being too low (so you don't work yourself to death).
+    It toast a warning message and then calls the disable button.
+     */
     public void checkDisable() {
-        // This looks to see if any of the statuses are in danger of being too low (so you don't work yourself to death).
-        // It toast a warning message and then calls the disable button.
+
         if ((StatusControls.getHungerLevel() <= 7) || (StatusControls.getPooLevel() <= 7) || (StatusControls.getPeeLevel() <= 7)
                 || (StatusControls.getHygieneLevel() <= 7) || (StatusControls.getThirstLevel() <= 7)
                 || (StatusControls.getRestLevel() <= 7)) {
@@ -117,8 +134,11 @@ public class EducationView extends LinearLayout {
         }
     }
 
+    /*
+    Sets the warning message for when any status are low.
+     */
     public void setWarningMessage() {
-        // Sets the warning message for when any status are low.
+
         if (StatusControls.getHungerLevel() <= 7) {
             warningMessage = "Your baby is super hungry!\n Go fed them!";
         } else if (StatusControls.getPooLevel() <= 7) {
@@ -134,8 +154,11 @@ public class EducationView extends LinearLayout {
         }
     }
 
+    /*
+    This disables the buttons for 15 seconds (to prevent a user from killing themselves).
+     */
     public void disableButton() {
-        // This disables the buttons for 15 seconds (to prevent a user from killing themselves).
+
         handler = new Handler();
         handlerTask = new Runnable() {
             @Override

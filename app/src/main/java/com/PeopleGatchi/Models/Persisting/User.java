@@ -9,9 +9,15 @@ import com.orm.dsl.Table;
 
 @Table
 public class User extends SugarRecord {
+
+    /*
+    Model needed for sugarapp to create local persistence for the users selected name and gender
+     */
+
     private Long id;
     public String pokeName;
     public String pokeGender;
+
 
     public User(){
     }
