@@ -360,20 +360,4 @@ public class StatusControls {
         setShelterHappiness(0);
         setAdjustedDeath(0);
     }
-
-    public static Integer getShelterHappiness() {
-        return shelterHappiness;
-    }
-
-    public static void setShelterHappiness(Integer shelterHappiness) {
-        StatusControls.shelterHappiness = shelterHappiness;
-    }
-
-    public static Integer getAdjustedDeath() {
-        return adjustedDeath;
-    }
-
-    public static void setAdjustedDeath(Integer adjustedDeath) {
-        StatusControls.adjustedDeath = adjustedDeath;
-    }
 }

@@ -430,8 +430,7 @@ public class HomeView extends RelativeLayout {
             updateMessage = "Holy Cow! That was a sweet sweet #2!! However, now you're getting hungry. Don't forget to wash your hands!";
         } else {
             updateMessage = "Your poo bladder thanks you, but now you may be hungry. Don't forget to wash your hands!";
-        }
-        } updateText();
+        }updateText();
         handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
