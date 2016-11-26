@@ -223,9 +223,7 @@ public class HomeView extends RelativeLayout {
                 }
             }
         }, 500);
-        ((AnimationDrawable)charImg.getBackground()).stop();
-//        ((AnimationDrawable) charImg.getBackground()).start();
-//        ((AnimationDrawable) charImg.getBackground()).setOneShot(true);
+        ((AnimationDrawable) charImg.getBackground()).stop();
         defaultImage();
     }
 
@@ -268,9 +266,7 @@ public class HomeView extends RelativeLayout {
                 }
             }
         }, 500);
-        ((AnimationDrawable)charImg.getBackground()).stop();
-//        ((AnimationDrawable) charImg.getBackground()).start();
-//        ((AnimationDrawable) charImg.getBackground()).setOneShot(true);
+        ((AnimationDrawable) charImg.getBackground()).stop();
         defaultImage();
     }
 
@@ -316,9 +312,7 @@ public class HomeView extends RelativeLayout {
                 }
             }
         }, 500);
-        ((AnimationDrawable)charImg.getBackground()).stop();
-//        ((AnimationDrawable) charImg.getBackground()).start();
-//        ((AnimationDrawable) charImg.getBackground()).setOneShot(true);
+        ((AnimationDrawable) charImg.getBackground()).stop();
         defaultImage();
     }
 
@@ -362,9 +356,7 @@ public class HomeView extends RelativeLayout {
                 }
             }
         }, 500);
-        ((AnimationDrawable)charImg.getBackground()).stop();
-//        ((AnimationDrawable) charImg.getBackground()).start();
-//        ((AnimationDrawable) charImg.getBackground()).setOneShot(true);
+        ((AnimationDrawable) charImg.getBackground()).stop();
         defaultImage();
     }
 
@@ -407,9 +399,7 @@ public class HomeView extends RelativeLayout {
                 }
             }
         }, 500);
-        ((AnimationDrawable)charImg.getBackground()).stop();
-//        ((AnimationDrawable) charImg.getBackground()).start();
-//        ((AnimationDrawable) charImg.getBackground()).setOneShot(true);
+        ((AnimationDrawable) charImg.getBackground()).stop();
         defaultImage();
     }
 
@@ -428,7 +418,9 @@ public class HomeView extends RelativeLayout {
             updateMessage = "Holy Cow! That was a sweet sweet #2!! However, now you're getting hungry. Don't forget to wash your hands!";
         } else {
             updateMessage = "Your poo bladder thanks you, but now you may be hungry. Don't forget to wash your hands!";
-        }updateText();
+        }
+
+        updateText();
         handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -451,16 +443,8 @@ public class HomeView extends RelativeLayout {
                 }
             }
         }, 500);
-        ((AnimationDrawable)charImg.getBackground()).stop();
-//        ((AnimationDrawable) charImg.getBackground()).start();
-//        ((AnimationDrawable) charImg.getBackground()).setOneShot(true);
+        ((AnimationDrawable) charImg.getBackground()).stop();
         defaultImage();
-    }
-
-    // TODO does this need to be in here. It's probably my fault that it exist.
-    @OnClick(R.id.bank_amount)
-    public void bankTotal() {
-
     }
 
     @OnClick(R.id.fastforward_button)
