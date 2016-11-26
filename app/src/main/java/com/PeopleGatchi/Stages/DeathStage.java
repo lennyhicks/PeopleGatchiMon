@@ -11,7 +11,13 @@ import com.PeopleGatchi.Riggers.FadeRigger;
  */
 
 public class DeathStage extends IndexedStage {
+
+    /*
+    Stage needed by screenplay to create flow to the Death View
+     */
+
     public final FadeRigger rigger;
+
 
     public DeathStage(Application context){
         super(DeathStage.class.getName());

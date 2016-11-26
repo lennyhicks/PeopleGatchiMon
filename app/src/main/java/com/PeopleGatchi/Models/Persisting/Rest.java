@@ -9,8 +9,14 @@ import com.orm.dsl.Table;
 
 @Table
 public class Rest extends SugarRecord {
+
+    /*
+    Model needed for sugarapp to create local persistence for rest level
+     */
+
     private Long id;
     public Integer restLevel;
+
 
     public Rest(){
     }

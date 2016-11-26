@@ -9,8 +9,14 @@ import com.orm.dsl.Table;
 
 @Table
 public class Hygiene extends SugarRecord {
+
+    /*
+    Model needed for sugarapp to create local persistence for hygiene
+     */
+
     private Long id;
     public Integer hygieneLevel;
+
 
     public Hygiene(){
     }
