@@ -114,30 +114,13 @@ public class HomeView extends RelativeLayout {
      */
     @Override
     protected void onFinishInflate() {
-
         super.onFinishInflate();
+
         calendar = Calendar.getInstance();
         ButterKnife.bind(this);
         flow = PeopleGatchiApplication.getMainFlow();
         name.setText(StatusControls.getName());
         StatusControls.setGender(StatusControls.getGender());
-
-//        switch (StatusControls.getGender()) {
-//            case "cis female":
-//                charImg.setBackground(context.getResources().getDrawable(R.drawable.female_blink));
-//                break;
-//            case "cis male":
-//                charImg.setBackground(context.getResources().getDrawable(R.drawable.male_blink));
-//                break;
-//            case "non-conforming":
-//                charImg.setBackground(context.getResources().getDrawable(R.drawable.snowflake_blink));
-//                break;
-//            default:
-//                charImg.setImageResource(R.drawable.hp_cat);
-//        }
-
-//        ((AnimationDrawable) charImg.getBackground()).start();
-
         StatusControls.firstRun();
         startTimer();
         updateText();
@@ -146,6 +129,7 @@ public class HomeView extends RelativeLayout {
         calendar = Calendar.getInstance();
         setClock(clock);
         defaultImage();
+
     }
 
 
@@ -196,9 +180,9 @@ public class HomeView extends RelativeLayout {
         StatusControls.setRest(-foodAmount / 3);
         StatusControls.setHygiene(-foodAmount / 3);
         if (foodAmount == 20) {
-            updateMessage = "Your stomach thanks you, but now you may need to use the bathroom and sleep. Don't forget to wash your hands!";
+            updateMessage = getContext().getString(R.string.fed_message);
         } else {
-            updateMessage = "Beeelch!! Uhg, I'm stuffed..";
+            updateMessage = getContext().getString(R.string.fed_message_2);
         }
         updateText();
         handler = new Handler();
@@ -224,7 +208,6 @@ public class HomeView extends RelativeLayout {
             }
         }, 500);
         ((AnimationDrawable) charImg.getBackground()).stop();
-        defaultImage();
     }
 
     /*
@@ -239,9 +222,9 @@ public class HomeView extends RelativeLayout {
         StatusControls.setPeeBladder(-drinkAmount / 2);
         StatusControls.setHygiene(-drinkAmount / 3);
         if (drinkAmount == 20) {
-            updateMessage = "Your thirst has been quenched, but now you may need to use the bathroom. Don't forget to wash your hands!";
+            updateMessage = getContext().getString(R.string.drank_message);
         } else {
-            updateMessage = "Slurp, Slurp, Mmmm..";
+            updateMessage = getContext().getString(R.string.drank_message_2);
         }
         updateText();
         handler = new Handler();
@@ -267,7 +250,6 @@ public class HomeView extends RelativeLayout {
             }
         }, 500);
         ((AnimationDrawable) charImg.getBackground()).stop();
-        defaultImage();
     }
 
     /*
@@ -279,15 +261,15 @@ public class HomeView extends RelativeLayout {
 
         int sleepyTime = Utils.getRand(StatusControls.getRestLevel());
         StatusControls.setRest(sleepyTime);
-        StatusControls.setHunger(-sleepyTime / 3);
+        StatusControls.setHunger(-sleepyTime / 2);
         StatusControls.setThirst(-sleepyTime / 3);
         StatusControls.setPooBladder(-sleepyTime / 3);
         StatusControls.setPeeBladder(-sleepyTime / 3);
         StatusControls.setHygiene(-sleepyTime / 3);
         if (sleepyTime == 20) {
-            updateMessage = "You're now well rested but, there are probably a few other things that need your attention too!";
+            updateMessage = getContext().getString(R.string.slept_message);
         } else {
-            updateMessage = "Yawn.. That was a good nap.";
+            updateMessage = getContext().getString(R.string.slept_message_2);
         }
         updateText();
         handler = new Handler();
@@ -313,7 +295,6 @@ public class HomeView extends RelativeLayout {
             }
         }, 500);
         ((AnimationDrawable) charImg.getBackground()).stop();
-        defaultImage();
     }
 
     /*
@@ -329,9 +310,9 @@ public class HomeView extends RelativeLayout {
         StatusControls.setThirst(-cleanBaby / 3);
         StatusControls.setRest(-cleanBaby / 3);
         if (cleanBaby == 20) {
-            updateMessage = "You cant get any cleaner..!";
+            updateMessage = getContext().getString(R.string.bathed_message);
         } else {
-            updateMessage = "Yay, so fresh and so clean clean!!";
+            updateMessage = getContext().getString(R.string.bathed_message_2);
         }
         updateText();
         handler = new Handler();
@@ -372,9 +353,9 @@ public class HomeView extends RelativeLayout {
         StatusControls.setThirst(-drainPet / 2);
         StatusControls.setHygiene(-drainPet / 3);
         if (drainPet == 20) {
-            updateMessage = "Your pee bladder thanks you, but you may now be thirsty. Don't forget to wash your hands!";
+            updateMessage = getContext().getString(R.string.peed_message);
         } else {
-            updateMessage = "Whew, my eyes were floating!";
+            updateMessage = getContext().getString(R.string.peed_message_2);
         }
         updateText();
         handler = new Handler();
@@ -415,9 +396,9 @@ public class HomeView extends RelativeLayout {
         StatusControls.setHunger(-dumpSize / 2);
         StatusControls.setHygiene(-dumpSize / 3);
         if (dumpSize == 20) {
-            updateMessage = "Holy Cow! That was a sweet sweet #2!! However, now you're getting hungry. Don't forget to wash your hands!";
+            updateMessage = getContext().getString(R.string.pood_message);
         } else {
-            updateMessage = "Your poo bladder thanks you, but now you may be hungry. Don't forget to wash your hands!";
+            updateMessage = getContext().getString(R.string.pooed_message_2);
         }
 
         updateText();

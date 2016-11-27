@@ -4,6 +4,7 @@ import android.content.Context;
 import android.widget.Toast;
 
 import com.PeopleGatchi.Models.Item;
+import com.PeopleGatchi.R;
 
 import static com.PeopleGatchi.Components.Constants.MAX_LEVEL;
 
@@ -37,10 +38,10 @@ public class UseItem {
                     StatusControls.setPooBladder(-1);
                     return true;
                 } else if (StatusControls.getHungerLevel() + 2 > MAX_LEVEL) {
-                    Toast.makeText(context, "You are not hungry enough to eat this \n You need 2 hunger", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.need_2_hunger, Toast.LENGTH_SHORT).show();
                     return false;
                 } else if (StatusControls.getPooLevel() - 1 < 0) {
-                    Toast.makeText(context, "You have to use the bathroom to bad to use this item", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.use_bathroom, Toast.LENGTH_SHORT).show();
                     return false;
                 }
 
@@ -50,10 +51,10 @@ public class UseItem {
                     StatusControls.setPooBladder(-1);
                     return true;
                 } else if (StatusControls.getHungerLevel() + 3 > MAX_LEVEL) {
-                    Toast.makeText(context, "You are not hungry enough to eat this \n You need 3 hunger", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.need_3_hunger, Toast.LENGTH_SHORT).show();
                     return false;
                 } else if (StatusControls.getPooLevel() - 1 < 0) {
-                    Toast.makeText(context, "You have to use the bathroom to bad to use this item", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.use_bathroom, Toast.LENGTH_SHORT).show();
                     return false;
                 }
 
@@ -64,10 +65,10 @@ public class UseItem {
                     StatusControls.setPooBladder(-1);
                     return true;
                 } else if (StatusControls.getHungerLevel() + 4 > MAX_LEVEL) {
-                    Toast.makeText(context, "You are not hungry enough to eat this \n You need 4 hunger", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.need_4_hunger, Toast.LENGTH_SHORT).show();
                     return false;
                 } else if (StatusControls.getPooLevel() - 1 < 0) {
-                    Toast.makeText(context, "You have to use the bathroom to bad to use this item", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.use_bathroom, Toast.LENGTH_SHORT).show();
                     return false;
                 }
 
@@ -77,10 +78,10 @@ public class UseItem {
                     StatusControls.setPooBladder(-2);
                     return true;
                 } else if (StatusControls.getHungerLevel() + 5 > MAX_LEVEL) {
-                    Toast.makeText(context, "You are not hungry enough to eat this \n You need 5 hunger", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.need_5_hunger, Toast.LENGTH_SHORT).show();
                     return false;
                 } else if (StatusControls.getPooLevel() - 2 < 0) {
-                    Toast.makeText(context, "You have to use the bathroom to bad to use this item", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.use_bathroom, Toast.LENGTH_SHORT).show();
                     return false;
                 }
 
@@ -90,10 +91,10 @@ public class UseItem {
                     StatusControls.setPooBladder(-2);
                     return true;
                 } else if (StatusControls.getHungerLevel() + 6 > MAX_LEVEL) {
-                    Toast.makeText(context, "You are not hungry enough to eat this \n You need 6 hunger", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.need_6_hunger, Toast.LENGTH_SHORT).show();
                     return false;
                 } else if (StatusControls.getPooLevel() - 2 < 0) {
-                    Toast.makeText(context, "You have to use the bathroom to bad to use this item", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.use_bathroom, Toast.LENGTH_SHORT).show();
                     return false;
                 }
 
@@ -103,10 +104,10 @@ public class UseItem {
                     StatusControls.setPooBladder(-2);
                     return true;
                 } else if (StatusControls.getHungerLevel() + 7 > MAX_LEVEL) {
-                    Toast.makeText(context, "You are not hungry enough to eat this \n You need 7 hunger", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.need_7_hunger, Toast.LENGTH_SHORT).show();
                     return false;
                 } else if (StatusControls.getPooLevel() - 2 < 0) {
-                    Toast.makeText(context, "You have to use the bathroom to bad to use this item", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.use_bathroom, Toast.LENGTH_SHORT).show();
                     return false;
                 }
 
@@ -116,10 +117,10 @@ public class UseItem {
                     StatusControls.setPooBladder(-3);
                     return true;
                 } else if (StatusControls.getHungerLevel() + 9 > MAX_LEVEL) {
-                    Toast.makeText(context, "You are not hungry enough to eat this \n You need 9 hunger", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.need_9_hunger, Toast.LENGTH_SHORT).show();
                     return false;
                 } else if (StatusControls.getPooLevel() - 3 < 0) {
-                    Toast.makeText(context, "You have to use the bathroom to bad to use this item", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.use_bathroom, Toast.LENGTH_SHORT).show();
                     return false;
                 }
 
@@ -129,10 +130,10 @@ public class UseItem {
                     StatusControls.setPooBladder(-3);
                     return true;
                 } else if (StatusControls.getHungerLevel() + 10 > MAX_LEVEL) {
-                    Toast.makeText(context, "You are not hungry enough to eat this \n You need 10 hunger", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.need_10_hunger, Toast.LENGTH_SHORT).show();
                     return false;
                 } else if (StatusControls.getPooLevel() - 3 < 0) {
-                    Toast.makeText(context, "You have to use the bathroom to bad to use this item", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.use_bathroom, Toast.LENGTH_SHORT).show();
                     return false;
                 }
 
@@ -142,10 +143,10 @@ public class UseItem {
                     StatusControls.setPooBladder(-3);
                     return true;
                 } else if (StatusControls.getHungerLevel() + 12 > MAX_LEVEL) {
-                    Toast.makeText(context, "You are not hungry enough to eat this \n You need 12 hunger", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.need_12_hunger, Toast.LENGTH_SHORT).show();
                     return false;
                 } else if (StatusControls.getPooLevel() - 3 < 0) {
-                    Toast.makeText(context, "You have to use the bathroom to bad to use this item", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.use_bathroom, Toast.LENGTH_SHORT).show();
                     return false;
                 }
 
@@ -155,10 +156,10 @@ public class UseItem {
                     StatusControls.setPooBladder(-4);
                     return true;
                 } else if (StatusControls.getHungerLevel() + 15 > MAX_LEVEL) {
-                    Toast.makeText(context, "You are not hungry enough to eat this \n You need 15 hunger", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.need_15_hunger, Toast.LENGTH_SHORT).show();
                     return false;
                 } else if (StatusControls.getPooLevel() - 4 < 0) {
-                    Toast.makeText(context, "You have to use the bathroom to bad to use this item", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.use_bathroom, Toast.LENGTH_SHORT).show();
                     return false;
                 }
 
@@ -169,10 +170,10 @@ public class UseItem {
                     StatusControls.setThirst(2);
                     return true;
                 } else if (StatusControls.getThirstLevel() + 2 > MAX_LEVEL) {
-                    Toast.makeText(context, "You are not thirsty enough to drink this \n You need 2 thirst", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.need_2_thirst, Toast.LENGTH_SHORT).show();
                     return false;
                 } else if (StatusControls.getPeeLevel() - 1 < 0) {
-                    Toast.makeText(context, "You have to use the bathroom to bad to use this item", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.use_bathroom, Toast.LENGTH_SHORT).show();
                     return false;
                 }
 
@@ -182,10 +183,10 @@ public class UseItem {
                     StatusControls.setThirst(4);
                     return true;
                 } else if (StatusControls.getThirstLevel() + 4 > MAX_LEVEL) {
-                    Toast.makeText(context, "You are not thirsty enough to drink this \n You need 4 thirst", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.need_4_thirst, Toast.LENGTH_SHORT).show();
                     return false;
                 } else if (StatusControls.getPeeLevel() - 3 < 0) {
-                    Toast.makeText(context, "You have to use the bathroom to bad to use this item", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.use_bathroom, Toast.LENGTH_SHORT).show();
                     return false;
                 }
 
@@ -195,10 +196,10 @@ public class UseItem {
                     StatusControls.setThirst(2);
                     return true;
                 } else if (StatusControls.getThirstLevel() + 3 > MAX_LEVEL) {
-                    Toast.makeText(context, "You are not thirsty enough to drink this \n You need 2 thirst", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.need_2_thirst, Toast.LENGTH_SHORT).show();
                     return false;
                 } else if (StatusControls.getPeeLevel() - 3 < 0) {
-                    Toast.makeText(context, "You have to use the bathroom to bad to use this item", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.use_bathroom, Toast.LENGTH_SHORT).show();
                     return false;
                 }
 
@@ -209,10 +210,10 @@ public class UseItem {
                     StatusControls.setThirst(5);
                     return true;
                 } else if (StatusControls.getThirstLevel() + 5 > MAX_LEVEL) {
-                    Toast.makeText(context, "You are not thirsty enough to drink this \n You need 5 thirst", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.need_5_thirst, Toast.LENGTH_SHORT).show();
                     return false;
                 } else if (StatusControls.getPeeLevel() - 3 < 0) {
-                    Toast.makeText(context, "You have to use the bathroom to bad to use this item", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.use_bathroom, Toast.LENGTH_SHORT).show();
                     return false;
                 }
 
@@ -222,10 +223,10 @@ public class UseItem {
                     StatusControls.setThirst(4);
                     return true;
                 } else if (StatusControls.getThirstLevel() + 5 > MAX_LEVEL) {
-                    Toast.makeText(context, "You are not thirsty enough to drink this \n You need 5 thirst", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.need_5_thirst, Toast.LENGTH_SHORT).show();
                     return false;
                 } else if (StatusControls.getPeeLevel() - 3 < 0) {
-                    Toast.makeText(context, "You have to use the bathroom to bad to use this item", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.use_bathroom, Toast.LENGTH_SHORT).show();
                     return false;
                 }
 
@@ -235,10 +236,10 @@ public class UseItem {
                     StatusControls.setThirst(8);
                     return true;
                 } else if (StatusControls.getThirstLevel() + 8 > MAX_LEVEL) {
-                    Toast.makeText(context, "You are not thirsty enough to drink this \n You need 5 thirst", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.need_5_thirst, Toast.LENGTH_SHORT).show();
                     return false;
                 } else if (StatusControls.getPeeLevel() - 8 < 0) {
-                    Toast.makeText(context, "You have to use the bathroom to bad to use this item", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.use_bathroom, Toast.LENGTH_SHORT).show();
                     return false;
                 }
 
@@ -248,10 +249,10 @@ public class UseItem {
                     StatusControls.setThirst(2);
                     return true;
                 } else if (StatusControls.getThirstLevel() + 2 > MAX_LEVEL) {
-                    Toast.makeText(context, "You are not thirsty enough to drink this \n You need 2 thirst", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.need_2_thirst, Toast.LENGTH_SHORT).show();
                     return false;
                 } else if (StatusControls.getPeeLevel() - 10 < 0) {
-                    Toast.makeText(context, "You have to use the bathroom to bad to use this item", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.use_bathroom, Toast.LENGTH_SHORT).show();
                     return false;
                 }
 
@@ -261,10 +262,10 @@ public class UseItem {
                     StatusControls.setThirst(4);
                     return true;
                 } else if (StatusControls.getThirstLevel() + 4 > MAX_LEVEL) {
-                    Toast.makeText(context, "You are not thirsty enough to drink this \n You need 4 thirst", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.need_4_thirst, Toast.LENGTH_SHORT).show();
                     return false;
                 } else if (StatusControls.getPeeLevel() - 15 < 0) {
-                    Toast.makeText(context, "You have to use the bathroom to bad to use this item", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.use_bathroom, Toast.LENGTH_SHORT).show();
                     return false;
                 }
 
@@ -275,10 +276,10 @@ public class UseItem {
                     StatusControls.setThirst(5);
                     return true;
                 } else if (StatusControls.getThirstLevel() + 4 > MAX_LEVEL) {
-                    Toast.makeText(context, "You are not thirsty enough to drink this \n You need 5 thirst", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.need_5_thirst, Toast.LENGTH_SHORT).show();
                     return false;
                 } else if (StatusControls.getPeeLevel() - 15 < 0) {
-                    Toast.makeText(context, "You have to use the bathroom to bad to use this item", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.use_bathroom, Toast.LENGTH_SHORT).show();
                     return false;
                 }
 
@@ -288,15 +289,15 @@ public class UseItem {
                     StatusControls.setThirst(-4);
                     return true;
                 } else if (StatusControls.getThirstLevel() + 4 > MAX_LEVEL) {
-                    Toast.makeText(context, "You are not thirsty enough to drink this \n You need 4 thirst", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.need_4_thirst, Toast.LENGTH_SHORT).show();
                     return false;
                 } else if (StatusControls.getPeeLevel() - 10 < 0) {
-                    Toast.makeText(context, "You have to use the bathroom to bad to use this item", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.use_bathroom, Toast.LENGTH_SHORT).show();
                     return false;
                 }
 
             default:
-                Toast.makeText(context, "Unable to use this item, please try again",
+                Toast.makeText(context, R.string.unable_to_use,
                         Toast.LENGTH_SHORT).show();
                 return false;
         }
