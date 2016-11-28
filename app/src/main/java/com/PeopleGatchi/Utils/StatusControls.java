@@ -13,6 +13,7 @@ import com.PeopleGatchi.Models.Persisting.ScienceEd;
 import com.PeopleGatchi.Models.Persisting.Thirst;
 import com.PeopleGatchi.Models.Persisting.User;
 
+import static com.PeopleGatchi.Utils.BankControls.getMoney;
 import static com.PeopleGatchi.Utils.BankControls.money;
 import static com.PeopleGatchi.Utils.BankControls.setMoney;
 import static com.orm.SugarRecord.findById;
@@ -274,34 +275,36 @@ public class StatusControls {
     Sets up the table that are needed by sugar app as the game is started to give local persistence
      */
     public static void firstRun() {
+//        if (pooBladder == null && peeBladder == null && happiness == null && hunger == null && thirst == null
+//                && hygiene == null && rest == null && money == null) {
 
-        pooBladder = new Poo(20);
-        peeBladder = new Pee(20);
-        happiness = new Happiness(120);
-        hunger = new Hunger(20);
-        thirst = new Thirst(20);
-        hygiene = new Hygiene(20);
-        rest = new Rest(20);
-        money = new Money(0);
-        scienceEd = new ScienceEd(0);
-        mathEd = new MathEd(0);
-        philoEd = new PhiloEd(0);
-        name = new User();
-        gender = new User();
+            pooBladder = new Poo(20);
+            peeBladder = new Pee(20);
+            happiness = new Happiness(120);
+            hunger = new Hunger(20);
+            thirst = new Thirst(20);
+            hygiene = new Hygiene(20);
+            rest = new Rest(20);
+            money = new Money(0);
+            scienceEd = new ScienceEd(0);
+            mathEd = new MathEd(0);
+            philoEd = new PhiloEd(0);
+            name = new User();
+            gender = new User();
 
-        pooBladder.save();
-        peeBladder.save();
-        happiness.save();
-        hunger.save();
-        thirst.save();
-        hygiene.save();
-        rest.save();
-        money.save();
-        scienceEd.save();
-        mathEd.save();
-        philoEd.save();
-        name.save();
-        gender.save();
+            pooBladder.save();
+            peeBladder.save();
+            happiness.save();
+            hunger.save();
+            thirst.save();
+            hygiene.save();
+            rest.save();
+            money.save();
+            scienceEd.save();
+            mathEd.save();
+            philoEd.save();
+            name.save();
+            gender.save();
 
         updateLevels();
     }
@@ -338,10 +341,10 @@ public class StatusControls {
         setThirst(20);
         setHygiene(20);
         setRest(20);
-        setMoney(0);
-        setScienceEd(0);
-        setMathEd(0);
-        setPhiloEd(0);
+        setMoney(-getMoney());
+        setScienceEd(-getScienceEd());
+        setMathEd(-getMathEd());
+        setPhiloEd(-getPhiloEd());
         setShelterHappiness(0);
         setAdjustedDeath(0);
     }

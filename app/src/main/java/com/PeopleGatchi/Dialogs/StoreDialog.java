@@ -31,8 +31,8 @@ import static com.PeopleGatchi.R.id.food;
 
 public class StoreDialog extends Dialog {
 
-    private String[] from = {"resource", "price", "name"};
-    private int[] to = {R.id.store_img, R.id.store_price, R.id.store_name};
+    String[] from = {"resource", "price", "name"};
+    int[] to = {R.id.store_img, R.id.store_price, R.id.store_name};
     private Context context;
 
     @Bind(R.id.storeTabHost)

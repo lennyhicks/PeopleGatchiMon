@@ -126,17 +126,17 @@ public class JobView extends LinearLayout {
     public void setWarningMessage() {
         // This creates the warning message you will toast if a level is low.
         if (StatusControls.getHungerLevel() <= 5) {
-            warningMessage = "Your baby is super hungry!\n Go fed them!";
+            warningMessage = getContext().getString(R.string.hungry_message);
         } else if (StatusControls.getPooLevel() <= 5) {
-            warningMessage = "Your baby really needs to go!\n Let them go to the bathroom!";
+            warningMessage = getContext().getString(R.string.bathroom_message);
         } else if (StatusControls.getPeeLevel() <= 5) {
-            warningMessage = "Your baby needs to tinkle! \n Let them pee!";
+            warningMessage = getContext().getString(R.string.pee_message);
         } else if (StatusControls.getHygieneLevel() <= 5) {
-            warningMessage = "Your baby is filthy!\n Bathe them!";
+            warningMessage = getContext().getString(R.string.bathe_message);
         } else if (StatusControls.getThirstLevel() <= 5) {
-            warningMessage = "Your sweet baby needs a drink!\n Don't let them go thirsty!";
+            warningMessage = getContext().getString(R.string.thirsty_message);
         } else if (StatusControls.getRestLevel() <= 5) {
-            warningMessage = "Your baby needs a nap!\n Put them to bed!";
+            warningMessage = getContext().getString(R.string.sleepy_message);
         }
     }
 

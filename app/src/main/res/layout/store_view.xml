@@ -84,7 +84,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Store"
+        android:text="@string/store"
         android:textSize="26sp"
         android:id="@+id/storeTitle"
         android:textAlignment="center"

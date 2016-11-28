@@ -3,10 +3,8 @@ package com.PeopleGatchi;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.PeopleGatchi.Stages.CreateStage;
 import com.PeopleGatchi.Stages.HomeStage;
@@ -28,12 +26,10 @@ import static com.PeopleGatchi.R.layout.activity_main;
 import static com.PeopleGatchi.Views.HomeView.calendar;
 
 public class MainActivity extends AppCompatActivity {
-    private String TAG = "MainActivity";
+
     private Flow flow;
     private ScreenplayDispatcher dispatcher;
-    private SharedPreferences peoplegatchiPrefs;
-    private Handler handler;
-    private Runnable handlerTask;
+    public static SharedPreferences peoplegatchiPrefs;
     public static SimpleDateFormat dateFormat = new SimpleDateFormat("h:mm a");
     private Context context;
 
@@ -52,12 +48,9 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         SugarContext.init(getApplicationContext());
-        StatusControls.firstRun();
 
         Date date = new Date();
         dateFormat.format(date);
-        TimeControls.setTime(date);
-        Toast.makeText(this, "Meow Time: " + TimeControls.getTime(), Toast.LENGTH_SHORT).show();
 
         try {
             flow = PeopleGatchiApplication.getMainFlow();
@@ -79,6 +72,8 @@ public class MainActivity extends AppCompatActivity {
             calendar.set(Calendar.HOUR, 1);
             calendar.set(Calendar.MINUTE, 00);
 
+            StatusControls.firstRun();
+
         } else {
             History newHistory = History.single(new HomeStage());
             flow.setHistory(newHistory, Flow.Direction.REPLACE);
@@ -97,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         TimeControls.getTime();
-        Toast.makeText(this, "Time: " + TimeControls.getTime(), Toast.LENGTH_SHORT).show();
 
     }
 
