@@ -23,7 +23,7 @@
             android:id="@+id/character_iv"
             android:layout_width="400dp"
             android:layout_height="400dp"
-            android:background="@drawable/snowflake_bathe"
+            android:background="@drawable/female_blink"
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
             />

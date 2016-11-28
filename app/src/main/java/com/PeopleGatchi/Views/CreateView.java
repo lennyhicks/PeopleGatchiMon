@@ -58,9 +58,9 @@ public class CreateView extends LinearLayout {
         ButterKnife.bind(this);
 
         ArrayList<String> categories = new ArrayList<>();
-        categories.add("cis female");
-        categories.add("cis male");
-        categories.add("non-conforming");
+        categories.add(getContext().getString(R.string.female));
+        categories.add(getContext().getString(R.string.male));
+        categories.add(getContext().getString(R.string.non_conforming));
 
         ArrayAdapter<String> adapter = new ArrayAdapter(context,
                 android.R.layout.simple_spinner_item, categories);

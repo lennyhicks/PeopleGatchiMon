@@ -111,9 +111,9 @@ public class EducationView extends LinearLayout {
      */
     public void pokeStats() {
 
-        philoLevel.setText("Your Philosophy Score is: " + StatusControls.getPhiloEd());
-        mathLevel.setText("Your Maths score is: " + StatusControls.getMathEd());
-        scienceLevel.setText("Your Science score is: " + StatusControls.getScienceEd());
+        philoLevel.setText(getContext().getString(R.string.philosophy_score) + StatusControls.getPhiloEd());
+        mathLevel.setText(getContext().getString(R.string.maths_score) + StatusControls.getMathEd());
+        scienceLevel.setText(getContext().getString(R.string.science_score) + StatusControls.getScienceEd());
         // This calls the method that passes the time.
         HomeView.workSchoolDay();
         checkDisable();
@@ -140,17 +140,17 @@ public class EducationView extends LinearLayout {
     public void setWarningMessage() {
 
         if (StatusControls.getHungerLevel() <= 7) {
-            warningMessage = "Your baby is super hungry!\n Go fed them!";
+            warningMessage = getContext().getString(R.string.hungry_message);
         } else if (StatusControls.getPooLevel() <= 7) {
-            warningMessage = "Your baby really needs to go!\n Let them go to the bathroom!";
+            warningMessage = getContext().getString(R.string.bathroom_message);
         } else if (StatusControls.getPeeLevel() <= 7) {
-            warningMessage = "Your baby needs to tinkle! \n Let them pee!";
+            warningMessage = getContext().getString(R.string.pee_message);
         } else if (StatusControls.getHygieneLevel() <= 7) {
-            warningMessage = "Your baby is filthy!\n Bathe them!";
+            warningMessage = getContext().getString(R.string.bathe_message);
         } else if (StatusControls.getThirstLevel() <= 7) {
-            warningMessage = "Your sweet baby needs a drink!\n Don't let them go thirsty!";
+            warningMessage = getContext().getString(R.string.thirsty_message);
         } else if (StatusControls.getRestLevel() <= 7) {
-            warningMessage = "Your baby needs a nap!\n Put them to bed!";
+            warningMessage = getContext().getString(R.string.sleepy_message);
         }
     }
 

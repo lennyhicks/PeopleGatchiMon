@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private String TAG = "MainActivity";
     private Flow flow;
     private ScreenplayDispatcher dispatcher;
-    private SharedPreferences peoplegatchiPrefs;
+    public static SharedPreferences peoplegatchiPrefs;
     private Handler handler;
     private Runnable handlerTask;
     public static SimpleDateFormat dateFormat = new SimpleDateFormat("h:mm a");
@@ -55,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
 
         Date date = new Date();
         dateFormat.format(date);
-        TimeControls.setTime(date);
 
         try {
             flow = PeopleGatchiApplication.getMainFlow();
@@ -76,6 +75,8 @@ public class MainActivity extends AppCompatActivity {
 
             calendar.set(Calendar.HOUR, 1);
             calendar.set(Calendar.MINUTE, 00);
+
+            StatusControls.firstRun();
 
         } else {
             History newHistory = History.single(new HomeStage());
