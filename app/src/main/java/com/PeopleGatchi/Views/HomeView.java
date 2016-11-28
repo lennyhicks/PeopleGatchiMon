@@ -121,16 +121,16 @@ public class HomeView extends RelativeLayout {
         flow = PeopleGatchiApplication.getMainFlow();
         name.setText(StatusControls.getName());
         StatusControls.setGender(StatusControls.getGender());
-        StatusControls.firstRun();
         startTimer();
         updateText();
         updateScreen();
         bankAmount.setText("$" + BankControls.getMoney());
         calendar = Calendar.getInstance();
         setClock(clock);
-        defaultImage();
-
+//        defaultImage();
     }
+
+
 
 
     /*
