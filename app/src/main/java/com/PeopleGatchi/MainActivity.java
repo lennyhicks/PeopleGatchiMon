@@ -3,7 +3,6 @@ package com.PeopleGatchi;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.RelativeLayout;
 
@@ -27,12 +26,10 @@ import static com.PeopleGatchi.R.layout.activity_main;
 import static com.PeopleGatchi.Views.HomeView.calendar;
 
 public class MainActivity extends AppCompatActivity {
-    private String TAG = "MainActivity";
+
     private Flow flow;
     private ScreenplayDispatcher dispatcher;
     public static SharedPreferences peoplegatchiPrefs;
-    private Handler handler;
-    private Runnable handlerTask;
     public static SimpleDateFormat dateFormat = new SimpleDateFormat("h:mm a");
     private Context context;
 
@@ -51,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         SugarContext.init(getApplicationContext());
-        StatusControls.firstRun();
 
         Date date = new Date();
         dateFormat.format(date);

@@ -39,7 +39,6 @@ public class HomeView extends RelativeLayout {
 
     private Flow flow;
     private String date;
-
     private Context context;
     private String updateMessage;
     private Handler handlers;
@@ -114,6 +113,7 @@ public class HomeView extends RelativeLayout {
      */
     @Override
     protected void onFinishInflate() {
+
         super.onFinishInflate();
 
         calendar = Calendar.getInstance();
