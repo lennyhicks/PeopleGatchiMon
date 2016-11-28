@@ -13,8 +13,13 @@ import java.util.ArrayList;
 @Table
 public class Inventory extends SugarRecord {
 
+    /*
+    Model needed for sugarapp to create local persistence for the users inventory
+     */
+
     private Long id;
     public ArrayList<Item> inventory = new ArrayList<>(40);
+
 
     public Inventory(){}
 

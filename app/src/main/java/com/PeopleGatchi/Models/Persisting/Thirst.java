@@ -10,8 +10,13 @@ import com.orm.dsl.Table;
 @Table
 public class Thirst extends SugarRecord {
 
+    /*
+    Model needed for sugarapp to create local persistence for thirst
+     */
+
     private Long id;
     public int thirstLevel;
+
 
     public Thirst(){
     }

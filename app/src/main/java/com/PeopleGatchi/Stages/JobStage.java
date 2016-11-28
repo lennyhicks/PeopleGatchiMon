@@ -11,7 +11,13 @@ import com.PeopleGatchi.Riggers.SlideRigger;
  */
 
 public class JobStage extends IndexedStage {
+
+    /*
+    Stage needed by screenplay to create flow to the Job View
+     */
+
     public final SlideRigger rigger;
+
 
     public JobStage(Application context){
         super(JobStage.class.getName());

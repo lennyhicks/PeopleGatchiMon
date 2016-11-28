@@ -29,6 +29,7 @@ import static com.PeopleGatchi.R.id.spinner;
  */
 
 public class CreateView extends LinearLayout {
+
     private Context context;
     private Spinner gender;
 
@@ -41,62 +42,49 @@ public class CreateView extends LinearLayout {
     @Bind(R.id.submit_button)
     Button submit;
 
+
     public CreateView(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
     }
 
-
-
+    /*
+    Displays where the user can set their name and sets up the spinner to allow the user to select
+    their gender
+     */
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
         ButterKnife.bind(this);
 
-        //spinner element
-//        gender = (Spinner) findViewById(spinner);
-
-        //spinner click listener
-//        gender.setOnItemSelectedListener(context);
-
-        //configures what are options are.
         ArrayList<String> categories = new ArrayList<>();
-        categories.add("cis female");
-        categories.add("cis male");
-        categories.add("non-conforming");
+        categories.add(getContext().getString(R.string.female));
+        categories.add(getContext().getString(R.string.male));
+        categories.add(getContext().getString(R.string.non_conforming));
 
-        ArrayAdapter<String> adapter = new ArrayAdapter(context, android.R.layout.simple_spinner_item,
-                categories);
+        ArrayAdapter<String> adapter = new ArrayAdapter(context,
+                android.R.layout.simple_spinner_item, categories);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         chooseGender.setAdapter(adapter);
-
-        String gender = chooseGender.getSelectedItem().toString();
-
-        StatusControls.setGender(gender);
     }
 
-//    public void onItemSelected(AdapterView<?> parent, View view, int position){
-//        String item = parent.getItemAtPosition(position).toString();
-//
-//        Toast.makeText(context, "Selected: " + item, Toast.LENGTH_SHORT).show();
-//    }
-//
-//    public void onNothingSelected(AdapterView<?> arg0){}
-
-
+    /*
+    Sets the users name and gender and changes the view to the home view
+     */
     @OnClick(R.id.submit_button)
     public void createCharacter() {
-        //dropa the keyboard off the screen when the user hits the button.
-        InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+        //drops the keyboard off the screen when the user hits the button.
+        InputMethodManager imm = (InputMethodManager) context
+                .getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(pickName.getWindowToken(), 0);
 
         // gets the value from the text field and sets it.
-       String pokeName = pickName.getText().toString();
-
+        String pokeName = pickName.getText().toString();
         StatusControls.setName(pokeName);
-
-       // Toast.makeText(context, "You named you baby "+ getPetName, Toast.LENGTH_SHORT).show();
+        String gender = chooseGender.getSelectedItem().toString();
+        StatusControls.setGender(gender);
+        StatusControls.resetLevels();
 
         // The submit button also takes you to the home screen.
         Flow flow = PeopleGatchiApplication.getMainFlow();

@@ -9,8 +9,14 @@ import com.orm.dsl.Table;
 
 @Table
 public class ScienceEd extends SugarRecord {
+
+    /*
+    Model needed for sugarapp to create local persistence science education level
+     */
+
     private Long id;
     public Integer sciEdLevel;
+
 
     public ScienceEd(){
     }

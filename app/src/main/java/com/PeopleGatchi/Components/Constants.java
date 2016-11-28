@@ -7,14 +7,17 @@ import com.PeopleGatchi.R;
  * Created by lennyhicks on 10/31/16.
  */
 public final class Constants {
+
     public static final String token = "token";
-    public static final String tokenExpiration = "tokenExpiration";
-    public static final int WORK_TIME = 8;
     public static final int MAX_LEVEL = 20;
+    public static final int BASE_HAPPINESS = 120;
+    public static final int DEATH = 15;
 
+    /*
+    Static items that are shown in the store under food
+     */
+    public static Item[] FOODITEMS = new Item[]{
 
-
-    public static Item[] FOODITEMS = new Item[] {
             new Item("Candy", 2, R.drawable.halloweencandy),
             new Item("Pretzels", 5, R.drawable.pretzel),
             new Item("Mushroom", 8, R.drawable.mushroom),
@@ -27,7 +30,11 @@ public final class Constants {
             new Item("Watermelon", 50, R.drawable.watermelon)
     };
 
-    public static Item[] DRINKITEMS = new Item[] {
+    /*
+    Static items shown in the store under drinks
+     */
+    public static Item[] DRINKITEMS = new Item[]{
+
             new Item("Water", 2, R.drawable.water),
             new Item("Big Water", 5, R.drawable.bottleofwater),
             new Item("Milk", 8, R.drawable.milk),
@@ -40,7 +47,11 @@ public final class Constants {
             new Item("Vodka", 50, R.drawable.vodka)
     };
 
-    public static Item[] OTHERITEMS = new Item[] {
+    /*
+    Static items that are shown in the store as other
+     */
+    public static Item[] OTHERITEMS = new Item[]{
+
             new Item("DogHouse", 100, R.drawable.doghouse),
             new Item("Sm House", 20000, R.drawable.gingerbreadhouse),
             new Item("Mob Home", 30000, R.drawable.mobilehome),
@@ -52,7 +63,4 @@ public final class Constants {
             new Item("Lg House", 300000, R.drawable.church),
             new Item("DIAMONDZ", 500000, R.drawable.minecraftdiamond)
     };
-
-
-
 }

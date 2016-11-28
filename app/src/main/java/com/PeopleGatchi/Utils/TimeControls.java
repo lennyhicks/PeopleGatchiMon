@@ -10,21 +10,22 @@ import java.util.Date;
  */
 
 public class TimeControls {
+    
     public static Calendar calendar;
-
 
     static Time time = new Time();
 
     public static Date getTime() {
+        
         return time.lastRan;
     }
 
+    /*
+    Saves the time that the user last left the game
+     */
     public static void setTime(Date lastRan) {
+        
         time.lastRan = lastRan;
         time.save();
     }
-
-
-
 }
-
