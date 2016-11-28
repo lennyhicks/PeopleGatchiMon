@@ -11,7 +11,13 @@ import com.PeopleGatchi.Riggers.SlideRigger;
  */
 
 public class EducationStage extends IndexedStage {
+
+    /*
+    Stage needed by screenplay to create flow to the Education View
+     */
+
     public final SlideRigger rigger;
+
 
     public EducationStage(Application context){
         super(EducationStage.class.getName());

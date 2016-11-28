@@ -10,6 +10,11 @@ import java.util.Date;
  */
 @Table
 public class Time extends SugarRecord {
+
+    /*
+    Model needed for sugarapp to create local persistence for in game time
+     */
+
     private Long id;
     public Date lastRan;
 

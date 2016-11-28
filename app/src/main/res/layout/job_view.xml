@@ -2,10 +2,11 @@
 <com.PeopleGatchi.Views.JobView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
-                                android:layout_height="match_parent">
+                                android:layout_height="match_parent"
+    android:background="@color/text_shadow_white">
 
     <TextView
-        android:text="Clear eyes \n full heart \n go to work."
+        android:text="@string/go_to_work"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView4"
@@ -14,7 +15,7 @@
         android:layout_marginTop="20dp" />
 
     <Button
-        android:text="Manual Labor"
+        android:text="@string/manual_labor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/labor_butt"
@@ -24,7 +25,7 @@
         android:layout_marginBottom="5dp"/>
 
     <Button
-        android:text="Engineer"
+        android:text="@string/engineer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/engineer_butt"
@@ -33,7 +34,7 @@
         android:layout_marginBottom="5dp"/>
 
     <Button
-        android:text="Scientist"
+        android:text="@string/scientist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/science_butt"
@@ -42,7 +43,7 @@
         android:layout_marginBottom="5dp"/>
 
     <Button
-        android:text="Philospher"
+        android:text="@string/philospher"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/philo_butt"
@@ -50,12 +51,15 @@
         android:background="@android:color/holo_orange_dark" />
 
     <android.support.design.widget.FloatingActionButton
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
         app:fabSize="mini"
-        app:srcCompat="@drawable/store"
-        android:id="@+id/go_home" />
+        app:srcCompat="@drawable/home"
+        android:id="@+id/go_home"
+        android:layout_marginLeft="325dp"
+        android:layout_marginTop="10dp"
+        />
 
     <TextView
         android:layout_width="match_parent"

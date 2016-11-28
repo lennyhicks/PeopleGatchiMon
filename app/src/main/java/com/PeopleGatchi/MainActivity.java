@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.PeopleGatchi.Stages.CreateStage;
 import com.PeopleGatchi.Stages.HomeStage;
@@ -15,6 +14,7 @@ import com.davidstemmer.flow.plugin.screenplay.ScreenplayDispatcher;
 import com.orm.SugarContext;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import butterknife.Bind;
@@ -23,13 +23,15 @@ import flow.Flow;
 import flow.History;
 
 import static com.PeopleGatchi.R.layout.activity_main;
+import static com.PeopleGatchi.Views.HomeView.calendar;
 
 public class MainActivity extends AppCompatActivity {
-    private String TAG = "MainActivity";
+
     private Flow flow;
     private ScreenplayDispatcher dispatcher;
-    private SharedPreferences peoplegatchiPrefs;
+    public static SharedPreferences peoplegatchiPrefs;
     public static SimpleDateFormat dateFormat = new SimpleDateFormat("h:mm a");
+    private Context context;
 
     @Bind(R.id.container)
     RelativeLayout container;
@@ -46,12 +48,9 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         SugarContext.init(getApplicationContext());
-        StatusControls.firstRun();
 
         Date date = new Date();
         dateFormat.format(date);
-        TimeControls.setTime(date);
-        Toast.makeText(this, "Meow Time: " + TimeControls.getTime(), Toast.LENGTH_SHORT).show();
 
         try {
             flow = PeopleGatchiApplication.getMainFlow();
@@ -69,6 +68,12 @@ public class MainActivity extends AppCompatActivity {
 
             History newHistory = History.single(new CreateStage());
             flow.setHistory(newHistory, Flow.Direction.REPLACE);
+
+            calendar.set(Calendar.HOUR, 1);
+            calendar.set(Calendar.MINUTE, 00);
+
+            StatusControls.firstRun();
+
         } else {
             History newHistory = History.single(new HomeStage());
             flow.setHistory(newHistory, Flow.Direction.REPLACE);
@@ -87,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         TimeControls.getTime();
-        Toast.makeText(this, "Time: " + TimeControls.getTime(), Toast.LENGTH_SHORT).show();
+
     }
 
     @Override
@@ -104,6 +109,8 @@ public class MainActivity extends AppCompatActivity {
         SugarContext.terminate();
         super.onDestroy();
     }
+
+
 }
 
 

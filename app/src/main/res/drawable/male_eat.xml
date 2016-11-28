@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="true">
+
+    <item
+        android:duration="1000"
+        android:drawable="@drawable/maneat1"/>
+
+    <item
+        android:duration="600"
+        android:drawable="@drawable/maneat2"/>
+
+    <item
+        android:duration="1000"
+        android:drawable="@drawable/maneat1"/>
+
+    <item
+        android:duration="600"
+        android:drawable="@drawable/maneat2"/>
+
+</animation-list>

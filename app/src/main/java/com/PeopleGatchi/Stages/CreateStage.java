@@ -12,7 +12,13 @@ import com.PeopleGatchi.R;
  */
 
 public class CreateStage extends IndexedStage {
+
+    /*
+    Stage needed by screenplay to create flow to the Create View
+     */
+
     public final SlideRigger rigger;
+
 
     public CreateStage(Application context){
         super(CreateStage.class.getName());

@@ -5,9 +5,11 @@ package com.PeopleGatchi.Models;
  */
 
 public class Item {
+
     private String name;
     private Integer price;
     private Integer resourceId;
+
 
     public Item(String name, Integer price, Integer resourceId) {
         this.name = name;

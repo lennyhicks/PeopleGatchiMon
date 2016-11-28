@@ -10,8 +10,13 @@ import com.orm.dsl.Table;
 @Table
 public class Pee extends SugarRecord {
 
+    /*
+    Model needed for sugarapp to create local persistence for pee level
+     */
+
     private Long id;
     public Integer peeLevel;
+
 
     public Pee(){
     }
