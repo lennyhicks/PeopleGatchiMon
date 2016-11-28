@@ -39,7 +39,6 @@ public class HomeView extends RelativeLayout {
 
     private Flow flow;
     private String date;
-
     private Context context;
     private String updateMessage;
     private Handler handlers;
@@ -123,22 +122,23 @@ public class HomeView extends RelativeLayout {
         name.setText(StatusControls.getName());
         StatusControls.setName(StatusControls.getName());
 
-        switch (StatusControls.getGender()) {
-            case "cis female":
-                charImg.setBackground(context.getResources().getDrawable(R.drawable.female_blink));
-                break;
-            case "cis male":
-                charImg.setBackground(context.getResources().getDrawable(R.drawable.male_blink));
-                break;
-            case "non-conforming":
-                charImg.setBackground(context.getResources().getDrawable(R.drawable.snowflake_blink));
-                break;
-            default:
-                charImg.setImageResource(R.drawable.hp_cat);
-        }
 
-        imageView.setImageResource(Utils.setHappinessImage());
-        ((AnimationDrawable) charImg.getBackground()).start();
+//        switch (StatusControls.getGender()) {
+//            case "cis female":
+//                charImg.setBackground(context.getResources().getDrawable(R.drawable.female_blink));
+//                break;
+//            case "cis male":
+//                charImg.setBackground(context.getResources().getDrawable(R.drawable.male_blink));
+//                break;
+//            case "non-conforming":
+//                charImg.setBackground(context.getResources().getDrawable(R.drawable.snowflake_blink));
+//                break;
+//            default:
+//                charImg.setImageResource(R.drawable.hp_cat);
+//        }
+//
+//        imageView.setImageResource(Utils.setHappinessImage());
+//        ((AnimationDrawable) charImg.getBackground()).start();
 
 
         startTimer();
@@ -445,7 +445,9 @@ public class HomeView extends RelativeLayout {
                 }
             }
         }, 500);
-        ((AnimationDrawable) charImg.getBackground()).stop();
+        ((AnimationDrawable)charImg.getBackground()).stop();
+//        ((AnimationDrawable) charImg.getBackground()).start();
+//        ((AnimationDrawable) charImg.getBackground()).setOneShot(true);
         defaultImage();
     }
 

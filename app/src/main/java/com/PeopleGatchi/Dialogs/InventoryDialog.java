@@ -26,10 +26,10 @@ import static com.PeopleGatchi.R.id.inventory_grid;
 
 public class InventoryDialog extends Dialog {
 
-    private String[] from = {"resource", "name"};
-    private Item[] items;
-    private int[] to = {R.id.inventory_img, R.id.inventory_name};
-    private SimpleAdapter adapter;
+    String[] from = {"resource", "name"};
+    Item[] items;
+    int[] to = {R.id.inventory_img, R.id.inventory_name};
+    SimpleAdapter adapter;
     private Context context;
 
     @Bind(inventory_grid)

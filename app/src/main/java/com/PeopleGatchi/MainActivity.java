@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.PeopleGatchi.Stages.CreateStage;
 import com.PeopleGatchi.Stages.HomeStage;
@@ -57,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
         Date date = new Date();
         dateFormat.format(date);
         TimeControls.setTime(date);
-        Toast.makeText(this, "Meow Time: " + TimeControls.getTime(), Toast.LENGTH_SHORT).show();
 
         try {
             flow = PeopleGatchiApplication.getMainFlow();
@@ -97,7 +95,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         TimeControls.getTime();
-        Toast.makeText(this, "Time: " + TimeControls.getTime(), Toast.LENGTH_SHORT).show();
 
     }
 
